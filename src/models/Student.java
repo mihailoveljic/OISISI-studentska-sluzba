@@ -16,11 +16,11 @@ public class Student {
 	private StudentStatus studentStatus;
 	private double averageGrade;
 	private Set<Grade> grades;
-	private Set<Exam> exams;
+	private Set<Subject> subjects;
 	
 	public Student(String surname, String name, Date birthDate, Adress adress, String phone, String email, String index,
 			int enrollmentYear, int currentYearOfStudy, StudentStatus studentStatus, double averageGrade,
-			Set<Grade> grades, Set<Subject> exams) {
+			Set<Grade> grades, Set<Subject> subjects) {
 		super();
 		this.surname = surname;
 		this.name = name;
@@ -34,7 +34,7 @@ public class Student {
 		this.studentStatus = studentStatus;
 		this.averageGrade = averageGrade;
 		this.grades = grades;
-		this.exams = exams;
+		this.subjects = subjects;
 	}
 
 	public String getSurname() {
@@ -133,12 +133,12 @@ public class Student {
 		this.grades = grades;
 	}
 
-	public Set<Subject> getExams() {
-		return exams;
+	public Set<Subject> getSubjects() {
+		return subjects;
 	}
 
-	public void setExams(Set<Subject> exams) {
-		this.exams = exams;
+	public void setExams(Set<Subject> subjects) {
+		this.subjects = subjects;
 	}
 	
 	
