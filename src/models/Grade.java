@@ -4,14 +4,14 @@ import java.util.Date;
 
 public class Grade {
 	private Student student;
-	private Exam exam;
+	private Subject subject;
 	private int grade;
 	private Date evaluationDate;
 	
-	public Grade(Student student, Exam exam, int grade, Date evaluationDate) {
+	public Grade(Student student, Subject subject, int grade, Date evaluationDate) {
 		super();
 		this.student = student;
-		this.exam = exam;
+		this.subject = subject;
 		this.grade = grade;
 		this.evaluationDate = evaluationDate;
 	}
@@ -24,12 +24,12 @@ public class Grade {
 		this.student = student;
 	}
 
-	public Exam getExam() {
-		return exam;
+	public Subject getSubject() {
+		return subject;
 	}
 
-	public void setExam(Exam exam) {
-		this.exam = exam;
+	public void setSubject(Subject subject) {
+		this.subject = subject;
 	}
 
 	public int getGrade() {
