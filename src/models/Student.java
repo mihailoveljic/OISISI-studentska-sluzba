@@ -16,7 +16,7 @@ public class Student {
 	private StudentStatus studentStatus;
 	private double averageGrade;
 	private Set<Grade> grades;
-	private Set<Subject> exams;
+	private Set<Exam> exams;
 	
 	public Student(String surname, String name, Date birthDate, Adress adress, String phone, String email, String index,
 			int enrollmentYear, int currentYearOfStudy, StudentStatus studentStatus, double averageGrade,
