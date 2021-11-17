@@ -2,9 +2,11 @@ package views;
 
 import methods.ResizeIcon;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
+import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JMenu;
@@ -93,5 +95,6 @@ public class MyMenuBar extends JMenuBar{
 		this.add(fileMenu);
 		this.add(editMenu);
 		this.add(helpMenu);
+		this.setBorder(BorderFactory.createLineBorder(Color.black));
 	}
 }
