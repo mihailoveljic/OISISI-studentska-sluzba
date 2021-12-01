@@ -8,6 +8,7 @@ import views.MyMenuBar;
 import views.MyStatusBar;
 import views.MyToolBar;
 
+
 public class MyApp {
 
 	public static void main(String[] args) {
@@ -24,12 +25,11 @@ public class MyApp {
 	    //Tool bar
 	    MyToolBar toolBar= new MyToolBar();
 	    mainFrame.add(toolBar,BorderLayout.PAGE_START);
-	    
+	   
 	    //Main Panel
 	    MainTabbedPane mainTabbedPane = new MainTabbedPane();
 	    mainFrame.add(mainTabbedPane, BorderLayout.CENTER);
-	    
-	    
+
 	    mainFrame.setVisible(true);
 	    
 	}

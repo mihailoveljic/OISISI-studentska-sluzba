@@ -26,7 +26,7 @@ public class MyStatusBar extends JPanel {
 		windowNameLabel.setBorder(new EmptyBorder(4, 4, 4, 4));
 		windowNameLabel.setFont(new Font("Serif", Font.BOLD, 16));
 		// TODO Make it update continuous during runtime
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm  dd.MM.yyyy.");
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss  dd.MM.yyyy.");
 		LocalDateTime now = LocalDateTime.now();
 		JLabel dateLabel = new JLabel(dtf.format(now));
 		dateLabel.setBorder(new EmptyBorder(4, 4, 4, 4));
@@ -41,6 +41,7 @@ public class MyStatusBar extends JPanel {
 		d.height=40;
 		setMaximumSize(d);
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
+		
 	}
 	
 	
