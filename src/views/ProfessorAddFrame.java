@@ -40,7 +40,7 @@ public class ProfessorAddFrame extends JFrame {
 		JTextField surnameField = new JTextField();
 		JLabel nameLabel=new JLabel("Ime*");
 		JTextField nameField = new JTextField();
-		JLabel birthDateLabel=new JLabel("Datum rodjenja*");
+		JLabel birthDateLabel=new JLabel("Datum roðenja*");
 		JTextField birthDateField = new JTextField();
 		JLabel adressLabel=new JLabel("Adresa stanovanja*");
 		JTextField adressField = new JTextField();

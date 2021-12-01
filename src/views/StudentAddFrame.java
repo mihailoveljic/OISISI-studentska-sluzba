@@ -2,7 +2,6 @@ package views;
 
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.HeadlessException;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
@@ -22,7 +21,7 @@ public class StudentAddFrame extends JFrame{
 	 */
 	private static final long serialVersionUID = -6131600099102309111L;
 
-	public StudentAddFrame() throws HeadlessException {
+	public StudentAddFrame() {
 		super();
 
 		Toolkit kit = Toolkit.getDefaultToolkit();

@@ -31,6 +31,7 @@ public class MyApp {
 	    mainFrame.add(mainTabbedPane, BorderLayout.CENTER);
 
 	    mainFrame.setVisible(true);
+	    
 	}
 
 }
