@@ -11,13 +11,13 @@ public class Professor {
 	private Adress adress;
 	private String phone;
 	private String email;
-	private String officeAdress;
+	private Adress officeAdress;
 	private int idNumber;
 	private String title;
 	private int serviceYears;
 	private Set<Subject> subjects;
 	public Professor(String surname, String name, Date birthDate, Adress adress, String phone, String email,
-			String officeAdress, int idNumber, String title, int serviceYears, Set<Subject> subjects) {
+			Adress officeAdress, int idNumber, String title, int serviceYears, Set<Subject> subjects) {
 		super();
 		this.surname = surname;
 		this.name = name;
@@ -67,10 +67,10 @@ public class Professor {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getOfficeAdress() {
+	public Adress getOfficeAdress() {
 		return officeAdress;
 	}
-	public void setOfficeAdress(String officeAdress) {
+	public void setOfficeAdress(Adress officeAdress) {
 		this.officeAdress = officeAdress;
 	}
 	public int getIdNumber() {
