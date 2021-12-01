@@ -3,9 +3,11 @@ package main;
 import java.awt.BorderLayout;
 
 import views.MainFrame;
+import views.MainTabbedPane;
 import views.MyMenuBar;
 import views.MyStatusBar;
 import views.MyToolBar;
+import views.StudentAddFrame;
 
 public class MyApp {
 
@@ -23,9 +25,13 @@ public class MyApp {
 	    //Tool bar
 	    MyToolBar toolBar= new MyToolBar();
 	    mainFrame.add(toolBar,BorderLayout.PAGE_START);
+	   
+	    //Main Panel
+	    MainTabbedPane mainTabbedPane = new MainTabbedPane();
+	    mainFrame.add(mainTabbedPane, BorderLayout.CENTER);
+
 	    
 	    mainFrame.setVisible(true);
-	    
 	}
 
 }
