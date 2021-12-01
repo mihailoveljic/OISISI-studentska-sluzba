@@ -56,7 +56,7 @@ public class StudentAddFrame extends JFrame{
 		JTextField indexField = new JTextField();
 		JLabel enrollmentYearLabel = new JLabel("Godina upisa*");
 		JTextField enrollmentYearField = new JTextField();
-		JLabel currentYearOfStudy = new JLabel("Trenutna godina studija*");
+		JLabel currentYearOfStudyLabel = new JLabel("Trenutna godina studija*");
 		JComboBox<String> currentYearOfStudyComboBox = new JComboBox<String>();
 		currentYearOfStudyComboBox.addItem("I (Prva)");
 		currentYearOfStudyComboBox.addItem("I (Druga)");
@@ -86,7 +86,7 @@ public class StudentAddFrame extends JFrame{
 		contentPanel.add(indexField);
 		contentPanel.add(enrollmentYearLabel);
 		contentPanel.add(enrollmentYearField);
-		contentPanel.add(currentYearOfStudy);
+		contentPanel.add(currentYearOfStudyLabel);
 		contentPanel.add(currentYearOfStudyComboBox);
 		contentPanel.add(studentStatusLabel);
 		contentPanel.add(studentStatusComboBox);
