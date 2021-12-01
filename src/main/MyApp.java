@@ -7,7 +7,7 @@ import views.MainTabbedPane;
 import views.MyMenuBar;
 import views.MyStatusBar;
 import views.MyToolBar;
-import views.SubjectAddFrame;
+
 
 public class MyApp {
 
@@ -30,9 +30,6 @@ public class MyApp {
 	    MainTabbedPane mainTabbedPane = new MainTabbedPane();
 	    mainFrame.add(mainTabbedPane, BorderLayout.CENTER);
 
-	    
-	    
-	    
 	    mainFrame.setVisible(true);
 	}
 
