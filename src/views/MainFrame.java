@@ -1,4 +1,4 @@
-package views;
+ package views;
 
 import java.awt.Dimension;
 import java.awt.Image;
@@ -14,15 +14,15 @@ public class MainFrame extends JFrame{
 	 */
 	private static final long serialVersionUID = 4412289993443911914L;
 
-	public MainFrame() {
+		private static MainFrame instance;
+		private MainFrame()
+		{	
 		super();
-
 		Toolkit kit = Toolkit.getDefaultToolkit();
 		Dimension d = kit.getScreenSize();
 		int width = d.width;
 		int height = d.height;
 
-		// Pravljenje prozora
 		setSize(width*3/4, height*3/4);
 		setLocationRelativeTo(null);
 		setTitle("Studentska služba");
@@ -30,4 +30,12 @@ public class MainFrame extends JFrame{
 		Image icon = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB_PRE);
 		setIconImage(icon);
 		}
+		
+		public static MainFrame getInstance ()
+		{
+			if(instance==null)
+				instance= new MainFrame();
+			return instance;
+		}
+		
 	}
