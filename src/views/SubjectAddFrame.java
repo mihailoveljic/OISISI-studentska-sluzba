@@ -22,7 +22,8 @@ public class SubjectAddFrame extends JFrame{
 	 */
 	private static final long serialVersionUID = -4125736938637561082L;
 
-	public SubjectAddFrame(){
+	private static SubjectAddFrame instance;
+	private SubjectAddFrame(){
 		super();
 
 		Toolkit kit = Toolkit.getDefaultToolkit();
@@ -81,5 +82,12 @@ public class SubjectAddFrame extends JFrame{
 		contentPanel.add(cancelButton);
 	    this.getContentPane().add(contentPanel);
 		setVisible(true);
+	}
+	
+	public static SubjectAddFrame getInstance()
+	{
+		if(instance==null)
+			instance=new SubjectAddFrame();
+		return instance;
 	}
 }

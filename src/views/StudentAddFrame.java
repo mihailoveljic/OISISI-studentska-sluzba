@@ -20,8 +20,10 @@ public class StudentAddFrame extends JFrame{
 	 * 
 	 */
 	private static final long serialVersionUID = -6131600099102309111L;
-
-	public StudentAddFrame() {
+	
+	
+	private static StudentAddFrame instance;
+	private StudentAddFrame() {
 		super();
 
 		Toolkit kit = Toolkit.getDefaultToolkit();
@@ -93,6 +95,13 @@ public class StudentAddFrame extends JFrame{
 		contentPanel.add(cancelButton);
 	    this.getContentPane().add(contentPanel);
 		setVisible(true);
+	}
+	
+	public static StudentAddFrame getInstance()
+	{
+		if(instance==null)
+			instance=new StudentAddFrame();
+		return instance;
 	}
 
 }

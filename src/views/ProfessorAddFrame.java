@@ -19,9 +19,11 @@ public class ProfessorAddFrame extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
-	public ProfessorAddFrame() {
+	
+	private static ProfessorAddFrame instance;
+	private ProfessorAddFrame() {
 		super();
+		
 		
 		Toolkit kit= Toolkit.getDefaultToolkit();
 		Dimension d= kit.getScreenSize();
@@ -85,6 +87,13 @@ public class ProfessorAddFrame extends JFrame {
 		
 		
 		
+	}
+	
+	public static ProfessorAddFrame getInstance()
+	{
+		if(instance==null)
+			instance=new ProfessorAddFrame();
+		return instance;
 	}
 	
 	
