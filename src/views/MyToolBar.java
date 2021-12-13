@@ -1,6 +1,7 @@
 package views;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 
 import javax.swing.BorderFactory;
@@ -8,6 +9,7 @@ import javax.swing.Box;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
 
@@ -53,7 +55,7 @@ public class MyToolBar extends JToolBar {
 		this.add(searchBar);
 		this.add(searchButton);
 		this.setFloatable(false);
-		this.setBorder(BorderFactory.createLineBorder(Color.black));
+		this.setBorder(BorderFactory.createLineBorder(Color.black));	
 	}
 	
 
