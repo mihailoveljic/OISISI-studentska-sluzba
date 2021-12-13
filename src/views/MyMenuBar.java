@@ -79,6 +79,11 @@ public class MyMenuBar extends JMenuBar{
 		JMenuItem closeItem = new JMenuItem("Close", closeIcon);
 		closeItem.setMnemonic(KeyEvent.VK_C);
 		closeItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, ActionEvent.CTRL_MASK));
+		
+		newItem.addActionListener(new AddEntityListener());
+		
+		
+		
 		fileMenu.add(newItem);
 		fileMenu.addSeparator();
 		fileMenu.add(saveItem);
