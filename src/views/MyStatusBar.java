@@ -23,7 +23,7 @@ public class MyStatusBar extends JPanel implements Runnable {
 
 	public MyStatusBar() {
 		super();
-		JLabel windowNameLabel = new JLabel("Studentska sluzba");
+		JLabel windowNameLabel = new JLabel("Studentska služba - Studenti");
 		windowNameLabel.setBorder(new EmptyBorder(4, 4, 4, 4));
 		windowNameLabel.setFont(new Font("Serif", Font.BOLD, 16));
 		// TODO Make it update continuous during runtime
