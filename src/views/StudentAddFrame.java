@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.WindowConstants;
 
 public class StudentAddFrame extends JFrame{
 
@@ -94,7 +95,8 @@ public class StudentAddFrame extends JFrame{
 		contentPanel.add(confirmButton);
 		contentPanel.add(cancelButton);
 	    this.getContentPane().add(contentPanel);
-		setVisible(true);
+		
+		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 	}
 	
 	public static StudentAddFrame getInstance()

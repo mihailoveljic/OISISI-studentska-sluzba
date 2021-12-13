@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.WindowConstants;
 
 public class ProfessorAddFrame extends JFrame {
 
@@ -82,10 +83,9 @@ public class ProfessorAddFrame extends JFrame {
 		contentPanel.add(cancelButton);
 		
 		this.getContentPane().add(contentPanel);
-		this.setVisible(true);
 
 		
-		
+		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		
 	}
 	

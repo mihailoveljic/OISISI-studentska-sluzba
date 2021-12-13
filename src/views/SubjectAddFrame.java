@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.WindowConstants;
 
 public class SubjectAddFrame extends JFrame{
 	
@@ -81,7 +82,8 @@ public class SubjectAddFrame extends JFrame{
 		contentPanel.add(confirmButton);
 		contentPanel.add(cancelButton);
 	    this.getContentPane().add(contentPanel);
-		setVisible(true);
+		
+		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 	}
 	
 	public static SubjectAddFrame getInstance()
