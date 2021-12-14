@@ -4,7 +4,10 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.util.Date;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -14,6 +17,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
+
+import controllers.StudentController;
+import models.Adress;
+import models.StudentStatus;
 
 public class StudentAddFrame extends JFrame{
 
@@ -61,15 +68,59 @@ public class StudentAddFrame extends JFrame{
 		JLabel currentYearOfStudyLabel = new JLabel("Trenutna godina studija*");
 		JComboBox<String> currentYearOfStudyComboBox = new JComboBox<String>();
 		currentYearOfStudyComboBox.addItem("I (Prva)");
-		currentYearOfStudyComboBox.addItem("I (Druga)");
-		currentYearOfStudyComboBox.addItem("I (Treæa)");
-		currentYearOfStudyComboBox.addItem("I (Èetvrta)");
+		currentYearOfStudyComboBox.addItem("II (Druga)");
+		currentYearOfStudyComboBox.addItem("III (Treæa)");
+		currentYearOfStudyComboBox.addItem("IV (Èetvrta)");
 		JLabel studentStatusLabel = new JLabel("Naèin finansiranja*");
 		JComboBox<String> studentStatusComboBox = new JComboBox<String>();
 		studentStatusComboBox.addItem("Budzet");
 		studentStatusComboBox.addItem("Samofinansiranje");
 
 		JButton confirmButton = new JButton("Potvrdi");
+		confirmButton.addActionListener(new ActionListener(){
+	
+			@SuppressWarnings("deprecation")
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				StudentController studentController = new StudentController();
+				
+				String[] parts = adressField.getText().split(",");
+				//TODO validate adress input
+				Adress adress = new Adress(parts[0], Integer.parseInt(parts[1]), parts[2], parts[3]);
+				
+				int selectedCurrentYear = currentYearOfStudyComboBox.getSelectedIndex();
+				int selectedStudentStatus = studentStatusComboBox.getSelectedIndex();
+				StudentStatus studentStatus = null;
+				switch(selectedStudentStatus) {
+				case 0:
+					studentStatus = StudentStatus.B;
+					break;
+				case 1:
+					studentStatus = StudentStatus.S;
+					break;
+				default:
+					break;
+				}
+				
+				studentController.addStudent(surnameField.getText(), nameField.getText(),
+						new Date(birthDateField.getText()), adress, phoneField.getText(),
+						emailField.getText(), indexField.getText(), Integer.parseInt(enrollmentYearField.getText()),
+						selectedCurrentYear +1, studentStatus);
+				StudentAddFrame.getInstance().setVisible(false);
+				
+				surnameField.setText("");
+				nameField.setText("");
+				birthDateField.setText("");
+				adressField.setText("");
+				phoneField.setText("");
+				emailField.setText("");
+				indexField.setText("");
+				enrollmentYearField.setText("");
+				currentYearOfStudyComboBox.setSelectedIndex(0);
+				studentStatusComboBox.setSelectedIndex(0);
+			}
+			
+		});
 		JButton cancelButton = new JButton("Odustani");
 		
 		contentPanel.add(nameLabel);

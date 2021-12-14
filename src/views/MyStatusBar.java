@@ -90,7 +90,7 @@ public class MyStatusBar extends JPanel implements Runnable {
 	 minute = d.getMinutes(); 
 	 second = d.getSeconds(); 
 	 amPm=(hour<12)?"AM":"PM"; 
-	 hr=(hour>12)?hour-12:hour; 
+	 hr=(hour>12)?hour-12:hour;
 		 
 	formatedDate=formatedDate.concat(padElement(hr, '0')); 
 	formatedDate=formatedDate.concat(":"); 

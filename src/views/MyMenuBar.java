@@ -83,7 +83,6 @@ public class MyMenuBar extends JMenuBar{
 		newItem.addActionListener(new AddEntityListener());
 		
 		
-		
 		fileMenu.add(newItem);
 		fileMenu.addSeparator();
 		fileMenu.add(saveItem);
