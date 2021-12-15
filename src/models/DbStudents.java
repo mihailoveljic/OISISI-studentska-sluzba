@@ -53,7 +53,7 @@ public class DbStudents {
 				"imenkoprezimenovic@gmail.com", "II12/2020", 2020, 2, StudentStatus.B, 8.71, null, null));
 	}
 
-	public List<Student> getstudents() {
+	public List<Student> getStudents() {
 		return students;
 	}
 
