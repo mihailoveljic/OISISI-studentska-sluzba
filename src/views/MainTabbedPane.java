@@ -1,6 +1,5 @@
 package views;
 
-import java.beans.PropertyChangeListener;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;

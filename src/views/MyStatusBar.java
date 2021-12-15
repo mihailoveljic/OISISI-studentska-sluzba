@@ -53,16 +53,18 @@ public class MyStatusBar extends JPanel implements Runnable {
 	
 	
 	
-	Thread timer=null;
+	Thread timer = null;
 	String dateToDisplay;	//string koji cemo da prikazemo u status baru
 	
 	int hr;
 	Date d;
-	JLabel dateLabel=new JLabel();
+	JLabel dateLabel = new JLabel();
 	int hour;
 	int minute;
 	int second;
-	String amPm="AM"; 
+	int day;
+	int month;
+	int year;
 
 	//dateLabel.setFont(new Font("Anklepants",Font.PLAIN,16)); 
 	
@@ -85,49 +87,36 @@ public class MyStatusBar extends JPanel implements Runnable {
 	@SuppressWarnings("deprecation")
 	public String getFormatedDate(Date d) 
 	{ 
-	String formatedDate=" "; 
-	 hour = d.getHours(); 
-	 minute = d.getMinutes(); 
-	 second = d.getSeconds(); 
-	 amPm=(hour<12)?"AM":"PM"; 
-	 hr=(hour>12)?hour-12:hour; 
-		 
-	formatedDate=formatedDate.concat(padElement(hr, '0')); 
-	formatedDate=formatedDate.concat(":"); 
-	formatedDate=formatedDate.concat(padElement(minute, '0')); 
-	formatedDate=formatedDate.concat(":"); 
-	formatedDate=formatedDate.concat(padElement(second, '0')); 
-	formatedDate=formatedDate.concat(" "+ amPm); 
-	return formatedDate;  
-	} 
+		String formatedDate=" "; 
+		hour = d.getHours(); 
+		minute = d.getMinutes(); 
+		day = d.getDate();
+		month = d.getMonth() + 1; 	//returns 0 to 11 for each month with january being 0
+		year = d.getYear() + 1900;	//	returns current year - 1900
 	 
-	private String padElement(int expr, char padChar) 
-	{ 
-	  String result = ""; 
-	  // I'm just padding 2 digit numbers 
-	  if (expr < 10) result = result.concat(String.valueOf(padChar)); 
-	  result = result.concat(String.valueOf(expr)); 
-	  return(result); 
+		formatedDate=formatedDate.concat(String.valueOf(hour)); 
+		formatedDate=formatedDate.concat(":"); 
+		formatedDate=formatedDate.concat(String.valueOf(minute));  
+		formatedDate=formatedDate.concat("  "); 
+		formatedDate=formatedDate.concat(String.valueOf(day));  
+		formatedDate=formatedDate.concat("."); 
+		formatedDate=formatedDate.concat(String.valueOf(month));  
+		formatedDate=formatedDate.concat("."); 
+		formatedDate=formatedDate.concat(String.valueOf(year)); 
+		formatedDate=formatedDate.concat(".      "); 
+		return formatedDate;  
 	} 
-	 
 	
 	public void run() { 
-		 // Sleep in the timer thread... 
-		  while (timer != null) { 
-		    try {Thread.sleep(10);} 
-		catch (InterruptedException e){} 
-		d=new  Date(); 
-		dateToDisplay=getFormatedDate(d); 
-		 dateLabel.setText(dateToDisplay); 
-//		 dateLabel.setBackground(Color.GRAY); 
-//			dateLabel.setForeground(Color.MAGENTA); 
-//			dateLabel.setFont(new Font("Anklepants",Font.PLAIN,16));
+			// Sleep in the timer thread... 
+			while (timer != null) { 
+			    try {Thread.sleep(10);} 
+			catch (InterruptedException e){} 
+			d = new  Date(); 
+			dateToDisplay=getFormatedDate(d); 
+			dateLabel.setText(dateToDisplay); 
 		} 
-		timer = null; 
-		 
+		timer = null;  
 	} 
-
-	
-
 }
 	
