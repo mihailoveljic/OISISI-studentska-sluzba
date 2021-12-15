@@ -123,6 +123,25 @@ public class StudentAddFrame extends JFrame{
 		});
 		JButton cancelButton = new JButton("Odustani");
 		
+		cancelButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				surnameField.setText("");
+				nameField.setText("");
+				birthDateField.setText("");
+				adressField.setText("");
+				phoneField.setText("");
+				emailField.setText("");
+				indexField.setText("");
+				enrollmentYearField.setText("");
+				currentYearOfStudyComboBox.setSelectedIndex(0);
+				studentStatusComboBox.setSelectedIndex(0);
+				StudentAddFrame.getInstance().dispose();
+			}
+		});
+		
+		
 		contentPanel.add(nameLabel);
 		contentPanel.add(nameField);
 		contentPanel.add(surnameLabel);
