@@ -23,7 +23,7 @@ public class MyStatusBar extends JPanel implements Runnable {
 
 	public MyStatusBar() {
 		super();
-		JLabel windowNameLabel = new JLabel("Studentska slu≈æba - Studenti");
+		JLabel windowNameLabel = new JLabel("Studentska sluûba - Studenti");
 		windowNameLabel.setBorder(new EmptyBorder(4, 4, 4, 4));
 		windowNameLabel.setFont(new Font("Serif", Font.BOLD, 16));
 		// TODO Make it update continuous during runtime
@@ -93,10 +93,21 @@ public class MyStatusBar extends JPanel implements Runnable {
 		day = d.getDate();
 		month = d.getMonth() + 1; 	//returns 0 to 11 for each month with january being 0
 		year = d.getYear() + 1900;	//	returns current year - 1900
-	 
-		formatedDate=formatedDate.concat(String.valueOf(hour)); 
+		
+		String minuteString = String.valueOf(minute);
+		if(minute < 10) {
+			minuteString = "0" + String.valueOf(minute);
+		}
+		
+		String hourString = String.valueOf(hour);
+		if(hour < 10) {
+			hourString = "0" + String.valueOf(hour);
+		}
+		
+		
+		formatedDate=formatedDate.concat(hourString); 
 		formatedDate=formatedDate.concat(":"); 
-		formatedDate=formatedDate.concat(String.valueOf(minute));  
+		formatedDate=formatedDate.concat(minuteString);  
 		formatedDate=formatedDate.concat("  "); 
 		formatedDate=formatedDate.concat(String.valueOf(day));  
 		formatedDate=formatedDate.concat("."); 
