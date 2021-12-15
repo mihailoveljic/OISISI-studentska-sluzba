@@ -19,11 +19,11 @@ public class MainTabbedPane extends JTabbedPane{
 
 		StudentPanel studentPanel = StudentPanel.getInstance();
 		ProfessorPanel professorPanel = ProfessorPanel.getInstance();
-		JPanel subjects_panel = new JPanel();
+		SubjectPanel subjectPanel = SubjectPanel.getInstance();
 
 		this.add("Studenti", studentPanel);
 		this.add("Profesori", professorPanel);
-		this.add("Predmeti", subjects_panel);
+		this.add("Predmeti", subjectPanel);
 		
 		this.addChangeListener(new TabChangeListener(this));
 	}
