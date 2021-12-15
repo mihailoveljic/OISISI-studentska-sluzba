@@ -4,6 +4,8 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 
 import javax.swing.BorderFactory;
@@ -11,9 +13,12 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
+
+import controllers.StudentController;
 
 public class StudentAddFrame extends JFrame{
 
@@ -61,16 +66,65 @@ public class StudentAddFrame extends JFrame{
 		JLabel currentYearOfStudyLabel = new JLabel("Trenutna godina studija*");
 		JComboBox<String> currentYearOfStudyComboBox = new JComboBox<String>();
 		currentYearOfStudyComboBox.addItem("I (Prva)");
-		currentYearOfStudyComboBox.addItem("I (Druga)");
-		currentYearOfStudyComboBox.addItem("I (Treæa)");
-		currentYearOfStudyComboBox.addItem("I (Èetvrta)");
+		currentYearOfStudyComboBox.addItem("II (Druga)");
+		currentYearOfStudyComboBox.addItem("III (Treæa)");
+		currentYearOfStudyComboBox.addItem("IV (Èetvrta)");
 		JLabel studentStatusLabel = new JLabel("Naèin finansiranja*");
 		JComboBox<String> studentStatusComboBox = new JComboBox<String>();
 		studentStatusComboBox.addItem("Budzet");
 		studentStatusComboBox.addItem("Samofinansiranje");
 
 		JButton confirmButton = new JButton("Potvrdi");
+		confirmButton.addActionListener(new ActionListener(){
+	
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				StudentController studentController = new StudentController();
+				
+				String dataValid = studentController.addStudent(surnameField.getText(), nameField.getText(),
+						birthDateField.getText(), adressField.getText(), phoneField.getText(),
+						emailField.getText(), indexField.getText(), enrollmentYearField.getText(),
+						currentYearOfStudyComboBox.getSelectedIndex(), studentStatusComboBox.getSelectedIndex());
+				
+				if( dataValid != "OK") {
+					JOptionPane.showMessageDialog(null, dataValid);
+				}else {
+					StudentAddFrame.getInstance().dispose();
+					
+					surnameField.setText("");
+					nameField.setText("");
+					birthDateField.setText("");
+					adressField.setText("");
+					phoneField.setText("");
+					emailField.setText("");
+					indexField.setText("");
+					enrollmentYearField.setText("");
+					currentYearOfStudyComboBox.setSelectedIndex(0);
+					studentStatusComboBox.setSelectedIndex(0);
+				}
+			}
+			
+		});
 		JButton cancelButton = new JButton("Odustani");
+		
+		cancelButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				surnameField.setText("");
+				nameField.setText("");
+				birthDateField.setText("");
+				adressField.setText("");
+				phoneField.setText("");
+				emailField.setText("");
+				indexField.setText("");
+				enrollmentYearField.setText("");
+				currentYearOfStudyComboBox.setSelectedIndex(0);
+				studentStatusComboBox.setSelectedIndex(0);
+				StudentAddFrame.getInstance().dispose();
+			}
+		});
+		
 		
 		contentPanel.add(nameLabel);
 		contentPanel.add(nameField);
