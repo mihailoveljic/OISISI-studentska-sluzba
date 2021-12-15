@@ -85,7 +85,7 @@ public class MyStatusBar extends JPanel implements Runnable {
 	} 
 	
 	@SuppressWarnings("deprecation")
-	public String getFormatedDate(Date d) 
+	public String getFormatedDate(Date d) {
     
     String formatedDate=" "; 
 		hour = d.getHours(); 
