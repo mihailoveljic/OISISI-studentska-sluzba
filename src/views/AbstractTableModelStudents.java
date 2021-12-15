@@ -16,7 +16,7 @@ public class AbstractTableModelStudents extends AbstractTableModel {
 
 	@Override
 	public int getRowCount() {
-		return DbStudents.getInstance().getstudents().size();
+		return DbStudents.getInstance().getStudents().size();
 	}
 
 	@Override
@@ -31,9 +31,7 @@ public class AbstractTableModelStudents extends AbstractTableModel {
 
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
-		if (columnIndex < 5)
-			return DbStudents.getInstance().getValueAt(rowIndex, columnIndex);
-		return null;
+		return DbStudents.getInstance().getValueAt(rowIndex, columnIndex);
 	}
 	
 }

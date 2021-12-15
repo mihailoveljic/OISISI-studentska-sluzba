@@ -31,6 +31,21 @@ public class Professor {
 		this.serviceYears = serviceYears;
 		this.subjects = subjects;
 	}
+	
+	
+	
+	
+	public Professor(String name, String surname, String title, String email) {
+		super();
+		this.surname = surname;
+		this.name = name;
+		this.email = email;
+		this.title = title;
+	}
+
+
+
+
 	public String getSurname() {
 		return surname;
 	}
