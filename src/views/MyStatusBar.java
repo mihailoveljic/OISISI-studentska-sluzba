@@ -23,7 +23,7 @@ public class MyStatusBar extends JPanel implements Runnable {
 
 	public MyStatusBar() {
 		super();
-		JLabel windowNameLabel = new JLabel("Studentska sluûba - Studenti");
+		JLabel windowNameLabel = new JLabel("Studentska slu≈æba - Studenti");
 		windowNameLabel.setBorder(new EmptyBorder(4, 4, 4, 4));
 		windowNameLabel.setFont(new Font("Serif", Font.BOLD, 16));
 		// TODO Make it update continuous during runtime
@@ -86,8 +86,8 @@ public class MyStatusBar extends JPanel implements Runnable {
 	
 	@SuppressWarnings("deprecation")
 	public String getFormatedDate(Date d) 
-	{ 
-		String formatedDate=" "; 
+    
+    String formatedDate=" "; 
 		hour = d.getHours(); 
 		minute = d.getMinutes(); 
 		day = d.getDate();
