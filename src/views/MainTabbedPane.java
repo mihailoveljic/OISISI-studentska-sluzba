@@ -60,21 +60,20 @@ class TabChangeListener implements ChangeListener{
 		MyStatusBar statusBar = (MyStatusBar) panel.getComponent(0);
 		
 		int selectedIndex = tabbedPane.getSelectedIndex();
-
 		JLabel label = (JLabel) statusBar.getComponent(0);
 		
 		switch(selectedIndex) {
 			case 0:
-				label.setText("Studentska slu탑ba - Studenti");
+				label.setText("Studentska slu얺a - Studenti");
 				break;
 			case 1:
-				label.setText("Studentska slu탑ba - Profesori");
+				label.setText("Studentska slu얺a - Profesori");
 				break;
 			case 2:
-				label.setText("Studentska slu탑ba - Predmeti");
+				label.setText("Studentska slu얺a - Predmeti");
 				break;
 			default:
-				label.setText("Studentska slu탑ba");
+				label.setText("Studentska slu얺a");
 				break;
 				
 				

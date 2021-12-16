@@ -6,10 +6,11 @@ import models.DbSubjects;
 
 public class AbstractTableModelSubjects extends AbstractTableModel {
 
+
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -5027213108132651475L;
 
 	public AbstractTableModelSubjects() {
 		super();

@@ -3,6 +3,7 @@ package models;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 public class DbStudents {
 
@@ -38,19 +39,19 @@ public class DbStudents {
 		
 		students.add(new Student("Prezimenovic", "Imenko", new Date(2000, 5, 16),
 				new Adress("Tolstojeva", 15, "Novi Sad", "Srbija"), "+381694732572",
-				"imenkoprezimenovic@gmail.com", "II12/2020", 2020, 2, StudentStatus.B, 8.71, null, null));
+				"imenkoprezimenovic@gmail.com", "II12/2020", 2020, 2, StudentStatus.B));
 		students.add(new Student("Prezimenovic", "Imenko", new Date(2000, 5, 16),
 				new Adress("Tolstojeva", 15, "Novi Sad", "Srbija"), "+381694732572",
-				"imenkoprezimenovic@gmail.com", "II12/2020", 2020, 2, StudentStatus.B, 8.71, null, null));
+				"imenkoprezimenovic@gmail.com", "II12/2020", 2020, 2, StudentStatus.B));
 		students.add(new Student("Prezimenovic", "Imenko", new Date(2000, 5, 16),
 				new Adress("Tolstojeva", 15, "Novi Sad", "Srbija"), "+381694732572",
-				"imenkoprezimenovic@gmail.com", "II12/2020", 2020, 2, StudentStatus.B, 8.71, null, null));
+				"imenkoprezimenovic@gmail.com", "II12/2020", 2020, 2, StudentStatus.B));
 		students.add(new Student("Prezimenovic", "Imenko", new Date(2000, 5, 16),
 				new Adress("Tolstojeva", 15, "Novi Sad", "Srbija"), "+381694732572",
-				"imenkoprezimenovic@gmail.com", "II12/2020", 2020, 2, StudentStatus.B, 8.71, null, null));
+				"imenkoprezimenovic@gmail.com", "II12/2020", 2020, 2, StudentStatus.B));
 		students.add(new Student("Prezimenovic", "Imenko", new Date(2000, 5, 16),
 				new Adress("Tolstojeva", 15, "Novi Sad", "Srbija"), "+381694732572",
-				"imenkoprezimenovic@gmail.com", "II12/2020", 2020, 2, StudentStatus.B, 8.71, null, null));
+				"imenkoprezimenovic@gmail.com", "II12/2020", 2020, 2, StudentStatus.B));
 	}
 
 	public List<Student> getStudents() {
@@ -94,6 +95,8 @@ public class DbStudents {
 				return "S";
 			}
 		case 5:
+			if(student.getAverageGrade() == 0.0)
+				return " ";
 			return Double.toString(student.getAverageGrade());
 		default:
 			return null;
@@ -109,6 +112,19 @@ public class DbStudents {
 	public void deleteStudent(String index) {
 		for (Student i : students) {
 			if (i.getIndex() == index) {
+				Set<Subject> subjects = i.getSubjects();
+				if(subjects != null) {
+					for(Subject s : subjects) {
+						s.removeStudentFromListOfFailed(i);
+					}
+				}
+				Set<Grade> grades = i.getGrades();
+				if(grades != null) {
+					for(Grade g : grades) {
+						g.getSubject().removeStudentFromListOfPassed(i);
+					}
+				}
+				
 				students.remove(i);
 				break;
 			}
