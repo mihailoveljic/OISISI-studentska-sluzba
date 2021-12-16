@@ -5,7 +5,6 @@ import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
 import java.awt.BorderLayout;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 
 public class StudentPanel extends JPanel{
@@ -28,7 +27,9 @@ public class StudentPanel extends JPanel{
 	private StudentPanel() {
 		this.setLayout(new GridLayout());
 		this.setBorder(new EmptyBorder(30, 50, 30, 50));
-		studentTable = new StudentTable();
+
+		studentTable = StudentTable.getInstance();
+
 		JScrollPane scrollPane = new JScrollPane(studentTable);
 		this.add(scrollPane, BorderLayout.CENTER);
 		this.updateView();
