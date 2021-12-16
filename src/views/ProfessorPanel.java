@@ -27,7 +27,7 @@ public class ProfessorPanel extends JPanel{
 	private ProfessorPanel() {
 		this.setLayout(new GridLayout());
 		this.setBorder(new EmptyBorder(30, 50, 30, 50));
-		professorTable = new ProfessorTable();
+		professorTable = ProfessorTable.getInstance();
 		JScrollPane scrollPane = new JScrollPane(professorTable);
 		this.add(scrollPane, BorderLayout.CENTER);
 		

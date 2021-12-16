@@ -14,7 +14,9 @@ public class SubjectTable extends JTable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	public SubjectTable() {
+	private static SubjectTable instance;
+	
+	private SubjectTable() {
 		this.setRowSelectionAllowed(true);
 		this.setColumnSelectionAllowed(true);
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -33,6 +35,11 @@ public class SubjectTable extends JTable {
 		return c;
 	}
 	
-	
+	public static SubjectTable getInstance()
+	{
+		if(instance == null)
+			instance = new SubjectTable();
+		return instance;
+	}
 
 }
