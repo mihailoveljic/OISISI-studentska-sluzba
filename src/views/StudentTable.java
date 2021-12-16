@@ -14,7 +14,10 @@ public class StudentTable extends JTable{
 	 */
 	private static final long serialVersionUID = -6741254119458863799L;
 
-	public StudentTable() {
+	private static StudentTable instance;
+
+	
+	private StudentTable() {
 		this.setRowSelectionAllowed(true);
 		this.setColumnSelectionAllowed(true);
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -34,5 +37,10 @@ public class StudentTable extends JTable{
 	}
 	
 	
-	
+	public static StudentTable getInstance()
+	{
+		if(instance == null)
+			instance = new StudentTable();
+		return instance;
+	}
 }

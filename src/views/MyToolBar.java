@@ -45,6 +45,7 @@ public class MyToolBar extends JToolBar {
 		searchBar.setMaximumSize(d);
 		
 		addButton.addActionListener(new AddEntityListener());
+		editButton.addActionListener(new EditEntityListener());
 		
 		this.add(addButton);
 		this.add(editButton);

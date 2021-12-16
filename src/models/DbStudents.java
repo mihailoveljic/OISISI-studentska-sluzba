@@ -37,19 +37,19 @@ public class DbStudents {
 		//TODO Citanje iz datoteke
 		
 		students.add(new Student("Prezimenovic", "Imenko", new Date(2000, 5, 16),
-				new Adress("Tolstojeva", 15, "Novi Sad", "Srbija"), "0694732572",
+				new Adress("Tolstojeva", 15, "Novi Sad", "Srbija"), "+381694732572",
 				"imenkoprezimenovic@gmail.com", "II12/2020", 2020, 2, StudentStatus.B, 8.71, null, null));
 		students.add(new Student("Prezimenovic", "Imenko", new Date(2000, 5, 16),
-				new Adress("Tolstojeva", 15, "Novi Sad", "Srbija"), "0694732572",
+				new Adress("Tolstojeva", 15, "Novi Sad", "Srbija"), "+381694732572",
 				"imenkoprezimenovic@gmail.com", "II12/2020", 2020, 2, StudentStatus.B, 8.71, null, null));
 		students.add(new Student("Prezimenovic", "Imenko", new Date(2000, 5, 16),
-				new Adress("Tolstojeva", 15, "Novi Sad", "Srbija"), "0694732572",
+				new Adress("Tolstojeva", 15, "Novi Sad", "Srbija"), "+381694732572",
 				"imenkoprezimenovic@gmail.com", "II12/2020", 2020, 2, StudentStatus.B, 8.71, null, null));
 		students.add(new Student("Prezimenovic", "Imenko", new Date(2000, 5, 16),
-				new Adress("Tolstojeva", 15, "Novi Sad", "Srbija"), "0694732572",
+				new Adress("Tolstojeva", 15, "Novi Sad", "Srbija"), "+381694732572",
 				"imenkoprezimenovic@gmail.com", "II12/2020", 2020, 2, StudentStatus.B, 8.71, null, null));
 		students.add(new Student("Prezimenovic", "Imenko", new Date(2000, 5, 16),
-				new Adress("Tolstojeva", 15, "Novi Sad", "Srbija"), "0694732572",
+				new Adress("Tolstojeva", 15, "Novi Sad", "Srbija"), "+381694732572",
 				"imenkoprezimenovic@gmail.com", "II12/2020", 2020, 2, StudentStatus.B, 8.71, null, null));
 	}
 
@@ -70,6 +70,8 @@ public class DbStudents {
 	}
 
 	public Student getRow(int rowIndex) {
+		if(rowIndex <= -1)
+			return null;
 		return this.students.get(rowIndex);
 	}
 
