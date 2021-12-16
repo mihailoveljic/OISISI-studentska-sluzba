@@ -46,6 +46,7 @@ public class MyToolBar extends JToolBar {
 		
 		addButton.addActionListener(new AddEntityListener());
 		editButton.addActionListener(new EditEntityListener());
+		deleteButton.addActionListener(new DeleteEntityListener());
 		
 		this.add(addButton);
 		this.add(editButton);
