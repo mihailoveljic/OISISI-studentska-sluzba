@@ -19,6 +19,15 @@ public class MainTabbedPane extends JTabbedPane{
 
 		StudentPanel studentPanel = StudentPanel.getInstance();
 		ProfessorPanel professorPanel = ProfessorPanel.getInstance();
+
+		//JPanel subjects_panel = new JPanel();
+		
+		//studentPanel.setPreferredSize(getSize());
+
+		//this.add("Studenti", studentPanel);
+		//this.add("Profesori", professorPanel);
+		//this.add("Predmeti", subjects_panel);
+
 		SubjectPanel subjectPanel = SubjectPanel.getInstance();
 
 		this.add("Studenti", studentPanel);
@@ -56,16 +65,16 @@ class TabChangeListener implements ChangeListener{
 		
 		switch(selectedIndex) {
 			case 0:
-				label.setText("Studentska slu얺a - Studenti");
+				label.setText("Studentska slu탑ba - Studenti");
 				break;
 			case 1:
-				label.setText("Studentska slu얺a - Profesori");
+				label.setText("Studentska slu탑ba - Profesori");
 				break;
 			case 2:
-				label.setText("Studentska slu얺a - Predmeti");
+				label.setText("Studentska slu탑ba - Predmeti");
 				break;
 			default:
-				label.setText("Studentska slu얺a");
+				label.setText("Studentska slu탑ba");
 				break;
 				
 				

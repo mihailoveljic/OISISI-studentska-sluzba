@@ -27,10 +27,11 @@ public class StudentPanel extends JPanel{
 	private StudentPanel() {
 		this.setLayout(new GridLayout());
 		this.setBorder(new EmptyBorder(30, 50, 30, 50));
+
 		studentTable = StudentTable.getInstance();
+
 		JScrollPane scrollPane = new JScrollPane(studentTable);
 		this.add(scrollPane, BorderLayout.CENTER);
-		
 		this.updateView();
 	}
 	

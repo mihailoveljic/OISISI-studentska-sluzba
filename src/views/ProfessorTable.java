@@ -19,6 +19,7 @@ public class ProfessorTable extends JTable {
 		this.setColumnSelectionAllowed(true);
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		this.setModel(new AbstractTableModelProfessors());
+		this.setFillsViewportHeight(true);
 	}
 
 	@Override
