@@ -98,6 +98,7 @@ public class MyMenuBar extends JMenuBar{
 		deleteItem.setMnemonic(KeyEvent.VK_D);
 		deleteItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK));
 		editItem.addActionListener(new EditEntityListener());
+		deleteItem.addActionListener(new DeleteEntityListener());
 		editMenu.add(editItem);
 		editMenu.addSeparator();
 		editMenu.add(deleteItem);
