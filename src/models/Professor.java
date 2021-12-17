@@ -35,13 +35,23 @@ public class Professor {
 	
 	
 	
-	public Professor(String name, String surname, String title, String email) {
+	
+	public Professor(String surname, String name, Date birthDate, Adress adress, String phone, String email,
+			Adress officeAdress, int idNumber, String title, int serviceYears) {
 		super();
 		this.surname = surname;
 		this.name = name;
+		this.birthDate = birthDate;
+		this.adress = adress;
+		this.phone = phone;
 		this.email = email;
+		this.officeAdress = officeAdress;
+		this.idNumber = idNumber;
 		this.title = title;
+		this.serviceYears = serviceYears;
 	}
+
+
 
 
 

@@ -3,6 +3,7 @@ package models;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class DbProfessors {
 	
@@ -28,21 +29,22 @@ public class DbProfessors {
 		this.columns.add("E-MAIL ADRESA");
 	}
 	
+	@SuppressWarnings("deprecation")
 	private void initProfessors() {
 		this.professors= new ArrayList<Professor>();
 		
 		//TODO ucitavace se iz datoteke
 		
-		professors.add(new Professor("Imenko", "Prezimenkovic",
-				"Doktor", "imenkoprezimenovic@hotmail.com"));
-		professors.add(new Professor("Imenko", "Prezimenkovic",
-				"Doktor", "imenkoprezimenovic@hotmail.com"));
-		professors.add(new Professor("Imenko", "Prezimenkovic",
-				"Doktor", "imenkoprezimenovic@hotmail.com"));
-		professors.add(new Professor("Imenko", "Prezimenkovic",
-				"Doktor", "imenkoprezimenovic@hotmail.com"));
-		professors.add(new Professor("Imenko", "Prezimenkovic",
-				"Doktor", "imenkoprezimenovic@hotmail.com"));
+		professors.add(new Professor("Imenko", "Prezimenkovic", new Date(1960, 11, 21), new Adress("Tolstojeva", 42, "mesto", "drzava"), "+38161247888", "sasasa@gmail.com", new Adress("sasa", 42, "grad", "drzava"), 87,
+				"Doktor", 4));
+		professors.add(new Professor("Imenko", "Prezimenkovic", new Date(1960, 11, 21), new Adress("Tolstojeva", 42, "mesto", "drzava"), "+38161247888", "sasasa@gmail.com", new Adress("sasa", 42, "grad", "drzava"), 87,
+				"Doktor", 4));
+		professors.add(new Professor("Imenko", "Prezimenkovic", new Date(1960, 11, 21), new Adress("Tolstojeva", 42, "mesto", "drzava"), "+38161247888", "sasasa@gmail.com", new Adress("sasa", 42, "grad", "drzava"), 87,
+				"Doktor", 4));
+		professors.add(new Professor("Imenko", "Prezimenkovic", new Date(1960, 11, 21), new Adress("Tolstojeva", 42, "mesto", "drzava"), "+38161247888", "sasasa@gmail.com", new Adress("sasa", 42, "grad", "drzava"), 87,
+				"Doktor", 4));
+		professors.add(new Professor("Imenko", "Prezimenkovic", new Date(1960, 11, 21), new Adress("Tolstojeva", 42, "mesto", "drzava"), "+38161247888", "sasasa@gmail.com", new Adress("sasa", 42, "grad", "drzava"), 87,
+				"Doktor", 4));
 		
 	}
 	
@@ -106,6 +108,14 @@ public class DbProfessors {
 		for(Professor i : professors) {
 			if(i.getIdNumber()==idNumber) {
 				professors.remove(i);
+				
+				Set<Subject> subjects = i.getSubjects();
+				if(subjects!=null) {
+					for(Subject s: subjects) {
+						s.setProfessor(null);
+					}
+				}
+				
 				break;
 			}
 		}

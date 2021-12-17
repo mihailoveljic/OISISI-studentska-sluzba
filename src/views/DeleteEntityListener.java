@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import controllers.ProfessorController;
 import controllers.StudentController;
 
 public class DeleteEntityListener implements ActionListener{
@@ -27,11 +28,19 @@ public class DeleteEntityListener implements ActionListener{
 					studentController.deleteStudent(StudentTable.getInstance().getSelectedRow());
 				}
 			}else {
-				JOptionPane.showMessageDialog(null, "Odaberi studenta studenta prvo!");
+				JOptionPane.showMessageDialog(null, "Odaberi studenta prvo!");
 			}
 			break;
 		case 1:
-			//TODO Edit Professor
+			if(ProfessorTable.getInstance().getSelectedRow() != -1) {
+				int userInput = JOptionPane.showOptionDialog(mainTabbedPane, "Da li ste sigurni da želite da obrišete profesora?", "Brisanje profesora", JOptionPane.YES_NO_OPTION, 0, null, null, e);
+				if(userInput == JOptionPane.YES_OPTION) {
+					ProfessorController professorController = new ProfessorController();
+					professorController.deleteProfessor(ProfessorTable.getInstance().getSelectedRow());
+				}
+			}else {
+				JOptionPane.showMessageDialog(null, "Odaberi profesora prvo!");
+			}
 			break;
 		case 2:
 			//TODO Edit Subject

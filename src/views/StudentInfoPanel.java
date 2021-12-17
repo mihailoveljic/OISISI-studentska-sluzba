@@ -71,7 +71,7 @@ public class StudentInfoPanel extends JPanel{
 		if(s != null) {
 			name = s.getName();
 			surname = s.getSurname();
-			birthDate = s.getBirthDate().getDate() + "." + s.getBirthDate().getMonth() + "." + s.getBirthDate().getYear();
+			birthDate = s.getBirthDate().getDate() + "." + s.getBirthDate().getMonth()+1 + "." + s.getBirthDate().getYear();
 			adress = s.getAdress().getStreet() + ", " + s.getAdress().getNumber() + ", " + s.getAdress().getCity() + ", " + s.getAdress().getCountry();
 			phone = s.getPhone();
 			email = s.getEmail();
