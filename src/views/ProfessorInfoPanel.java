@@ -151,7 +151,7 @@ public class ProfessorInfoPanel extends JPanel {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 				
-				ProfessorAddFrame.getInstance().dispose();
+				ProfessorEditFrame.getInstance().dispose();
 				
 				surnameField.setText("");
 				nameField.setText(""); 
