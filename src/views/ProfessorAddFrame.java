@@ -4,15 +4,20 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
+
+import controllers.ProfessorController;
 
 public class ProfessorAddFrame extends JFrame {
 
@@ -36,7 +41,7 @@ public class ProfessorAddFrame extends JFrame {
 		Image icon = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB_PRE);
 		setIconImage(icon);
 		
-		JPanel contentPanel = new JPanel(new GridLayout(10, 2, 5, 5));
+		JPanel contentPanel = new JPanel(new GridLayout(11, 2, 5, 5));
 		contentPanel.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
 		
 		JLabel surnameLabel=new JLabel("Prezime*");
@@ -47,6 +52,8 @@ public class ProfessorAddFrame extends JFrame {
 		JTextField birthDateField = new JTextField();
 		JLabel adressLabel=new JLabel("Adresa stanovanja*");
 		JTextField adressField = new JTextField();
+		JLabel phoneLabel=new JLabel("Broj telefona*");
+		JTextField phoneField=new JTextField();
 		JLabel emailLabel=new JLabel("E-mail adresa*");
 		JTextField emailField = new JTextField();
 		JLabel officeAdressLabel=new JLabel("Adresa kancelarije*");
@@ -59,7 +66,55 @@ public class ProfessorAddFrame extends JFrame {
 		JTextField serviceYearsField = new JTextField();
 		
 		JButton confirmButton = new JButton("Potvrdi");
+		confirmButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ProfessorController professorController = new ProfessorController();
+				
+				String dataValid= professorController.addProfessor(surnameField.getText(),nameField.getText(), birthDateField.getText(), adressField.getText(), phoneField.getText(),
+						emailField.getText(), officeAdressLabelField.getText(), idNumberField.getText(), titleField.getText(), serviceYearsField.getText());
+			
+			if(dataValid != "OK") {
+				JOptionPane.showMessageDialog(null, dataValid);
+				}else {
+					ProfessorAddFrame.getInstance().dispose();
+					
+					surnameField.setText("");
+					nameField.setText(""); 
+					birthDateField.setText("");
+					adressField.setText(""); 
+					phoneField.setText("");
+					emailField.setText("");
+					officeAdressLabelField.setText(""); 
+					idNumberField.setText("");
+					titleField.setText("");
+					serviceYearsField.setText("");
+		
+				}
+			}
+		});
 		JButton cancelButton = new JButton("Odustani");
+		cancelButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				ProfessorAddFrame.getInstance().dispose();
+				
+				surnameField.setText("");
+				nameField.setText(""); 
+				birthDateField.setText("");
+				adressField.setText(""); 
+				phoneField.setText("");
+				emailField.setText("");
+				officeAdressLabelField.setText(""); 
+				idNumberField.setText("");
+				titleField.setText("");
+				serviceYearsField.setText("");
+	
+			}
+		});
 		
 		contentPanel.add(surnameLabel);
 		contentPanel.add(surnameField);
@@ -69,6 +124,8 @@ public class ProfessorAddFrame extends JFrame {
 		contentPanel.add(birthDateField);
 		contentPanel.add(adressLabel);
 		contentPanel.add(adressField);
+		contentPanel.add(phoneLabel);
+		contentPanel.add(phoneField);
 		contentPanel.add(emailLabel);
 		contentPanel.add(emailField);
 		contentPanel.add(officeAdressLabel);

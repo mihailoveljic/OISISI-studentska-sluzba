@@ -28,7 +28,15 @@ public class EditEntityListener implements ActionListener{
 			}
 			break;
 		case 1:
-			//TODO Edit Professor
+			ProfessorEditFrame professorEditFrame;
+			if(ProfessorTable.getInstance().getSelectedRow() != -1) {
+				professorEditFrame=ProfessorEditFrame.getInstance();
+				ProfessorInfoPanel.getInstance().updateProfessorSelection(ProfessorTable.getInstance().getSelectedRow());
+				professorEditFrame.setVisible(true);
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "Odaberi profesora prvo!");
+			}
 			break;
 		case 2:
 			//TODO Edit Subject
