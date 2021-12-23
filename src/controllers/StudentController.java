@@ -80,7 +80,7 @@ public class StudentController {
 				try {
 				String parts[] = birthDate.split("[.]");
 				if(parts.length >= 3) {
-					formattedDate = new Date(Integer.parseInt(parts[2]), Integer.parseInt(parts[1]), Integer.parseInt(parts[0]));
+					formattedDate = new Date(Integer.parseInt(parts[2]), Integer.parseInt(parts[1]) - 1, Integer.parseInt(parts[0]));
 				}else {
 					return "Unesite datum u formatu: DD.MM.YYYY.";
 				}

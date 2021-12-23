@@ -42,7 +42,7 @@ public class ProfessorController {
 		try {
 			String parts[] = birthDate.split("[.]");
 			if(parts.length >= 3) {
-				formattedBirthDate = new Date(Integer.parseInt(parts[2]), Integer.parseInt(parts[1]), Integer.parseInt(parts[0]));
+				formattedBirthDate = new Date(Integer.parseInt(parts[2]), Integer.parseInt(parts[1]) - 1, Integer.parseInt(parts[0]));
 			}else {
 				return "Unesite datum u formatu: DD.MM.YYYY.";
 			}

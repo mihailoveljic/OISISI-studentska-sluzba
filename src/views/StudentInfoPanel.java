@@ -79,9 +79,12 @@ public class StudentInfoPanel extends JPanel{
 		s = DbStudents.getInstance().getRow(selectedRow);
 		
 		if(s != null) {
+			
+			int month = s.getBirthDate().getMonth() + 1;
+			
 			name = s.getName();
 			surname = s.getSurname();
-			birthDate = s.getBirthDate().getDate() + "." + s.getBirthDate().getMonth()+1 + "." + s.getBirthDate().getYear();
+			birthDate = s.getBirthDate().getDate() + "." + month + "." + s.getBirthDate().getYear() + ".";
 			street = s.getAdress().getCity();
 			number = s.getAdress().getNumber();
 			city = s.getAdress().getCity();
@@ -277,9 +280,12 @@ public class StudentInfoPanel extends JPanel{
 	public void updateStudentSelection(int selectedRow) {
 		s = DbStudents.getInstance().getRow(selectedRow);
 		if(s != null) {
+			
+			int month = s.getBirthDate().getMonth() + 1;
+			
 			name = s.getName();
 			surname = s.getSurname();
-			birthDate = s.getBirthDate().getDate() + "." + s.getBirthDate().getMonth() + "." + s.getBirthDate().getYear();
+			birthDate = s.getBirthDate().getDate() + "." + month + "." + s.getBirthDate().getYear() + ".";
 			street= s.getAdress().getStreet();
 			number=s.getAdress().getNumber();
 			city=s.getAdress().getCity();
@@ -290,6 +296,7 @@ public class StudentInfoPanel extends JPanel{
 			enrollmentYear = String.valueOf(s.getEnrollmentYear());
 			currentYearOfStudy = s.getCurrentYearOfStudy();
 			studentStatus = s.getStudentStatus();
+			
 		}else {
 			name = "";
 			surname = "";
