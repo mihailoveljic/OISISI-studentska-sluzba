@@ -44,25 +44,37 @@ public class ProfessorAddFrame extends JFrame {
 		JPanel contentPanel = new JPanel(new GridLayout(11, 2, 5, 5));
 		contentPanel.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
 		
-		JLabel surnameLabel=new JLabel("Prezime*");
+		JLabel surnameLabel = new JLabel("Prezime*");
 		JTextField surnameField = new JTextField();
-		JLabel nameLabel=new JLabel("Ime*");
+		JLabel nameLabel = new JLabel("Ime*");
 		JTextField nameField = new JTextField();
-		JLabel birthDateLabel=new JLabel("Datum roðenja*");
+		JLabel birthDateLabel = new JLabel("Datum roðenja*");
 		JTextField birthDateField = new JTextField();
-		JLabel adressLabel=new JLabel("Adresa stanovanja*");
-		JTextField adressField = new JTextField();
-		JLabel phoneLabel=new JLabel("Broj telefona*");
-		JTextField phoneField=new JTextField();
-		JLabel emailLabel=new JLabel("E-mail adresa*");
+		JLabel streetAdressLabel = new JLabel("Ulica stanovanja*");
+		JTextField streetAdressField = new JTextField();
+		JLabel numberAdressLabel = new JLabel("Broj stanovanja*");
+		JTextField numberAdressField = new JTextField();
+		JLabel cityAdressLabel = new JLabel("Grad stanovanja*");
+		JTextField cityAdressField = new JTextField();
+		JLabel countryAdressLabel = new JLabel("Država stanovanja*");
+		JTextField countryAdressField = new JTextField();
+		JLabel phoneLabel = new JLabel("Broj telefona*");
+		JTextField phoneField = new JTextField();
+		JLabel emailLabel = new JLabel("E-mail adresa*");
 		JTextField emailField = new JTextField();
-		JLabel officeAdressLabel=new JLabel("Adresa kancelarije*");
-		JTextField officeAdressLabelField = new JTextField();
-		JLabel idNumberLabel=new JLabel("Broj licne karte*");
+		JLabel streetOfficeAdressLabel = new JLabel("Ulica kancelarije*");
+		JTextField streetOfficeAdressField = new JTextField();
+		JLabel numberOfficeAdressLabel = new JLabel("Broj kancelarije*");
+		JTextField numberOfficeAdressField = new JTextField();
+		JLabel cityOfficeAdressLabel = new JLabel("Grad kancelarije*");
+		JTextField cityOfficeAdressField = new JTextField();
+		JLabel countryOfficeAdressLabel = new JLabel("Država kancelarije*");
+		JTextField countryOfficeAdressField = new JTextField();
+		JLabel idNumberLabel = new JLabel("Broj licne karte*");
 		JTextField idNumberField = new JTextField();
-		JLabel titleLabel=new JLabel("Zvanje*");
+		JLabel titleLabel = new JLabel("Zvanje*");
 		JTextField titleField = new JTextField();
-		JLabel serviceYearsLabel=new JLabel("Godine radnog staza*");
+		JLabel serviceYearsLabel = new JLabel("Godine radnog staza*");
 		JTextField serviceYearsField = new JTextField();
 		
 		JButton confirmButton = new JButton("Potvrdi");
@@ -72,8 +84,11 @@ public class ProfessorAddFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				ProfessorController professorController = new ProfessorController();
 				
-				String dataValid= professorController.addProfessor(surnameField.getText(),nameField.getText(), birthDateField.getText(), adressField.getText(), phoneField.getText(),
-						emailField.getText(), officeAdressLabelField.getText(), idNumberField.getText(), titleField.getText(), serviceYearsField.getText());
+				String dataValid= professorController.addProfessor(surnameField.getText(),nameField.getText(), birthDateField.getText(),
+						streetAdressField.getText(), numberAdressField.getText(), cityAdressField.getText(), countryAdressField.getText(),
+						phoneField.getText(), emailField.getText(), streetOfficeAdressField.getText(), numberOfficeAdressField.getText(),
+						cityOfficeAdressField.getText(), countryOfficeAdressField.getText(), idNumberField.getText(), 
+						titleField.getText(), serviceYearsField.getText());
 			
 			if(dataValid != "OK") {
 				JOptionPane.showMessageDialog(null, dataValid);
@@ -83,10 +98,16 @@ public class ProfessorAddFrame extends JFrame {
 					surnameField.setText("");
 					nameField.setText(""); 
 					birthDateField.setText("");
-					adressField.setText(""); 
+					streetAdressField.setText(""); 
+					numberAdressField.setText(""); 
+					cityAdressField.setText(""); 
+					countryAdressField.setText(""); 
 					phoneField.setText("");
 					emailField.setText("");
-					officeAdressLabelField.setText(""); 
+					streetOfficeAdressField.setText(""); 
+					numberOfficeAdressField.setText(""); 
+					cityOfficeAdressField.setText(""); 
+					countryOfficeAdressField.setText(""); 
 					idNumberField.setText("");
 					titleField.setText("");
 					serviceYearsField.setText("");
@@ -105,10 +126,16 @@ public class ProfessorAddFrame extends JFrame {
 				surnameField.setText("");
 				nameField.setText(""); 
 				birthDateField.setText("");
-				adressField.setText(""); 
+				streetAdressField.setText(""); 
+				numberAdressField.setText(""); 
+				cityAdressField.setText(""); 
+				countryAdressField.setText(""); 
 				phoneField.setText("");
 				emailField.setText("");
-				officeAdressLabelField.setText(""); 
+				streetOfficeAdressField.setText(""); 
+				numberOfficeAdressField.setText(""); 
+				cityOfficeAdressField.setText(""); 
+				countryOfficeAdressField.setText(""); 
 				idNumberField.setText("");
 				titleField.setText("");
 				serviceYearsField.setText("");
@@ -122,14 +149,26 @@ public class ProfessorAddFrame extends JFrame {
 		contentPanel.add(nameField);
 		contentPanel.add(birthDateLabel);
 		contentPanel.add(birthDateField);
-		contentPanel.add(adressLabel);
-		contentPanel.add(adressField);
+		contentPanel.add(streetAdressLabel);
+		contentPanel.add(streetAdressField);
+		contentPanel.add(numberAdressLabel);
+		contentPanel.add(numberAdressField);
+		contentPanel.add(cityAdressLabel);
+		contentPanel.add(cityAdressField);
+		contentPanel.add(countryAdressLabel);
+		contentPanel.add(countryAdressField);
 		contentPanel.add(phoneLabel);
 		contentPanel.add(phoneField);
 		contentPanel.add(emailLabel);
 		contentPanel.add(emailField);
-		contentPanel.add(officeAdressLabel);
-		contentPanel.add(officeAdressLabelField);
+		contentPanel.add(streetOfficeAdressLabel);
+		contentPanel.add(streetOfficeAdressField);
+		contentPanel.add(numberOfficeAdressLabel);
+		contentPanel.add(numberOfficeAdressField);
+		contentPanel.add(cityOfficeAdressLabel);
+		contentPanel.add(cityOfficeAdressField);
+		contentPanel.add(countryOfficeAdressLabel);
+		contentPanel.add(countryOfficeAdressField);
 		contentPanel.add(idNumberLabel);
 		contentPanel.add(idNumberField);
 		contentPanel.add(titleLabel);

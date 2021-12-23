@@ -28,10 +28,16 @@ public class ProfessorInfoPanel extends JPanel {
 	private String surname;
 	private String name;
 	private String birthDate;
-	private String adress;
+	private String streetAdress;
+	private String numberAdress;
+	private String cityAdress;
+	private String countryAdress;
 	private String phone;
 	private String email;
-	private String officeAdress;
+	private String streetOfficeAdress;
+	private String numberOfficeAdress;
+	private String cityOfficeAdress;
+	private String countryOfficeAdress;
 	private String idNumber;
 	private String title;
 	private String serviceYears;
@@ -42,14 +48,26 @@ public class ProfessorInfoPanel extends JPanel {
 	JTextField nameField;
 	JLabel birthDateLabel;
 	JTextField birthDateField;
-	JLabel adressLabel;
-	JTextField adressField;
+	JLabel streetAdressLabel;
+	JTextField streetAdressField;
+	JLabel numberAdressLabel;
+	JTextField numberAdressField;
+	JLabel cityAdressLabel;
+	JTextField cityAdressField;
+	JLabel countryAdressLabel;
+	JTextField countryAdressField;
 	JLabel phoneLabel;
 	JTextField phoneField;
 	JLabel emailLabel;
 	JTextField emailField;
-	JLabel officeAdressLabel;
-	JTextField officeAdressLabelField;
+	JLabel streetOfficeAdressLabel;
+	JTextField streetOfficeAdressField;
+	JLabel numberOfficeAdressLabel;
+	JTextField numberOfficeAdressField;
+	JLabel cityOfficeAdressLabel;
+	JTextField cityOfficeAdressField;
+	JLabel countryOfficeAdressLabel;
+	JTextField countryOfficeAdressField;
 	JLabel idNumberLabel;
 	JTextField idNumberField;
 	JLabel titleLabel;
@@ -61,55 +79,79 @@ public class ProfessorInfoPanel extends JPanel {
 	private ProfessorInfoPanel(int selectedRow) {
 		super();
 		
-		this.setLayout(new GridLayout(11, 2, 5, 5));
+		this.setLayout(new GridLayout(17, 2, 5, 5));
 		this.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
 		
-		p=DbProfessors.getInstance().getRow(selectedRow);
+		p = DbProfessors.getInstance().getRow(selectedRow);
 		
 		if(p!=null) {
-			surname=p.getSurname();
-			name=p.getName();
-			birthDate=p.getBirthDate().getDate() + "." + p.getBirthDate().getMonth() + "." + p.getBirthDate().getYear();
-			adress=p.getAdress().getStreet()+", " + p.getAdress().getNumber()+ ", " + p.getAdress().getCity()+ ", " + p.getAdress().getCountry();
-			phone=p.getPhone();
-			email=p.getEmail();
-			officeAdress=p.getOfficeAdress().getStreet()+", " + p.getOfficeAdress().getNumber()+ ", " + p.getOfficeAdress().getCity()+ ", " + p.getOfficeAdress().getCountry();
-			idNumber=Integer.toString(p.getIdNumber());
-			title=p.getTitle();
-			serviceYears=Integer.toString(p.getServiceYears());
+			surname = p.getSurname();
+			name = p.getName();
+			birthDate = p.getBirthDate().getDate() + "." + p.getBirthDate().getMonth() + "." + p.getBirthDate().getYear();
+			streetAdress = p.getAdress().getStreet();
+			numberAdress = p.getAdress().getNumber();
+			cityAdress = p.getAdress().getCity();
+			countryAdress = p.getAdress().getCountry();
+			phone = p.getPhone();
+			email = p.getEmail();
+			streetOfficeAdress = p.getOfficeAdress().getStreet();
+			numberOfficeAdress = p.getOfficeAdress().getNumber();
+			cityOfficeAdress = p.getOfficeAdress().getCity();
+			countryOfficeAdress = p.getOfficeAdress().getCountry();
+			idNumber = Integer.toString(p.getIdNumber());
+			title = p.getTitle();
+			serviceYears = Integer.toString(p.getServiceYears());
 		} else {
-			surname="";
-			name="";
-			birthDate="";
-			adress="";
-			phone="";
-			email="";
-			officeAdress="";
-			idNumber="";
-			title="";
-			serviceYears="";
+			surname = "";
+			name = "";
+			birthDate = "";
+			streetAdress = "";
+			numberAdress = "";
+			cityAdress = "";
+			countryAdress = "";
+			phone = "";
+			email = "";
+			streetAdress = "";
+			numberAdress = "";
+			cityAdress = "";
+			countryAdress = "";
+			idNumber = "";
+			title = "";
+			serviceYears = "";
 		}
 		
-		 surnameLabel=new JLabel("Prezime*");
-		 surnameField=new JTextField(surname);
-		 nameLabel=new JLabel("Ime*");
-		 nameField=new JTextField(name);
-		 birthDateLabel=new JLabel("Datum roÄ‘enja");
-		 birthDateField=new JTextField(birthDate);
-		 adressLabel=new JLabel("Adresa*");
-		 adressField=new JTextField(adress);
-		 phoneLabel=new JLabel("Kontakt Telefon*");
-		 phoneField=new JTextField(phone);
-		 emailLabel=new JLabel("Email*");
-		 emailField=new JTextField(email);
-		 officeAdressLabel=new JLabel("Adresa kancelarije*");
-		 officeAdressLabelField=new JTextField(officeAdress);
-		 idNumberLabel=new JLabel("Broj licne karte*");
-		 idNumberField=new JTextField(idNumber);
-		 titleLabel=new JLabel("Zvanje*");
-		 titleField=new JTextField(title);
-		 serviceYearsLabel=new JLabel("Godine radnog staÅ¾a*");
-		 serviceYearsField=new JTextField(serviceYears);
+		 surnameLabel = new JLabel("Prezime*");
+		 surnameField = new JTextField(surname);
+		 nameLabel = new JLabel("Ime*");
+		 nameField = new JTextField(name);
+		 birthDateLabel = new JLabel("Datum roðenja");
+		 birthDateField = new JTextField(birthDate);
+		 streetAdressLabel = new JLabel("Ulica stanovanja*");
+		 streetAdressField = new JTextField(streetAdress);
+		 numberAdressLabel = new JLabel("Broj stanovanja*");
+		 numberAdressField = new JTextField(numberAdress);
+		 cityAdressLabel = new JLabel("Grad stanovanja*");
+		 cityAdressField = new JTextField(cityAdress);
+		 countryAdressLabel = new JLabel("Država stanovanja*");
+		 countryAdressField = new JTextField(countryAdress);
+		 phoneLabel = new JLabel("Kontakt Telefon*");
+		 phoneField = new JTextField(phone);
+		 emailLabel = new JLabel("Email*");
+		 emailField = new JTextField(email);
+		 streetOfficeAdressLabel = new JLabel("Ulica kancelarije*");
+		 streetOfficeAdressField = new JTextField(streetOfficeAdress);
+		 numberOfficeAdressLabel = new JLabel("Broj kancelarije*");
+		 numberOfficeAdressField = new JTextField(numberOfficeAdress);
+		 cityOfficeAdressLabel = new JLabel("Grad kancelarije*");
+		 cityOfficeAdressField = new JTextField(cityOfficeAdress);
+		 countryOfficeAdressLabel = new JLabel("Država kancelarije*");
+		 countryOfficeAdressField = new JTextField(countryOfficeAdress);
+		 idNumberLabel = new JLabel("Broj licne karte*");
+		 idNumberField = new JTextField(idNumber);
+		 titleLabel = new JLabel("Zvanje*");
+		 titleField = new JTextField(title);
+		 serviceYearsLabel = new JLabel("Godine radnog staža*");
+		 serviceYearsField = new JTextField(serviceYears);
 		
 	
 	JButton confirmButton = new JButton("Potvrdi");
@@ -119,8 +161,11 @@ public class ProfessorInfoPanel extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			ProfessorController professorController = new ProfessorController();
 			
-			String dataValid=professorController.editProfessor(ProfessorTable.getInstance().getSelectedRow(), surnameField.getText(),nameField.getText(), birthDateField.getText(), adressField.getText(), phoneField.getText(),
-					emailField.getText(), officeAdressLabelField.getText(), idNumberField.getText(), titleField.getText(), serviceYearsField.getText());
+			String dataValid=professorController.editProfessor(ProfessorTable.getInstance().getSelectedRow(), surnameField.getText(),
+					nameField.getText(), birthDateField.getText(), streetAdressField.getText(), numberAdressField.getText(),
+					cityAdressField.getText(), countryAdressField.getText(), phoneField.getText(), emailField.getText(),
+					streetOfficeAdressField.getText(), numberOfficeAdressField.getText(), cityOfficeAdressField.getText(),
+					countryOfficeAdressField.getText(), idNumberField.getText(), titleField.getText(), serviceYearsField.getText());
 			
 			
 			
@@ -132,10 +177,16 @@ public class ProfessorInfoPanel extends JPanel {
 					surnameField.setText("");
 					nameField.setText(""); 
 					birthDateField.setText("");
-					adressField.setText(""); 
+					streetAdressField.setText(""); 
+					numberAdressField.setText(""); 
+					cityAdressField.setText(""); 
+					countryAdressField.setText(""); 
 					phoneField.setText("");
 					emailField.setText("");
-					officeAdressLabelField.setText(""); 
+					streetOfficeAdressField.setText(""); 
+					numberOfficeAdressField.setText(""); 
+					cityOfficeAdressField.setText(""); 
+					countryOfficeAdressField.setText(""); 
 					idNumberField.setText("");
 					titleField.setText("");
 					serviceYearsField.setText("");
@@ -156,10 +207,16 @@ public class ProfessorInfoPanel extends JPanel {
 				surnameField.setText("");
 				nameField.setText(""); 
 				birthDateField.setText("");
-				adressField.setText(""); 
+				streetAdressField.setText(""); 
+				numberAdressField.setText(""); 
+				cityAdressField.setText(""); 
+				countryAdressField.setText(""); 
 				phoneField.setText("");
 				emailField.setText("");
-				officeAdressLabelField.setText(""); 
+				streetOfficeAdressField.setText(""); 
+				numberOfficeAdressField.setText(""); 
+				cityOfficeAdressField.setText(""); 
+				countryOfficeAdressField.setText(""); 
 				idNumberField.setText("");
 				titleField.setText("");
 				serviceYearsField.setText("");
@@ -172,14 +229,26 @@ public class ProfessorInfoPanel extends JPanel {
 	this.add(nameField);
 	this.add(birthDateLabel);
 	this.add(birthDateField);
-	this.add(adressLabel);
-	this.add(adressField);
+	this.add(streetAdressLabel);
+	this.add(streetAdressField);
+	this.add(numberAdressLabel);
+	this.add(numberAdressField);
+	this.add(cityAdressLabel);
+	this.add(cityAdressField);
+	this.add(countryAdressLabel);
+	this.add(countryAdressField);
 	this.add(phoneLabel);
 	this.add(phoneField);
 	this.add(emailLabel);
 	this.add(emailField);
-	this.add(officeAdressLabel);
-	this.add(officeAdressLabelField);
+	this.add(streetOfficeAdressLabel);
+	this.add(streetOfficeAdressField);
+	this.add(numberOfficeAdressLabel);
+	this.add(numberOfficeAdressField);
+	this.add(cityOfficeAdressLabel);
+	this.add(cityOfficeAdressField);
+	this.add(countryOfficeAdressLabel);
+	this.add(countryOfficeAdressField);
 	this.add(idNumberLabel);
 	this.add(idNumberField);
 	this.add(titleLabel);
@@ -195,43 +264,61 @@ public class ProfessorInfoPanel extends JPanel {
 		@SuppressWarnings("deprecation")
 		public void updateProfessorSelection(int selectedRow) {
 			
-			p=DbProfessors.getInstance().getRow(selectedRow);
+			p = DbProfessors.getInstance().getRow(selectedRow);
 			
-			if(p!=null) {
-				surname=p.getSurname();
-				name=p.getName();
-				birthDate=p.getBirthDate().getDate() + "." + p.getBirthDate().getMonth()+1 + "." + p.getBirthDate().getYear();
-				adress=p.getAdress().getStreet()+", " + p.getAdress().getNumber()+ ", " + p.getAdress().getCity()+ ", " + p.getAdress().getCountry();
-				phone=p.getPhone();
-				email=p.getEmail();
-				officeAdress=p.getOfficeAdress().getStreet()+", " + p.getOfficeAdress().getNumber()+ ", " + p.getOfficeAdress().getCity()+ ", " + p.getOfficeAdress().getCountry();
-				idNumber=Integer.toString(p.getIdNumber());
-				title=p.getTitle();
-				serviceYears=Integer.toString(p.getServiceYears());
+			if(p != null) {
+				surname = p.getSurname();
+				name = p.getName();
+				birthDate = p.getBirthDate().getDate() + "." + p.getBirthDate().getMonth()+1 + "." + p.getBirthDate().getYear();
+				streetAdress = p.getAdress().getStreet();
+				numberAdress = p.getAdress().getNumber();
+				cityAdress = p.getAdress().getCity();
+				countryAdress = p.getAdress().getCountry();
+				phone = p.getPhone();
+				email = p.getEmail();
+				streetOfficeAdress = p.getOfficeAdress().getStreet();
+				numberOfficeAdress = p.getOfficeAdress().getNumber();
+				cityOfficeAdress = p.getOfficeAdress().getCity();
+				countryOfficeAdress = p.getOfficeAdress().getCountry();
+				idNumber = Integer.toString(p.getIdNumber());
+				title = p.getTitle();
+				serviceYears = Integer.toString(p.getServiceYears());
 			} else {
-				surname="";
-				name="";
-				birthDate="";
-				adress="";
-				phone="";
-				email="";
-				officeAdress="";
-				idNumber="";
-				title="";
-				serviceYears="";
+				surname = "";
+				name = "";
+				birthDate = "";
+				streetAdress = "";
+				numberAdress = "";
+				cityAdress = "";
+				countryAdress = "";
+				phone = "";
+				email = "";
+				streetOfficeAdress = "";
+				numberOfficeAdress = "";
+				cityOfficeAdress = "";
+				countryOfficeAdress = "";
+				idNumber = "";
+				title = "";
+				serviceYears = "";
 			}
 			
 			
-			 surnameField.setText(surname);
-			 nameField.setText(name);
-			 birthDateField.setText(birthDate);
-			 adressField.setText(adress);
-			 phoneField.setText(phone);
-			 emailField.setText(email);
-			 officeAdressLabelField.setText(officeAdress);
-			 idNumberField.setText(idNumber);
-			 titleField.setText(title);
-			 serviceYearsField.setText(serviceYears);
+			surnameField.setText(surname);
+			nameField.setText(name); 
+			birthDateField.setText(birthDate);
+			streetAdressField.setText(streetAdress); 
+			numberAdressField.setText(numberAdress); 
+			cityAdressField.setText(cityAdress); 
+			countryAdressField.setText(countryAdress); 
+			phoneField.setText(phone);
+			emailField.setText(email);
+			streetOfficeAdressField.setText(streetOfficeAdress); 
+			numberOfficeAdressField.setText(numberOfficeAdress); 
+			cityOfficeAdressField.setText(cityOfficeAdress); 
+			countryOfficeAdressField.setText(countryOfficeAdress); 
+			idNumberField.setText(idNumber);
+			titleField.setText(title);
+			serviceYearsField.setText(serviceYears);
 			
 		}
 	

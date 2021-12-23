@@ -25,7 +25,7 @@ public class ProfessorEditFrame extends JFrame {
 		int width = d.width;
 		int height = d.height;
 		
-		setSize(width*1/4, height*2/4);
+		setSize(width*1/4, height*3/4);
 		setLocationRelativeTo(null);
 		setTitle("Izmena profesora");
 		Image icon = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB_PRE);
