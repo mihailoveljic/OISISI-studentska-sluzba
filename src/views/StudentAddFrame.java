@@ -12,7 +12,7 @@ import javax.swing.BorderFactory;
 import javax.swing.ButtonModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -21,7 +21,7 @@ import javax.swing.WindowConstants;
 
 import controllers.StudentController;
 
-public class StudentAddFrame extends JFrame{
+public class StudentAddFrame extends JDialog{
 
 	/**
 	 * 
@@ -32,6 +32,10 @@ public class StudentAddFrame extends JFrame{
 	private static StudentAddFrame instance;
 	private StudentAddFrame() {
 		super();
+		
+		this.setModal (true);
+		this.setAlwaysOnTop (true);
+		this.setModalityType (ModalityType.APPLICATION_MODAL);
 
 		Toolkit kit = Toolkit.getDefaultToolkit();
 		Dimension d = kit.getScreenSize();
@@ -60,7 +64,7 @@ public class StudentAddFrame extends JFrame{
 		JTextField numberField = new JTextField();
 		JLabel cityLabel = new JLabel("Grad stanovanja*");
 		JTextField cityField = new JTextField();
-		JLabel countryLabel = new JLabel("Drzava stanovanja*");
+		JLabel countryLabel = new JLabel("Država stanovanja*");
 		JTextField countryField = new JTextField();
 		JLabel phoneLabel = new JLabel("Broj telefona*");
 		JTextField phoneField = new JTextField();
@@ -78,7 +82,7 @@ public class StudentAddFrame extends JFrame{
 		currentYearOfStudyComboBox.addItem("IV (Èetvrta)");
 		JLabel studentStatusLabel = new JLabel("Naèin finansiranja*");
 		JComboBox<String> studentStatusComboBox = new JComboBox<String>();
-		studentStatusComboBox.addItem("Budzet");
+		studentStatusComboBox.addItem("Budžet");
 		studentStatusComboBox.addItem("Samofinansiranje");
 
 		JButton confirmButton = new JButton("Potvrdi");

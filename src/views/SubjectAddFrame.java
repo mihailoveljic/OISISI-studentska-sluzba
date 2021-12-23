@@ -9,13 +9,13 @@ import java.awt.image.BufferedImage;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
-public class SubjectAddFrame extends JFrame{
+public class SubjectAddFrame extends JDialog{
 	
 	
 	/**
@@ -26,6 +26,11 @@ public class SubjectAddFrame extends JFrame{
 	private static SubjectAddFrame instance;
 	private SubjectAddFrame(){
 		super();
+
+
+		this.setModal (true);
+		this.setAlwaysOnTop (true);
+		this.setModalityType (ModalityType.APPLICATION_MODAL);
 
 		Toolkit kit = Toolkit.getDefaultToolkit();
 		Dimension d = kit.getScreenSize();

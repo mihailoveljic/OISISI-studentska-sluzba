@@ -11,7 +11,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonModel;
 import javax.swing.JButton;
-import javax.swing.JFrame;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -20,7 +20,7 @@ import javax.swing.WindowConstants;
 
 import controllers.ProfessorController;
 
-public class ProfessorAddFrame extends JFrame {
+public class ProfessorAddFrame extends JDialog {
 
 	/**
 	 * 
@@ -31,6 +31,9 @@ public class ProfessorAddFrame extends JFrame {
 	private ProfessorAddFrame() {
 		super();
 		
+		this.setModal (true);
+		this.setAlwaysOnTop (true);
+		this.setModalityType (ModalityType.APPLICATION_MODAL);
 		
 		Toolkit kit= Toolkit.getDefaultToolkit();
 		Dimension d= kit.getScreenSize();
@@ -49,7 +52,7 @@ public class ProfessorAddFrame extends JFrame {
 		JTextField surnameField = new JTextField();
 		JLabel nameLabel = new JLabel("Ime*");
 		JTextField nameField = new JTextField();
-		JLabel birthDateLabel = new JLabel("Datum roÃ°enja*");
+		JLabel birthDateLabel = new JLabel("Datum roðenja*");
 		JTextField birthDateField = new JTextField();
 		JLabel streetAdressLabel = new JLabel("Ulica stanovanja*");
 		JTextField streetAdressField = new JTextField();
@@ -57,7 +60,7 @@ public class ProfessorAddFrame extends JFrame {
 		JTextField numberAdressField = new JTextField();
 		JLabel cityAdressLabel = new JLabel("Grad stanovanja*");
 		JTextField cityAdressField = new JTextField();
-		JLabel countryAdressLabel = new JLabel("DrÅ¾ava stanovanja*");
+		JLabel countryAdressLabel = new JLabel("Država stanovanja*");
 		JTextField countryAdressField = new JTextField();
 		JLabel phoneLabel = new JLabel("Broj telefona*");
 		JTextField phoneField = new JTextField();
@@ -69,13 +72,13 @@ public class ProfessorAddFrame extends JFrame {
 		JTextField numberOfficeAdressField = new JTextField();
 		JLabel cityOfficeAdressLabel = new JLabel("Grad kancelarije*");
 		JTextField cityOfficeAdressField = new JTextField();
-		JLabel countryOfficeAdressLabel = new JLabel("DrÅ¾ava kancelarije*");
+		JLabel countryOfficeAdressLabel = new JLabel("Država kancelarije*");
 		JTextField countryOfficeAdressField = new JTextField();
-		JLabel idNumberLabel = new JLabel("Broj licne karte*");
+		JLabel idNumberLabel = new JLabel("Broj liène karte*");
 		JTextField idNumberField = new JTextField();
 		JLabel titleLabel = new JLabel("Zvanje*");
 		JTextField titleField = new JTextField();
-		JLabel serviceYearsLabel = new JLabel("Godine radnog staza*");
+		JLabel serviceYearsLabel = new JLabel("Godine radnog staža*");
 		JTextField serviceYearsField = new JTextField();
 		
 		JButton confirmButton = new JButton("Potvrdi");
@@ -87,7 +90,7 @@ public class ProfessorAddFrame extends JFrame {
 		buttonEnabler.addDocument(streetAdressField.getDocument());
 		buttonEnabler.addDocument(numberAdressField.getDocument());
 		buttonEnabler.addDocument(cityAdressField.getDocument());
-		buttonEnabler.addDocument(cityAdressField.getDocument());
+		buttonEnabler.addDocument(countryAdressField.getDocument());
 		buttonEnabler.addDocument(phoneField.getDocument());
 		buttonEnabler.addDocument(emailField.getDocument());
 		buttonEnabler.addDocument(streetOfficeAdressField.getDocument());

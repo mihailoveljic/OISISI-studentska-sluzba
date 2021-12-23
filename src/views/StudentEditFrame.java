@@ -5,13 +5,13 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 
-import javax.swing.JFrame;
+import javax.swing.JDialog;
 import javax.swing.JTabbedPane;
 import javax.swing.WindowConstants;
 
 
 
-public class StudentEditFrame extends JFrame{
+public class StudentEditFrame extends JDialog{
 
 		
 		/**
@@ -23,6 +23,10 @@ public class StudentEditFrame extends JFrame{
 	private StudentEditFrame() {
 		super();
 
+		this.setModal (true);
+		this.setAlwaysOnTop (true);
+		this.setModalityType (ModalityType.APPLICATION_MODAL);
+		
 		Toolkit kit = Toolkit.getDefaultToolkit();
 		Dimension d = kit.getScreenSize();
 		int width = d.width;
