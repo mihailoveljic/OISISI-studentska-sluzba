@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
+import javax.swing.ButtonModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -127,7 +128,7 @@ public class ProfessorInfoPanel extends JPanel {
 		 surnameField = new JTextField(surname);
 		 nameLabel = new JLabel("Ime*");
 		 nameField = new JTextField(name);
-		 birthDateLabel = new JLabel("Datum roðenja");
+		 birthDateLabel = new JLabel("Datum roÄ‘enja");
 		 birthDateField = new JTextField(birthDate);
 		 streetAdressLabel = new JLabel("Ulica stanovanja*");
 		 streetAdressField = new JTextField(streetAdress);
@@ -135,7 +136,7 @@ public class ProfessorInfoPanel extends JPanel {
 		 numberAdressField = new JTextField(numberAdress);
 		 cityAdressLabel = new JLabel("Grad stanovanja*");
 		 cityAdressField = new JTextField(cityAdress);
-		 countryAdressLabel = new JLabel("Država stanovanja*");
+		 countryAdressLabel = new JLabel("DrÅ¾ava stanovanja*");
 		 countryAdressField = new JTextField(countryAdress);
 		 phoneLabel = new JLabel("Kontakt Telefon*");
 		 phoneField = new JTextField(phone);
@@ -147,18 +148,38 @@ public class ProfessorInfoPanel extends JPanel {
 		 numberOfficeAdressField = new JTextField(numberOfficeAdress);
 		 cityOfficeAdressLabel = new JLabel("Grad kancelarije*");
 		 cityOfficeAdressField = new JTextField(cityOfficeAdress);
-		 countryOfficeAdressLabel = new JLabel("Država kancelarije*");
+		 countryOfficeAdressLabel = new JLabel("DrÅ¾ava kancelarije*");
 		 countryOfficeAdressField = new JTextField(countryOfficeAdress);
 		 idNumberLabel = new JLabel("Broj licne karte*");
 		 idNumberField = new JTextField(idNumber);
 		 titleLabel = new JLabel("Zvanje*");
 		 titleField = new JTextField(title);
-		 serviceYearsLabel = new JLabel("Godine radnog staža*");
+		 serviceYearsLabel = new JLabel("Godine radnog staÅ¾a*");
 		 serviceYearsField = new JTextField(serviceYears);
 		
 	
-	JButton confirmButton = new JButton("Potvrdi");
-	confirmButton.addActionListener(new ActionListener() {
+		 JButton confirmButton = new JButton("Potvrdi");
+		confirmButton.setEnabled(false);
+		ButtonModel confirmButtonModel = confirmButton.getModel();
+		ButtonEnabler buttonEnabler = new ButtonEnabler(confirmButtonModel);
+		buttonEnabler.addDocument(surnameField.getDocument());
+		buttonEnabler.addDocument(nameField.getDocument());
+		buttonEnabler.addDocument(birthDateField.getDocument());
+		buttonEnabler.addDocument(streetAdressField.getDocument());
+		buttonEnabler.addDocument(numberAdressField.getDocument());
+		buttonEnabler.addDocument(cityAdressField.getDocument());
+		buttonEnabler.addDocument(cityAdressField.getDocument());
+		buttonEnabler.addDocument(phoneField.getDocument());
+		buttonEnabler.addDocument(emailField.getDocument());
+		buttonEnabler.addDocument(streetOfficeAdressField.getDocument());
+		buttonEnabler.addDocument(numberOfficeAdressField.getDocument());
+		buttonEnabler.addDocument(cityOfficeAdressField.getDocument());
+		buttonEnabler.addDocument(countryOfficeAdressField.getDocument());
+		buttonEnabler.addDocument(idNumberField.getDocument());
+		buttonEnabler.addDocument(titleField.getDocument());
+		buttonEnabler.addDocument(serviceYearsField.getDocument());
+
+		confirmButton.addActionListener(new ActionListener() {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
