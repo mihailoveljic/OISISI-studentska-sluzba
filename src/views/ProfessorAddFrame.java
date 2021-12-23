@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 
 import javax.swing.BorderFactory;
+import javax.swing.ButtonModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -78,6 +79,27 @@ public class ProfessorAddFrame extends JFrame {
 		JTextField serviceYearsField = new JTextField();
 		
 		JButton confirmButton = new JButton("Potvrdi");
+		confirmButton.setEnabled(false);
+		ButtonModel confirmButtonModel = confirmButton.getModel();
+		ButtonEnabler buttonEnabler = new ButtonEnabler(confirmButtonModel);
+		buttonEnabler.addDocument(surnameField.getDocument());
+		buttonEnabler.addDocument(nameField.getDocument());
+		buttonEnabler.addDocument(birthDateField.getDocument());
+		buttonEnabler.addDocument(streetAdressField.getDocument());
+		buttonEnabler.addDocument(numberAdressField.getDocument());
+		buttonEnabler.addDocument(cityAdressField.getDocument());
+		buttonEnabler.addDocument(cityAdressField.getDocument());
+		buttonEnabler.addDocument(phoneField.getDocument());
+		buttonEnabler.addDocument(emailField.getDocument());
+		buttonEnabler.addDocument(streetOfficeAdressField.getDocument());
+		buttonEnabler.addDocument(numberOfficeAdressField.getDocument());
+		buttonEnabler.addDocument(cityOfficeAdressField.getDocument());
+		buttonEnabler.addDocument(countryOfficeAdressField.getDocument());
+		buttonEnabler.addDocument(idNumberField.getDocument());
+		buttonEnabler.addDocument(titleField.getDocument());
+		buttonEnabler.addDocument(serviceYearsField.getDocument());
+
+		
 		confirmButton.addActionListener(new ActionListener() {
 			
 			@Override
