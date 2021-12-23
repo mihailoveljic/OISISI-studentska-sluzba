@@ -18,11 +18,11 @@ public class StudentController {
 	int formattedCurrentYearOfStudy;
 	StudentStatus formattedStudentStatus;
 	
-	public String addStudent(String surname, String name, String birthDate, String adress, String phone, String email, String index,
+	public String addStudent(String surname, String name, String birthDate, String street, String number, String city, String country, String phone, String email, String index,
 			String enrollmentYear, int currentYearOfStudy, int studentStatus) {
 		
 		
-		String validationString = validateStudent(surname, name, birthDate, adress, phone, email, index, enrollmentYear, currentYearOfStudy, studentStatus);
+		String validationString = validateStudent(surname, name, birthDate, street, number, city, country, phone, email, index, enrollmentYear, currentYearOfStudy, studentStatus);
 		if(validationString != "OK")
 			return validationString;
 		
@@ -45,7 +45,7 @@ public class StudentController {
 		StudentPanel.getInstance().updateView();
 		}
 	
-	public String editStudent(int rowSelectedIndex, String surname, String name, String birthDate, String adress, String phone, String email, String index,
+	public String editStudent(int rowSelectedIndex, String surname, String name, String birthDate, String street, String number, String city, String country, String phone, String email, String index,
 			String enrollmentYear, int currentYearOfStudy, int studentStatus) {
 		if (rowSelectedIndex < 0) {
 			return "No row selected!";
@@ -53,7 +53,7 @@ public class StudentController {
 		// izmena modela
 		Student student = DbStudents.getInstance().getRow(rowSelectedIndex);
 		
-		String validationString = validateStudent(surname, name, birthDate, adress, phone, email, index, enrollmentYear, currentYearOfStudy, studentStatus);
+		String validationString = validateStudent(surname, name, birthDate, street, number, city, country, phone, email, index, enrollmentYear, currentYearOfStudy, studentStatus);
 		if(validationString != "OK")
 			return validationString;
 		
@@ -74,7 +74,7 @@ public class StudentController {
 		}
 	
 	@SuppressWarnings("deprecation")
-	private String validateStudent(String surname, String name, String birthDate, String adress, String phone, String email, String index,
+	private String validateStudent(String surname, String name, String birthDate, String street, String number, String city, String country, String phone, String email, String index,
 			String enrollmentYear, int currentYearOfStudy, int studentStatus) {
 			
 				try {
@@ -89,32 +89,36 @@ public class StudentController {
 				}
 				
 
-				try {
-				adress = adress.replace(" ", "");
-				String parts[] = adress.split(",");
-				if(parts.length == 4) {
-					formattedAdress = new Adress(parts[0], Integer.parseInt(parts[1]), parts[2], parts[3]);
-				}else {
-					return "Unesite adresu u formatu: ULICA, BROJ, MESTO, DRZAVA";
-				}
-				}catch(Exception e){
-					return "Unesite adresu u formatu: ULICA, BROJ, MESTO, DRZAVA";
-				}
+					
+				if(street.equals(""))
+					return "Unesite ulicu!";
+				if(number.equals(""))
+					return "Unesite broj!";
+				if(city.equals(""))
+					return "Unesite grad!";
+				if(country.equals(""))
+					return "Unesite drzavu!";
+				formattedAdress= new Adress(street, number, city, country);
 				
-				formattedPhone = phone;
-				try {
-					formattedPhone = formattedPhone.replace(" ", "");
-					formattedPhone = formattedPhone.replace(".", "");
-					formattedPhone = formattedPhone.replace(",", "");
-					formattedPhone = formattedPhone.replace("(", "");
-					formattedPhone = formattedPhone.replace(")", "");
-					boolean isValid = formattedPhone.matches("^(\\+)(381)([0-9]){7,10}$");
-					if(!isValid) {
-						return "Unesite ispravan broj telefona sa pozivnim brojem +381";
-					}
-				}catch(Exception e){
-					return "Unesite ispravan broj telefona sa pozivnim brojem +381";
-				}
+				
+//				formattedPhone = phone;
+//				try {
+//					formattedPhone = formattedPhone.replace(" ", "");
+//					formattedPhone = formattedPhone.replace(".", "");
+//					formattedPhone = formattedPhone.replace(",", "");
+//					formattedPhone = formattedPhone.replace("(", "");
+//					formattedPhone = formattedPhone.replace(")", "");
+//					boolean isValid = formattedPhone.matches("^(\\+)(381)([0-9]){7,10}$");
+//					if(!isValid) {
+//						return "Unesite ispravan broj telefona sa pozivnim brojem +381";
+//					}
+//				}catch(Exception e){
+//					return "Unesite ispravan broj telefona sa pozivnim brojem +381";
+//				}
+				
+				if(phone.equals(""))
+					return "Unesite broj telefona!";
+				formattedPhone=phone;
 				
 				try {
 					boolean isValid = email.matches("(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])");
