@@ -26,7 +26,7 @@ public class ProfessorEditFrame extends JFrame {
 		int height = d.height;
 		
 		setSize(width*1/4, height*3/4);
-		setLocationRelativeTo(null);
+		setLocationRelativeTo(MainFrame.getInstance());
 		setTitle("Izmena profesora");
 		Image icon = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB_PRE);
 		setIconImage(icon);
@@ -45,6 +45,7 @@ public class ProfessorEditFrame extends JFrame {
 	
 	public  static ProfessorEditFrame getInstance() {
 		if(instance!=null) {
+			instance.setLocationRelativeTo(MainFrame.getInstance());
 			return instance;
 		} else
 			return instance = new ProfessorEditFrame();

@@ -35,13 +35,13 @@ public class ProfessorAddFrame extends JFrame {
 		Dimension d= kit.getScreenSize();
 		int width= d.width;
 		int height=d.height;
-		setSize(width*1/4, height*1/2);
-		setLocationRelativeTo(null);
+		setSize(width*1/4, height*3/4);
+		setLocationRelativeTo(MainFrame.getInstance());
 		setTitle("Dodavanje profesora");
 		Image icon = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB_PRE);
 		setIconImage(icon);
 		
-		JPanel contentPanel = new JPanel(new GridLayout(11, 2, 5, 5));
+		JPanel contentPanel = new JPanel(new GridLayout(17, 2, 5, 5));
 		contentPanel.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
 		
 		JLabel surnameLabel = new JLabel("Prezime*");
@@ -189,6 +189,7 @@ public class ProfessorAddFrame extends JFrame {
 	{
 		if(instance==null)
 			instance=new ProfessorAddFrame();
+		instance.setLocationRelativeTo(MainFrame.getInstance());
 		return instance;
 	}
 	

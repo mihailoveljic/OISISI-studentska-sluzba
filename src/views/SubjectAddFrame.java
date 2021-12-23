@@ -34,7 +34,7 @@ public class SubjectAddFrame extends JFrame{
 
 		// Pravljenje prozora
 		setSize(width*1/4, height*2/4);
-		setLocationRelativeTo(null);
+		setLocationRelativeTo(MainFrame.getInstance());
 		setTitle("Dodavanje predmeta");
 		Image icon = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB_PRE);
 		setIconImage(icon);
@@ -90,6 +90,7 @@ public class SubjectAddFrame extends JFrame{
 	{
 		if(instance==null)
 			instance=new SubjectAddFrame();
+		instance.setLocationRelativeTo(MainFrame.getInstance());
 		return instance;
 	}
 }

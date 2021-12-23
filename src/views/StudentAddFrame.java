@@ -39,7 +39,7 @@ public class StudentAddFrame extends JFrame{
 
 		// Pravljenje prozora
 		setSize(width*1/4, height*2/4);
-		setLocationRelativeTo(null);
+		setLocationRelativeTo(MainFrame.getInstance());
 		setTitle("Dodavanje studenta");
 		Image icon = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB_PRE);
 		setIconImage(icon);
@@ -175,6 +175,7 @@ public class StudentAddFrame extends JFrame{
 	{
 		if(instance==null)
 			instance=new StudentAddFrame();
+		instance.setLocationRelativeTo(MainFrame.getInstance());
 		return instance;
 	}
 

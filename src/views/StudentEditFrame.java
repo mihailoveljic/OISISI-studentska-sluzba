@@ -30,7 +30,7 @@ public class StudentEditFrame extends JFrame{
 
 		// Pravljenje prozora
 		setSize(width*1/4, height*2/4);
-		setLocationRelativeTo(null);
+		setLocationRelativeTo(MainFrame.getInstance());
 		setTitle("Izmena studenta");
 		Image icon = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB_PRE);
 		setIconImage(icon);
@@ -54,6 +54,7 @@ public class StudentEditFrame extends JFrame{
 	{
 		if(instance == null)
 			instance = new StudentEditFrame();
+		instance.setLocationRelativeTo(MainFrame.getInstance());
 		return instance;
 	}
 
