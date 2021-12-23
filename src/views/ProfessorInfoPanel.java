@@ -85,9 +85,12 @@ public class ProfessorInfoPanel extends JPanel {
 		p = DbProfessors.getInstance().getRow(selectedRow);
 		
 		if(p!=null) {
+			
+			int month = p.getBirthDate().getMonth() + 1;
+			
 			surname = p.getSurname();
 			name = p.getName();
-			birthDate = p.getBirthDate().getDate() + "." + p.getBirthDate().getMonth() + "." + p.getBirthDate().getYear();
+			birthDate = p.getBirthDate().getDate() + "." + month + "." + p.getBirthDate().getYear() + ".";
 			streetAdress = p.getAdress().getStreet();
 			numberAdress = p.getAdress().getNumber();
 			cityAdress = p.getAdress().getCity();
@@ -267,9 +270,12 @@ public class ProfessorInfoPanel extends JPanel {
 			p = DbProfessors.getInstance().getRow(selectedRow);
 			
 			if(p != null) {
+
+				int month = p.getBirthDate().getMonth() + 1;
+				
 				surname = p.getSurname();
 				name = p.getName();
-				birthDate = p.getBirthDate().getDate() + "." + p.getBirthDate().getMonth()+1 + "." + p.getBirthDate().getYear();
+				birthDate = p.getBirthDate().getDate() + "." + month + "." + p.getBirthDate().getYear() + ".";
 				streetAdress = p.getAdress().getStreet();
 				numberAdress = p.getAdress().getNumber();
 				cityAdress = p.getAdress().getCity();
