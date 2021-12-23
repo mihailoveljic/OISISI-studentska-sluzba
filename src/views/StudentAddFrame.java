@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 
 import javax.swing.BorderFactory;
+import javax.swing.ButtonModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -81,6 +82,21 @@ public class StudentAddFrame extends JFrame{
 		studentStatusComboBox.addItem("Samofinansiranje");
 
 		JButton confirmButton = new JButton("Potvrdi");
+		confirmButton.setEnabled(false);
+		ButtonModel confirmButtonModel = confirmButton.getModel();
+		ButtonEnabler buttonEnabler = new ButtonEnabler(confirmButtonModel);	
+		buttonEnabler.addDocument(surnameField.getDocument());
+		buttonEnabler.addDocument(nameField.getDocument());
+		buttonEnabler.addDocument(birthDateField.getDocument());
+		buttonEnabler.addDocument(streetField.getDocument());
+		buttonEnabler.addDocument(numberField.getDocument());
+		buttonEnabler.addDocument(cityField.getDocument());
+		buttonEnabler.addDocument(countryField.getDocument());
+		buttonEnabler.addDocument(phoneField.getDocument());
+		buttonEnabler.addDocument(emailField.getDocument());
+		buttonEnabler.addDocument(indexField.getDocument());
+		buttonEnabler.addDocument(enrollmentYearField.getDocument());
+		
 		confirmButton.addActionListener(new ActionListener(){
 	
 			@Override
@@ -115,7 +131,6 @@ public class StudentAddFrame extends JFrame{
 			
 		});
 		JButton cancelButton = new JButton("Odustani");
-		
 		cancelButton.addActionListener(new ActionListener() {
 			
 			@Override
