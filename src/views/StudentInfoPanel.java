@@ -72,7 +72,7 @@ public class StudentInfoPanel extends JPanel{
 	private StudentInfoPanel(int selectedRow) {
 		super();
 		
-		this.setLayout(new GridLayout(11, 2, 5, 5));
+		this.setLayout(new GridLayout(14, 2, 5, 5));
 		this.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
 
 		s = DbStudents.getInstance().getRow(selectedRow);
