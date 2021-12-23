@@ -13,6 +13,7 @@ public class MainTabbedPane extends JTabbedPane{
 	 * 
 	 */
 	private static final long serialVersionUID = 5351564682657896302L;
+	
 
 	public MainTabbedPane() {
 		super();
@@ -36,7 +37,6 @@ public class MainTabbedPane extends JTabbedPane{
 		
 		this.addChangeListener(new TabChangeListener(this));
 	}
-
 	
 }
 

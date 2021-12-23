@@ -30,7 +30,10 @@ public class StudentInfoPanel extends JPanel{
 	String name;
 	String surname;
 	String birthDate;
-	String adress;
+	String street;
+	String number;
+	String city;
+	String country;
 	String phone;
 	String email;
 	String index;
@@ -44,8 +47,14 @@ public class StudentInfoPanel extends JPanel{
 	JTextField surnameField;
 	JLabel birthDateLabel;
 	JTextField birthDateField;
-	JLabel adressLabel;
-	JTextField adressField;
+	JLabel streetLabel;
+	JTextField streetField;
+	JLabel numberLabel;
+	JTextField numberField;
+	JLabel cityLabel;
+	JTextField cityField;
+	JLabel countryLabel;
+	JTextField countryField;
 	JLabel phoneLabel;
 	JTextField phoneField;
 	JLabel emailLabel;
@@ -63,7 +72,7 @@ public class StudentInfoPanel extends JPanel{
 	private StudentInfoPanel(int selectedRow) {
 		super();
 		
-		this.setLayout(new GridLayout(11, 2, 5, 5));
+		this.setLayout(new GridLayout(14, 2, 5, 5));
 		this.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
 
 		s = DbStudents.getInstance().getRow(selectedRow);
@@ -72,7 +81,10 @@ public class StudentInfoPanel extends JPanel{
 			name = s.getName();
 			surname = s.getSurname();
 			birthDate = s.getBirthDate().getDate() + "." + s.getBirthDate().getMonth()+1 + "." + s.getBirthDate().getYear();
-			adress = s.getAdress().getStreet() + ", " + s.getAdress().getNumber() + ", " + s.getAdress().getCity() + ", " + s.getAdress().getCountry();
+			street = s.getAdress().getCity();
+			number = s.getAdress().getNumber();
+			city = s.getAdress().getCity();
+			country = s.getAdress().getCountry();
 			phone = s.getPhone();
 			email = s.getEmail();
 			index = s.getIndex();
@@ -83,7 +95,10 @@ public class StudentInfoPanel extends JPanel{
 			name = "";
 			surname = "";
 			birthDate = "";
-			adress = "";
+			street = "";
+			number = "";
+			city = "";
+			country = "";
 			phone = "";
 			email = "";
 			index = "";
@@ -98,8 +113,14 @@ public class StudentInfoPanel extends JPanel{
 		surnameField = new JTextField(surname);
 		birthDateLabel = new JLabel("Datum roðenja*");
 		birthDateField = new JTextField(birthDate);
-		adressLabel = new JLabel("Adresa stanovanja*");
-		adressField = new JTextField(adress);
+		streetLabel = new JLabel("Ulica stanovanja*");
+		streetField = new JTextField(street);
+		numberLabel = new JLabel("Broj stanovanja");
+		numberField = new JTextField(number);
+		cityLabel = new JLabel("Grad stanovanja*");
+		cityField = new JTextField();
+		countryLabel = new JLabel("Drzava stanovanja*");
+		countryField = new JTextField();
 		phoneLabel = new JLabel("Broj telefona*");
 		phoneField = new JTextField(phone);
 		emailLabel = new JLabel("E-mail adresa*");
@@ -154,7 +175,7 @@ public class StudentInfoPanel extends JPanel{
 				StudentController studentController = new StudentController();
 				
 				String dataValid = studentController.editStudent(StudentTable.getInstance().getSelectedRow(), surnameField.getText(), nameField.getText(),
-						birthDateField.getText(), adressField.getText(), phoneField.getText(),
+						birthDateField.getText(), streetField.getText(), numberField.getText(), cityField.getText(), countryField.getText(), phoneField.getText(),
 						emailField.getText(), indexField.getText(), enrollmentYearField.getText(),
 						currentYearOfStudyComboBox.getSelectedIndex(), studentStatusComboBox.getSelectedIndex());
 				
@@ -166,7 +187,10 @@ public class StudentInfoPanel extends JPanel{
 					surnameField.setText("");
 					nameField.setText("");
 					birthDateField.setText("");
-					adressField.setText("");
+					streetField.setText("");
+					numberField.setText("");
+					cityField.setText("");
+					countryField.setText("");
 					phoneField.setText("");
 					emailField.setText("");
 					indexField.setText("");
@@ -186,7 +210,10 @@ public class StudentInfoPanel extends JPanel{
 				surnameField.setText("");
 				nameField.setText("");
 				birthDateField.setText("");
-				adressField.setText("");
+				streetField.setText("");
+				numberField.setText("");
+				cityField.setText("");
+				countryField.setText("");
 				phoneField.setText("");
 				emailField.setText("");
 				indexField.setText("");
@@ -204,8 +231,14 @@ public class StudentInfoPanel extends JPanel{
 		this.add(surnameField);
 		this.add(birthDateLabel);
 		this.add(birthDateField);
-		this.add(adressLabel);
-		this.add(adressField);
+		this.add(streetLabel);
+		this.add(streetField);
+		this.add(numberLabel);
+		this.add(numberField);
+		this.add(cityLabel);
+		this.add(cityField);
+		this.add(countryLabel);
+		this.add(countryField);
 		this.add(phoneLabel);
 		this.add(phoneField);
 		this.add(emailLabel);
@@ -232,7 +265,10 @@ public class StudentInfoPanel extends JPanel{
 			name = s.getName();
 			surname = s.getSurname();
 			birthDate = s.getBirthDate().getDate() + "." + s.getBirthDate().getMonth() + "." + s.getBirthDate().getYear();
-			adress = s.getAdress().getStreet() + ", " + s.getAdress().getNumber() + ", " + s.getAdress().getCity() + ", " + s.getAdress().getCountry();
+			street= s.getAdress().getStreet();
+			number=s.getAdress().getNumber();
+			city=s.getAdress().getCity();
+			country=s.getAdress().getCountry();
 			phone = s.getPhone();
 			email = s.getEmail();
 			index = s.getIndex();
@@ -243,7 +279,10 @@ public class StudentInfoPanel extends JPanel{
 			name = "";
 			surname = "";
 			birthDate = "";
-			adress = "";
+			street= "";
+			number="";
+			city="";
+			country="";
 			phone = "";
 			email = "";
 			index = "";
@@ -255,7 +294,10 @@ public class StudentInfoPanel extends JPanel{
 		nameField.setText(name);
 		surnameField.setText(surname);
 		birthDateField.setText(birthDate);
-		adressField.setText(adress);
+		streetField.setText(street);
+		numberField.setText(number);
+		cityField.setText(city);
+		countryField.setText(country);
 		phoneField.setText(phone);
 		emailField.setText(email);
 		indexField.setText(index);
