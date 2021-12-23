@@ -125,7 +125,7 @@ public class ProfessorInfoPanel extends JPanel {
 		 surnameField = new JTextField(surname);
 		 nameLabel = new JLabel("Ime*");
 		 nameField = new JTextField(name);
-		 birthDateLabel = new JLabel("Datum ro�enja");
+		 birthDateLabel = new JLabel("Datum rođenja");
 		 birthDateField = new JTextField(birthDate);
 		 streetAdressLabel = new JLabel("Ulica stanovanja*");
 		 streetAdressField = new JTextField(streetAdress);
@@ -133,7 +133,7 @@ public class ProfessorInfoPanel extends JPanel {
 		 numberAdressField = new JTextField(numberAdress);
 		 cityAdressLabel = new JLabel("Grad stanovanja*");
 		 cityAdressField = new JTextField(cityAdress);
-		 countryAdressLabel = new JLabel("Dr�ava stanovanja*");
+		 countryAdressLabel = new JLabel("Država stanovanja*");
 		 countryAdressField = new JTextField(countryAdress);
 		 phoneLabel = new JLabel("Kontakt Telefon*");
 		 phoneField = new JTextField(phone);
@@ -145,13 +145,13 @@ public class ProfessorInfoPanel extends JPanel {
 		 numberOfficeAdressField = new JTextField(numberOfficeAdress);
 		 cityOfficeAdressLabel = new JLabel("Grad kancelarije*");
 		 cityOfficeAdressField = new JTextField(cityOfficeAdress);
-		 countryOfficeAdressLabel = new JLabel("Dr�ava kancelarije*");
+		 countryOfficeAdressLabel = new JLabel("Država kancelarije*");
 		 countryOfficeAdressField = new JTextField(countryOfficeAdress);
 		 idNumberLabel = new JLabel("Broj licne karte*");
 		 idNumberField = new JTextField(idNumber);
 		 titleLabel = new JLabel("Zvanje*");
 		 titleField = new JTextField(title);
-		 serviceYearsLabel = new JLabel("Godine radnog sta�a*");
+		 serviceYearsLabel = new JLabel("Godine radnog staža*");
 		 serviceYearsField = new JTextField(serviceYears);
 		
 	
