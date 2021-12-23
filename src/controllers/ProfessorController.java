@@ -17,11 +17,12 @@ public class ProfessorController {
 	int formattedIdNumber;
 	int formattedServiceYears;
 
-	public String addProfessor(String surname, String name, String birthDate, String adress, String phone, String email,
-			String officeAdress, String idNumber, String title, String serviceYears) {
+	public String addProfessor(String surname, String name, String birthDate, String streetAdress, 
+			String numberAdress, String cityAdress, String countryAdress, String phone, String email, String streetOfficeAdress,
+			String numberOfficeAdress, String cityOfficeAdress, String countryOfficeAdress, String idNumber, String title, String serviceYears) {
 		
-		String validationString = validateProfessor(surname, name, birthDate, adress, phone, email,
-			 officeAdress, idNumber, title, serviceYears);
+		String validationString = validateProfessor(surname, name, birthDate, streetAdress, numberAdress, cityAdress, countryAdress, 
+				phone, email, streetOfficeAdress, numberOfficeAdress, cityOfficeAdress, countryOfficeAdress, idNumber, title, serviceYears);
 		if(validationString != "OK")
 			return validationString;
 		
@@ -34,8 +35,9 @@ public class ProfessorController {
 	}
 
 	@SuppressWarnings("deprecation")
-	private String validateProfessor(String surname, String name, String birthDate, String adress, String phone,
-			String email, String officeAdress, String idNumber, String title, String serviceYears) {
+	private String validateProfessor(String surname, String name, String birthDate, String streetAdress, String numberAdress,
+			String cityAdress, String countryAdress, String phone, String email, String streetOfficeAdress, String numberOfficeAdress,
+			String cityOfficeAdress, String countryOfficeAdress, String idNumber, String title, String serviceYears) {
 		
 		try {
 			String parts[] = birthDate.split("[.]");
@@ -48,33 +50,37 @@ public class ProfessorController {
 				return "Unesite datum u formatu: DD.MM.YYYY.";
 			}
 		
-		try {
-			adress = adress.replace(" ", "");
-			String parts[] = adress.split(",");
-			if(parts.length == 4) {
-				formattedAdress = new Adress(parts[0], Integer.parseInt(parts[1]), parts[2], parts[3]);
-			}else {
-				return "Unesite adresu u formatu: ULICA, BROJ, MESTO, DRZAVA";
-			}
-			}catch(Exception e){
-				return "Unesite adresu u formatu: ULICA, BROJ, MESTO, DRZAVA";
-			}
+			if(streetAdress == null)
+				return "Unesite ulicu!";
+			if(numberAdress == null)
+				return "Unesite broj!";
+			if(cityAdress == null)
+				return "Unesite grad!";
+			if(countryAdress == null)
+				return "Unesite drûavu!";
+			
+			formattedAdress = new Adress(streetAdress, numberAdress, cityAdress, countryAdress);
+			
+//		formattedPhone = phone;
+//		try {
+//			formattedPhone = formattedPhone.replace(" ", "");
+//			formattedPhone = formattedPhone.replace(".", "");
+//			formattedPhone = formattedPhone.replace(",", "");
+//			formattedPhone = formattedPhone.replace("(", "");
+//			formattedPhone = formattedPhone.replace(")", "");
+//			boolean isValid = formattedPhone.matches("^(\\+)(381)([0-9]){7,10}$");
+//			if(!isValid) {
+//				return "Unesite ispravan broj telefona sa pozivnim brojem +381";
+//			}
+//		}catch(Exception e){
+//			return "Unesite ispravan broj telefona sa pozivnim brojem +381";
+//		}
 		
+			
+		if(phone.equals(""))
+			return "Unesite broj telefona!";
 		formattedPhone = phone;
-		try {
-			formattedPhone = formattedPhone.replace(" ", "");
-			formattedPhone = formattedPhone.replace(".", "");
-			formattedPhone = formattedPhone.replace(",", "");
-			formattedPhone = formattedPhone.replace("(", "");
-			formattedPhone = formattedPhone.replace(")", "");
-			boolean isValid = formattedPhone.matches("^(\\+)(381)([0-9]){7,10}$");
-			if(!isValid) {
-				return "Unesite ispravan broj telefona sa pozivnim brojem +381";
-			}
-		}catch(Exception e){
-			return "Unesite ispravan broj telefona sa pozivnim brojem +381";
-		}
-		
+			
 		formattedEmail=email;
 		try {
 			boolean isValid = formattedEmail.matches("(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])");
@@ -85,45 +91,45 @@ public class ProfessorController {
 			return "Unesite ispravan email!";
 		}
 	
-		try {
-			officeAdress = officeAdress.replace(" ", "");
-			String parts[] = officeAdress.split(",");
-			if(parts.length == 4) {
-				formattedOfficeAdress = new Adress(parts[0], Integer.parseInt(parts[1]), parts[2], parts[3]);
-			}else {
-				return "Unesite adresu u formatu: ULICA, BROJ, MESTO, DRZAVA";
-			}
-			}catch(Exception e){
-				return "Unesite adresu u formatu: ULICA, BROJ, MESTO, DRZAVA";
-			}
+		if(streetOfficeAdress.equals(""))
+			return "Unesite ulicu!";
+		if(numberOfficeAdress.equals(""))
+			return "Unesite broj!";
+		if(cityOfficeAdress.equals(""))
+			return "Unesite grad!";
+		if(countryOfficeAdress.equals(""))
+			return "Unesite drûavu!";
+		formattedOfficeAdress = new Adress(streetAdress, numberAdress, cityAdress, countryAdress);
 		
 		
 		try {
 			formattedIdNumber=Integer.parseInt(idNumber);
 		} catch(Exception e) {
-				return "Neispravan broj liƒçne karte!";	
+				return "Neispravan broj liËne karte!";	
 		}
 		
 		try {
 			formattedServiceYears=Integer.parseInt(serviceYears);
 		} catch(Exception e) {
-				return "Neispravan unet radni sta≈æ!";	
+				return "Neispravan unet radni staû!";	
 		}
 		
 		
 		return "OK";
 	}
 	
-	public String editProfessor(int rowSelectedIndex, String surname, String name, String birthDate, String adress, String phone, String email,
-			String officeAdress, String idNumber, String title, String serviceYears) {
+	public String editProfessor(int rowSelectedIndex, String surname, String name, String birthDate, String streetAdress, 
+			String numberAdress, String cityAdress, String countryAdress, String phone, String email, String streetOfficeAdress,
+			String numberOfficeAdress, String cityOfficeAdress, String countryOfficeAdress, String idNumber, String title, String serviceYears) {
+		
 		if(rowSelectedIndex<0) {
 			return "NO ROW SELECTED!";
 		}
 		
 		Professor profesor = DbProfessors.getInstance().getRow(rowSelectedIndex);
 		
-		String validationString = validateProfessor(surname,name,birthDate, adress, phone, email,
-				 officeAdress, idNumber, title,serviceYears);
+		String validationString = validateProfessor(surname,name,birthDate, streetAdress, numberAdress, cityAdress, countryAdress, phone, email,
+				 streetOfficeAdress, numberOfficeAdress, cityOfficeAdress, countryOfficeAdress, idNumber, title,serviceYears);
 		if(validationString!="OK")
 			return validationString;
 		

@@ -43,7 +43,8 @@ public class DbProfessors {
 				"Doktor", 4));
 		professors.add(new Professor("Imenko", "Prezimenkovic", new Date(1960, 11, 21), new Adress("Tolstojeva", "42", "mesto", "drzava"), "+38161247888", "sasasa@gmail.com", new Adress("sasa", "42", "grad", "drzava"), 87,
 				"Doktor", 4));
-		professors.add(new Professor("Imenko", "Prezimenkovic", new Date(1960, 11, 21), new Adress("Tolstojeva", "42", "mesto", "drzava"), "+38161247888", "sasasa@gmail.com", new Adress("sasa","42", "grad", "drzava"), 87,
+		professors.add(new Professor("Imenko", "Prezimenkovic", new Date(1960, 11, 21), new Adress("Tolstojeva", "42", "mesto", "drzava"), "+38161247888", "sasasa@gmail.com", new Adress("sasa", "42", "grad", "drzava"), 87,
+
 				"Doktor", 4));
 		
 	}
