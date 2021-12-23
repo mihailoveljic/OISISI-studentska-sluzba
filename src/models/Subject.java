@@ -25,6 +25,20 @@ public class Subject {
 		this.listOfStudentsWhoPassed = listOfStudentsWhoPassed;
 		this.listOfStudentsWhoFailed = listOfStudentsWhoFailed;
 	}
+	
+	
+	
+	public Subject(int id, String name, Semester semester, int yearOfStudy, int eSPB) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.semester = semester;
+		this.yearOfStudy = yearOfStudy;
+		ESPB = eSPB;
+	}
+
+
+
 	public int getId() {
 		return id;
 	}
@@ -74,6 +88,13 @@ public class Subject {
 		this.listOfStudentsWhoFailed = listOfStudentsWhoFailed;
 	}
     
-    
+	public void removeStudentFromListOfPassed(Student s) {
+		this.listOfStudentsWhoPassed.remove(s);
+	}
+	
+	public void removeStudentFromListOfFailed(Student s) {
+		this.listOfStudentsWhoFailed.remove(s);
+	}
+	
     
 }

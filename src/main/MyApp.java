@@ -12,7 +12,7 @@ import views.MyToolBar;
 public class MyApp {
 
 	public static void main(String[] args) {
-		MainFrame mainFrame = new MainFrame();
+		MainFrame mainFrame = MainFrame.getInstance();
 		
 		// Meni bar
 		MyMenuBar menuBar = new MyMenuBar();

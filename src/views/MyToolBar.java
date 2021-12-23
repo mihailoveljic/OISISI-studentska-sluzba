@@ -44,6 +44,10 @@ public class MyToolBar extends JToolBar {
 		Dimension d = new Dimension(40, 30);
 		searchBar.setMaximumSize(d);
 		
+		addButton.addActionListener(new AddEntityListener());
+		editButton.addActionListener(new EditEntityListener());
+		deleteButton.addActionListener(new DeleteEntityListener());
+		
 		this.add(addButton);
 		this.add(editButton);
 		this.add(deleteButton);
@@ -51,8 +55,10 @@ public class MyToolBar extends JToolBar {
 		this.add(searchBar);
 		this.add(searchButton);
 		this.setFloatable(false);
-		this.setBorder(BorderFactory.createLineBorder(Color.black));
+		this.setBorder(BorderFactory.createLineBorder(Color.black));	
 	}
 	
+
+
 
 }

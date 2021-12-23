@@ -9,12 +9,13 @@ import java.awt.image.BufferedImage;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.WindowConstants;
 
-public class SubjectAddFrame extends JFrame{
+public class SubjectAddFrame extends JDialog{
 	
 	
 	/**
@@ -22,8 +23,14 @@ public class SubjectAddFrame extends JFrame{
 	 */
 	private static final long serialVersionUID = -4125736938637561082L;
 
-	public SubjectAddFrame(){
+	private static SubjectAddFrame instance;
+	private SubjectAddFrame(){
 		super();
+
+
+		this.setModal (true);
+		this.setAlwaysOnTop (true);
+		this.setModalityType (ModalityType.APPLICATION_MODAL);
 
 		Toolkit kit = Toolkit.getDefaultToolkit();
 		Dimension d = kit.getScreenSize();
@@ -32,7 +39,7 @@ public class SubjectAddFrame extends JFrame{
 
 		// Pravljenje prozora
 		setSize(width*1/4, height*2/4);
-		setLocationRelativeTo(null);
+		setLocationRelativeTo(MainFrame.getInstance());
 		setTitle("Dodavanje predmeta");
 		Image icon = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB_PRE);
 		setIconImage(icon);
@@ -80,6 +87,15 @@ public class SubjectAddFrame extends JFrame{
 		contentPanel.add(confirmButton);
 		contentPanel.add(cancelButton);
 	    this.getContentPane().add(contentPanel);
-		setVisible(true);
+		
+		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+	}
+	
+	public static SubjectAddFrame getInstance()
+	{
+		if(instance==null)
+			instance=new SubjectAddFrame();
+		instance.setLocationRelativeTo(MainFrame.getInstance());
+		return instance;
 	}
 }

@@ -4,6 +4,7 @@ import methods.ResizeIcon;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
 import javax.swing.BorderFactory;
@@ -62,12 +63,36 @@ public class MyMenuBar extends JMenuBar{
 		JMenuItem students = new JMenuItem("Studenti", studentIcon);
 		students.setMnemonic(KeyEvent.VK_S);
 		students.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.SHIFT_MASK));
+		students.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				((MainTabbedPane) MainFrame.getInstance().getContentPane().getComponent(2)).setSelectedIndex(0);
+				
+			}
+		});
 		JMenuItem subjects = new JMenuItem("Predmeti", subjectIcon);
 		subjects.setMnemonic(KeyEvent.VK_P);
 		subjects.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, ActionEvent.SHIFT_MASK));
+		subjects.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				((MainTabbedPane) MainFrame.getInstance().getContentPane().getComponent(2)).setSelectedIndex(2);
+				
+			}
+		});
 		JMenuItem professors = new JMenuItem("Profesori", professorIcon);
 		professors.setMnemonic(KeyEvent.VK_F);
 		professors.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F, ActionEvent.SHIFT_MASK));
+		professors.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				((MainTabbedPane) MainFrame.getInstance().getContentPane().getComponent(2)).setSelectedIndex(1);
+				
+			}
+		});
 		JMenuItem departments = new JMenuItem("Katedre", departmentIcon);
 		departments.setMnemonic(KeyEvent.VK_K);
 		departments.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_K, ActionEvent.SHIFT_MASK));
@@ -79,6 +104,10 @@ public class MyMenuBar extends JMenuBar{
 		JMenuItem closeItem = new JMenuItem("Close", closeIcon);
 		closeItem.setMnemonic(KeyEvent.VK_C);
 		closeItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, ActionEvent.CTRL_MASK));
+		
+		newItem.addActionListener(new AddEntityListener());
+		
+		
 		fileMenu.add(newItem);
 		fileMenu.addSeparator();
 		fileMenu.add(saveItem);
@@ -93,6 +122,8 @@ public class MyMenuBar extends JMenuBar{
 		JMenuItem deleteItem = new JMenuItem("Delete", deleteIcon);
 		deleteItem.setMnemonic(KeyEvent.VK_D);
 		deleteItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK));
+		editItem.addActionListener(new EditEntityListener());
+		deleteItem.addActionListener(new DeleteEntityListener());
 		editMenu.add(editItem);
 		editMenu.addSeparator();
 		editMenu.add(deleteItem);

@@ -18,6 +18,22 @@ public class Student {
 	private Set<Grade> grades;
 	private Set<Subject> subjects;
 	
+	
+	public Student(String surname, String name, Date birthDate, Adress adress, String phone, String email, String index,
+			int enrollmentYear, int currentYearOfStudy, StudentStatus studentStatus) {
+		super();
+		this.surname = surname;
+		this.name = name;
+		this.birthDate = birthDate;
+		this.adress = adress;
+		this.phone = phone;
+		this.email = email;
+		this.index = index;
+		this.enrollmentYear = enrollmentYear;
+		this.currentYearOfStudy = currentYearOfStudy;
+		this.studentStatus = studentStatus;
+	}
+
 	public Student(String surname, String name, Date birthDate, Adress adress, String phone, String email, String index,
 			int enrollmentYear, int currentYearOfStudy, StudentStatus studentStatus, double averageGrade,
 			Set<Grade> grades, Set<Subject> subjects) {
@@ -36,6 +52,7 @@ public class Student {
 		this.grades = grades;
 		this.subjects = subjects;
 	}
+
 
 	public String getSurname() {
 		return surname;
