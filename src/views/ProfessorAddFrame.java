@@ -49,7 +49,7 @@ public class ProfessorAddFrame extends JFrame {
 		JTextField surnameField = new JTextField();
 		JLabel nameLabel = new JLabel("Ime*");
 		JTextField nameField = new JTextField();
-		JLabel birthDateLabel = new JLabel("Datum roenja*");
+		JLabel birthDateLabel = new JLabel("Datum ro√∞enja*");
 		JTextField birthDateField = new JTextField();
 		JLabel streetAdressLabel = new JLabel("Ulica stanovanja*");
 		JTextField streetAdressField = new JTextField();
@@ -57,7 +57,7 @@ public class ProfessorAddFrame extends JFrame {
 		JTextField numberAdressField = new JTextField();
 		JLabel cityAdressLabel = new JLabel("Grad stanovanja*");
 		JTextField cityAdressField = new JTextField();
-		JLabel countryAdressLabel = new JLabel("Drûava stanovanja*");
+		JLabel countryAdressLabel = new JLabel("Dr≈æava stanovanja*");
 		JTextField countryAdressField = new JTextField();
 		JLabel phoneLabel = new JLabel("Broj telefona*");
 		JTextField phoneField = new JTextField();
@@ -69,7 +69,7 @@ public class ProfessorAddFrame extends JFrame {
 		JTextField numberOfficeAdressField = new JTextField();
 		JLabel cityOfficeAdressLabel = new JLabel("Grad kancelarije*");
 		JTextField cityOfficeAdressField = new JTextField();
-		JLabel countryOfficeAdressLabel = new JLabel("Drûava kancelarije*");
+		JLabel countryOfficeAdressLabel = new JLabel("Dr≈æava kancelarije*");
 		JTextField countryOfficeAdressField = new JTextField();
 		JLabel idNumberLabel = new JLabel("Broj licne karte*");
 		JTextField idNumberField = new JTextField();
@@ -79,7 +79,6 @@ public class ProfessorAddFrame extends JFrame {
 		JTextField serviceYearsField = new JTextField();
 		
 		JButton confirmButton = new JButton("Potvrdi");
-		confirmButton.setEnabled(false);
 		ButtonModel confirmButtonModel = confirmButton.getModel();
 		ButtonEnabler buttonEnabler = new ButtonEnabler(confirmButtonModel);
 		buttonEnabler.addDocument(surnameField.getDocument());
