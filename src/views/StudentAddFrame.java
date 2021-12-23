@@ -44,17 +44,23 @@ public class StudentAddFrame extends JFrame{
 		Image icon = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB_PRE);
 		setIconImage(icon);
 
-		JPanel contentPanel = new JPanel(new GridLayout(11, 2, 5, 5));
+		JPanel contentPanel = new JPanel(new GridLayout(14, 2, 5, 5));
 		contentPanel.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
 
 		JLabel nameLabel = new JLabel("Ime*");
 		JTextField nameField = new JTextField();
 		JLabel surnameLabel = new JLabel("Prezime*");
 		JTextField surnameField = new JTextField();
-		JLabel birthDateLabel = new JLabel("Datum roðenja*");
+		JLabel birthDateLabel = new JLabel("Datum roðenja* (dd.mm.yy)");
 		JTextField birthDateField = new JTextField();
-		JLabel adressLabel = new JLabel("Adresa stanovanja*");
-		JTextField adressField = new JTextField();
+		JLabel streetLabel = new JLabel("Ulica stanovanja*");
+		JTextField streetField = new JTextField();
+		JLabel numberLabel = new JLabel("Broj stanovanja*");
+		JTextField numberField = new JTextField();
+		JLabel cityLabel = new JLabel("Grad stanovanja*");
+		JTextField cityField = new JTextField();
+		JLabel countryLabel = new JLabel("Drzava stanovanja*");
+		JTextField countryField = new JTextField();
 		JLabel phoneLabel = new JLabel("Broj telefona*");
 		JTextField phoneField = new JTextField();
 		JLabel emailLabel = new JLabel("E-mail adresa*");
@@ -82,7 +88,7 @@ public class StudentAddFrame extends JFrame{
 				StudentController studentController = new StudentController();
 				
 				String dataValid = studentController.addStudent(surnameField.getText(), nameField.getText(),
-						birthDateField.getText(), adressField.getText(), phoneField.getText(),
+						birthDateField.getText(), streetField.getText(), numberField.getText(), cityField.getText(), countryField.getText(), phoneField.getText(),
 						emailField.getText(), indexField.getText(), enrollmentYearField.getText(),
 						currentYearOfStudyComboBox.getSelectedIndex(), studentStatusComboBox.getSelectedIndex());
 				
@@ -94,7 +100,10 @@ public class StudentAddFrame extends JFrame{
 					surnameField.setText("");
 					nameField.setText("");
 					birthDateField.setText("");
-					adressField.setText("");
+					streetField.setText("");
+					numberField.setText("");
+					cityField.setText("");
+					countryField.setText("");
 					phoneField.setText("");
 					emailField.setText("");
 					indexField.setText("");
@@ -114,7 +123,10 @@ public class StudentAddFrame extends JFrame{
 				surnameField.setText("");
 				nameField.setText("");
 				birthDateField.setText("");
-				adressField.setText("");
+				streetField.setText("");
+				numberField.setText("");
+				cityField.setText("");
+				countryField.setText("");
 				phoneField.setText("");
 				emailField.setText("");
 				indexField.setText("");
@@ -132,8 +144,14 @@ public class StudentAddFrame extends JFrame{
 		contentPanel.add(surnameField);
 		contentPanel.add(birthDateLabel);
 		contentPanel.add(birthDateField);
-		contentPanel.add(adressLabel);
-		contentPanel.add(adressField);
+		contentPanel.add(streetLabel);
+		contentPanel.add(streetField);
+		contentPanel.add(numberLabel);
+		contentPanel.add(numberField);
+		contentPanel.add(cityLabel);
+		contentPanel.add(cityField);
+		contentPanel.add(countryLabel);
+		contentPanel.add(countryField);
 		contentPanel.add(phoneLabel);
 		contentPanel.add(phoneField);
 		contentPanel.add(emailLabel);
