@@ -123,7 +123,7 @@ public class StudentInfoPanel extends JPanel{
 		numberField = new JTextField(number);
 		cityLabel = new JLabel("Grad stanovanja*");
 		cityField = new JTextField();
-		countryLabel = new JLabel("Drzava stanovanja*");
+		countryLabel = new JLabel("Država stanovanja*");
 		countryField = new JTextField();
 		phoneLabel = new JLabel("Broj telefona*");
 		phoneField = new JTextField(phone);
@@ -158,7 +158,7 @@ public class StudentInfoPanel extends JPanel{
 		}
 		JLabel studentStatusLabel = new JLabel("Naèin finansiranja*");
 		studentStatusComboBox = new JComboBox<String>();
-		studentStatusComboBox.addItem("Budzet");
+		studentStatusComboBox.addItem("Budžet");
 		studentStatusComboBox.addItem("Samofinansiranje");
 		switch(studentStatus) {
 		case B:

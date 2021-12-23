@@ -128,7 +128,7 @@ public class ProfessorInfoPanel extends JPanel {
 		 surnameField = new JTextField(surname);
 		 nameLabel = new JLabel("Ime*");
 		 nameField = new JTextField(name);
-		 birthDateLabel = new JLabel("Datum roÄ‘enja");
+		 birthDateLabel = new JLabel("Datum roðenja");
 		 birthDateField = new JTextField(birthDate);
 		 streetAdressLabel = new JLabel("Ulica stanovanja*");
 		 streetAdressField = new JTextField(streetAdress);
@@ -136,7 +136,7 @@ public class ProfessorInfoPanel extends JPanel {
 		 numberAdressField = new JTextField(numberAdress);
 		 cityAdressLabel = new JLabel("Grad stanovanja*");
 		 cityAdressField = new JTextField(cityAdress);
-		 countryAdressLabel = new JLabel("DrÅ¾ava stanovanja*");
+		 countryAdressLabel = new JLabel("Država stanovanja*");
 		 countryAdressField = new JTextField(countryAdress);
 		 phoneLabel = new JLabel("Kontakt Telefon*");
 		 phoneField = new JTextField(phone);
@@ -148,13 +148,13 @@ public class ProfessorInfoPanel extends JPanel {
 		 numberOfficeAdressField = new JTextField(numberOfficeAdress);
 		 cityOfficeAdressLabel = new JLabel("Grad kancelarije*");
 		 cityOfficeAdressField = new JTextField(cityOfficeAdress);
-		 countryOfficeAdressLabel = new JLabel("DrÅ¾ava kancelarije*");
+		 countryOfficeAdressLabel = new JLabel("Država kancelarije*");
 		 countryOfficeAdressField = new JTextField(countryOfficeAdress);
-		 idNumberLabel = new JLabel("Broj licne karte*");
+		 idNumberLabel = new JLabel("Broj liène karte*");
 		 idNumberField = new JTextField(idNumber);
 		 titleLabel = new JLabel("Zvanje*");
 		 titleField = new JTextField(title);
-		 serviceYearsLabel = new JLabel("Godine radnog staÅ¾a*");
+		 serviceYearsLabel = new JLabel("Godine radnog staža*");
 		 serviceYearsField = new JTextField(serviceYears);
 		
 	
@@ -168,7 +168,7 @@ public class ProfessorInfoPanel extends JPanel {
 		buttonEnabler.addDocument(streetAdressField.getDocument());
 		buttonEnabler.addDocument(numberAdressField.getDocument());
 		buttonEnabler.addDocument(cityAdressField.getDocument());
-		buttonEnabler.addDocument(cityAdressField.getDocument());
+		buttonEnabler.addDocument(countryAdressField.getDocument());
 		buttonEnabler.addDocument(phoneField.getDocument());
 		buttonEnabler.addDocument(emailField.getDocument());
 		buttonEnabler.addDocument(streetOfficeAdressField.getDocument());
