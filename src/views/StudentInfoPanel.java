@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
+import javax.swing.ButtonModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -168,6 +169,20 @@ public class StudentInfoPanel extends JPanel{
 		}
 		
 		JButton confirmButton = new JButton("Potvrdi");
+		ButtonModel confirmButtonModel = confirmButton.getModel();
+		ButtonEnabler buttonEnabler = new ButtonEnabler(confirmButtonModel);
+		buttonEnabler.addDocument(surnameField.getDocument());
+		buttonEnabler.addDocument(nameField.getDocument());
+		buttonEnabler.addDocument(birthDateField.getDocument());
+		buttonEnabler.addDocument(streetField.getDocument());
+		buttonEnabler.addDocument(numberField.getDocument());
+		buttonEnabler.addDocument(cityField.getDocument());
+		buttonEnabler.addDocument(countryField.getDocument());
+		buttonEnabler.addDocument(phoneField.getDocument());
+		buttonEnabler.addDocument(emailField.getDocument());
+		buttonEnabler.addDocument(indexField.getDocument());
+		buttonEnabler.addDocument(enrollmentYearField.getDocument());
+		
 		confirmButton.addActionListener(new ActionListener(){
 	
 			@Override

@@ -82,7 +82,6 @@ public class StudentAddFrame extends JFrame{
 		studentStatusComboBox.addItem("Samofinansiranje");
 
 		JButton confirmButton = new JButton("Potvrdi");
-		confirmButton.setEnabled(false);
 		ButtonModel confirmButtonModel = confirmButton.getModel();
 		ButtonEnabler buttonEnabler = new ButtonEnabler(confirmButtonModel);	
 		buttonEnabler.addDocument(surnameField.getDocument());
