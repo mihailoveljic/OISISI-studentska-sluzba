@@ -115,7 +115,7 @@ public class StudentInfoPanel extends JPanel{
 		nameField = new JTextField(name);
 		surnameLabel = new JLabel("Prezime*");
 		surnameField = new JTextField(surname);
-		birthDateLabel = new JLabel("Datum roðenja*");
+		birthDateLabel = new JLabel("Datum roðenja* (DD.MM.YYYY.)");
 		birthDateField = new JTextField(birthDate);
 		streetLabel = new JLabel("Ulica stanovanja*");
 		streetField = new JTextField(street);
@@ -198,7 +198,7 @@ public class StudentInfoPanel extends JPanel{
 						currentYearOfStudyComboBox.getSelectedIndex(), studentStatusComboBox.getSelectedIndex());
 				
 				if( dataValid != "OK") {
-					JOptionPane.showMessageDialog(null, dataValid);
+					JOptionPane.showMessageDialog(StudentEditFrame.getInstance(), dataValid);
 				}else {
 					StudentEditFrame.getInstance().dispose();
 					

@@ -52,7 +52,7 @@ public class ProfessorAddFrame extends JDialog {
 		JTextField surnameField = new JTextField();
 		JLabel nameLabel = new JLabel("Ime*");
 		JTextField nameField = new JTextField();
-		JLabel birthDateLabel = new JLabel("Datum roðenja*");
+		JLabel birthDateLabel = new JLabel("Datum roðenja* (DD.MM.YYYY.)");
 		JTextField birthDateField = new JTextField();
 		JLabel streetAdressLabel = new JLabel("Ulica stanovanja*");
 		JTextField streetAdressField = new JTextField();
@@ -115,7 +115,7 @@ public class ProfessorAddFrame extends JDialog {
 						titleField.getText(), serviceYearsField.getText());
 			
 			if(dataValid != "OK") {
-				JOptionPane.showMessageDialog(null, dataValid);
+				JOptionPane.showMessageDialog(ProfessorAddFrame.getInstance(), dataValid);
 				}else {
 					ProfessorAddFrame.getInstance().dispose();
 					

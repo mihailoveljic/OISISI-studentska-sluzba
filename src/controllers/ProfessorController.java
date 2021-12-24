@@ -41,7 +41,7 @@ public class ProfessorController {
 		
 		try {
 			String parts[] = birthDate.split("[.]");
-			if(parts.length >= 3) {
+			if(parts.length == 3) {
 				formattedBirthDate = new Date(Integer.parseInt(parts[2]), Integer.parseInt(parts[1]) - 1, Integer.parseInt(parts[0]));
 			}else {
 				return "Unesite datum u formatu: DD.MM.YYYY.";
@@ -82,14 +82,17 @@ public class ProfessorController {
 		formattedPhone = phone;
 			
 		formattedEmail=email;
-		try {
-			boolean isValid = formattedEmail.matches("(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])");
-			if(!isValid) {
-				return "Unesite ispravan email!";
-			}
-		}catch(Exception e) {
-			return "Unesite ispravan email!";
-		}
+//		try {
+//			boolean isValid = formattedEmail.matches("(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])");
+//			if(!isValid) {
+//				return "Unesite ispravan email!";
+//			}
+//		}catch(Exception e) {
+//			return "Unesite ispravan email!";
+//		}
+		
+		if(formattedEmail.equals(""))
+			return "Unesite email!";
 	
 		if(streetOfficeAdress.equals(""))
 			return "Unesite ulicu!";
@@ -105,13 +108,13 @@ public class ProfessorController {
 		try {
 			formattedIdNumber=Integer.parseInt(idNumber);
 		} catch(Exception e) {
-				return "Neispravan broj liène karte!";	
+				return "Broj liène karte mora biti broj!";	
 		}
 		
 		try {
 			formattedServiceYears=Integer.parseInt(serviceYears);
 		} catch(Exception e) {
-				return "Neispravan unet radni staž!";	
+				return "Broj godina staža mora biti broj!";	
 		}
 		
 		

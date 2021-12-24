@@ -128,7 +128,7 @@ public class ProfessorInfoPanel extends JPanel {
 		 surnameField = new JTextField(surname);
 		 nameLabel = new JLabel("Ime*");
 		 nameField = new JTextField(name);
-		 birthDateLabel = new JLabel("Datum roðenja");
+		 birthDateLabel = new JLabel("Datum roðenja (DD.MM.YYYY.)");
 		 birthDateField = new JTextField(birthDate);
 		 streetAdressLabel = new JLabel("Ulica stanovanja*");
 		 streetAdressField = new JTextField(streetAdress);
@@ -159,7 +159,6 @@ public class ProfessorInfoPanel extends JPanel {
 		
 	
 		 JButton confirmButton = new JButton("Potvrdi");
-		confirmButton.setEnabled(false);
 		ButtonModel confirmButtonModel = confirmButton.getModel();
 		ButtonEnabler buttonEnabler = new ButtonEnabler(confirmButtonModel);
 		buttonEnabler.addDocument(surnameField.getDocument());
@@ -194,7 +193,7 @@ public class ProfessorInfoPanel extends JPanel {
 			
 			
 			if(dataValid != "OK") {
-				JOptionPane.showMessageDialog(null, dataValid);
+				JOptionPane.showMessageDialog(ProfessorEditFrame.getInstance(), dataValid);
 				}else {
 					ProfessorEditFrame.getInstance().dispose();
 					

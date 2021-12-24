@@ -56,7 +56,7 @@ public class StudentAddFrame extends JDialog{
 		JTextField nameField = new JTextField();
 		JLabel surnameLabel = new JLabel("Prezime*");
 		JTextField surnameField = new JTextField();
-		JLabel birthDateLabel = new JLabel("Datum roðenja* (dd.mm.yy)");
+		JLabel birthDateLabel = new JLabel("Datum roðenja* (DD.MM.YYYY)");
 		JTextField birthDateField = new JTextField();
 		JLabel streetLabel = new JLabel("Ulica stanovanja*");
 		JTextField streetField = new JTextField();
@@ -112,7 +112,7 @@ public class StudentAddFrame extends JDialog{
 						currentYearOfStudyComboBox.getSelectedIndex(), studentStatusComboBox.getSelectedIndex());
 				
 				if( dataValid != "OK") {
-					JOptionPane.showMessageDialog(null, dataValid);
+					JOptionPane.showMessageDialog(StudentAddFrame.getInstance(), dataValid);
 				}else {
 					StudentAddFrame.getInstance().dispose();
 					
