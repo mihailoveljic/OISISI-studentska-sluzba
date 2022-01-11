@@ -5,7 +5,7 @@ import java.util.Set;
 public class Subject {
 
 	
-	private int id;
+	private String id;
 	private String name;
 	private Semester semester;
     private int yearOfStudy;
@@ -13,7 +13,7 @@ public class Subject {
     private int ESPB;
     private Set<Student> listOfStudentsWhoPassed;
     private Set<Student> listOfStudentsWhoFailed;
-	public Subject(int id, String name, Semester semester, int yearOfStudy, Professor professor, int eSPB,
+	public Subject(String id, String name, Semester semester, int yearOfStudy, Professor professor, int eSPB,
 			Set<Student> listOfStudentsWhoPassed, Set<Student> listOfStudentsWhoFailed) {
 		super();
 		this.id = id;
@@ -28,7 +28,7 @@ public class Subject {
 	
 	
 	
-	public Subject(int id, String name, Semester semester, int yearOfStudy, int eSPB) {
+	public Subject(String id, String name, Semester semester, int yearOfStudy, int eSPB) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -39,10 +39,10 @@ public class Subject {
 
 
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getName() {

@@ -62,6 +62,8 @@ public class DbProfessors {
 	}
 	
 	public Professor getRow(int rowIndex) {
+		if(rowIndex <= -1)
+			return null;
 		return this.professors.get(rowIndex);
 	}
 	
