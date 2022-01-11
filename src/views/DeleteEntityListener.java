@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 
 import controllers.ProfessorController;
 import controllers.StudentController;
+import controllers.SubjectController;
 
 public class DeleteEntityListener implements ActionListener{
 
@@ -44,6 +45,15 @@ public class DeleteEntityListener implements ActionListener{
 			break;
 		case 2:
 			//TODO Edit Subject
+			if(SubjectTable.getInstance().getSelectedRow() != -1) {
+				int userInput = JOptionPane.showOptionDialog(mainTabbedPane, "Da li ste sigurni da želite da obrišete predmet?", "Brisanje predmeta", JOptionPane.YES_NO_OPTION, 0, null, null, e);
+				if(userInput == JOptionPane.YES_OPTION) {
+					SubjectController subjectController = new SubjectController();
+					subjectController.deleteSubject(SubjectTable.getInstance().getSelectedRow());
+				}
+			}else {
+				JOptionPane.showMessageDialog(null, "Odaberi predmet prvo!");
+			}
 			break;
 		default:
 			System.out.println("ERROR");

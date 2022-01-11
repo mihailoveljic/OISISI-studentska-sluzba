@@ -33,11 +33,11 @@ public class DbSubjects {
 		
 		//TODO iz datoteke 
 		
-		subjects.add(new Subject(123, "MATEMATICKA ANALIZA 1",Semester.ZIMSKI, 1, 1000));
-		subjects.add(new Subject(123, "MATEMATICKA ANALIZA 1",Semester.ZIMSKI, 1, 1000));
-		subjects.add(new Subject(123, "MATEMATICKA ANALIZA 1",Semester.ZIMSKI, 1, 1000));
-		subjects.add(new Subject(123, "MATEMATICKA ANALIZA 1",Semester.ZIMSKI, 1, 1000));
-		subjects.add(new Subject(123, "MATEMATICKA ANALIZA 1",Semester.ZIMSKI, 1, 1000));
+		subjects.add(new Subject("123", "MATEMATICKA ANALIZA 1",Semester.ZIMSKI, 1, 1000));
+		subjects.add(new Subject("123", "MATEMATICKA ANALIZA 1",Semester.ZIMSKI, 1, 1000));
+		subjects.add(new Subject("123", "MATEMATICKA ANALIZA 1",Semester.ZIMSKI, 1, 1000));
+		subjects.add(new Subject("123", "MATEMATICKA ANALIZA 1",Semester.ZIMSKI, 1, 1000));
+		subjects.add(new Subject("123", "MATEMATICKA ANALIZA 1",Semester.ZIMSKI, 1, 1000));
 
 	}
 	
@@ -59,7 +59,7 @@ public class DbSubjects {
 		Subject subjects = this.subjects.get(row);
 		switch(column) {
 		case 0:
-			return Integer.toString(subjects.getId());
+			return subjects.getId();
 		case 1:
 			return subjects.getName();
 		case 2:
@@ -79,13 +79,13 @@ public class DbSubjects {
 	}
 	
 	
-	public void addSubject(int id, String name, Semester semester, 
+	public void addSubject(String id, String name, Semester semester, 
 			int yearOfStudy, Professor professor, int ESPB) {
 		
 		this.subjects.add(new Subject(id, name, semester, yearOfStudy, professor, ESPB, null, null));
 	}
 	
-	public void editSubject(int id, String name, Semester semester, 
+	public void editSubject(String id, String name, Semester semester, 
 			int yearOfStudy, Professor professor, int ESPB) {
 		for(Subject i : subjects) {
 			if(i.getId()==id) {
@@ -98,13 +98,19 @@ public class DbSubjects {
 		}
 	}
 	
-	public void deleteSubject(int id) {
+	public void deleteSubject(String id) {
 		for (Subject i : subjects) {
 			if(i.getId()==id) {
-				subjects.remove(id);
+				subjects.remove(i);
 				break;
 			}
 		}
+	}
+	
+	public Subject getRow(int rowIndex) {
+		if(rowIndex <= -1)
+			return null;
+		return this.subjects.get(rowIndex);
 	}
 	
 
