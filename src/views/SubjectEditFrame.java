@@ -7,7 +7,6 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-import java.util.Set;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonModel;
@@ -15,14 +14,15 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
+import controllers.SubjectController;
 import models.DbSubjects;
 import models.Professor;
 import models.Semester;
-import models.Student;
 import models.Subject;
 
 public class SubjectEditFrame extends JDialog{
@@ -155,6 +155,30 @@ public class SubjectEditFrame extends JDialog{
 		buttonEnabler.addDocument(nameField.getDocument());
 		buttonEnabler.addDocument(espbField.getDocument());
 		
+		confirmButton.addActionListener(new ActionListener(){
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				SubjectController subjectController = new SubjectController();
+				
+				String dataValid = subjectController.editSubject(SubjectTable.getInstance().getSelectedRow(),
+						idField.getText(), nameField.getText(), currentYearOfStudyComboBox.getSelectedIndex(),
+						semesterComboBox.getSelectedIndex(),espbField.getText(), professor);
+				
+				if( dataValid != "OK") {
+					JOptionPane.showMessageDialog(null, dataValid);
+				}else {					
+					idField.setText("");
+					nameField.setText("");
+					currentYearOfStudyComboBox.setSelectedIndex(0);
+					semesterComboBox.setSelectedIndex(0);
+					espbField.setText("");
+					professorTextField.setText("");
+					SubjectEditFrame.getInstance().dispose();
+				}
+			}
+			
+		});
 		
 		JButton cancelButton = new JButton("Odustani");
 		cancelButton.addActionListener(new ActionListener() {
@@ -165,7 +189,7 @@ public class SubjectEditFrame extends JDialog{
 				nameField.setText("");
 				currentYearOfStudyComboBox.setSelectedIndex(0);
 				semesterComboBox.setSelectedIndex(0);
-				espbLabel.setText("");
+				espbField.setText("");
 				professorTextField.setText("");
 				SubjectEditFrame.getInstance().dispose();
 			}
@@ -190,6 +214,62 @@ public class SubjectEditFrame extends JDialog{
 	    this.getContentPane().add(contentPanel);
 		
 		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+	}
+	
+	public void updateSubjectSelection(int selectedRow) {
+		s = DbSubjects.getInstance().getRow(selectedRow);
+		if(s != null) {
+			id = s.getId();
+			name = s.getName();
+		    yearOfStudy = s.getYearOfStudy();
+			semester = s.getSemester();
+		    ESPB = String.valueOf(s.getESPB());
+		    professor = s.getProfessor();
+		}else {
+			id = "";
+			name = "";
+		    yearOfStudy = 0;
+			semester = Semester.ZIMSKI;
+		    ESPB = "";
+		    professor = null;
+		}
+		
+		idField.setText(id);
+		nameField.setText(name);
+		switch(yearOfStudy) {
+		case 1:
+			currentYearOfStudyComboBox.setSelectedIndex(0);
+			break;
+		case 2:
+			currentYearOfStudyComboBox.setSelectedIndex(1);
+			break;
+		case 3:
+			currentYearOfStudyComboBox.setSelectedIndex(2);
+			break;
+		case 4:
+			currentYearOfStudyComboBox.setSelectedIndex(3);
+			break;
+		default:
+			break;
+		}
+		switch(semester) {
+		case ZIMSKI:
+			currentYearOfStudyComboBox.setSelectedIndex(0);
+			break;
+		case LETNJI:
+			currentYearOfStudyComboBox.setSelectedIndex(1);
+			break;
+		default:
+			break;
+		}
+		espbField.setText(ESPB);
+		if(professor == null) {
+			professorTextField.setText("");
+		}else {
+			professorTextField.setText(professor.getName() + " " + professor.getSurname());
+		}
+		professorTextField.setEditable(false);
+		
 	}
 	
 	public static SubjectEditFrame getInstance()
