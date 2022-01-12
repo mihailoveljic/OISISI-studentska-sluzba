@@ -24,7 +24,7 @@ public class EditEntityListener implements ActionListener{
 				StudentInfoPanel.getInstance().updateStudentSelection(StudentTable.getInstance().getSelectedRow());
 				studentEditFrame.setVisible(true);
 			}else {
-				JOptionPane.showMessageDialog(null, "Odaberi studenta studenta prvo!");
+				JOptionPane.showMessageDialog(null, "Odaberi studenta prvo!");
 			}
 			break;
 		case 1:
@@ -39,7 +39,14 @@ public class EditEntityListener implements ActionListener{
 			}
 			break;
 		case 2:
-			//TODO Edit Subject
+			SubjectEditFrame subjectEditFrame;
+			if(SubjectTable.getInstance().getSelectedRow() != -1) {
+				subjectEditFrame = SubjectEditFrame.getInstance();
+				subjectEditFrame.updateSubjectSelection(SubjectTable.getInstance().getSelectedRow());
+				subjectEditFrame.setVisible(true);
+			}else {
+				JOptionPane.showMessageDialog(null, "Odaberi predmet prvo!");
+			}
 			break;
 		default:
 			System.out.println("ERROR");
