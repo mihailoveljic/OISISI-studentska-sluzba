@@ -4,16 +4,23 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 
 import javax.swing.BorderFactory;
+import javax.swing.ButtonModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
+
+import controllers.SubjectController;
+import models.Professor;
 
 public class SubjectAddFrame extends JDialog{
 	
@@ -24,6 +31,9 @@ public class SubjectAddFrame extends JDialog{
 	private static final long serialVersionUID = -4125736938637561082L;
 
 	private static SubjectAddFrame instance;
+	
+	private static Professor professor = null;
+	
 	private SubjectAddFrame(){
 		super();
 
@@ -66,6 +76,7 @@ public class SubjectAddFrame extends JDialog{
 		currentYearOfStudyComboBox.addItem("I (Èetvrta)");		
 		JLabel professorLabel = new JLabel("Profesor*");
 		JTextField professorField = new JTextField();
+		professorField.setEditable(false);
 		JButton addProfessorButton = new JButton("+");
 		JButton removeProfessorButton = new JButton("-");
 		if(professorField.getText().equals(""))
@@ -80,8 +91,53 @@ public class SubjectAddFrame extends JDialog{
 		}
 		JLabel espbLabel = new JLabel("ESPB*");
 		JTextField espbField = new JTextField();
+		
+		
 		JButton confirmButton = new JButton("Potvrdi");
+		ButtonModel confirmButtonModel = confirmButton.getModel();
+		ButtonEnabler buttonEnabler = new ButtonEnabler(confirmButtonModel);	
+		buttonEnabler.addDocument(idField.getDocument());
+		buttonEnabler.addDocument(nameField.getDocument());
+		buttonEnabler.addDocument(espbField.getDocument());
+		confirmButton.addActionListener(new ActionListener(){
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				SubjectController subjectController = new SubjectController();
+				
+				String dataValid = subjectController.addSubject(idField.getText(), nameField.getText(),
+						currentYearOfStudyComboBox.getSelectedIndex(),
+						semesterComboBox.getSelectedIndex(),espbField.getText(), professor);
+				
+				if( dataValid != "OK") {
+					JOptionPane.showMessageDialog(null, dataValid);
+				}else {					
+					idField.setText("");
+					nameField.setText("");
+					currentYearOfStudyComboBox.setSelectedIndex(0);
+					semesterComboBox.setSelectedIndex(0);
+					espbField.setText("");
+					professorField.setText("");
+					SubjectAddFrame.getInstance().dispose();
+				}
+			}
+			
+		});
+		
 		JButton cancelButton = new JButton("Odustani");
+		cancelButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				idField.setText("");
+				nameField.setText("");
+				currentYearOfStudyComboBox.setSelectedIndex(0);
+				semesterComboBox.setSelectedIndex(0);
+				espbField.setText("");
+				professorField.setText("");
+				SubjectAddFrame.getInstance().dispose();
+			}
+		});
 		
 		contentPanel.add(idLabel);
 		contentPanel.add(idField);
@@ -102,6 +158,14 @@ public class SubjectAddFrame extends JDialog{
 	    this.getContentPane().add(contentPanel);
 		
 		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+	}
+	
+	public static void setProfessor(Professor p) {
+		professor = p;
+	}
+	
+	public static Professor getProfessor() {
+		return professor;
 	}
 	
 	public static SubjectAddFrame getInstance()
