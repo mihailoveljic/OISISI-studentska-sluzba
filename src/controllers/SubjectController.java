@@ -59,6 +59,7 @@ public class SubjectController {
 		subject.setSemester(formattedSemester);
 		subject.setESPB(formattedEspb);
 		subject.setProfessor(p);
+		p.getSubjects().add(subject);
 	
 		
 		SubjectPanel.getInstance().updateView();
