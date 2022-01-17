@@ -76,7 +76,12 @@ public class StudentController {
 	@SuppressWarnings("deprecation")
 	private String validateStudent(String surname, String name, String birthDate, String street, String number, String city, String country, String phone, String email, String index,
 			String enrollmentYear, int currentYearOfStudy, int studentStatus) {
-			
+				
+				for(Student s : DbStudents.getInstance().getStudents()) {
+					if(s.getIndex().equals(index))
+						return "Indeks studenta mora biti jedinstven!";
+				}
+		
 				try {
 				String parts[] = birthDate.split("[.]");
 				if(parts.length >= 3) {

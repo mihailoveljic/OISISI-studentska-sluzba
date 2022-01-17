@@ -66,6 +66,12 @@ public class SubjectController {
 	public String validateSubject(String id, String name, int currentYearOfStudy, int semester,
 			String espb, Professor p) {
 		
+		for(Subject s : DbSubjects.getInstance().getSubjects()) {
+			if(s.getId().equals(id))
+				return "ID predmeta mora biti jedinstven!";
+		}
+		
+		
 		try {
 			formattedEspb = Integer.parseInt(espb);
 		} catch(Exception e) {

@@ -112,7 +112,7 @@ public class StudentAddFrame extends JDialog{
 						currentYearOfStudyComboBox.getSelectedIndex(), studentStatusComboBox.getSelectedIndex());
 				
 				if( dataValid != "OK") {
-					JOptionPane.showMessageDialog(null, dataValid);
+					JOptionPane.showMessageDialog(StudentAddFrame.getInstance(), dataValid);
 				}else {
 					StudentAddFrame.getInstance().dispose();
 					
