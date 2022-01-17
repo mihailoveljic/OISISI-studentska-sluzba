@@ -33,11 +33,11 @@ public class DbSubjects {
 		
 		//TODO iz datoteke 
 		
-		subjects.add(new Subject("123", "MATEMATICKA ANALIZA 1",Semester.ZIMSKI, 1, 1000));
-		subjects.add(new Subject("123", "MATEMATICKA ANALIZA 1",Semester.ZIMSKI, 1, 1000));
-		subjects.add(new Subject("123", "MATEMATICKA ANALIZA 1",Semester.ZIMSKI, 1, 1000));
-		subjects.add(new Subject("123", "MATEMATICKA ANALIZA 1",Semester.ZIMSKI, 1, 1000));
-		subjects.add(new Subject("123", "MATEMATICKA ANALIZA 1",Semester.ZIMSKI, 1, 1000));
+		subjects.add(new Subject("1", "MATEMATICKA ANALIZA 1",Semester.ZIMSKI, 1, 1000));
+		subjects.add(new Subject("2", "MATEMATICKA ANALIZA 1",Semester.ZIMSKI, 1, 1000));
+		subjects.add(new Subject("3", "MATEMATICKA ANALIZA 1",Semester.ZIMSKI, 1, 1000));
+		subjects.add(new Subject("4", "MATEMATICKA ANALIZA 1",Semester.ZIMSKI, 1, 1000));
+		subjects.add(new Subject("5", "MATEMATICKA ANALIZA 1",Semester.ZIMSKI, 1, 1000));
 
 	}
 	

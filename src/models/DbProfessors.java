@@ -35,15 +35,15 @@ public class DbProfessors {
 		
 		//TODO ucitavace se iz datoteke
 		
-		professors.add(new Professor("Imenko", "Prezimenkovic", new Date(1960, 11, 21), new Adress("Tolstojeva", "42", "mesto", "drzava"), "+38161247888", "sasasa@gmail.com", new Adress("sasa", "42", "grad", "drzava"), 87,
+		professors.add(new Professor("Imenko1", "Prezimenkovic1", new Date(1960, 11, 21), new Adress("Tolstojeva", "42", "mesto", "drzava"), "+38161247888", "sasasa@gmail.com", new Adress("sasa", "42", "grad", "drzava"), 1,
 				"Doktor", 4));
-		professors.add(new Professor("Imenko", "Prezimenkovic", new Date(1960, 11, 21), new Adress("Tolstojeva", "42", "mesto", "drzava"), "+38161247888", "sasasa@gmail.com", new Adress("sasa", "42", "grad", "drzava"), 87,
+		professors.add(new Professor("Imenko2", "Prezimenkovic2", new Date(1960, 11, 21), new Adress("Tolstojeva", "42", "mesto", "drzava"), "+38161247888", "sasasa@gmail.com", new Adress("sasa", "42", "grad", "drzava"), 2,
 				"Doktor", 4));
-		professors.add(new Professor("Imenko", "Prezimenkovic", new Date(1960, 11, 21), new Adress("Tolstojeva", "42", "mesto", "drzava"), "+38161247888", "sasasa@gmail.com", new Adress("sasa", "42", "grad", "drzava"), 87,
+		professors.add(new Professor("Imenko3", "Prezimenkovic3", new Date(1960, 11, 21), new Adress("Tolstojeva", "42", "mesto", "drzava"), "+38161247888", "sasasa@gmail.com", new Adress("sasa", "42", "grad", "drzava"), 3,
 				"Doktor", 4));
-		professors.add(new Professor("Imenko", "Prezimenkovic", new Date(1960, 11, 21), new Adress("Tolstojeva", "42", "mesto", "drzava"), "+38161247888", "sasasa@gmail.com", new Adress("sasa", "42", "grad", "drzava"), 87,
+		professors.add(new Professor("Imenko4", "Prezimenkovic4", new Date(1960, 11, 21), new Adress("Tolstojeva", "42", "mesto", "drzava"), "+38161247888", "sasasa@gmail.com", new Adress("sasa", "42", "grad", "drzava"), 4,
 				"Doktor", 4));
-		professors.add(new Professor("Imenko", "Prezimenkovic", new Date(1960, 11, 21), new Adress("Tolstojeva", "42", "mesto", "drzava"), "+38161247888", "sasasa@gmail.com", new Adress("sasa", "42", "grad", "drzava"), 87,
+		professors.add(new Professor("Imenko5", "Prezimenkovic5", new Date(1960, 11, 21), new Adress("Tolstojeva", "42", "mesto", "drzava"), "+38161247888", "sasasa@gmail.com", new Adress("sasa", "42", "grad", "drzava"), 5,
 
 				"Doktor", 4));
 		
