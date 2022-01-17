@@ -115,7 +115,7 @@ public class ProfessorAddFrame extends JDialog {
 						titleField.getText(), serviceYearsField.getText());
 			
 			if(dataValid != "OK") {
-				JOptionPane.showMessageDialog(null, dataValid);
+				JOptionPane.showMessageDialog(ProfessorAddFrame.getInstance(), dataValid);
 				}else {
 					ProfessorAddFrame.getInstance().dispose();
 					

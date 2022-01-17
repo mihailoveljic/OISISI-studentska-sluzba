@@ -39,6 +39,9 @@ public class ProfessorController {
 			String cityAdress, String countryAdress, String phone, String email, String streetOfficeAdress, String numberOfficeAdress,
 			String cityOfficeAdress, String countryOfficeAdress, String idNumber, String title, String serviceYears) {
 		
+	
+		
+		
 		try {
 			String parts[] = birthDate.split("[.]");
 			if(parts.length >= 3) {
@@ -106,6 +109,12 @@ public class ProfessorController {
 			formattedIdNumber=Integer.parseInt(idNumber);
 		} catch(Exception e) {
 				return "Neispravan broj liène karte!";	
+		}
+		
+
+		for(Professor p : DbProfessors.getInstance().getProfessors()) {
+			if(p.getIdNumber() == formattedIdNumber)
+				return "Broj liène karte mora biti jedinstven!";
 		}
 		
 		try {

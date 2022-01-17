@@ -110,7 +110,7 @@ public class SubjectAddFrame extends JDialog{
 						semesterComboBox.getSelectedIndex(),espbField.getText(), professor);
 				
 				if( dataValid != "OK") {
-					JOptionPane.showMessageDialog(null, dataValid);
+					JOptionPane.showMessageDialog(SubjectAddFrame.getInstance(), dataValid);
 				}else {					
 					idField.setText("");
 					nameField.setText("");

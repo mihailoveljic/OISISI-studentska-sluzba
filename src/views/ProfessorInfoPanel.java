@@ -194,7 +194,7 @@ public class ProfessorInfoPanel extends JPanel {
 			
 			
 			if(dataValid != "OK") {
-				JOptionPane.showMessageDialog(null, dataValid);
+				JOptionPane.showMessageDialog(ProfessorInfoPanel.getInstance(), dataValid);
 				}else {
 					ProfessorEditFrame.getInstance().dispose();
 					

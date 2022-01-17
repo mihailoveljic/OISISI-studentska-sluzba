@@ -19,7 +19,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
-import controllers.StudentController;
 import controllers.SubjectController;
 import models.DbSubjects;
 import models.Professor;
@@ -190,7 +189,7 @@ public class SubjectEditFrame extends JDialog{
 						semesterComboBox.getSelectedIndex(),espbField.getText(), professor);
 				
 				if( dataValid != "OK") {
-					JOptionPane.showMessageDialog(null, dataValid);
+					JOptionPane.showMessageDialog(SubjectEditFrame.getInstance(), dataValid);
 				}else {					
 					idField.setText("");
 					nameField.setText("");

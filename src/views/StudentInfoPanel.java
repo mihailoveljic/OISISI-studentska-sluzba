@@ -198,7 +198,7 @@ public class StudentInfoPanel extends JPanel{
 						currentYearOfStudyComboBox.getSelectedIndex(), studentStatusComboBox.getSelectedIndex());
 				
 				if( dataValid != "OK") {
-					JOptionPane.showMessageDialog(null, dataValid);
+					JOptionPane.showMessageDialog(StudentInfoPanel.getInstance(), dataValid);
 				}else {
 					StudentEditFrame.getInstance().dispose();
 					
