@@ -24,6 +24,7 @@ public class EditEntityListener implements ActionListener{
 			if(StudentTable.getInstance().getSelectedRow() != -1) {
 				studentEditFrame = StudentEditFrame.getInstance();
 				StudentInfoPanel.getInstance().updateStudentSelection(StudentTable.getInstance().getSelectedRow());
+				StudentGradesPanel.getInstance().refresh();
 				studentEditFrame.setVisible(true);
 			}else {
 				JOptionPane.showMessageDialog(null, "Odaberi studenta prvo!");

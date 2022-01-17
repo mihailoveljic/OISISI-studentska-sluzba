@@ -36,19 +36,19 @@ public class DbStudents {
 		
 		//TODO Citanje iz datoteke
 		
-		students.add(new Student("Prezimenovic1", "Imenko1", new Date(2000, 5, 16),
+		students.add(new Student("Petrovic", "Petar", new Date(2000, 5, 16),
 				new Adress("Tolstojeva", "15", "Novi Sad", "Srbija"), "+381694732572",
 				"imenkoprezimenovic@gmail.com", "RA12/2020", 2020, 2, StudentStatus.B));
-		students.add(new Student("Prezimenovic2", "Imenko2", new Date(2000, 5, 16),
+		students.add(new Student("Stefanovic", "Mirko", new Date(2000, 5, 16),
 				new Adress("Tolstojeva", "15", "Novi Sad", "Srbija"), "+381694732572",
 				"imenkoprezimenovic@gmail.com", "RA21/2020", 2020, 2, StudentStatus.B));
-		students.add(new Student("Prezimenovic3", "Imenko3", new Date(2000, 5, 16),
+		students.add(new Student("Jovanovic", "Jovan", new Date(2000, 5, 16),
 				new Adress("Tolstojeva", "15", "Novi Sad", "Srbija"), "+381694732572",
 				"imenkoprezimenovic@gmail.com", "II12/2020", 2020, 2, StudentStatus.B));
-		students.add(new Student("Prezimenovic4", "Imenko4", new Date(2000, 5, 16),
+		students.add(new Student("Blazic", "Drago", new Date(2000, 5, 16),
 				new Adress("Tolstojeva", "15", "Novi Sad", "Srbija"), "+381694732572",
 				"imenkoprezimenovic@gmail.com", "II21/2020", 2020, 2, StudentStatus.B));
-		students.add(new Student("Prezimenovic5", "Imenko5", new Date(2000, 5, 16),
+		students.add(new Student("Dragoljevic", "Stevanka", new Date(2000, 5, 16),
 				new Adress("Tolstojeva", "15", "Novi Sad", "Srbija"), "+381694732572",
 				"imenkoprezimenovic@gmail.com", "RI22/2020", 2020, 2, StudentStatus.B));
 		

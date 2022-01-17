@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
+import models.DbProfessors;
 import models.DbStudents;
 import models.Grade;
 import models.Student;
@@ -101,5 +102,8 @@ public class AbstractTableModelGrades  extends AbstractTableModel{
 				return null;
 		
 		}
+	}
+	public void updateStudent(int selectedRow) {
+		s = DbStudents.getInstance().getRow(selectedRow);
 	}
 }
