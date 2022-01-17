@@ -6,8 +6,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+
+import models.DbProfessors;
+import models.DbSubjects;
+import models.Professor;
+import models.Subject;
 
 
 public class ProfessorSubjectPanel extends JPanel{
@@ -48,7 +54,32 @@ public class ProfessorSubjectPanel extends JPanel{
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				//TODO obrisi predmet profesoru
+				int row = subjectsTable.getSelectedRow();
+				Professor p = DbProfessors.getInstance().getRow(ProfessorTable.getInstance().getSelectedRow());
+				
+				if (row >= 0 && row <= subjectsTable.getRowCount()) {
+					int userInput = JOptionPane.showConfirmDialog(ProfessorSubjectPanel.getInstance(), "Da li ste sigurni da želite da obrišete predmet sa profesora?",
+							"Brisanje predmeta", JOptionPane.YES_NO_OPTION);
+					if (userInput == JOptionPane.YES_OPTION) {
+						
+						for(Subject s : DbSubjects.getInstance().getSubjects()) {
+							if(p.getSubjects().get(row).equals(s)) {
+								DbSubjects.getInstance().editSubject(s.getId(), s.getName(), s.getSemester(),
+										s.getYearOfStudy(), null, s.getESPB());
+							}
+						}
+						
+						p.getSubjects().remove(row);
+						refresh();			
+						JOptionPane.showMessageDialog(ProfessorSubjectPanel.getInstance(), "Predmet je obrisan!");
+					} else {
+						JOptionPane.showMessageDialog(ProfessorSubjectPanel.getInstance(), "Predmet nije obrisan.");
+					}
+				} else {
+					JOptionPane.showMessageDialog(ProfessorSubjectPanel.getInstance(), "Predmet nije selektovan.", "Upozorenje!",
+							JOptionPane.ERROR_MESSAGE);
+				}
+				removeButton.setSelected(false);
 			}
 			
 		});

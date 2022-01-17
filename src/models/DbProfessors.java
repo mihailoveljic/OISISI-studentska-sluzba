@@ -43,10 +43,11 @@ public class DbProfessors {
 		professors.add(new Professor("Imenko4", "Prezimenkovic4", new Date(1960, 11, 21), new Adress("Tolstojeva", "42", "mesto", "drzava"), "+38161247888", "sasasa@gmail.com", new Adress("sasa", "42", "grad", "drzava"), 4,
 				"Doktor", 4));
 		professors.add(new Professor("Imenko5", "Prezimenkovic5", new Date(1960, 11, 21), new Adress("Tolstojeva", "42", "mesto", "drzava"), "+38161247888", "sasasa@gmail.com", new Adress("sasa", "42", "grad", "drzava"), 5,
-
 				"Doktor", 4));
-		
-		professors.get(0).getSubjects().add(new Subject("10", "Programski Prevodioci",Semester.ZIMSKI, 1, 1000));
+
+		professors.get(0).getSubjects().add(new Subject("10", "Programski prevodioci",Semester.ZIMSKI, 1, 2));
+		professors.get(0).getSubjects().add(new Subject("11", "Baze podataka",Semester.ZIMSKI, 2, 12));
+		professors.get(0).getSubjects().add(new Subject("12", "Fizika",Semester.ZIMSKI, 3, 42));
 		
 	}
 	
