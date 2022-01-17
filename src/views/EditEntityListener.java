@@ -34,6 +34,7 @@ public class EditEntityListener implements ActionListener{
 			if(ProfessorTable.getInstance().getSelectedRow() != -1) {
 				professorEditFrame=ProfessorEditFrame.getInstance();
 				ProfessorInfoPanel.getInstance().updateProfessorSelection(ProfessorTable.getInstance().getSelectedRow());
+				professorEditFrame.getProfessorSubjectPanel().refresh();
 				professorEditFrame.setVisible(true);
 			}
 			else {
