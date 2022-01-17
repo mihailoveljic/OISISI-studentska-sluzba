@@ -95,4 +95,8 @@ public class AbstractTableModelProfessorSubjects extends AbstractTableModel{
 		
 		}
 	}
+	
+	public void updateProfessor(int selectedRow) {
+		p = DbProfessors.getInstance().getRow(selectedRow);
+	}
 }

@@ -24,14 +24,12 @@ public class ProfessorSubjectPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 
 	
-	public static ProfessorSubjectPanel instance;
-	
 	private ProfessorSubjectsTable subjectsTable;
 	private JButton addButton;
 	private JButton removeButton;
 	private JScrollPane scrollPane;
 	
-	private ProfessorSubjectPanel() {
+	public ProfessorSubjectPanel() {
 		super();
 		setLayout(new BorderLayout());
 		setOpaque(false);
@@ -46,7 +44,11 @@ public class ProfessorSubjectPanel extends JPanel{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//TODO dodaj predmet profesoru 
+				ProfessorSubjectAddFrame professorSubjectAddFrame = new ProfessorSubjectAddFrame();
+				professorSubjectAddFrame.setVisible(true);
+				refresh();
+				professorSubjectAddFrame.setVisible(false);
+				addButton.setSelected(false);
 			}
 		});
 		commandPanel.add(removeButton);
@@ -58,7 +60,7 @@ public class ProfessorSubjectPanel extends JPanel{
 				Professor p = DbProfessors.getInstance().getRow(ProfessorTable.getInstance().getSelectedRow());
 				
 				if (row >= 0 && row <= subjectsTable.getRowCount()) {
-					int userInput = JOptionPane.showConfirmDialog(ProfessorSubjectPanel.getInstance(), "Da li ste sigurni da želite da obrišete predmet sa profesora?",
+					int userInput = JOptionPane.showConfirmDialog(ProfessorEditFrame.getInstance().getProfessorSubjectPanel(), "Da li ste sigurni da želite da obrišete predmet sa profesora?",
 							"Brisanje predmeta", JOptionPane.YES_NO_OPTION);
 					if (userInput == JOptionPane.YES_OPTION) {
 						
@@ -71,12 +73,12 @@ public class ProfessorSubjectPanel extends JPanel{
 						
 						p.getSubjects().remove(row);
 						refresh();			
-						JOptionPane.showMessageDialog(ProfessorSubjectPanel.getInstance(), "Predmet je obrisan!");
+						JOptionPane.showMessageDialog(ProfessorEditFrame.getInstance().getProfessorSubjectPanel(), "Predmet je obrisan!");
 					} else {
-						JOptionPane.showMessageDialog(ProfessorSubjectPanel.getInstance(), "Predmet nije obrisan.");
+						JOptionPane.showMessageDialog(ProfessorEditFrame.getInstance().getProfessorSubjectPanel(), "Predmet nije obrisan.");
 					}
 				} else {
-					JOptionPane.showMessageDialog(ProfessorSubjectPanel.getInstance(), "Predmet nije selektovan.", "Upozorenje!",
+					JOptionPane.showMessageDialog(ProfessorEditFrame.getInstance().getProfessorSubjectPanel(), "Predmet nije selektovan.", "Upozorenje!",
 							JOptionPane.ERROR_MESSAGE);
 				}
 				removeButton.setSelected(false);
@@ -100,16 +102,8 @@ public class ProfessorSubjectPanel extends JPanel{
 		AbstractTableModelProfessorSubjects abstractTableModelProfessorSubjects = (AbstractTableModelProfessorSubjects)subjectsTable.getModel();
 		abstractTableModelProfessorSubjects.fireTableDataChanged();
 		validate();
+		
 	}
-	
-	public static ProfessorSubjectPanel getInstance() {
-		if(instance!=null)
-		{
-			return instance;
-		} else 
-			return instance = new ProfessorSubjectPanel();
-	}
-	
-	
+		
 	
 }

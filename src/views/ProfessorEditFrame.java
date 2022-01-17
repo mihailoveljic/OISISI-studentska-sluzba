@@ -17,6 +17,9 @@ public class ProfessorEditFrame extends JDialog {
 	private static final long serialVersionUID = 1L;
 	private static ProfessorEditFrame instance;
 	
+	JTabbedPane tabbedPane;
+	static ProfessorSubjectPanel professorSubjectPanel;
+	
 	private ProfessorEditFrame() {
 		super();
 		
@@ -36,9 +39,10 @@ public class ProfessorEditFrame extends JDialog {
 		setIconImage(icon);
 		
 		
-		JTabbedPane tabbedPane = new JTabbedPane();
+		tabbedPane = new JTabbedPane();
 		tabbedPane.add(ProfessorInfoPanel.getInstance(), "Informacije");
-		tabbedPane.add(ProfessorSubjectPanel.getInstance(), "Predmeti");
+		professorSubjectPanel = new ProfessorSubjectPanel();
+		tabbedPane.add(professorSubjectPanel, "Predmeti");
 		this.add(tabbedPane);
 		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		
@@ -46,6 +50,11 @@ public class ProfessorEditFrame extends JDialog {
 		
 		
 	}
+
+	public ProfessorSubjectPanel getProfessorSubjectPanel() {
+		return professorSubjectPanel;
+	}
+	
 	
 	public  static ProfessorEditFrame getInstance() {
 		if(instance!=null) {
