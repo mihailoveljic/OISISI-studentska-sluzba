@@ -61,8 +61,11 @@ public class SubjectController {
 		if(subject.getProfessor() != null) {
 			subject.getProfessor().getSubjects().remove(subject);
 		}
-		subject.setProfessor(p);
-		p.getSubjects().add(subject);
+		if(p != null) {
+			subject.setProfessor(p);
+			p.getSubjects().add(subject);
+		}
+		
 	
 		
 		SubjectPanel.getInstance().updateView();

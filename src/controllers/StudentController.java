@@ -2,12 +2,15 @@ package controllers;
 
 import java.util.Date;
 
+import javax.swing.JOptionPane;
+
 import models.Adress;
 import models.DbStudents;
 import models.Student;
 import models.StudentStatus;
 import views.StudentInfoPanel;
 import views.StudentPanel;
+import views.StudentTable;
 
 
 public class StudentController {
@@ -18,6 +21,46 @@ public class StudentController {
 	String formattedPhone;
 	int formattedCurrentYearOfStudy;
 	StudentStatus formattedStudentStatus;
+	
+	public void searchStudent(String text) {
+		if(text.equals(""))
+		{
+			StudentTable.getInstance().clearFilter();
+			StudentPanel.getInstance().updateView();
+		}
+		
+		String words[] = text.trim().split("\\s+");
+		
+		if(words.length == 1) {
+		String surname = words[0];
+				StudentTable.getInstance().setFilter(surname, 2);
+				StudentPanel.getInstance().updateView();
+		}
+		
+		
+		else if(words.length == 2) {
+		String surname = words[0];
+		String name = words[1];
+			StudentTable.getInstance().set2Filter(surname, 2, name, 1);
+			StudentPanel.getInstance().updateView();
+		}
+		
+		else if(words.length == 3) {
+			String surname = words[0];
+			String name = words[1];
+			String index = words[2];
+				StudentTable.getInstance().set3Filter(surname, 2, name, 1, index, 0);
+				StudentPanel.getInstance().updateView();
+			}
+		
+		else {
+
+			JOptionPane.showMessageDialog(null,
+					"Unete vrednosti nisu dobre! Moguæe opcije su: <prezime>, <prezime ime>, <prezime ime indeks>.",
+					"Upozorenje!", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+	}
 	
 	public String addStudent(String surname, String name, String birthDate, String street, String number, String city, String country, String phone, String email, String index,
 			String enrollmentYear, int currentYearOfStudy, int studentStatus) {

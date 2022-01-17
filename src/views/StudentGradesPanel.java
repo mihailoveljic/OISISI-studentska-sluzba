@@ -29,6 +29,8 @@ public class StudentGradesPanel extends JPanel{
 	private JLabel espbLabel;
 	private int espb;
 	private double avgGrade;
+	private JTextField totalESPBField;
+	private JTextField avgGradeField;
 	
 	public StudentGradesPanel() {
 		super();
@@ -57,7 +59,7 @@ public class StudentGradesPanel extends JPanel{
 		DbStudents.getInstance().getRow(StudentTable.getInstance().getSelectedRow()).recalculateAvgGrade();
 		avgGrade = DbStudents.getInstance().getRow(StudentTable.getInstance().getSelectedRow()).getAverageGrade();
 		averageGradeLabel = new JLabel("Proseèna ocena: ");
-        JTextField avgGradeField = new JTextField();
+        avgGradeField = new JTextField();
         avgGradeField.setEditable(false);
         avgGradeField.setText(Double.toString(avgGrade));
         labelAvgOcenaPanel.add(averageGradeLabel);
@@ -65,7 +67,7 @@ public class StudentGradesPanel extends JPanel{
         
 		espb =  DbStudents.getInstance().getRow(StudentTable.getInstance().getSelectedRow()).getTotalESBP();
 		espbLabel = new JLabel("Ukupno ESPB: ");
-        JTextField totalESPBField = new JTextField();
+        totalESPBField = new JTextField();
         totalESPBField.setEditable(false);
         totalESPBField.setText(Integer.toString(espb));
         labelTotalESPBPanel.add(espbLabel);
@@ -90,6 +92,12 @@ public class StudentGradesPanel extends JPanel{
 		AbstractTableModelGrades abstractTableModelGrades = (AbstractTableModelGrades)gradesTable.getModel();
 		abstractTableModelGrades.fireTableDataChanged();
 		validate();
+		
+		DbStudents.getInstance().getRow(StudentTable.getInstance().getSelectedRow()).recalculateAvgGrade();
+		avgGrade = DbStudents.getInstance().getRow(StudentTable.getInstance().getSelectedRow()).getAverageGrade();
+        avgGradeField.setText(Double.toString(avgGrade));
+		espb =  DbStudents.getInstance().getRow(StudentTable.getInstance().getSelectedRow()).getTotalESBP();
+        totalESPBField.setText(Integer.toString(espb));
 	}
 	
 	public static StudentGradesPanel getInstance()

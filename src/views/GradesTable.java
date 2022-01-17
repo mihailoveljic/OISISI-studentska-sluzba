@@ -6,6 +6,10 @@ import java.awt.Component;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableModel;
+
+import models.DbProfessors;
+import models.DbStudents;
 
 public class GradesTable extends JTable{
 
@@ -13,13 +17,14 @@ public class GradesTable extends JTable{
 	 * 
 	 */
 	private static final long serialVersionUID = -1116433226137967437L;
-
+	AbstractTableModelGrades abstractTableModelGrades = new AbstractTableModelGrades();
+	
 	public GradesTable() {
 		this.getTableHeader().setReorderingAllowed(false);
 		this.setRowSelectionAllowed(true);
 		this.setColumnSelectionAllowed(true);
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		this.setModel(new AbstractTableModelGrades());
+		this.setModel(abstractTableModelGrades);
 	}
 	
 	@Override
@@ -31,5 +36,13 @@ public class GradesTable extends JTable{
 			c.setBackground(Color.WHITE);
 		}
 		return c;
+	}
+
+	@Override
+	public TableModel getModel() {
+		if(DbStudents.getInstance().getRow(StudentTable.getInstance().getSelectedRow()) != null)
+			if(abstractTableModelGrades != null)
+				abstractTableModelGrades.updateStudent(StudentTable.getInstance().getSelectedRow());
+		return super.getModel();
 	}
 }
