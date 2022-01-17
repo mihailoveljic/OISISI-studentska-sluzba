@@ -8,7 +8,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableModel;
 
-import models.DbProfessors;
+
 import models.DbStudents;
 
 public class GradesTable extends JTable{
