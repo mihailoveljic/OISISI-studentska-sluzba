@@ -46,6 +46,8 @@ public class DbProfessors {
 
 				"Doktor", 4));
 		
+		professors.get(0).getSubjects().add(new Subject("10", "Programski Prevodioci",Semester.ZIMSKI, 1, 1000));
+		
 	}
 	
 	public List<Professor> getProfessors() {
