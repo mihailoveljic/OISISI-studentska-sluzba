@@ -32,7 +32,10 @@ public class SubjectAddFrame extends JDialog{
 
 	private static SubjectAddFrame instance;
 	
-	private static Professor professor = null;
+	JButton addProfessorButton;
+	JButton removeProfessorButton;
+	JTextField professorField;
+	Professor professor = null;
 	
 	private SubjectAddFrame(){
 		super();
@@ -75,10 +78,36 @@ public class SubjectAddFrame extends JDialog{
 		currentYearOfStudyComboBox.addItem("I (Treæa)");
 		currentYearOfStudyComboBox.addItem("I (Èetvrta)");		
 		JLabel professorLabel = new JLabel("Profesor*");
-		JTextField professorField = new JTextField();
+		professorField = new JTextField();
 		professorField.setEditable(false);
-		JButton addProfessorButton = new JButton("+");
-		JButton removeProfessorButton = new JButton("-");
+
+		
+		addProfessorButton = new JButton("+");
+		addProfessorButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				SubjectAddChooseProfessor subjectAddChooseProfessor = new SubjectAddChooseProfessor();
+				subjectAddChooseProfessor.setVisible(true);
+			}
+		});
+		removeProfessorButton = new JButton("-");
+		
+		removeProfessorButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int userInput = JOptionPane.showOptionDialog(SubjectAddFrame.getInstance(), "Da li ste sigurni da želite da uklonite trenutnog profesora?",
+						"Uklanjanje profesora", JOptionPane.YES_NO_OPTION, 0, null, null, e);
+				if(userInput == JOptionPane.YES_OPTION) {
+					professor = null;
+					SubjectAddFrame.getInstance().updateProfessorSelection();
+				}
+			}
+		});
+		
+		
+		
 		if(professorField.getText().equals(""))
 		{
 			addProfessorButton.setEnabled(true);
@@ -160,11 +189,27 @@ public class SubjectAddFrame extends JDialog{
 		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 	}
 	
-	public static void setProfessor(Professor p) {
+	public void updateProfessorSelection() {
+		if(professor != null) {
+			professorField.setText(professor.getName() + " " + professor.getSurname());
+		}else {
+			professorField.setText("");
+		}
+		if(professorField.getText().equals("")) {
+			addProfessorButton.setEnabled(true);
+			removeProfessorButton.setEnabled(false);
+		}else {
+			addProfessorButton.setEnabled(false);
+			removeProfessorButton.setEnabled(true);
+		}
+		
+	}
+
+	public void setProfessor(Professor p) {
 		professor = p;
 	}
 	
-	public static Professor getProfessor() {
+	public Professor getProfessor() {
 		return professor;
 	}
 	

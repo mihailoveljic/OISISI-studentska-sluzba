@@ -33,6 +33,8 @@ public class SubjectEditFrame extends JDialog{
 	private static final long serialVersionUID = -6561684240490567882L;
 	private static SubjectEditFrame instance;
 	
+	String oldId = null;
+	
 	Subject s;
 	String id;
 	String name;
@@ -75,6 +77,7 @@ public class SubjectEditFrame extends JDialog{
 
 		s = DbSubjects.getInstance().getRow(selectedRow);
 		if(s != null) {
+			oldId = s.getId();
 			id = s.getId();
 			name = s.getName();
 		    yearOfStudy = s.getYearOfStudy();
@@ -82,6 +85,7 @@ public class SubjectEditFrame extends JDialog{
 		    ESPB = String.valueOf(s.getESPB());
 		    professor = s.getProfessor();
 		}else {
+			oldId = null;
 			id = "";
 			name = "";
 		    yearOfStudy = 0;
@@ -242,6 +246,7 @@ public class SubjectEditFrame extends JDialog{
 	public void updateSubjectSelection(int selectedRow) {
 		s = DbSubjects.getInstance().getRow(selectedRow);
 		if(s != null) {
+			oldId = s.getId();
 			id = s.getId();
 			name = s.getName();
 		    yearOfStudy = s.getYearOfStudy();
@@ -249,6 +254,7 @@ public class SubjectEditFrame extends JDialog{
 		    ESPB = String.valueOf(s.getESPB());
 		    professor = s.getProfessor();
 		}else {
+			oldId = null;
 			id = "";
 			name = "";
 		    yearOfStudy = 0;
@@ -293,6 +299,7 @@ public class SubjectEditFrame extends JDialog{
 		}
 		professorTextField.setEditable(false);
 		
+		updateProfessorSelection();
 	}
 	
 	public static SubjectEditFrame getInstance()
@@ -318,4 +325,13 @@ public class SubjectEditFrame extends JDialog{
 		}
 		
 	}
+
+	public String getOldId() {
+		return oldId;
+	}
+
+	public void setOldId(String oldId) {
+		this.oldId = oldId;
+	}
+	
 }

@@ -22,7 +22,7 @@ import javax.swing.ListSelectionModel;
 import models.DbProfessors;
 import models.Professor;
 
-public class SubjectEditChooseProfessor extends JDialog implements ActionListener{
+public class SubjectAddChooseProfessor extends JDialog implements ActionListener{
 	
 	private JButton okButton;
 	private JButton cancelButton;
@@ -37,7 +37,7 @@ public class SubjectEditChooseProfessor extends JDialog implements ActionListene
 	private static final long serialVersionUID = 7525660667133000209L;
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public SubjectEditChooseProfessor(){
+	public SubjectAddChooseProfessor(){
 		super();
 		this.setModal (true);
 		this.setAlwaysOnTop (true);
@@ -112,8 +112,8 @@ public class SubjectEditChooseProfessor extends JDialog implements ActionListene
 			}
 			
 			JOptionPane.showMessageDialog(this, "Profesor uspešno izabran!");
-			SubjectEditFrame.getInstance().professor = getProfessor();
-			SubjectEditFrame.getInstance().updateProfessorSelection();
+			SubjectAddFrame.getInstance().professor = getProfessor();
+			SubjectAddFrame.getInstance().updateProfessorSelection();
 			dispose();
 		}
 		

@@ -6,6 +6,7 @@ import models.Adress;
 import models.DbStudents;
 import models.Student;
 import models.StudentStatus;
+import views.StudentInfoPanel;
 import views.StudentPanel;
 
 
@@ -23,9 +24,15 @@ public class StudentController {
 		
 		
 		String validationString = validateStudent(surname, name, birthDate, street, number, city, country, phone, email, index, enrollmentYear, currentYearOfStudy, studentStatus);
+		for(Student s : DbStudents.getInstance().getStudents()) {
+			if(s.getIndex().equals(index))
+				return "Indeks studenta mora biti jedinstven!";
+		}
+		
 		if(validationString != "OK")
 			return validationString;
 		
+			
 		// izmena modela
 		DbStudents.getInstance().addStudent(surname, name, formattedDate, formattedAdress, formattedPhone, email,
 				index, formattedEnrollmentYear, formattedCurrentYearOfStudy, formattedStudentStatus);
@@ -54,6 +61,12 @@ public class StudentController {
 		Student student = DbStudents.getInstance().getRow(rowSelectedIndex);
 		
 		String validationString = validateStudent(surname, name, birthDate, street, number, city, country, phone, email, index, enrollmentYear, currentYearOfStudy, studentStatus);
+		for(Student s : DbStudents.getInstance().getStudents()) {
+			if(s.getIndex().equals(index))
+				if(!s.getIndex().equals(StudentInfoPanel.getInstance().getOldIndex()))
+					return "Indeks studenta mora biti jedinstven!";
+		}
+		
 		if(validationString != "OK")
 			return validationString;
 		
@@ -77,10 +90,7 @@ public class StudentController {
 	private String validateStudent(String surname, String name, String birthDate, String street, String number, String city, String country, String phone, String email, String index,
 			String enrollmentYear, int currentYearOfStudy, int studentStatus) {
 				
-				for(Student s : DbStudents.getInstance().getStudents()) {
-					if(s.getIndex().equals(index))
-						return "Indeks studenta mora biti jedinstven!";
-				}
+				
 		
 				try {
 				String parts[] = birthDate.split("[.]");

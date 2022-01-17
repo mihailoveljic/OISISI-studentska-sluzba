@@ -5,6 +5,7 @@ import java.sql.Date;
 import models.Adress;
 import models.DbProfessors;
 import models.Professor;
+import views.ProfessorInfoPanel;
 import views.ProfessorPanel;
 
 public class ProfessorController {
@@ -23,6 +24,12 @@ public class ProfessorController {
 		
 		String validationString = validateProfessor(surname, name, birthDate, streetAdress, numberAdress, cityAdress, countryAdress, 
 				phone, email, streetOfficeAdress, numberOfficeAdress, cityOfficeAdress, countryOfficeAdress, idNumber, title, serviceYears);
+		
+		for(Professor p : DbProfessors.getInstance().getProfessors()) {
+			if(p.getIdNumber() == formattedIdNumber)
+				return "Broj liène karte mora biti jedinstven!";
+		}
+		
 		if(validationString != "OK")
 			return validationString;
 		
@@ -112,10 +119,7 @@ public class ProfessorController {
 		}
 		
 
-		for(Professor p : DbProfessors.getInstance().getProfessors()) {
-			if(p.getIdNumber() == formattedIdNumber)
-				return "Broj liène karte mora biti jedinstven!";
-		}
+		
 		
 		try {
 			formattedServiceYears=Integer.parseInt(serviceYears);
@@ -139,6 +143,13 @@ public class ProfessorController {
 		
 		String validationString = validateProfessor(surname,name,birthDate, streetAdress, numberAdress, cityAdress, countryAdress, phone, email,
 				 streetOfficeAdress, numberOfficeAdress, cityOfficeAdress, countryOfficeAdress, idNumber, title,serviceYears);
+		
+		for(Professor p : DbProfessors.getInstance().getProfessors()) {
+			if(p.getIdNumber() == formattedIdNumber)
+				if(p.getIdNumber() != ProfessorInfoPanel.getInstance().getOldIdNumber())
+					return "Broj liène karte mora biti jedinstven!";
+		}
+		
 		if(validationString!="OK")
 			return validationString;
 		

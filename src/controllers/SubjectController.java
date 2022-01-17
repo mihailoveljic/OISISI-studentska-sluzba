@@ -4,6 +4,7 @@ import models.DbSubjects;
 import models.Professor;
 import models.Semester;
 import models.Subject;
+import views.SubjectEditFrame;
 import views.SubjectPanel;
 
 public class SubjectController {
@@ -17,6 +18,11 @@ public class SubjectController {
 		
 		String validationString = validateSubject(id, name, currentYearOfStudy,
 				semester, espb, p);
+		for(Subject s : DbSubjects.getInstance().getSubjects()) {
+			if(s.getId().equals(id))
+				return "ID predmeta mora biti jedinstven!";
+		}
+		
 		if(validationString != "OK")
 			return validationString;
 		
@@ -37,6 +43,13 @@ public class SubjectController {
 		
 		String validationString = validateSubject(id, name, currentYearOfStudy,
 				semester, espb, p);
+		
+		for(Subject s : DbSubjects.getInstance().getSubjects()) {
+			if(s.getId().equals(id))
+				if(s.getId() != SubjectEditFrame.getInstance().getOldId())
+					return "ID predmeta mora biti jedinstven!";
+		}
+		
 		if(validationString != "OK")
 			return validationString;
 		
@@ -65,11 +78,6 @@ public class SubjectController {
 	
 	public String validateSubject(String id, String name, int currentYearOfStudy, int semester,
 			String espb, Professor p) {
-		
-		for(Subject s : DbSubjects.getInstance().getSubjects()) {
-			if(s.getId().equals(id))
-				return "ID predmeta mora biti jedinstven!";
-		}
 		
 		
 		try {
