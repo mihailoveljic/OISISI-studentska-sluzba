@@ -18,6 +18,7 @@ public class StudentTable extends JTable{
 
 	
 	private StudentTable() {
+		this.getTableHeader().setReorderingAllowed(false);
 		this.setRowSelectionAllowed(true);
 		this.setColumnSelectionAllowed(true);
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);

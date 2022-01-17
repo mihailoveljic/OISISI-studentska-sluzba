@@ -15,7 +15,7 @@ public class GradesTable extends JTable{
 	private static final long serialVersionUID = -1116433226137967437L;
 
 	public GradesTable() {
-
+		this.getTableHeader().setReorderingAllowed(false);
 		this.setRowSelectionAllowed(true);
 		this.setColumnSelectionAllowed(true);
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);

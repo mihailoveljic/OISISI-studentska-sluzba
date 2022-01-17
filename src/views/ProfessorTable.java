@@ -18,6 +18,7 @@ public class ProfessorTable extends JTable {
 	private static ProfessorTable instance;
 	
 	private ProfessorTable() {
+		this.getTableHeader().setReorderingAllowed(false);
 		this.setRowSelectionAllowed(true);
 		this.setColumnSelectionAllowed(true);
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
