@@ -55,6 +55,10 @@ public class DbStudents {
 		students.get(0).getGrades().add(new Grade(students.get(0), new Subject("8", "MATEMATICKA ANALIZA 1",Semester.ZIMSKI, 1, 1000), 9, new Date(2000-1900, 5, 12)));
 		students.get(0).getGrades().add(new Grade(students.get(0), new Subject("9", "SPPURV1",Semester.ZIMSKI, 1, 1000), 7, new Date(2000-1900, 5, 12)));
 		students.get(0).getGrades().add(new Grade(students.get(0), new Subject("10", "OISISI",Semester.ZIMSKI, 1, 1000), 10, new Date(2000-1900, 5, 12)));
+		
+		//String id, String name, Semester semester, int yearOfStudy, int eSPB
+		students.get(0).getSubjects().add(new Subject("3", "Web Programiranje", Semester.LETNJI, 3, 8));
+
 	}
 
 	public List<Student> getStudents() {
