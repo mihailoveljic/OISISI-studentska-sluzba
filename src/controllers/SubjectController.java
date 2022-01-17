@@ -58,6 +58,9 @@ public class SubjectController {
 		subject.setYearOfStudy(currentYearOfStudy + 1);
 		subject.setSemester(formattedSemester);
 		subject.setESPB(formattedEspb);
+		if(subject.getProfessor() != null) {
+			subject.getProfessor().getSubjects().remove(subject);
+		}
 		subject.setProfessor(p);
 		p.getSubjects().add(subject);
 	
