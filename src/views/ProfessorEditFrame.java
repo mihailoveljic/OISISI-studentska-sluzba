@@ -29,7 +29,7 @@ public class ProfessorEditFrame extends JDialog {
 		int width = d.width;
 		int height = d.height;
 		
-		setSize(width*1/4, height*3/4);
+		setSize(width*2/5, height*3/5);
 		setLocationRelativeTo(MainFrame.getInstance());
 		setTitle("Izmena profesora");
 		Image icon = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB_PRE);
