@@ -1,14 +1,14 @@
 package models;
 
-import java.util.Set;
+import java.util.List;
 
 public class Department {
 	private int ID;
 	private String name;
 	private Professor headOfDepartment;
-	private Set<Professor> professors;
+	private List<Professor> professors;
 	
-	public Department(int iD, String name, Professor headOfDepartment, Set<Professor> professors) {
+	public Department(int iD, String name, Professor headOfDepartment, List<Professor> professors) {
 		super();
 		ID = iD;
 		this.name = name;
@@ -40,11 +40,11 @@ public class Department {
 		this.headOfDepartment = headOfDepartment;
 	}
 
-	public Set<Professor> getProfessors() {
+	public List<Professor> getProfessors() {
 		return professors;
 	}
 
-	public void setProfessors(Set<Professor> professors) {
+	public void setProfessors(List<Professor> professors) {
 		this.professors = professors;
 	}
 	

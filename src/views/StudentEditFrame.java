@@ -33,7 +33,7 @@ public class StudentEditFrame extends JDialog{
 		int height = d.height;
 
 		// Pravljenje prozora
-		setSize(width*1/4, height*2/4);
+		setSize(width*2/5, height*2/4);
 		setLocationRelativeTo(MainFrame.getInstance());
 		setTitle("Izmena studenta");
 		Image icon = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB_PRE);

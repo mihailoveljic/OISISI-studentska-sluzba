@@ -3,7 +3,6 @@ package models;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 public class DbStudents {
 
@@ -52,6 +51,10 @@ public class DbStudents {
 		students.add(new Student("Prezimenovic5", "Imenko5", new Date(2000, 5, 16),
 				new Adress("Tolstojeva", "15", "Novi Sad", "Srbija"), "+381694732572",
 				"imenkoprezimenovic@gmail.com", "RI22/2020", 2020, 2, StudentStatus.B));
+		
+		students.get(0).getGrades().add(new Grade(students.get(0), new Subject("8", "MATEMATICKA ANALIZA 1",Semester.ZIMSKI, 1, 1000), 9, new Date(2000-1900, 5, 12)));
+		students.get(0).getGrades().add(new Grade(students.get(0), new Subject("9", "SPPURV1",Semester.ZIMSKI, 1, 1000), 7, new Date(2000-1900, 5, 12)));
+		students.get(0).getGrades().add(new Grade(students.get(0), new Subject("10", "OISISI",Semester.ZIMSKI, 1, 1000), 10, new Date(2000-1900, 5, 12)));
 	}
 
 	public List<Student> getStudents() {
@@ -112,13 +115,13 @@ public class DbStudents {
 	public void deleteStudent(String index) {
 		for (Student i : students) {
 			if (i.getIndex() == index) {
-				Set<Subject> subjects = i.getSubjects();
+				List<Subject> subjects = i.getSubjects();
 				if(subjects != null) {
 					for(Subject s : subjects) {
 						s.removeStudentFromListOfFailed(i);
 					}
 				}
-				Set<Grade> grades = i.getGrades();
+				List<Grade> grades = i.getGrades();
 				if(grades != null) {
 					for(Grade g : grades) {
 						g.getSubject().removeStudentFromListOfPassed(i);

@@ -3,7 +3,6 @@ package models;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 public class DbProfessors {
 	
@@ -112,7 +111,7 @@ public class DbProfessors {
 			if(i.getIdNumber()==idNumber) {
 				professors.remove(i);
 				
-				Set<Subject> subjects = i.getSubjects();
+				List<Subject> subjects = i.getSubjects();
 				if(subjects!=null) {
 					for(Subject s: subjects) {
 						s.setProfessor(null);
