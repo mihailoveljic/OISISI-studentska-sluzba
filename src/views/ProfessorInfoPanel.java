@@ -25,6 +25,7 @@ public class ProfessorInfoPanel extends JPanel {
 
 	public static ProfessorInfoPanel instance;
 	
+	int oldIdNumber = 0;
 	Professor p;
 	private String surname;
 	private String name;
@@ -103,6 +104,7 @@ public class ProfessorInfoPanel extends JPanel {
 			cityOfficeAdress = p.getOfficeAdress().getCity();
 			countryOfficeAdress = p.getOfficeAdress().getCountry();
 			idNumber = Integer.toString(p.getIdNumber());
+			oldIdNumber = p.getIdNumber();
 			title = p.getTitle();
 			serviceYears = Integer.toString(p.getServiceYears());
 		} else {
@@ -120,6 +122,7 @@ public class ProfessorInfoPanel extends JPanel {
 			cityAdress = "";
 			countryAdress = "";
 			idNumber = "";
+			oldIdNumber = 0;
 			title = "";
 			serviceYears = "";
 		}
@@ -308,6 +311,7 @@ public class ProfessorInfoPanel extends JPanel {
 				cityOfficeAdress = p.getOfficeAdress().getCity();
 				countryOfficeAdress = p.getOfficeAdress().getCountry();
 				idNumber = Integer.toString(p.getIdNumber());
+				oldIdNumber = p.getIdNumber();
 				title = p.getTitle();
 				serviceYears = Integer.toString(p.getServiceYears());
 			} else {
@@ -325,6 +329,7 @@ public class ProfessorInfoPanel extends JPanel {
 				cityOfficeAdress = "";
 				countryOfficeAdress = "";
 				idNumber = "";
+				oldIdNumber = 0;
 				title = "";
 				serviceYears = "";
 			}
@@ -356,5 +361,15 @@ public class ProfessorInfoPanel extends JPanel {
 				instance = new ProfessorInfoPanel(ProfessorTable.getInstance().getSelectedRow());
 			return instance;
 		}
+
+		public int getOldIdNumber() {
+			return oldIdNumber;
+		}
+
+		public void setOldIdNumber(int oldIdNumber) {
+			this.oldIdNumber = oldIdNumber;
+		}
+
+
 }	
 

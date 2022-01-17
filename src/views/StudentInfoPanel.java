@@ -26,7 +26,8 @@ public class StudentInfoPanel extends JPanel{
 	private static final long serialVersionUID = 4000816222354440731L;
 	
 	private static StudentInfoPanel instance;
-
+	
+	String oldIndex = null;
 	Student s;
 	String name;
 	String surname;
@@ -91,6 +92,7 @@ public class StudentInfoPanel extends JPanel{
 			country = s.getAdress().getCountry();
 			phone = s.getPhone();
 			email = s.getEmail();
+			oldIndex = s.getIndex();
 			index = s.getIndex();
 			enrollmentYear = String.valueOf(s.getEnrollmentYear());
 			currentYearOfStudy = s.getCurrentYearOfStudy();
@@ -106,6 +108,7 @@ public class StudentInfoPanel extends JPanel{
 			phone = "";
 			email = "";
 			index = "";
+			oldIndex = null;
 			enrollmentYear = "";
 			currentYearOfStudy = 0;
 			studentStatus = StudentStatus.B;
@@ -283,6 +286,7 @@ public class StudentInfoPanel extends JPanel{
 			
 			int month = s.getBirthDate().getMonth() + 1;
 			
+
 			name = s.getName();
 			surname = s.getSurname();
 			birthDate = s.getBirthDate().getDate() + "." + month + "." + s.getBirthDate().getYear() + ".";
@@ -293,6 +297,7 @@ public class StudentInfoPanel extends JPanel{
 			phone = s.getPhone();
 			email = s.getEmail();
 			index = s.getIndex();
+			oldIndex = s.getIndex();
 			enrollmentYear = String.valueOf(s.getEnrollmentYear());
 			currentYearOfStudy = s.getCurrentYearOfStudy();
 			studentStatus = s.getStudentStatus();
@@ -308,6 +313,7 @@ public class StudentInfoPanel extends JPanel{
 			phone = "";
 			email = "";
 			index = "";
+			oldIndex = null;
 			enrollmentYear = "";
 			currentYearOfStudy = 0;
 			studentStatus = StudentStatus.B;
@@ -359,4 +365,16 @@ public class StudentInfoPanel extends JPanel{
 			instance = new StudentInfoPanel(StudentTable.getInstance().getSelectedRow());
 		return instance;
 	}
+
+
+	public String getOldIndex() {
+		return oldIndex;
+	}
+
+
+	public void setOldIndex(String oldIndex) {
+		this.oldIndex = oldIndex;
+	}
+	
+	
 }
