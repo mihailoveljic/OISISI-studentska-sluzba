@@ -29,7 +29,7 @@ import models.Grade;
 import models.Subject;
 //import models.DbStudents;
 
-public class StudentAddSubject extends JDialog implements ActionListener {
+public class StudentEntrySubject extends JDialog implements ActionListener {
 
 	private static final long serialVersionUID = -986281284875651792L;
 	private JButton okButton;
@@ -41,7 +41,7 @@ public class StudentAddSubject extends JDialog implements ActionListener {
 	private Subject s;
 	
 	
-	public StudentAddSubject (MainFrame instance, String title, boolean b, Subject subject) {
+	public StudentEntrySubject (MainFrame instance, String title, boolean b, Subject subject) {
 		super();
 		
 		s = subject;
