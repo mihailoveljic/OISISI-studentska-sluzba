@@ -1,6 +1,8 @@
 package models;
 
-public enum StudentStatus {
+import java.io.Serializable;
+
+public enum StudentStatus implements Serializable{
 	B,
 	S
 }

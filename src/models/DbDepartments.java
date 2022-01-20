@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
 public class DbDepartments{
 	
 	private static DbDepartments instance = null;
@@ -28,12 +29,6 @@ public class DbDepartments{
 	
 	private void initDepartments() {
 		this.departments= new ArrayList<Department>();
-		
-		//TODO ucitavace se iz datoteke
-		
-		departments.add(new Department(1,"Racunarstvo", null));
-		
-		departments.get(0).setProfessors(DbProfessors.getInstance().getProfessors());
 	}
 	
 	public List<Department> getDeparments() {
@@ -66,6 +61,14 @@ public class DbDepartments{
 			default:
 				return null;
 		}
+	}
+
+	public List<Department> getDepartments() {
+		return departments;
+	}
+
+	public void setDepartments(List<Department> departments) {
+		this.departments = departments;
 	}
 	
 	
