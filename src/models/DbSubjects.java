@@ -38,6 +38,8 @@ public class DbSubjects {
 		subjects.add(new Subject("3", "ALGEBRA",Semester.ZIMSKI, 1, 1));
 		subjects.add(new Subject("4", "MATEMATICKA ANALIZA 1",Semester.ZIMSKI, 1, 1000));
 		subjects.add(new Subject("5", "MATEMATICKA ANALIZA 1",Semester.ZIMSKI, 1, 1000));
+		subjects.add(new Subject("6", "OET",Semester.LETNJI, 1, 9));
+
 
 	}
 	
