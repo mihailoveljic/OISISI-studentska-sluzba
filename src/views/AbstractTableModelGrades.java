@@ -3,6 +3,7 @@ package views;
 
 import java.util.List;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 
 import models.DbProfessors;
@@ -41,6 +42,12 @@ public class AbstractTableModelGrades  extends AbstractTableModel{
 	
 		List<Grade> grades = s.getGrades();
 		Grade o = grades.get(rowIndex);
+		
+		if(grades.get(rowIndex)==null)
+		{
+			JOptionPane.showMessageDialog(null, "Niste izabrali predmet!");
+			return -1;
+		} 
 		
 		switch(columnIndex)
 		{
