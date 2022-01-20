@@ -40,9 +40,13 @@ public class ProfessorSubjectsTable extends JTable{
 
 	@Override
 	public TableModel getModel() {
-		if(DbProfessors.getInstance().getRow(ProfessorTable.getInstance().getSelectedRow()) != null)
+		if(DbProfessors.getInstance().findProfessor(
+				(String)ProfessorTable.getInstance().getValueAt(ProfessorTable.getInstance().getSelectedRow(), 0),
+				(String)ProfessorTable.getInstance().getValueAt(ProfessorTable.getInstance().getSelectedRow(), 1),
+				(String)ProfessorTable.getInstance().getValueAt(ProfessorTable.getInstance().getSelectedRow(), 3)			
+				) != null)
 			if(abstractTableModelProfessorSubjects != null)
-				abstractTableModelProfessorSubjects.updateProfessor(ProfessorTable.getInstance().getSelectedRow());
+				abstractTableModelProfessorSubjects.updateProfessor();
 		return super.getModel();
 	}
 	

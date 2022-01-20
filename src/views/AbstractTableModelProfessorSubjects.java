@@ -17,7 +17,11 @@ public class AbstractTableModelProfessorSubjects extends AbstractTableModel{
 	 * 
 	 */
 	private static final long serialVersionUID = 721332372551834518L;
-	private Professor p = DbProfessors.getInstance().getRow(ProfessorTable.getInstance().getSelectedRow());
+	private Professor p = DbProfessors.getInstance().findProfessor(
+			(String)ProfessorTable.getInstance().getValueAt(ProfessorTable.getInstance().getSelectedRow(), 0),
+			(String)ProfessorTable.getInstance().getValueAt(ProfessorTable.getInstance().getSelectedRow(), 1),
+			(String)ProfessorTable.getInstance().getValueAt(ProfessorTable.getInstance().getSelectedRow(), 3)			
+			);
 	
 	@Override
 	public int getRowCount() {
@@ -96,7 +100,11 @@ public class AbstractTableModelProfessorSubjects extends AbstractTableModel{
 		}
 	}
 	
-	public void updateProfessor(int selectedRow) {
-		p = DbProfessors.getInstance().getRow(selectedRow);
+	public void updateProfessor() {
+		p = DbProfessors.getInstance().findProfessor(
+				(String)ProfessorTable.getInstance().getValueAt(ProfessorTable.getInstance().getSelectedRow(), 0),
+				(String)ProfessorTable.getInstance().getValueAt(ProfessorTable.getInstance().getSelectedRow(), 1),
+				(String)ProfessorTable.getInstance().getValueAt(ProfessorTable.getInstance().getSelectedRow(), 3)			
+				);
 	}
 }

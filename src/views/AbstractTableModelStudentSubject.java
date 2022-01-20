@@ -10,7 +10,7 @@ import models.DbStudents;
 @SuppressWarnings("serial")
 public class AbstractTableModelStudentSubject extends AbstractTableModel {
 
-		Student s = DbStudents.getInstance().getRow(StudentTable.getInstance().getSelectedRow());
+		Student s = DbStudents.getInstance().findStudentByIndex((String) StudentTable.getInstance().getValueAt(StudentTable.getInstance().getSelectedRow(), 0));
 		@Override
 		public int getRowCount() {
 			if(s.getSubjects()!=null) {

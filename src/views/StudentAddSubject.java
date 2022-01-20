@@ -24,6 +24,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
+import models.DbStudents;
 import models.Grade;
 import models.Subject;
 //import models.DbStudents;
@@ -221,11 +222,11 @@ public class StudentAddSubject extends JDialog implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Date datum = getDatum();
 		int value = (int) gradeComboBox.getSelectedItem();
-		StudentTable.getInstance().selected().getSubjects().remove(s);
-		Grade g = new Grade(StudentTable.getInstance().selected(),s,value,datum);
+		DbStudents.getInstance().findStudentByIndex((String) StudentTable.getInstance().getValueAt(StudentTable.getInstance().getSelectedRow(), 0)).getSubjects().remove(s);
+		Grade g = new Grade(DbStudents.getInstance().findStudentByIndex((String) StudentTable.getInstance().getValueAt(StudentTable.getInstance().getSelectedRow(), 0)),s,value,datum);
 		
-		StudentTable.getInstance().selected().getGrades().add(g);
-		StudentTable.getInstance().selected().getSubjects().remove(g.getSubject());
+		DbStudents.getInstance().findStudentByIndex((String) StudentTable.getInstance().getValueAt(StudentTable.getInstance().getSelectedRow(), 0)).getGrades().add(g);
+		DbStudents.getInstance().findStudentByIndex((String) StudentTable.getInstance().getValueAt(StudentTable.getInstance().getSelectedRow(), 0)).getSubjects().remove(g.getSubject());
 
 		JOptionPane.showMessageDialog(StudentSubjectsPanel.getInstance().getStudentAddSubject(), "Upisana ocena");
 		StudentGradesPanel.getInstance().refresh();

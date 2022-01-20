@@ -88,7 +88,7 @@ public class StudentController {
 			return;
 		}
     	// izmena modela
-    	Student student = DbStudents.getInstance().getRow(rowSelectedIndex);
+    	Student student = DbStudents.getInstance().findStudentByIndex((String) StudentTable.getInstance().getValueAt(StudentTable.getInstance().getSelectedRow(), 0));
 		DbStudents.getInstance().deleteStudent(student.getIndex());
 		// azuriranje prikaza
 		StudentPanel.getInstance().updateView();
@@ -100,7 +100,7 @@ public class StudentController {
 			return "No row selected!";
 		}
 		// izmena modela
-		Student student = DbStudents.getInstance().getRow(rowSelectedIndex);
+		Student student = DbStudents.getInstance().findStudentByIndex((String) StudentTable.getInstance().getValueAt(StudentTable.getInstance().getSelectedRow(), 0));
 		
 		String validationString = validateStudent(surname, name, birthDate, street, number, city, country, phone, email, index, enrollmentYear, currentYearOfStudy, studentStatus);
 		for(Student s : DbStudents.getInstance().getStudents()) {

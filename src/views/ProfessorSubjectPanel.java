@@ -57,7 +57,11 @@ public class ProfessorSubjectPanel extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				int row = subjectsTable.getSelectedRow();
-				Professor p = DbProfessors.getInstance().getRow(ProfessorTable.getInstance().getSelectedRow());
+				Professor p = DbProfessors.getInstance().findProfessor(
+						(String)ProfessorTable.getInstance().getValueAt(ProfessorTable.getInstance().getSelectedRow(), 0),
+						(String)ProfessorTable.getInstance().getValueAt(ProfessorTable.getInstance().getSelectedRow(), 1),
+						(String)ProfessorTable.getInstance().getValueAt(ProfessorTable.getInstance().getSelectedRow(), 3)			
+						);
 				
 				if (row >= 0 && row <= subjectsTable.getRowCount()) {
 					int userInput = JOptionPane.showConfirmDialog(ProfessorEditFrame.getInstance().getProfessorSubjectPanel(), "Da li ste sigurni da želite da obrišete predmet sa profesora?",

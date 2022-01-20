@@ -39,9 +39,9 @@ public class GradesTable extends JTable{
 
 	@Override
 	public TableModel getModel() {
-		if(DbStudents.getInstance().getRow(StudentTable.getInstance().getSelectedRow()) != null)
+		if(DbStudents.getInstance().findStudentByIndex((String) StudentTable.getInstance().getValueAt(StudentTable.getInstance().getSelectedRow(), 0)) != null)
 			if(abstractTableModelGrades != null)
-				abstractTableModelGrades.updateStudent(StudentTable.getInstance().getSelectedRow());
+				abstractTableModelGrades.updateStudent();
 		return super.getModel();
 	}
 }

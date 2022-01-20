@@ -16,7 +16,7 @@ public class AbstractTableModelGrades  extends AbstractTableModel{
 	 * 
 	 */
 	private static final long serialVersionUID = 4656217212866529542L;
-	Student s = DbStudents.getInstance().getRow(StudentTable.getInstance().getSelectedRow());
+	Student s = DbStudents.getInstance().findStudentByIndex((String) StudentTable.getInstance().getValueAt(StudentTable.getInstance().getSelectedRow(), 0));
 	
 	@Override
 	public int getColumnCount() {
@@ -109,7 +109,7 @@ public class AbstractTableModelGrades  extends AbstractTableModel{
 		
 		}
 	}
-	public void updateStudent(int selectedRow) {
-		s = DbStudents.getInstance().getRow(selectedRow);
+	public void updateStudent() {
+		s = DbStudents.getInstance().findStudentByIndex((String) StudentTable.getInstance().getValueAt(StudentTable.getInstance().getSelectedRow(), 0));
 	}
 }

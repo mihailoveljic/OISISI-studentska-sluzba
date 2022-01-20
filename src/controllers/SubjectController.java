@@ -6,6 +6,7 @@ import models.Semester;
 import models.Subject;
 import views.SubjectEditFrame;
 import views.SubjectPanel;
+import views.SubjectTable;
 
 public class SubjectController {
 	
@@ -39,7 +40,7 @@ public class SubjectController {
 			return "No row selected!";
 		}
 		// izmena modela
-		Subject subject = DbSubjects.getInstance().getRow(rowSelectedIndex);
+		Subject subject = DbSubjects.getInstance().findSubjectById((String)SubjectTable.getInstance().getValueAt(SubjectTable.getInstance().getSelectedRow(), 0));
 		
 		String validationString = validateSubject(id, name, currentYearOfStudy,
 				semester, espb, p);
@@ -77,7 +78,7 @@ public class SubjectController {
 		if(selectedRow<0) {
 			return;
 		} else {
-			Subject s = DbSubjects.getInstance().getRow(selectedRow);
+			Subject s = DbSubjects.getInstance().findSubjectById((String)SubjectTable.getInstance().getValueAt(SubjectTable.getInstance().getSelectedRow(), 0));
 			DbSubjects.getInstance().deleteSubject(s.getId());
 			SubjectPanel.getInstance().updateView();
 		}

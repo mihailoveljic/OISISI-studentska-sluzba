@@ -157,4 +157,11 @@ public class DbStudents {
 		}
 	}
 
+	public Student findStudentByIndex(String index) {
+		for(Student s : students) {
+			if(s.getIndex().equals(index))
+				return s;
+		}
+		return null;
+	}
 }

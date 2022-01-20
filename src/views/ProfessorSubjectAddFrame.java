@@ -55,7 +55,11 @@ public class ProfessorSubjectAddFrame extends JDialog implements ActionListener{
 		DefaultListModel listModel;
 		listModel = new DefaultListModel();
 		for(Subject s : DbSubjects.getInstance().getSubjects()) {
-			if(!DbProfessors.getInstance().getRow(ProfessorTable.getInstance().getSelectedRow()).getSubjects().contains(s)) {
+			if(!DbProfessors.getInstance().findProfessor(
+					(String)ProfessorTable.getInstance().getValueAt(ProfessorTable.getInstance().getSelectedRow(), 0),
+					(String)ProfessorTable.getInstance().getValueAt(ProfessorTable.getInstance().getSelectedRow(), 1),
+					(String)ProfessorTable.getInstance().getValueAt(ProfessorTable.getInstance().getSelectedRow(), 3)			
+					).getSubjects().contains(s)) {
 				listModel.addElement(s.getId() + " - " + s.getName());
 		}
 		}
@@ -89,14 +93,30 @@ public class ProfessorSubjectAddFrame extends JDialog implements ActionListener{
 							if(s.getProfessor().getSubjects().contains(s)) {
 								s.getProfessor().getSubjects().remove(s);
 							}
-							DbProfessors.getInstance().getRow(ProfessorTable.getInstance().getSelectedRow()).getSubjects().add(s);
-							s.setProfessor(DbProfessors.getInstance().getRow(ProfessorTable.getInstance().getSelectedRow()));
+							DbProfessors.getInstance().findProfessor(
+									(String)ProfessorTable.getInstance().getValueAt(ProfessorTable.getInstance().getSelectedRow(), 0),
+									(String)ProfessorTable.getInstance().getValueAt(ProfessorTable.getInstance().getSelectedRow(), 1),
+									(String)ProfessorTable.getInstance().getValueAt(ProfessorTable.getInstance().getSelectedRow(), 3)			
+									).getSubjects().add(s);
+							s.setProfessor(DbProfessors.getInstance().findProfessor(
+									(String)ProfessorTable.getInstance().getValueAt(ProfessorTable.getInstance().getSelectedRow(), 0),
+									(String)ProfessorTable.getInstance().getValueAt(ProfessorTable.getInstance().getSelectedRow(), 1),
+									(String)ProfessorTable.getInstance().getValueAt(ProfessorTable.getInstance().getSelectedRow(), 3)			
+									));
 						}else {
 							return;
 						}
 					}else {
-						DbProfessors.getInstance().getRow(ProfessorTable.getInstance().getSelectedRow()).getSubjects().add(s);
-						s.setProfessor(DbProfessors.getInstance().getRow(ProfessorTable.getInstance().getSelectedRow()));
+						DbProfessors.getInstance().findProfessor(
+								(String)ProfessorTable.getInstance().getValueAt(ProfessorTable.getInstance().getSelectedRow(), 0),
+								(String)ProfessorTable.getInstance().getValueAt(ProfessorTable.getInstance().getSelectedRow(), 1),
+								(String)ProfessorTable.getInstance().getValueAt(ProfessorTable.getInstance().getSelectedRow(), 3)			
+								).getSubjects().add(s);
+						s.setProfessor(DbProfessors.getInstance().findProfessor(
+								(String)ProfessorTable.getInstance().getValueAt(ProfessorTable.getInstance().getSelectedRow(), 0),
+								(String)ProfessorTable.getInstance().getValueAt(ProfessorTable.getInstance().getSelectedRow(), 1),
+								(String)ProfessorTable.getInstance().getValueAt(ProfessorTable.getInstance().getSelectedRow(), 3)			
+								));
 					}
 				}
 			}

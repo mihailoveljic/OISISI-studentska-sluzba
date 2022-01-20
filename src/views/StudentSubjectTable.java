@@ -14,6 +14,7 @@ public class StudentSubjectTable extends JTable{
 	 */
 	private static final long serialVersionUID = -8823694100864512615L;
 	
+	@SuppressWarnings("unused")
 	private AbstractTableModelStudentSubject abstractTableModelStudentSubject = new AbstractTableModelStudentSubject();
 
 	public StudentSubjectTable() {
