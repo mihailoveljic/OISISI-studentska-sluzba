@@ -6,7 +6,6 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 
-import models.DbProfessors;
 import models.DbStudents;
 import models.Grade;
 import models.Student;

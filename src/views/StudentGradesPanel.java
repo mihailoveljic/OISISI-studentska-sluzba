@@ -44,21 +44,13 @@ public class StudentGradesPanel extends JPanel{
 		add(scrollPane, BorderLayout.CENTER);
 		
 		JPanel commandPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		removeGrade = new JButton("Poništi ocenu");
+		removeGrade = new JButton("PoniÅ¡ti ocenu");
 		
 		removeGrade.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Brisanje ocene
-				//DbStudents.getInstance().getRow(StudentTable.getInstance().getSelectedRow())
-				//gradesTable.getSelectedRow()
-				//ArrayList<Grade> grades = (ArrayList<Grade>) gradesTable.getModel();
-                //Grade grade = grades.get(gradesTable.getSelectedRow());
-                //Student student = grade.getStudent();
-                //Subject subject = grade.getSubject();
-                //subject.getListOfStudentsWhoPassed().remove(student);
-                //student.getGrades().remove(grade);
 				int column = 0;
 				int row = gradesTable.getSelectedRow();
 				if(gradesTable.getSelectedRow()==-1)
@@ -71,7 +63,7 @@ public class StudentGradesPanel extends JPanel{
 				List<Grade> grades = student.getGrades();
 				for(Grade g: grades) {
 					if(g.getSubject().getId()==value) {
-						int userInput = JOptionPane.showOptionDialog(StudentGradesPanel.getInstance(), "Da li ste sigurni da želite da ponistite ocenu?", "Ponistavanje ocene", JOptionPane.YES_NO_OPTION, 0, null, null, e);
+						int userInput = JOptionPane.showOptionDialog(StudentGradesPanel.getInstance(), "Da li ste sigurni da ï¿½elite da ponistite ocenu?", "Ponistavanje ocene", JOptionPane.YES_NO_OPTION, 0, null, null, e);
 						if(userInput == JOptionPane.YES_OPTION) { 
 						g.getSubject().getListOfStudentsWhoPassed().remove(student);
 						student.getGrades().remove(g);
@@ -80,10 +72,6 @@ public class StudentGradesPanel extends JPanel{
 						}
 					}
 				}
-				}
-                
-                
-                 
 			}
 		});
 		commandPanel.add(removeGrade);
@@ -94,7 +82,7 @@ public class StudentGradesPanel extends JPanel{
 		JPanel labelTotalESPBPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 		DbStudents.getInstance().getRow(StudentTable.getInstance().getSelectedRow()).recalculateAvgGrade();
 		avgGrade = DbStudents.getInstance().getRow(StudentTable.getInstance().getSelectedRow()).getAverageGrade();
-		averageGradeLabel = new JLabel("Proseèna ocena: ");
+		averageGradeLabel = new JLabel("ProseÃ¨na ocena: ");
         avgGradeField = new JTextField();
         avgGradeField.setEditable(false);
         avgGradeField.setText(Double.toString(avgGrade));
