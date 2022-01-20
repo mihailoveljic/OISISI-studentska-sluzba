@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.File;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -35,10 +36,10 @@ public class MyToolBar extends JToolBar {
 		super();
 		
 		int iconSize = 18;
-		Icon addIcon = ResizeIcon.resizeIcon(new ImageIcon("images/addButton.png"),iconSize,iconSize);
-		Icon editIcon = ResizeIcon.resizeIcon(new ImageIcon("images/editButton.png"),iconSize,iconSize);
-		Icon deleteIcon = ResizeIcon.resizeIcon(new ImageIcon("images/deleteButton.png"),iconSize,iconSize);
-		Icon searchIcon = ResizeIcon.resizeIcon(new ImageIcon("images/searchButton.png"),iconSize,iconSize);
+		Icon addIcon = ResizeIcon.resizeIcon(new ImageIcon("images" + File.separator + "addButton.png"),iconSize,iconSize);
+		Icon editIcon = ResizeIcon.resizeIcon(new ImageIcon("images" + File.separator + "editButton.png"),iconSize,iconSize);
+		Icon deleteIcon = ResizeIcon.resizeIcon(new ImageIcon("images" + File.separator + "deleteButton.png"),iconSize,iconSize);
+		Icon searchIcon = ResizeIcon.resizeIcon(new ImageIcon("images" + File.separator + "searchButton.png"),iconSize,iconSize);
 		
 		JButton addButton = new JButton(addIcon);
 		JButton editButton = new JButton(editIcon);

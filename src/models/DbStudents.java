@@ -30,44 +30,13 @@ public class DbStudents {
 		this.columns.add("PROSEK");
 	}
 
-	@SuppressWarnings("deprecation")
 	private void initStudents() {
 		this.students = new ArrayList<Student>();
-		
-		//TODO Citanje iz datoteke
-		
-		students.add(new Student("Petrovic", "Petar", new Date(2000, 5, 16),
-				new Adress("Tolstojeva", "15", "Novi Sad", "Srbija"), "+381694732572",
-				"imenkoprezimenovic@gmail.com", "RA 1/2020", 2020, 22, StudentStatus.B));
-		students.add(new Student("Stefanovic", "Mirko", new Date(2000, 5, 16),
-				new Adress("Tolstojeva", "15", "Novi Sad", "Srbija"), "+381694732572",
-				"imenkoprezimenovic@gmail.com", "RA 11/2020", 2020, 3, StudentStatus.B));
-		students.add(new Student("Jovanovic", "Jovan", new Date(2000, 5, 16),
-				new Adress("Tolstojeva", "15", "Novi Sad", "Srbija"), "+381694732572",
-				"imenkoprezimenovic@gmail.com", "RA 2/2020", 2020, 1, StudentStatus.B));
-		students.add(new Student("Blazic", "Drago", new Date(2000, 5, 16),
-				new Adress("Tolstojeva", "15", "Novi Sad", "Srbija"), "+381694732572",
-				"imenkoprezimenovic@gmail.com", "II 21/2020", 2020, 2, StudentStatus.B));
-		students.add(new Student("Dragoljevic", "Stevanka", new Date(2000, 5, 16),
-				new Adress("Tolstojeva", "15", "Novi Sad", "Srbija"), "+381694732572",
-				"imenkoprezimenovic@gmail.com", "RI 22/2020", 2020, 2, StudentStatus.B));
-		
-		students.get(0).getGrades().add(new Grade(students.get(0), new Subject("1", "MATEMATICKA ANALIZA 1",Semester.ZIMSKI, 1, 1000), 9, new Date(2000-1900, 5, 12)));
-		students.get(0).getGrades().add(new Grade(students.get(0), new Subject("9", "SPPURV1",Semester.ZIMSKI, 1, 1000), 7, new Date(2000-1900, 5, 12)));
-		students.get(0).getGrades().add(new Grade(students.get(0), new Subject("10", "OISISI",Semester.ZIMSKI, 1, 1000), 10, new Date(2000-1900, 5, 12)));
-		
-		//String id, String name, Semester semester, int yearOfStudy, int eSPB
-		students.get(0).getSubjects().add(new Subject("3", "Web Programiranje", Semester.LETNJI, 3, 8));
-
 	}
 
 	public List<Student> getStudents() {
 		return students;
 	}
-
-//	public void setstudents(List<Student> students) {
-//		this.students = students;
-//	}
 
 	public int getColumnCount() {
 		return 6;
@@ -81,6 +50,10 @@ public class DbStudents {
 		if(rowIndex <= -1)
 			return null;
 		return this.students.get(rowIndex);
+	}
+
+	public void setStudents(List<Student> students) {
+		this.students = students;
 	}
 
 	public String getValueAt(int row, int column) {
