@@ -8,6 +8,7 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.util.List;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -18,10 +19,17 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 
+import models.DbDepartments;
 import models.DbProfessors;
 import models.Professor;
 
-public class SubjectAddChooseProfessor extends JDialog implements ActionListener{
+public class DepartmentsAssignHeadDialog extends JDialog implements ActionListener{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4117899405896014629L;
+	
 	
 	private JButton okButton;
 	private JButton cancelButton;
@@ -29,19 +37,17 @@ public class SubjectAddChooseProfessor extends JDialog implements ActionListener
 	@SuppressWarnings("rawtypes")
 	private JList professorList;
 	private Professor p;
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 7525660667133000209L;
+	private DepartmentsPanel departmentsPanel;
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public SubjectAddChooseProfessor(){
+	public DepartmentsAssignHeadDialog(DepartmentsPanel departmentsPanel){
 		super();
 		this.setModal (true);
 		this.setAlwaysOnTop (true);
 		this.setModalityType (ModalityType.APPLICATION_MODAL);
 
+		this.departmentsPanel = departmentsPanel;
+		
 		Toolkit kit = Toolkit.getDefaultToolkit();
 		Dimension d = kit.getScreenSize();
 		int width = d.width;
@@ -76,9 +82,12 @@ public class SubjectAddChooseProfessor extends JDialog implements ActionListener
 		
 		DefaultListModel listModel;
 		listModel = new DefaultListModel();
-		for(Professor p : DbProfessors.getInstance().getProfessors()) {
-			
+		List<Professor> professors =  DbDepartments.getInstance().getRow(this.departmentsPanel.getDepartmentsTable().getSelectedRow()).getProfessors();
+		if(professors != null) {
+			for(Professor p : professors) {
+				
 				listModel.addElement(p.getName() + " " + p.getSurname());
+			}
 		}
 		professorList = new JList(listModel);
 	    professorList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -92,8 +101,7 @@ public class SubjectAddChooseProfessor extends JDialog implements ActionListener
 	public void actionPerformed(ActionEvent arg0) {
 		selectedProfesor = (String) professorList.getSelectedValue();
 		if (selectedProfesor == null) {
-			JOptionPane.showMessageDialog(this, "Profesor nije selektovan.", "Upozorenje!",
-					JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(this, "Profesor nije selektovan.", "Upozorenje!", JOptionPane.ERROR_MESSAGE);
 		}
 		else {
 			String[] parts = selectedProfesor.split(" ");
@@ -102,15 +110,12 @@ public class SubjectAddChooseProfessor extends JDialog implements ActionListener
 			for(Professor p : DbProfessors.getInstance().getProfessors()) {
 				
 				if(name.equals(p.getName()) && surname.equals(p.getSurname())) {
-					
-					this.p = p;
-					
+					DbDepartments.getInstance().getRow(departmentsPanel.getDepartmentsTable().getSelectedRow()).setHeadOfDepartment(p);
+					departmentsPanel.refresh();
 				}
 			}
 			
 			JOptionPane.showMessageDialog(this, "Profesor uspešno izabran!");
-			SubjectAddFrame.getInstance().professor = getProfessor();
-			SubjectAddFrame.getInstance().updateProfessorSelection();
 			dispose();
 		}
 		

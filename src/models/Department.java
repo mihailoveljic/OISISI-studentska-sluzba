@@ -1,5 +1,6 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Department {
@@ -14,6 +15,13 @@ public class Department {
 		this.name = name;
 		this.headOfDepartment = headOfDepartment;
 		this.professors = professors;
+	}
+	public Department(int iD, String name, Professor headOfDepartment) {
+		super();
+		ID = iD;
+		this.name = name;
+		this.headOfDepartment = headOfDepartment;
+		this.professors = new ArrayList<Professor>();
 	}
 
 	public int getID() {
