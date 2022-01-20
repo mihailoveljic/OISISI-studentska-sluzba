@@ -6,6 +6,7 @@ import models.Semester;
 import models.Subject;
 import views.SubjectEditFrame;
 import views.SubjectPanel;
+import views.SubjectTable;
 
 public class SubjectController {
 	
@@ -105,4 +106,21 @@ public class SubjectController {
 		}
 		return "OK";
 	}
+	public void searchSubject(String text) {
+		if(text.equals(""))
+		{
+			SubjectTable.getInstance().clearFilter();
+			SubjectPanel.getInstance().updateView();
+		}
+		else {
+			String parts[] = text.split(",");
+			if(parts.length==1) {
+			SubjectTable.getInstance().setFilter(text.trim(), 1);
+			SubjectPanel.getInstance().updateView();
+			} else {
+				SubjectTable.getInstance().set2Filter(parts[0], 1, parts[1], 0);
+				SubjectPanel.getInstance().updateView();
+			}
+	}
+}
 }

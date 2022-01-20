@@ -16,7 +16,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
 
+import controllers.ProfessorController;
 import controllers.StudentController;
+import controllers.SubjectController;
 import methods.ResizeIcon;
 
 public class MyToolBar extends JToolBar {
@@ -119,10 +121,19 @@ public class MyToolBar extends JToolBar {
 					}
 					case 1:
 					{
+						String s = searchBar.getText();
+						ProfessorController professorController = new ProfessorController();
+						professorController.searchProfesor(s);
+						searchButton.setSelected(false);
+						break;
 					}
 					case 2:
 					{	
-		
+						String s = searchBar.getText();
+						SubjectController subjectController = new SubjectController();
+						subjectController.searchSubject(s);
+						searchButton.setSelected(false);
+						break;
 					}
 				}
 			}
