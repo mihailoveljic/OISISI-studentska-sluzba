@@ -106,6 +106,7 @@ public class SubjectAddChooseProfessor extends JDialog implements ActionListener
 					this.p = p;
 					
 				}
+				
 			}
 			
 			JOptionPane.showMessageDialog(this, "Profesor uspešno izabran!");

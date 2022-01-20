@@ -190,6 +190,7 @@ public class SubjectEditFrame extends JDialog{
 			public void actionPerformed(ActionEvent e) {
 				SubjectController subjectController = new SubjectController();
 				
+				if(SubjectTable.getInstance().getSelectedRow()!=-1) {
 				String dataValid = subjectController.editSubject(SubjectTable.getInstance().getSelectedRow(),
 						idField.getText(), nameField.getText(), currentYearOfStudyComboBox.getSelectedIndex(),
 						semesterComboBox.getSelectedIndex(),espbField.getText(), professor);
@@ -205,6 +206,7 @@ public class SubjectEditFrame extends JDialog{
 					professorTextField.setText("");
 					SubjectEditFrame.getInstance().dispose();
 				}
+			}
 			}
 			
 		});

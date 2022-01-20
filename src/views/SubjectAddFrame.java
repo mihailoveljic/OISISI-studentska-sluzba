@@ -74,9 +74,9 @@ public class SubjectAddFrame extends JDialog{
 		JLabel currentYearOfStudyLabel = new JLabel("Godina studija*");
 		JComboBox<String> currentYearOfStudyComboBox = new JComboBox<String>();
 		currentYearOfStudyComboBox.addItem("I (Prva)");
-		currentYearOfStudyComboBox.addItem("I (Druga)");
-		currentYearOfStudyComboBox.addItem("I (Treæa)");
-		currentYearOfStudyComboBox.addItem("I (Èetvrta)");		
+		currentYearOfStudyComboBox.addItem("II (Druga)");
+		currentYearOfStudyComboBox.addItem("III (Treæa)");
+		currentYearOfStudyComboBox.addItem("IV (Èetvrta)");		
 		JLabel professorLabel = new JLabel("Profesor*");
 		professorField = new JTextField();
 		professorField.setEditable(false);
@@ -92,7 +92,6 @@ public class SubjectAddFrame extends JDialog{
 			}
 		});
 		removeProfessorButton = new JButton("-");
-		
 		removeProfessorButton.addActionListener(new ActionListener() {
 			
 			@Override
@@ -102,6 +101,7 @@ public class SubjectAddFrame extends JDialog{
 				if(userInput == JOptionPane.YES_OPTION) {
 					professor = null;
 					SubjectAddFrame.getInstance().updateProfessorSelection();
+					dispose();
 				}
 			}
 		});
