@@ -85,9 +85,11 @@ public class AbstractTableModelStudentSubject extends AbstractTableModel {
 					return null;
 			
 			}
-	}
+		}
 
-
+		public void updateStudent() {
+			s = DbStudents.getInstance().findStudentByIndex((String) StudentTable.getInstance().getValueAt(StudentTable.getInstance().getSelectedRow(), 0));
+		}
 
 
 }

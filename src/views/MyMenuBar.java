@@ -1,11 +1,13 @@
 package views;
 
 import methods.ResizeIcon;
+import methods.WriterReader;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.io.File;
 
 import javax.swing.BorderFactory;
 import javax.swing.Icon;
@@ -35,18 +37,18 @@ public class MyMenuBar extends JMenuBar{
 		helpMenu.setMnemonic(KeyEvent.VK_H);
 		
 		// Ikonice
-		Icon addIcon = ResizeIcon.resizeIcon(new ImageIcon("images/addButton.png"), 14, 14);
-		Icon editIcon = ResizeIcon.resizeIcon(new ImageIcon("images/editButton.png"), 14, 14);
-		Icon deleteIcon = ResizeIcon.resizeIcon(new ImageIcon("images/deleteButton.png"), 14, 14);
-		Icon closeIcon = ResizeIcon.resizeIcon(new ImageIcon("images/closeButton.png"), 14, 14);
-		Icon saveIcon = ResizeIcon.resizeIcon(new ImageIcon("images/saveButton.png"), 14, 14);
-		Icon openIcon = ResizeIcon.resizeIcon(new ImageIcon("images/openButton.png"), 14, 14);
-		Icon helpIcon = ResizeIcon.resizeIcon(new ImageIcon("images/helpButton.png"), 14, 14);
-		Icon aboutIcon = ResizeIcon.resizeIcon(new ImageIcon("images/aboutButton.png"), 14, 14);
-		Icon studentIcon = ResizeIcon.resizeIcon(new ImageIcon("images/studentIcon.png"), 14, 14);
-		Icon professorIcon = ResizeIcon.resizeIcon(new ImageIcon("images/professorIcon.png"), 14, 14);
-		Icon subjectIcon = ResizeIcon.resizeIcon(new ImageIcon("images/subjectIcon.png"), 14, 14);
-		Icon departmentIcon = ResizeIcon.resizeIcon(new ImageIcon("images/departmentIcon.png"), 14, 14);
+		Icon addIcon = ResizeIcon.resizeIcon(new ImageIcon("images" + File.separator + "addButton.png"), 14, 14);
+		Icon editIcon = ResizeIcon.resizeIcon(new ImageIcon("images" + File.separator + "editButton.png"), 14, 14);
+		Icon deleteIcon = ResizeIcon.resizeIcon(new ImageIcon("images" + File.separator + "deleteButton.png"), 14, 14);
+		Icon closeIcon = ResizeIcon.resizeIcon(new ImageIcon("images" + File.separator + "closeButton.png"), 14, 14);
+		Icon saveIcon = ResizeIcon.resizeIcon(new ImageIcon("images" + File.separator + "saveButton.png"), 14, 14);
+		Icon openIcon = ResizeIcon.resizeIcon(new ImageIcon("images" + File.separator + "openButton.png"), 14, 14);
+		Icon helpIcon = ResizeIcon.resizeIcon(new ImageIcon("images" + File.separator + "helpButton.png"), 14, 14);
+		Icon aboutIcon = ResizeIcon.resizeIcon(new ImageIcon("images" + File.separator + "aboutButton.png"), 14, 14);
+		Icon studentIcon = ResizeIcon.resizeIcon(new ImageIcon("images" + File.separator + "studentIcon.png"), 14, 14);
+		Icon professorIcon = ResizeIcon.resizeIcon(new ImageIcon("images" + File.separator + "professorIcon.png"), 14, 14);
+		Icon subjectIcon = ResizeIcon.resizeIcon(new ImageIcon("images" + File.separator + "subjectIcon.png"), 14, 14);
+		Icon departmentIcon = ResizeIcon.resizeIcon(new ImageIcon("images" + File.separator + "departmentIcon.png"), 14, 14);
 		
 		
 		// File meni
@@ -114,6 +116,14 @@ public class MyMenuBar extends JMenuBar{
 		closeItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, ActionEvent.CTRL_MASK));
 		
 		newItem.addActionListener(new AddEntityListener());
+		
+		
+		saveItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				WriterReader.getInstance().SaveData();	
+			}
+		});
 		
 		
 		fileMenu.add(newItem);
