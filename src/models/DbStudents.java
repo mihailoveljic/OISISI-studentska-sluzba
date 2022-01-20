@@ -52,7 +52,7 @@ public class DbStudents {
 				new Adress("Tolstojeva", "15", "Novi Sad", "Srbija"), "+381694732572",
 				"imenkoprezimenovic@gmail.com", "RI22/2020", 2020, 2, StudentStatus.B));
 		
-		students.get(0).getGrades().add(new Grade(students.get(0), new Subject("8", "MATEMATICKA ANALIZA 1",Semester.ZIMSKI, 1, 1000), 9, new Date(2000-1900, 5, 12)));
+		students.get(0).getGrades().add(new Grade(students.get(0), new Subject("1", "MATEMATICKA ANALIZA 1",Semester.ZIMSKI, 1, 1000), 9, new Date(2000-1900, 5, 12)));
 		students.get(0).getGrades().add(new Grade(students.get(0), new Subject("9", "SPPURV1",Semester.ZIMSKI, 1, 1000), 7, new Date(2000-1900, 5, 12)));
 		students.get(0).getGrades().add(new Grade(students.get(0), new Subject("10", "OISISI",Semester.ZIMSKI, 1, 1000), 10, new Date(2000-1900, 5, 12)));
 		

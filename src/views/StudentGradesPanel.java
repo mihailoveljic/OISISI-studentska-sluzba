@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -50,16 +51,10 @@ public class StudentGradesPanel extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Brisanje ocene
-				//DbStudents.getInstance().getRow(StudentTable.getInstance().getSelectedRow())
-				//gradesTable.getSelectedRow()
-				//ArrayList<Grade> grades = (ArrayList<Grade>) gradesTable.getModel();
-                //Grade grade = grades.get(gradesTable.getSelectedRow());
-                //Student student = grade.getStudent();
-                //Subject subject = grade.getSubject();
-                //subject.getListOfStudentsWhoPassed().remove(student);
-                //student.getGrades().remove(grade);
+				
 				int column = 0;
 				int row = gradesTable.getSelectedRow();
+				if(row!=-1) {
 				String value = gradesTable.getModel().getValueAt(row, column).toString();
 				Student student = DbStudents.getInstance().getRow(StudentTable.getInstance().getSelectedRow());
 				List<Grade> grades = student.getGrades();
@@ -68,11 +63,16 @@ public class StudentGradesPanel extends JPanel{
 						
 						g.getSubject().getListOfStudentsWhoPassed().remove(student);
 						student.getGrades().remove(g);
+						student.getSubjects().add(g.getSubject());
 						StudentGradesPanel.getInstance().refresh();
+						StudentSubjectsPanel.getInstance().refresh();
 						break;
 					}
 				}
-                
+				}
+				else {
+					JOptionPane.showMessageDialog(StudentGradesPanel.getInstance(), "Niste selektovali ocenu!");
+				}
                 
                  
 				
