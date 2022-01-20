@@ -2,13 +2,12 @@ package views;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 import models.Subject;
-import models.Professor;
-import models.DbProfessors;
 import models.Semester;
 import models.Student;
 import models.DbStudents;
 
 
+@SuppressWarnings("serial")
 public class AbstractTableModelStudentSubject extends AbstractTableModel {
 
 		Student s = DbStudents.getInstance().getRow(StudentTable.getInstance().getSelectedRow());

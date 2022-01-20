@@ -12,6 +12,8 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
+import models.DbStudents;
+import models.Student;
 
 import java.awt.Color;
 
@@ -163,5 +165,10 @@ public class StudentTable extends JTable{
 		if(instance == null)
 			instance = new StudentTable();
 		return instance;
+	}
+	
+	public Student selected() {
+		return DbStudents.getInstance().getRow(StudentTable.getInstance().convertRowIndexToModel(StudentTable.getInstance().getSelectedRow()));
+		
 	}
 }

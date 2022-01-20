@@ -51,13 +51,11 @@ public class StudentGradesPanel extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Brisanje ocene
+				
 				int column = 0;
 				int row = gradesTable.getSelectedRow();
-				if(gradesTable.getSelectedRow()==-1)
-				{
-					JOptionPane.showMessageDialog(StudentGradesPanel.getInstance(), "Niste izabrali studenta!");
-				}
-				else {
+				if(row!=-1) {
+
 				String value = gradesTable.getModel().getValueAt(row, column).toString();
 				Student student = DbStudents.getInstance().getRow(StudentTable.getInstance().getSelectedRow());
 				List<Grade> grades = student.getGrades();
@@ -67,10 +65,16 @@ public class StudentGradesPanel extends JPanel{
 						if(userInput == JOptionPane.YES_OPTION) { 
 						g.getSubject().getListOfStudentsWhoPassed().remove(student);
 						student.getGrades().remove(g);
+						student.getSubjects().add(g.getSubject());
 						StudentGradesPanel.getInstance().refresh();
+						StudentSubjectsPanel.getInstance().refresh();
 						break;
 						}
 					}
+				}
+				}
+				else {
+					JOptionPane.showMessageDialog(StudentGradesPanel.getInstance(), "Niste selektovali ocenu!");
 				}
 			}
 		});

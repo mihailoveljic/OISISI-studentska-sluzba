@@ -4,10 +4,16 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+
+import models.DbSubjects;
+import models.Subject;
 
 public class StudentSubjectsPanel extends JPanel{
 
@@ -23,6 +29,7 @@ public class StudentSubjectsPanel extends JPanel{
 	private JButton deleteGrade;
 	private JButton entryGrade;
 	private JScrollPane scrollPane;
+	StudentAddSubject studentAddSubject;
 	
 	public StudentSubjectsPanel() {
 		super();
@@ -66,6 +73,27 @@ public class StudentSubjectsPanel extends JPanel{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
+			Subject subject=null;
+			int row = studentSubjectTable.getSelectedRow();
+			if (row >= 0 &&  row < studentSubjectTable.getRowCount())
+			{
+			String index = (String) studentSubjectTable.getValueAt(row, 0);
+			List<Subject> listSubjects = new ArrayList<Subject>();
+			listSubjects = DbSubjects.getInstance().getSubjects();
+			for(Subject s: listSubjects)
+			{
+				if(s.getId()==index)
+				{
+					subject=s;
+				}
+			}
+			studentAddSubject = new StudentAddSubject(MainFrame.getInstance(), "Unos ocene", true, subject);
+			studentAddSubject.setVisible(true);
+			}
+			else {
+				JOptionPane.showMessageDialog(StudentSubjectsPanel.getInstance(), "Predmet nije selektovan.", "Upozorenje!",
+						JOptionPane.ERROR_MESSAGE);
+			}
 			
 		}
 	});
@@ -127,5 +155,19 @@ public class StudentSubjectsPanel extends JPanel{
 	public static void setInstance(StudentSubjectsPanel instance) {
 		StudentSubjectsPanel.instance = instance;
 	}
+
+	public StudentAddSubject getStudentAddSubject() {
+		return studentAddSubject;
+	}
+
+	public void setStudentAddSubject(StudentAddSubject studentAddSubject) {
+		this.studentAddSubject = studentAddSubject;
+	}
 	
+	public void refresh() {
+		AbstractTableModelStudentSubject abstractTableModelStudentSubject = (AbstractTableModelStudentSubject)studentSubjectTable.getModel();
+		abstractTableModelStudentSubject.fireTableDataChanged();
+		validate();
+		
+	}
 }
