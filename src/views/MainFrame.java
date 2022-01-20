@@ -8,15 +8,11 @@ import java.awt.event.WindowListener;
 import java.awt.image.BufferedImage;
 import java.util.Locale;
 import java.util.ResourceBundle;
-
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 
 import methods.WriterReader;
-import models.DbSubjects;
-import models.Subject;
 
 public class MainFrame extends JFrame{
 	
@@ -73,11 +69,14 @@ public class MainFrame extends JFrame{
 				// TODO Auto-generated method stub
 				
 				int userInput = JOptionPane.showConfirmDialog(MainFrame.getInstance(), "Da li želite da saèuvate izmene pre zatvaranja?",
-						"Èuvanje izmena", JOptionPane.YES_NO_OPTION);
+						"Èuvanje izmena", JOptionPane.YES_NO_CANCEL_OPTION);
 				if (userInput == JOptionPane.YES_OPTION) {
 					WriterReader.getInstance().SaveData();
+					MainFrame.getInstance().dispose();
 					}
-				MainFrame.getInstance().dispose();
+				else if(userInput==JOptionPane.NO_OPTION) {
+					MainFrame.getInstance().dispose();
+				}
 			}
 			
 			@Override

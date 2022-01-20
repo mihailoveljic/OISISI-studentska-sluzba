@@ -65,6 +65,8 @@ public class StudentSubjectsPanel extends JPanel{
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			
+			if(studentSubjectTable.getSelectedRow()!=-1)
+			{
 			Student s = DbStudents.getInstance().findStudentByIndex((String) StudentTable.getInstance().getValueAt(StudentTable.getInstance().getSelectedRow(), 0));
 			if(s!=null)
 			{
@@ -74,8 +76,10 @@ public class StudentSubjectsPanel extends JPanel{
 					StudentSubjectsPanel.getInstance().refresh();
 				}
 			}
-			
-			
+			}
+			else {
+				JOptionPane.showMessageDialog(studentSubjectTable, "Niste selektovali predmet");
+			}
 		}
 	});
 	commandPanel.add(deleteGrade);
