@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -52,16 +53,23 @@ public class StudentGradesPanel extends JPanel{
 				// TODO Brisanje ocene
 				int column = 0;
 				int row = gradesTable.getSelectedRow();
+				if(gradesTable.getSelectedRow()==-1)
+				{
+					JOptionPane.showMessageDialog(StudentGradesPanel.getInstance(), "Niste izabrali studenta!");
+				}
+				else {
 				String value = gradesTable.getModel().getValueAt(row, column).toString();
 				Student student = DbStudents.getInstance().getRow(StudentTable.getInstance().getSelectedRow());
 				List<Grade> grades = student.getGrades();
 				for(Grade g: grades) {
 					if(g.getSubject().getId()==value) {
-						
+						int userInput = JOptionPane.showOptionDialog(StudentGradesPanel.getInstance(), "Da li ste sigurni da �elite da ponistite ocenu?", "Ponistavanje ocene", JOptionPane.YES_NO_OPTION, 0, null, null, e);
+						if(userInput == JOptionPane.YES_OPTION) { 
 						g.getSubject().getListOfStudentsWhoPassed().remove(student);
 						student.getGrades().remove(g);
 						StudentGradesPanel.getInstance().refresh();
 						break;
+						}
 					}
 				}
 			}
