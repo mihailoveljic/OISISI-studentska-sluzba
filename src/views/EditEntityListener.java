@@ -46,7 +46,7 @@ public class EditEntityListener implements ActionListener{
 			SubjectEditFrame subjectEditFrame;
 			if(SubjectTable.getInstance().getSelectedRow() != -1) {
 				subjectEditFrame = SubjectEditFrame.getInstance();
-				subjectEditFrame.updateSubjectSelection(SubjectTable.getInstance().getSelectedRow());
+				subjectEditFrame.updateSubjectSelection();
 				subjectEditFrame.setVisible(true);
 			}else {
 				JOptionPane.showMessageDialog(null, "Odaberi predmet prvo!");

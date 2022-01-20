@@ -113,5 +113,11 @@ public class DbSubjects {
 		return this.subjects.get(rowIndex);
 	}
 	
-
+	public Subject findSubjectById(String id) {
+		for(Subject s: subjects) {
+			if(s.getId().equals(id))
+				return s;
+		}
+		return null;
+	}
 }

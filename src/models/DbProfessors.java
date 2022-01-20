@@ -126,6 +126,12 @@ public class DbProfessors {
 		}
 	}
 	
-	
+	public Professor findProfessor(String name, String surname, String email) {
+		for(Professor p : professors) {
+			if(p.getName().equals(name) && p.getSurname().equals(surname) && p.getEmail().equals(email))
+				return p;
+		}
+		return null;
+	}
 
 }

@@ -75,7 +75,7 @@ public class SubjectEditFrame extends JDialog{
 		JPanel contentPanel = new JPanel(new GridLayout(8, 2, 5, 5));
 		contentPanel.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
 
-		s = DbSubjects.getInstance().getRow(selectedRow);
+		s = DbSubjects.getInstance().findSubjectById((String)SubjectTable.getInstance().getValueAt(SubjectTable.getInstance().getSelectedRow(), 0));
 		if(s != null) {
 			oldId = s.getId();
 			id = s.getId();
@@ -243,8 +243,8 @@ public class SubjectEditFrame extends JDialog{
 		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 	}
 	
-	public void updateSubjectSelection(int selectedRow) {
-		s = DbSubjects.getInstance().getRow(selectedRow);
+	public void updateSubjectSelection() {
+		s = DbSubjects.getInstance().findSubjectById((String)SubjectTable.getInstance().getValueAt(SubjectTable.getInstance().getSelectedRow(), 0));
 		if(s != null) {
 			oldId = s.getId();
 			id = s.getId();

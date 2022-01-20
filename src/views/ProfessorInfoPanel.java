@@ -85,7 +85,11 @@ public class ProfessorInfoPanel extends JPanel {
 		this.setLayout(new GridLayout(17, 2, 5, 5));
 		this.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
 		
-		p = DbProfessors.getInstance().getRow(selectedRow);
+		p = DbProfessors.getInstance().findProfessor(
+				(String)ProfessorTable.getInstance().getValueAt(ProfessorTable.getInstance().getSelectedRow(), 0),
+				(String)ProfessorTable.getInstance().getValueAt(ProfessorTable.getInstance().getSelectedRow(), 1),
+				(String)ProfessorTable.getInstance().getValueAt(ProfessorTable.getInstance().getSelectedRow(), 3)			
+				);
 		
 		if(p!=null) {
 			
@@ -292,7 +296,11 @@ public class ProfessorInfoPanel extends JPanel {
 		@SuppressWarnings("deprecation")
 		public void updateProfessorSelection(int selectedRow) {
 			
-			p = DbProfessors.getInstance().getRow(selectedRow);
+			p = DbProfessors.getInstance().findProfessor(
+					(String)ProfessorTable.getInstance().getValueAt(ProfessorTable.getInstance().getSelectedRow(), 0),
+					(String)ProfessorTable.getInstance().getValueAt(ProfessorTable.getInstance().getSelectedRow(), 1),
+					(String)ProfessorTable.getInstance().getValueAt(ProfessorTable.getInstance().getSelectedRow(), 3)			
+					);
 			
 			if(p != null) {
 

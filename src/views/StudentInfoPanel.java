@@ -77,7 +77,7 @@ public class StudentInfoPanel extends JPanel{
 		this.setLayout(new GridLayout(14, 2, 5, 5));
 		this.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
 
-		s = DbStudents.getInstance().getRow(selectedRow);
+		s = DbStudents.getInstance().findStudentByIndex((String) StudentTable.getInstance().getValueAt(selectedRow, 0));
 		
 		if(s != null) {
 			
@@ -281,7 +281,8 @@ public class StudentInfoPanel extends JPanel{
 	
 	@SuppressWarnings("deprecation")
 	public void updateStudentSelection(int selectedRow) {
-		s = DbStudents.getInstance().getRow(selectedRow);
+
+		s = DbStudents.getInstance().findStudentByIndex((String) StudentTable.getInstance().getValueAt(selectedRow, 0));
 		if(s != null) {
 			
 			int month = s.getBirthDate().getMonth() + 1;

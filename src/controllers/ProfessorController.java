@@ -7,6 +7,7 @@ import models.DbProfessors;
 import models.Professor;
 import views.ProfessorInfoPanel;
 import views.ProfessorPanel;
+import views.ProfessorTable;
 
 public class ProfessorController {
 	
@@ -139,7 +140,11 @@ public class ProfessorController {
 			return "NO ROW SELECTED!";
 		}
 		
-		Professor profesor = DbProfessors.getInstance().getRow(rowSelectedIndex);
+		Professor profesor = DbProfessors.getInstance().findProfessor(
+				(String)ProfessorTable.getInstance().getValueAt(ProfessorTable.getInstance().getSelectedRow(), 0),
+				(String)ProfessorTable.getInstance().getValueAt(ProfessorTable.getInstance().getSelectedRow(), 1),
+				(String)ProfessorTable.getInstance().getValueAt(ProfessorTable.getInstance().getSelectedRow(), 3)			
+				);
 		
 		String validationString = validateProfessor(surname,name,birthDate, streetAdress, numberAdress, cityAdress, countryAdress, phone, email,
 				 streetOfficeAdress, numberOfficeAdress, cityOfficeAdress, countryOfficeAdress, idNumber, title,serviceYears);
@@ -173,7 +178,11 @@ public class ProfessorController {
 			if(selectedRow<0) {
 				return;
 			} else {
-				Professor p = DbProfessors.getInstance().getRow(selectedRow);
+				Professor p = DbProfessors.getInstance().findProfessor(
+						(String)ProfessorTable.getInstance().getValueAt(ProfessorTable.getInstance().getSelectedRow(), 0),
+						(String)ProfessorTable.getInstance().getValueAt(ProfessorTable.getInstance().getSelectedRow(), 1),
+						(String)ProfessorTable.getInstance().getValueAt(ProfessorTable.getInstance().getSelectedRow(), 3)			
+						);
 				DbProfessors.getInstance().deleteProfessor(p.getIdNumber());
 				ProfessorPanel.getInstance().updateView();
 			}
