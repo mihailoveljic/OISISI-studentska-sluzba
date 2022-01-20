@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -12,6 +13,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 import models.DbStudents;
+import models.Grade;
+import models.Student;
 
 public class StudentGradesPanel extends JPanel{
 
@@ -40,13 +43,27 @@ public class StudentGradesPanel extends JPanel{
 		add(scrollPane, BorderLayout.CENTER);
 		
 		JPanel commandPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		removeGrade = new JButton("Poniöti ocenu");
+		removeGrade = new JButton("Poni≈°ti ocenu");
 		
 		removeGrade.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Brisanje ocene
+				int column = 0;
+				int row = gradesTable.getSelectedRow();
+				String value = gradesTable.getModel().getValueAt(row, column).toString();
+				Student student = DbStudents.getInstance().getRow(StudentTable.getInstance().getSelectedRow());
+				List<Grade> grades = student.getGrades();
+				for(Grade g: grades) {
+					if(g.getSubject().getId()==value) {
+						
+						g.getSubject().getListOfStudentsWhoPassed().remove(student);
+						student.getGrades().remove(g);
+						StudentGradesPanel.getInstance().refresh();
+						break;
+					}
+				}
 			}
 		});
 		commandPanel.add(removeGrade);
@@ -57,7 +74,7 @@ public class StudentGradesPanel extends JPanel{
 		JPanel labelTotalESPBPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 		DbStudents.getInstance().getRow(StudentTable.getInstance().getSelectedRow()).recalculateAvgGrade();
 		avgGrade = DbStudents.getInstance().getRow(StudentTable.getInstance().getSelectedRow()).getAverageGrade();
-		averageGradeLabel = new JLabel("ProseËna ocena: ");
+		averageGradeLabel = new JLabel("Prose√®na ocena: ");
         avgGradeField = new JTextField();
         avgGradeField.setEditable(false);
         avgGradeField.setText(Double.toString(avgGrade));
