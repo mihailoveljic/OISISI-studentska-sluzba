@@ -2,6 +2,8 @@ package controllers;
 
 import java.sql.Date;
 
+import javax.swing.JOptionPane;
+
 import models.Adress;
 import models.DbProfessors;
 import models.Professor;
@@ -28,7 +30,7 @@ public class ProfessorController {
 		
 		for(Professor p : DbProfessors.getInstance().getProfessors()) {
 			if(p.getIdNumber() == formattedIdNumber)
-				return "Broj liène karte mora biti jedinstven!";
+				return "Broj liï¿½ne karte mora biti jedinstven!";
 		}
 		
 		if(validationString != "OK")
@@ -68,7 +70,7 @@ public class ProfessorController {
 			if(cityAdress == null)
 				return "Unesite grad!";
 			if(countryAdress == null)
-				return "Unesite državu!";
+				return "Unesite drï¿½avu!";
 			
 			formattedAdress = new Adress(streetAdress, numberAdress, cityAdress, countryAdress);
 			
@@ -109,14 +111,14 @@ public class ProfessorController {
 		if(cityOfficeAdress.equals(""))
 			return "Unesite grad!";
 		if(countryOfficeAdress.equals(""))
-			return "Unesite državu!";
+			return "Unesite drï¿½avu!";
 		formattedOfficeAdress = new Adress(streetAdress, numberAdress, cityAdress, countryAdress);
 		
 		
 		try {
 			formattedIdNumber=Integer.parseInt(idNumber);
 		} catch(Exception e) {
-				return "Neispravan broj liène karte!";	
+				return "Neispravan broj liï¿½ne karte!";	
 		}
 		
 
@@ -125,7 +127,7 @@ public class ProfessorController {
 		try {
 			formattedServiceYears=Integer.parseInt(serviceYears);
 		} catch(Exception e) {
-				return "Neispravan unet radni staž!";	
+				return "Neispravan unet radni staï¿½!";	
 		}
 		
 		
@@ -152,7 +154,7 @@ public class ProfessorController {
 		for(Professor p : DbProfessors.getInstance().getProfessors()) {
 			if(p.getIdNumber() == formattedIdNumber)
 				if(p.getIdNumber() != ProfessorInfoPanel.getInstance().getOldIdNumber())
-					return "Broj liène karte mora biti jedinstven!";
+					return "Broj liï¿½ne karte mora biti jedinstven!";
 		}
 		
 		if(validationString!="OK")
@@ -186,6 +188,36 @@ public class ProfessorController {
 				DbProfessors.getInstance().deleteProfessor(p.getIdNumber());
 				ProfessorPanel.getInstance().updateView();
 			}
+	}
+	public void searchProfesor(String text) {
+		if(text.equals(""))
+		{
+			ProfessorTable.getInstance().clearFilter();
+			ProfessorPanel.getInstance().updateView();;
+		}
+		
+		String words[] = text.trim().split("\\s+");
+		
+		if(words.length == 1) {
+		String prezime = words[0];
+				ProfessorTable.getInstance().setFilter(prezime, 1);
+				ProfessorPanel.getInstance().updateView();;
+		}
+		
+		
+		else if(words.length == 2) {
+		String prezime = words[0];
+		String ime = words[1];
+			ProfessorTable.getInstance().setFilters(prezime, 1, ime, 0);
+			ProfessorPanel.getInstance().updateView();;
+		}
+		
+		else {
+			JOptionPane.showMessageDialog(null,
+					"Unete vrednosti nisu dobre! MoguÄ‡e opcije su: <prezime>, <prezime ime>.",
+					"Upozorenje!", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
 	}
 	
 }
