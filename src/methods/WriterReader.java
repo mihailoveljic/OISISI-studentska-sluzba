@@ -34,7 +34,7 @@ public class  WriterReader {
 			List<Student> students = new ArrayList<>();
 
 		    //Read Student array from file.
-		    FileInputStream fis = new FileInputStream("Data" + File.separator + "students.dat");
+		    FileInputStream fis = new FileInputStream("Data" + File.separator + "studentska_sluzba.dat");
 		    ObjectInputStream ois = new ObjectInputStream(fis);
 		    subjects = (List<Subject>) ois.readObject();
 		    professors = (List<Professor>) ois.readObject();
@@ -69,7 +69,7 @@ public class  WriterReader {
 			List<Student> students = DbStudents.getInstance().getStudents();
 
 		    //Write Student array to file.
-		    FileOutputStream fos = new FileOutputStream("Data" + File.separator + "students.dat");
+		    FileOutputStream fos = new FileOutputStream("Data" + File.separator + "studentska_sluzba.dat");
 		    ObjectOutputStream oos = new ObjectOutputStream(fos);
 		    oos.writeObject(subjects);
 		    oos.writeObject(professors);

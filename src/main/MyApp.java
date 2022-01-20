@@ -12,6 +12,8 @@ import views.MyToolBar;
 
 public class MyApp {
 
+	
+	
 	public static void main(String[] args) {
 		
 		try {
@@ -19,6 +21,7 @@ public class MyApp {
 		}catch(Exception e) {
 			
 		}
+		
 		MainFrame mainFrame = MainFrame.getInstance();
 		
 		// Meni bar
