@@ -47,7 +47,6 @@ public class StudentGradesPanel extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Brisanje ocene
-				
 			}
 		});
 		commandPanel.add(removeGrade);

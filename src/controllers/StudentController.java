@@ -12,7 +12,6 @@ import views.StudentInfoPanel;
 import views.StudentPanel;
 import views.StudentTable;
 
-
 public class StudentController {
 	
 	int formattedEnrollmentYear;
@@ -29,26 +28,26 @@ public class StudentController {
 			StudentPanel.getInstance().updateView();
 		}
 		
-		String words[] = text.trim().split("\\s+");
+		String words[] = text.trim().split(",");
 		
 		if(words.length == 1) {
-		String surname = words[0];
-				StudentTable.getInstance().setFilter(surname, 2);
-				StudentPanel.getInstance().updateView();
+			String surname = words[0];
+			StudentTable.getInstance().setFilter(surname, 2);
+			StudentPanel.getInstance().updateView();
 		}
 		
 		
 		else if(words.length == 2) {
-		String surname = words[0];
-		String name = words[1];
+			String surname = words[0];
+			String name = words[1];
 			StudentTable.getInstance().set2Filter(surname, 2, name, 1);
 			StudentPanel.getInstance().updateView();
 		}
 		
 		else if(words.length == 3) {
-			String surname = words[0];
-			String name = words[1];
-			String index = words[2];
+				String surname = words[0];
+				String name = words[1];
+				String index = words[2];
 				StudentTable.getInstance().set3Filter(surname, 2, name, 1, index, 0);
 				StudentPanel.getInstance().updateView();
 			}
@@ -56,7 +55,7 @@ public class StudentController {
 		else {
 
 			JOptionPane.showMessageDialog(null,
-					"Unete vrednosti nisu dobre! Moguæe opcije su: <prezime>, <prezime ime>, <prezime ime indeks>.",
+					"Unete vrednosti nisu dobre! Moguæe opcije su: <prezime>, <prezime,ime>, <prezime,ime,indeks>.",
 					"Upozorenje!", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
@@ -145,9 +144,22 @@ public class StudentController {
 				}catch(Exception e){
 					return "Unesite datum u formatu: DD.MM.YYYY.";
 				}
-				
-
-					
+				try {
+					String parts[] = index.split(" ");
+					if(parts.length != 2) {
+						return "Indeks mora biti u formatu: SMER BROJ_UPISA/GODINA_UPISA";
+					}
+				}catch(Exception e) {
+					return "Indeks mora biti u formatu: SMER BROJ_UPISA/GODINA_UPISA";
+				}
+				try {
+					String parts[] = index.split("/");
+					if(parts.length != 2) {
+						return "Indeks mora biti u formatu: SMER BROJ_UPISA/GODINA_UPISA";
+					}
+				}catch(Exception e) {
+					return "Indeks mora biti u formatu: SMER BROJ_UPISA/GODINA_UPISA";
+				}
 				if(street.equals(""))
 					return "Unesite ulicu!";
 				if(number.equals(""))
