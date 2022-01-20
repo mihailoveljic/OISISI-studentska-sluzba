@@ -6,6 +6,10 @@ import java.awt.Component;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableModel;
+
+import models.DbProfessors;
+import models.DbStudents;
 
 public class StudentSubjectTable extends JTable{
 
@@ -14,7 +18,7 @@ public class StudentSubjectTable extends JTable{
 	 */
 	private static final long serialVersionUID = -8823694100864512615L;
 	
-	@SuppressWarnings("unused")
+	
 	private AbstractTableModelStudentSubject abstractTableModelStudentSubject = new AbstractTableModelStudentSubject();
 
 	public StudentSubjectTable() {
@@ -22,7 +26,7 @@ public class StudentSubjectTable extends JTable{
 		this.setRowSelectionAllowed(true);
 		this.setColumnSelectionAllowed(true);
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		this.setModel(new AbstractTableModelStudentSubject());
+		this.setModel(abstractTableModelStudentSubject);
 	}
 	
 	@Override
@@ -34,5 +38,13 @@ public class StudentSubjectTable extends JTable{
 			c.setBackground(Color.WHITE);
 		}
 		return c;
+	}
+	
+	@Override
+	public TableModel getModel() {
+		if(DbStudents.getInstance().findStudentByIndex((String) StudentTable.getInstance().getValueAt(StudentTable.getInstance().getSelectedRow(), 0)) != null)
+			if(abstractTableModelStudentSubject != null)
+				abstractTableModelStudentSubject.updateStudent();
+		return super.getModel();
 	}
 }
