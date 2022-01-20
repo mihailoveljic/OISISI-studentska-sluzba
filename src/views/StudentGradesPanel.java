@@ -43,21 +43,13 @@ public class StudentGradesPanel extends JPanel{
 		add(scrollPane, BorderLayout.CENTER);
 		
 		JPanel commandPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		removeGrade = new JButton("Poniöti ocenu");
+		removeGrade = new JButton("Poni≈°ti ocenu");
 		
 		removeGrade.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Brisanje ocene
-				//DbStudents.getInstance().getRow(StudentTable.getInstance().getSelectedRow())
-				//gradesTable.getSelectedRow()
-				//ArrayList<Grade> grades = (ArrayList<Grade>) gradesTable.getModel();
-                //Grade grade = grades.get(gradesTable.getSelectedRow());
-                //Student student = grade.getStudent();
-                //Subject subject = grade.getSubject();
-                //subject.getListOfStudentsWhoPassed().remove(student);
-                //student.getGrades().remove(grade);
 				int column = 0;
 				int row = gradesTable.getSelectedRow();
 				String value = gradesTable.getModel().getValueAt(row, column).toString();
@@ -72,10 +64,6 @@ public class StudentGradesPanel extends JPanel{
 						break;
 					}
 				}
-                
-                
-                 
-				
 			}
 		});
 		commandPanel.add(removeGrade);
@@ -86,7 +74,7 @@ public class StudentGradesPanel extends JPanel{
 		JPanel labelTotalESPBPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 		DbStudents.getInstance().getRow(StudentTable.getInstance().getSelectedRow()).recalculateAvgGrade();
 		avgGrade = DbStudents.getInstance().getRow(StudentTable.getInstance().getSelectedRow()).getAverageGrade();
-		averageGradeLabel = new JLabel("ProseËna ocena: ");
+		averageGradeLabel = new JLabel("Prose√®na ocena: ");
         avgGradeField = new JTextField();
         avgGradeField.setEditable(false);
         avgGradeField.setText(Double.toString(avgGrade));

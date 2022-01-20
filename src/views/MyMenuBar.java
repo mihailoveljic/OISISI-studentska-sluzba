@@ -96,6 +96,14 @@ public class MyMenuBar extends JMenuBar{
 		JMenuItem departments = new JMenuItem("Katedre", departmentIcon);
 		departments.setMnemonic(KeyEvent.VK_K);
 		departments.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_K, ActionEvent.SHIFT_MASK));
+		departments.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				DepartmentsMainDialog departmentsMainDialog = new DepartmentsMainDialog();
+				departmentsMainDialog.setVisible(true);
+			}
+		});
 		openMenu.add(students);
 		openMenu.add(subjects);
 		openMenu.add(professors);
