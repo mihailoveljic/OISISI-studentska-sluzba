@@ -70,7 +70,7 @@ public class SubjectEditFrame extends JDialog{
 		// Pravljenje prozora
 		setSize(width*1/4, height*2/4);
 		setLocationRelativeTo(MainFrame.getInstance());
-		setTitle("Dodavanje predmeta");
+		setTitle(MainFrame.getInstance().getResourceBundle().getString("editSubject"));
 		Image icon = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB_PRE);
 		setIconImage(icon);
 
@@ -384,4 +384,9 @@ public class SubjectEditFrame extends JDialog{
 		this.oldId = oldId;
 	}
 	
+	public static void recreate() {
+		if(instance != null)
+			instance.dispose();
+		instance = null;
+	}
 }

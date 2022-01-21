@@ -21,6 +21,7 @@ public class MyApp {
 		}catch(Exception e) {
 			
 		}
+
 		
 		MainFrame mainFrame = MainFrame.getInstance();
 		
@@ -42,8 +43,6 @@ public class MyApp {
 
 	    mainFrame.setVisible(true);
 	    
-
-		WriterReader.getInstance().SaveData();
 	}
 
 }

@@ -138,4 +138,5 @@ public class ProfessorSubjectAddFrame extends JDialog implements ActionListener{
 			setVisible(false);
 		}
 	}
+	
 }

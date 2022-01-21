@@ -121,4 +121,11 @@ public class DbProfessors {
 		this.professors = professors;
 	}
 
+	public void reloadUI() {
+		this.columns=new ArrayList<String>();
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("name"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("surname"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("title"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("email"));
+	}
 }

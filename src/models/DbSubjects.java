@@ -117,4 +117,13 @@ public class DbSubjects {
 	public void setSubjects(List<Subject> subjects) {
 		this.subjects = subjects;
 	}
+	
+	public void reloadUI() {
+		this.columns=new ArrayList<String>();
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("subjectId"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("subjectName"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("espb"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("yearOfStudy"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("semester"));
+	}
 }

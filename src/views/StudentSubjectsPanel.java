@@ -41,13 +41,12 @@ public class StudentSubjectsPanel extends JPanel{
 		add(scrollPane, BorderLayout.CENTER);
 		JPanel commandPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		
-		addGrade = new JButton ("Dodaj");
+		addGrade = new JButton (MainFrame.getInstance().getResourceBundle().getString("add"));
 		
 		addGrade.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				StudentAddSubjectDialog studentAddSubjectDialog = new StudentAddSubjectDialog();
 				studentAddSubjectDialog.setLocationRelativeTo(StudentEditFrame.getInstance());
 				studentAddSubjectDialog.setVisible(true);
@@ -64,8 +63,6 @@ public class StudentSubjectsPanel extends JPanel{
 		
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			
 			if(studentSubjectTable.getSelectedRow()!=-1)
 			{
 			Student s = DbStudents.getInstance().findStudentByIndex((String) StudentTable.getInstance().getValueAt(StudentTable.getInstance().getSelectedRow(), 0));
@@ -79,7 +76,7 @@ public class StudentSubjectsPanel extends JPanel{
 			}
 			}
 			else {
-				JOptionPane.showMessageDialog(StudentSubjectsPanel.getInstance(), "Niste selektovali predmet!", "UPOZORENJE", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(StudentSubjectsPanel.getInstance(), MainFrame.getInstance().getResourceBundle().getString("subjectNotChosen"), MainFrame.getInstance().getResourceBundle().getString("warning"), JOptionPane.WARNING_MESSAGE);
 			}
 		}
 	});
@@ -92,7 +89,6 @@ public class StudentSubjectsPanel extends JPanel{
 		
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
 			Subject subject=null;
 			int row = studentSubjectTable.getSelectedRow();
 			if (row >= 0 &&  row < studentSubjectTable.getRowCount())
@@ -187,5 +183,8 @@ public class StudentSubjectsPanel extends JPanel{
 		abstractTableModelStudentSubject.fireTableDataChanged();
 		validate();
 		
+	}
+	public static void recreate() {
+		instance = null;
 	}
 }
