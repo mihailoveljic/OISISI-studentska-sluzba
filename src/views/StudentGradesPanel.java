@@ -78,7 +78,7 @@ public class StudentGradesPanel extends JPanel{
 				}
 				}
 				else {
-					JOptionPane.showMessageDialog(StudentGradesPanel.getInstance(), "Niste selektovali ocenu!");
+					JOptionPane.showMessageDialog(StudentSubjectsPanel.getInstance(), "Niste selektovali ocenu!", "UPOZORENJE", JOptionPane.WARNING_MESSAGE);
 				}
 			}
 		});

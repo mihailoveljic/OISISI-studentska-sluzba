@@ -77,6 +77,7 @@ public class ProfessorEditFrame extends JDialog {
 			public void windowClosing(WindowEvent e) {
 				// TODO Auto-generated method stub
 				ProfessorPanel.getInstance().updateView();
+				dispose();
 				
 			}
 			

@@ -32,6 +32,7 @@ public class StudentTable extends JTable{
 		this.setColumnSelectionAllowed(true);
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		this.setModel(new AbstractTableModelStudents());
+		
 		sorter = new TableRowSorter<TableModel>((AbstractTableModelStudents)this.getModel());
 		sorter.setComparator(0, new Comparator<String>() {
 			 

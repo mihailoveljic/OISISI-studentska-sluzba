@@ -275,6 +275,7 @@ public class SubjectEditFrame extends JDialog{
 			public void windowClosing(WindowEvent e) {
 				// TODO Auto-generated method stub
 				SubjectPanel.getInstance().updateView();
+				dispose();
 				
 			}
 			
