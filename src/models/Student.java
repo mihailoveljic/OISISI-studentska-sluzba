@@ -1,9 +1,15 @@
 package models;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
-public class Student {
+public class Student implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1314845205881394617L;
 	private String surname;
 	private String name;
 	private Date birthDate;
@@ -15,8 +21,8 @@ public class Student {
 	private int currentYearOfStudy;
 	private StudentStatus studentStatus;
 	private double averageGrade;
-	private Set<Grade> grades;
-	private Set<Subject> subjects;
+	private List<Grade> grades;
+	private List<Subject> subjects;
 	
 	
 	public Student(String surname, String name, Date birthDate, Adress adress, String phone, String email, String index,
@@ -32,11 +38,14 @@ public class Student {
 		this.enrollmentYear = enrollmentYear;
 		this.currentYearOfStudy = currentYearOfStudy;
 		this.studentStatus = studentStatus;
+		this.averageGrade = 0;
+		this.grades = new ArrayList<Grade>();
+		this.subjects = new ArrayList<Subject>();
 	}
 
 	public Student(String surname, String name, Date birthDate, Adress adress, String phone, String email, String index,
 			int enrollmentYear, int currentYearOfStudy, StudentStatus studentStatus, double averageGrade,
-			Set<Grade> grades, Set<Subject> subjects) {
+			List<Grade> grades, List<Subject> subjects) {
 		super();
 		this.surname = surname;
 		this.name = name;
@@ -142,22 +151,43 @@ public class Student {
 		this.averageGrade = averageGrade;
 	}
 
-	public Set<Grade> getGrades() {
+	public List<Grade> getGrades() {
 		return grades;
 	}
 
-	public void setGrades(Set<Grade> grades) {
+	public void setGrades(List<Grade> grades) {
 		this.grades = grades;
 	}
 
-	public Set<Subject> getSubjects() {
+	public List<Subject> getSubjects() {
 		return subjects;
 	}
 
-	public void setExams(Set<Subject> subjects) {
+	public void setExams(List<Subject> subjects) {
 		this.subjects = subjects;
 	}
 	
+	public int getTotalESBP() {
+		int sum = 0;
+		if(grades != null) {
+			for(Grade o : this.grades) {
+				sum += o.getSubject().getESPB();
+			}
+		}
+		return sum;
+	}
 	
+	public void recalculateAvgGrade() {
+		double total = 0;
+		int count = 0;
+		if(grades != null) {
+			for(Grade g : grades) {
+				total += g.getGrade();
+				++count;
+			}
+			averageGrade = total / count;
+			averageGrade = Math.round(averageGrade*100.0)/100.0;
+		}
+	}
 	
 }

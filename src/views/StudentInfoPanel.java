@@ -26,7 +26,8 @@ public class StudentInfoPanel extends JPanel{
 	private static final long serialVersionUID = 4000816222354440731L;
 	
 	private static StudentInfoPanel instance;
-
+	
+	String oldIndex = null;
 	Student s;
 	String name;
 	String surname;
@@ -76,7 +77,7 @@ public class StudentInfoPanel extends JPanel{
 		this.setLayout(new GridLayout(14, 2, 5, 5));
 		this.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
 
-		s = DbStudents.getInstance().getRow(selectedRow);
+		s = DbStudents.getInstance().findStudentByIndex((String) StudentTable.getInstance().getValueAt(selectedRow, 0));
 		
 		if(s != null) {
 			
@@ -91,6 +92,7 @@ public class StudentInfoPanel extends JPanel{
 			country = s.getAdress().getCountry();
 			phone = s.getPhone();
 			email = s.getEmail();
+			oldIndex = s.getIndex();
 			index = s.getIndex();
 			enrollmentYear = String.valueOf(s.getEnrollmentYear());
 			currentYearOfStudy = s.getCurrentYearOfStudy();
@@ -106,39 +108,41 @@ public class StudentInfoPanel extends JPanel{
 			phone = "";
 			email = "";
 			index = "";
+			oldIndex = null;
 			enrollmentYear = "";
 			currentYearOfStudy = 0;
 			studentStatus = StudentStatus.B;
 		}
 		
-		nameLabel = new JLabel("Ime*");
+		nameLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("name") + "*");
 		nameField = new JTextField(name);
-		surnameLabel = new JLabel("Prezime*");
+		surnameLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("surname") + "*");
 		surnameField = new JTextField(surname);
-		birthDateLabel = new JLabel("Datum roðenja* (DD.MM.YYYY.)");
+		birthDateLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("birthDate") + "* (dd.mm.yyyy.)");
+
 		birthDateField = new JTextField(birthDate);
-		streetLabel = new JLabel("Ulica stanovanja*");
+		streetLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("streetLiving") + "*");
 		streetField = new JTextField(street);
-		numberLabel = new JLabel("Broj stanovanja");
+		numberLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("numberLiving") + "*");
 		numberField = new JTextField(number);
-		cityLabel = new JLabel("Grad stanovanja*");
+		cityLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("cityLiving") + "*");
 		cityField = new JTextField();
-		countryLabel = new JLabel("Država stanovanja*");
+		countryLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("countryLiving") + "*");
 		countryField = new JTextField();
-		phoneLabel = new JLabel("Broj telefona*");
+		phoneLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("phone") + "*");
 		phoneField = new JTextField(phone);
-		emailLabel = new JLabel("E-mail adresa*");
+		emailLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("email") + "*");
 		emailField = new JTextField(email);
-		indexLabel = new JLabel("Broj indeksa*");
+		indexLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("indexNumber") + "*");
 		indexField = new JTextField(index);
-		enrollmentYearLabel = new JLabel("Godina upisa*");
+		enrollmentYearLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("enrollmentYear") + "*");
 		enrollmentYearField = new JTextField(enrollmentYear);
-		currentYearOfStudyLabel = new JLabel("Trenutna godina studija*");
+		currentYearOfStudyLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("currentYearOfStudy") + "*");
 		currentYearOfStudyComboBox = new JComboBox<String>();
-		currentYearOfStudyComboBox.addItem("I (Prva)");
-		currentYearOfStudyComboBox.addItem("II (Druga)");
-		currentYearOfStudyComboBox.addItem("III (Treæa)");
-		currentYearOfStudyComboBox.addItem("IV (Èetvrta)");
+		currentYearOfStudyComboBox.addItem(MainFrame.getInstance().getResourceBundle().getString("firstYear") + "*");
+		currentYearOfStudyComboBox.addItem(MainFrame.getInstance().getResourceBundle().getString("secondYear") + "*");
+		currentYearOfStudyComboBox.addItem(MainFrame.getInstance().getResourceBundle().getString("thirdYear") + "*");
+		currentYearOfStudyComboBox.addItem(MainFrame.getInstance().getResourceBundle().getString("fourthYear") + "*");
 		
 		switch(currentYearOfStudy) {
 		case 1:
@@ -156,10 +160,10 @@ public class StudentInfoPanel extends JPanel{
 		default:
 			break;
 		}
-		JLabel studentStatusLabel = new JLabel("Naèin finansiranja*");
+		JLabel studentStatusLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("finanseWay") + "*");
 		studentStatusComboBox = new JComboBox<String>();
-		studentStatusComboBox.addItem("Budžet");
-		studentStatusComboBox.addItem("Samofinansiranje");
+		studentStatusComboBox.addItem(MainFrame.getInstance().getResourceBundle().getString("budget"));
+		studentStatusComboBox.addItem(MainFrame.getInstance().getResourceBundle().getString("selfFinansing"));
 		switch(studentStatus) {
 		case B:
 			studentStatusComboBox.setSelectedIndex(0);
@@ -171,7 +175,7 @@ public class StudentInfoPanel extends JPanel{
 			break;
 		}
 		
-		JButton confirmButton = new JButton("Potvrdi");
+		JButton confirmButton = new JButton(MainFrame.getInstance().getResourceBundle().getString("confirm"));
 		ButtonModel confirmButtonModel = confirmButton.getModel();
 		ButtonEnabler buttonEnabler = new ButtonEnabler(confirmButtonModel);
 		buttonEnabler.addDocument(surnameField.getDocument());
@@ -198,7 +202,8 @@ public class StudentInfoPanel extends JPanel{
 						currentYearOfStudyComboBox.getSelectedIndex(), studentStatusComboBox.getSelectedIndex());
 				
 				if( dataValid != "OK") {
-					JOptionPane.showMessageDialog(StudentEditFrame.getInstance(), dataValid);
+					JOptionPane.showMessageDialog(StudentInfoPanel.getInstance(), dataValid);
+
 				}else {
 					StudentEditFrame.getInstance().dispose();
 					
@@ -219,7 +224,7 @@ public class StudentInfoPanel extends JPanel{
 			}
 			
 		});
-		JButton cancelButton = new JButton("Odustani");
+		JButton cancelButton = new JButton(MainFrame.getInstance().getResourceBundle().getString("cancel"));
 		
 		cancelButton.addActionListener(new ActionListener() {
 			
@@ -278,11 +283,13 @@ public class StudentInfoPanel extends JPanel{
 	
 	@SuppressWarnings("deprecation")
 	public void updateStudentSelection(int selectedRow) {
-		s = DbStudents.getInstance().getRow(selectedRow);
+
+		s = DbStudents.getInstance().findStudentByIndex((String) StudentTable.getInstance().getValueAt(selectedRow, 0));
 		if(s != null) {
 			
 			int month = s.getBirthDate().getMonth() + 1;
 			
+
 			name = s.getName();
 			surname = s.getSurname();
 			birthDate = s.getBirthDate().getDate() + "." + month + "." + s.getBirthDate().getYear() + ".";
@@ -293,6 +300,7 @@ public class StudentInfoPanel extends JPanel{
 			phone = s.getPhone();
 			email = s.getEmail();
 			index = s.getIndex();
+			oldIndex = s.getIndex();
 			enrollmentYear = String.valueOf(s.getEnrollmentYear());
 			currentYearOfStudy = s.getCurrentYearOfStudy();
 			studentStatus = s.getStudentStatus();
@@ -308,6 +316,7 @@ public class StudentInfoPanel extends JPanel{
 			phone = "";
 			email = "";
 			index = "";
+			oldIndex = null;
 			enrollmentYear = "";
 			currentYearOfStudy = 0;
 			studentStatus = StudentStatus.B;
@@ -358,5 +367,19 @@ public class StudentInfoPanel extends JPanel{
 		if(instance == null)
 			instance = new StudentInfoPanel(StudentTable.getInstance().getSelectedRow());
 		return instance;
+	}
+
+
+	public String getOldIndex() {
+		return oldIndex;
+	}
+
+
+	public void setOldIndex(String oldIndex) {
+		this.oldIndex = oldIndex;
+	}
+	
+	public static void recreate() {
+		instance = null;
 	}
 }

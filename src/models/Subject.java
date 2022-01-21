@@ -1,20 +1,26 @@
 package models;
 
-import java.util.Set;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Subject {
+public class Subject implements Serializable{
 
 	
-	private int id;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -79301667796385491L;
+	private String id;
 	private String name;
 	private Semester semester;
     private int yearOfStudy;
     private Professor professor;
     private int ESPB;
-    private Set<Student> listOfStudentsWhoPassed;
-    private Set<Student> listOfStudentsWhoFailed;
-	public Subject(int id, String name, Semester semester, int yearOfStudy, Professor professor, int eSPB,
-			Set<Student> listOfStudentsWhoPassed, Set<Student> listOfStudentsWhoFailed) {
+    private List<Student> listOfStudentsWhoPassed;
+    private List<Student> listOfStudentsWhoFailed;
+	public Subject(String id, String name, Semester semester, int yearOfStudy, Professor professor, int eSPB,
+			List<Student> listOfStudentsWhoPassed, List<Student> listOfStudentsWhoFailed) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -28,21 +34,23 @@ public class Subject {
 	
 	
 	
-	public Subject(int id, String name, Semester semester, int yearOfStudy, int eSPB) {
+	public Subject(String id, String name, Semester semester, int yearOfStudy, int eSPB) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.semester = semester;
 		this.yearOfStudy = yearOfStudy;
 		ESPB = eSPB;
+		this.listOfStudentsWhoPassed = new ArrayList<Student>();
+		this.listOfStudentsWhoFailed = new ArrayList<Student>();
 	}
 
 
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getName() {
@@ -75,16 +83,16 @@ public class Subject {
 	public void setESPB(int eSPB) {
 		ESPB = eSPB;
 	}
-	public Set<Student> getListOfStudentsWhoPassed() {
+	public List<Student> getListOfStudentsWhoPassed() {
 		return listOfStudentsWhoPassed;
 	}
-	public void setListOfStudentsWhoPassed(Set<Student> listOfStudentsWhoPassed) {
+	public void setListOfStudentsWhoPassed(List<Student> listOfStudentsWhoPassed) {
 		this.listOfStudentsWhoPassed = listOfStudentsWhoPassed;
 	}
-	public Set<Student> getListOfStudentsWhoFailed() {
+	public List<Student> getListOfStudentsWhoFailed() {
 		return listOfStudentsWhoFailed;
 	}
-	public void setListOfStudentsWhoFailed(Set<Student> listOfStudentsWhoFailed) {
+	public void setListOfStudentsWhoFailed(List<Student> listOfStudentsWhoFailed) {
 		this.listOfStudentsWhoFailed = listOfStudentsWhoFailed;
 	}
     

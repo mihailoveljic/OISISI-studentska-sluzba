@@ -1,10 +1,16 @@
 package models;
 
+import java.io.Serializable;
 import java.sql.Date;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Professor {
+public class Professor implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5577095404530277414L;
 	private String surname;
 	private String name;
 	private Date birthDate;
@@ -15,9 +21,9 @@ public class Professor {
 	private int idNumber;
 	private String title;
 	private int serviceYears;
-	private Set<Subject> subjects;
+	private List<Subject> subjects;
 	public Professor(String surname, String name, Date birthDate, Adress adress, String phone, String email,
-			Adress officeAdress, int idNumber, String title, int serviceYears, Set<Subject> subjects) {
+			Adress officeAdress, int idNumber, String title, int serviceYears, List<Subject> subjects) {
 		super();
 		this.surname = surname;
 		this.name = name;
@@ -49,6 +55,7 @@ public class Professor {
 		this.idNumber = idNumber;
 		this.title = title;
 		this.serviceYears = serviceYears;
+		this.subjects = new ArrayList<Subject>();
 	}
 
 
@@ -116,10 +123,10 @@ public class Professor {
 	public void setServiceYears(int serviceYears) {
 		this.serviceYears = serviceYears;
 	}
-	public Set<Subject> getSubjects() {
+	public List<Subject> getSubjects() {
 		return subjects;
 	}
-	public void setSubjects(Set<Subject> subjects) {
+	public void setSubjects(List<Subject> subjects) {
 		this.subjects = subjects;
 	}
 	

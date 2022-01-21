@@ -20,25 +20,19 @@ public class MyStatusBar extends JPanel implements Runnable {
 	 * 
 	 */
 	private static final long serialVersionUID = 4762649533520077076L;
-
+	JLabel windowNameLabel;
+	
 	public MyStatusBar() {
 		super();
-		JLabel windowNameLabel = new JLabel("Studentska služba - Studenti");
+		windowNameLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("studentServicesStudents"));
 		windowNameLabel.setBorder(new EmptyBorder(4, 4, 4, 4));
 		windowNameLabel.setFont(new Font("Serif", Font.BOLD, 16));
-		// TODO Make it update continuous during runtime
-		//DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss  dd.MM.yyyy.");
-		//LocalDateTime now = LocalDateTime.now();
-		//JLabel dateLabel = new JLabel(dtf.format(now));
-		//dateLabel.setBorder(new EmptyBorder(4, 4, 4, 4));
-		//dateLabel.setFont(new Font("Serif", Font.BOLD, 16));
 		
 		
 		
 		
 		this.setLayout(new BorderLayout());
 		this.add(windowNameLabel, BorderLayout.WEST);
-		//this.add(dateLabel, BorderLayout.EAST);
 		this.add(dateLabel, BorderLayout.EAST);
 		
 		Toolkit kit = Toolkit.getDefaultToolkit();
@@ -54,7 +48,7 @@ public class MyStatusBar extends JPanel implements Runnable {
 	
 	
 	Thread timer = null;
-	String dateToDisplay;	//string koji cemo da prikazemo u status baru
+	String dateToDisplay;
 	
 	int hr;
 	Date d;
@@ -66,7 +60,6 @@ public class MyStatusBar extends JPanel implements Runnable {
 	int month;
 	int year;
 
-	//dateLabel.setFont(new Font("Anklepants",Font.PLAIN,16)); 
 	
 	public void start() { 
 		 if(timer == null) 
@@ -129,5 +122,23 @@ public class MyStatusBar extends JPanel implements Runnable {
 		} 
 		timer = null;  
 	} 
+	
+	public void reloadUI(){
+		MainTabbedPane mainTabbedPane = (MainTabbedPane) MainFrame.getInstance().getContentPane().getComponent(2);
+		switch(mainTabbedPane.getSelectedIndex()) {
+		case 0:
+			windowNameLabel.setText(MainFrame.getInstance().getResourceBundle().getString("studentServicesStudents"));
+			break;
+		case 1:
+			windowNameLabel.setText(MainFrame.getInstance().getResourceBundle().getString("studentServicesProfessors"));
+			break;
+		case 2:
+			windowNameLabel.setText(MainFrame.getInstance().getResourceBundle().getString("studentServicesSubjects"));
+			break;
+		default:
+			break;
+		}
+		
+	}
 }
 	

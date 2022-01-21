@@ -3,7 +3,8 @@ package models;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
+
+import views.MainFrame;
 
 public class DbProfessors {
 	
@@ -23,30 +24,14 @@ public class DbProfessors {
 		initProfessors();
 		
 		this.columns=new ArrayList<String>();
-		this.columns.add("IME");
-		this.columns.add("PREZIME");
-		this.columns.add("ZVANJE");
-		this.columns.add("E-MAIL ADRESA");
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("name"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("surname"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("title"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("email"));
 	}
 	
-	@SuppressWarnings("deprecation")
 	private void initProfessors() {
-		this.professors= new ArrayList<Professor>();
-		
-		//TODO ucitavace se iz datoteke
-		
-		professors.add(new Professor("Imenko", "Prezimenkovic", new Date(1960, 11, 21), new Adress("Tolstojeva", "42", "mesto", "drzava"), "+38161247888", "sasasa@gmail.com", new Adress("sasa", "42", "grad", "drzava"), 87,
-				"Doktor", 4));
-		professors.add(new Professor("Imenko", "Prezimenkovic", new Date(1960, 11, 21), new Adress("Tolstojeva", "42", "mesto", "drzava"), "+38161247888", "sasasa@gmail.com", new Adress("sasa", "42", "grad", "drzava"), 87,
-				"Doktor", 4));
-		professors.add(new Professor("Imenko", "Prezimenkovic", new Date(1960, 11, 21), new Adress("Tolstojeva", "42", "mesto", "drzava"), "+38161247888", "sasasa@gmail.com", new Adress("sasa", "42", "grad", "drzava"), 87,
-				"Doktor", 4));
-		professors.add(new Professor("Imenko", "Prezimenkovic", new Date(1960, 11, 21), new Adress("Tolstojeva", "42", "mesto", "drzava"), "+38161247888", "sasasa@gmail.com", new Adress("sasa", "42", "grad", "drzava"), 87,
-				"Doktor", 4));
-		professors.add(new Professor("Imenko", "Prezimenkovic", new Date(1960, 11, 21), new Adress("Tolstojeva", "42", "mesto", "drzava"), "+38161247888", "sasasa@gmail.com", new Adress("sasa", "42", "grad", "drzava"), 87,
-
-				"Doktor", 4));
-		
+		this.professors= new ArrayList<Professor>();		
 	}
 	
 	public List<Professor> getProfessors() {
@@ -62,6 +47,8 @@ public class DbProfessors {
 	}
 	
 	public Professor getRow(int rowIndex) {
+		if(rowIndex <= -1)
+			return null;
 		return this.professors.get(rowIndex);
 	}
 	
@@ -110,7 +97,7 @@ public class DbProfessors {
 			if(i.getIdNumber()==idNumber) {
 				professors.remove(i);
 				
-				Set<Subject> subjects = i.getSubjects();
+				List<Subject> subjects = i.getSubjects();
 				if(subjects!=null) {
 					for(Subject s: subjects) {
 						s.setProfessor(null);
@@ -122,6 +109,23 @@ public class DbProfessors {
 		}
 	}
 	
-	
+	public Professor findProfessor(String name, String surname, String email) {
+		for(Professor p : professors) {
+			if(p.getName().equals(name) && p.getSurname().equals(surname) && p.getEmail().equals(email))
+				return p;
+		}
+		return null;
+	}
 
+	public void setProfessors(List<Professor> professors) {
+		this.professors = professors;
+	}
+
+	public void reloadUI() {
+		this.columns=new ArrayList<String>();
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("name"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("surname"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("title"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("email"));
+	}
 }

@@ -6,7 +6,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+
 public class EditEntityListener implements ActionListener{
+	
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -22,9 +24,10 @@ public class EditEntityListener implements ActionListener{
 			if(StudentTable.getInstance().getSelectedRow() != -1) {
 				studentEditFrame = StudentEditFrame.getInstance();
 				StudentInfoPanel.getInstance().updateStudentSelection(StudentTable.getInstance().getSelectedRow());
+				StudentGradesPanel.getInstance().refresh();
 				studentEditFrame.setVisible(true);
 			}else {
-				JOptionPane.showMessageDialog(null, "Odaberi studenta studenta prvo!");
+				JOptionPane.showMessageDialog(mainTabbedPane, MainFrame.getInstance().getResourceBundle().getString("studentNotChosen"), MainFrame.getInstance().getResourceBundle().getString("warning"), JOptionPane.WARNING_MESSAGE);
 			}
 			break;
 		case 1:
@@ -32,17 +35,25 @@ public class EditEntityListener implements ActionListener{
 			if(ProfessorTable.getInstance().getSelectedRow() != -1) {
 				professorEditFrame=ProfessorEditFrame.getInstance();
 				ProfessorInfoPanel.getInstance().updateProfessorSelection(ProfessorTable.getInstance().getSelectedRow());
+				professorEditFrame.getProfessorSubjectPanel().refresh();
 				professorEditFrame.setVisible(true);
 			}
 			else {
-				JOptionPane.showMessageDialog(null, "Odaberi profesora prvo!");
+				JOptionPane.showMessageDialog(mainTabbedPane, MainFrame.getInstance().getResourceBundle().getString("professorNotChosen"), MainFrame.getInstance().getResourceBundle().getString("warning"), JOptionPane.WARNING_MESSAGE);
 			}
 			break;
 		case 2:
-			//TODO Edit Subject
+			SubjectEditFrame subjectEditFrame;
+			if(SubjectTable.getInstance().getSelectedRow() != -1) {
+				subjectEditFrame = SubjectEditFrame.getInstance();
+				subjectEditFrame.updateSubjectSelection();
+				subjectEditFrame.setVisible(true);
+			}else {
+				JOptionPane.showMessageDialog(mainTabbedPane, MainFrame.getInstance().getResourceBundle().getString("subjectNotChosen"), MainFrame.getInstance().getResourceBundle().getString("warning"), JOptionPane.WARNING_MESSAGE);
+			}
 			break;
 		default:
-			System.out.println("ERROR");
+			System.out.println(MainFrame.getInstance().getResourceBundle().getString("error"));
 			break;
 		}	
 	}

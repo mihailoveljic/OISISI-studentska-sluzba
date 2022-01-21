@@ -3,6 +3,8 @@ package views;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JDialog;
@@ -33,9 +35,9 @@ public class StudentEditFrame extends JDialog{
 		int height = d.height;
 
 		// Pravljenje prozora
-		setSize(width*1/4, height*2/4);
+		setSize(width*2/5, height*2/4);
 		setLocationRelativeTo(MainFrame.getInstance());
-		setTitle("Izmena studenta");
+		setTitle(MainFrame.getInstance().getResourceBundle().getString("editStudent"));
 		Image icon = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB_PRE);
 		setIconImage(icon);
 		
@@ -46,12 +48,51 @@ public class StudentEditFrame extends JDialog{
 		StudentSubjectsPanel studentSubjectsPanel = StudentSubjectsPanel.getInstance();
 		
 
-		tabbedPane.add(studentInfoPanel, "Informacije");
-		tabbedPane.add(studentGradesPanel, "Položeni");
-		tabbedPane.add(studentSubjectsPanel, "Nepoloženi");
+		tabbedPane.add(studentInfoPanel, MainFrame.getInstance().getResourceBundle().getString("info"));
+		tabbedPane.add(studentGradesPanel, MainFrame.getInstance().getResourceBundle().getString("passed"));
+		tabbedPane.add(studentSubjectsPanel, MainFrame.getInstance().getResourceBundle().getString("notPassed"));
 		
 		this.add(tabbedPane);
-		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+		addWindowListener(new WindowListener() {
+			
+			@Override
+			public void windowOpened(WindowEvent e) {
+				
+			}
+			
+			@Override
+			public void windowIconified(WindowEvent e) {
+				
+			}
+			
+			@Override
+			public void windowDeiconified(WindowEvent e) {
+				
+			}
+			
+			@Override
+			public void windowDeactivated(WindowEvent e) {
+				
+			}
+			
+			@Override
+			public void windowClosing(WindowEvent e) {
+				StudentPanel.getInstance().updateView();
+				StudentEditFrame.getInstance().dispose();
+				
+			}
+			
+			@Override
+			public void windowClosed(WindowEvent e) {
+				
+			}
+			
+			@Override
+			public void windowActivated(WindowEvent e) {
+				
+			}
+		});
 	}
 	
 	public static StudentEditFrame getInstance()
@@ -61,5 +102,9 @@ public class StudentEditFrame extends JDialog{
 		instance.setLocationRelativeTo(MainFrame.getInstance());
 		return instance;
 	}
-
+	public static void recreate() {
+		if(instance != null)
+			instance.dispose();
+		instance = null;
+	}
 }

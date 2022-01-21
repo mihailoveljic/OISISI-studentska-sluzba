@@ -3,6 +3,8 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 
+import views.MainFrame;
+
 public class DbSubjects {
 	
 	private static DbSubjects instance = null;
@@ -21,24 +23,15 @@ public class DbSubjects {
 		initSubject();
 		
 		this.columns=new ArrayList<String>();
-		this.columns.add("SIFRA PREDMETA");
-		this.columns.add("NAZIV PREDMETA");
-		this.columns.add("BROJ ESPB BODOVA");
-		this.columns.add("GODINA NA KOJOJ SE PREDMET IZVODI");
-		this.columns.add("SEMESTAR U KOME SE PREDMET IZVODI");
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("subjectId"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("subjectName"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("espb"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("yearOfStudy"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("semester"));
 	}
 	
 	private void initSubject() {
 		this.subjects=new ArrayList<Subject>();
-		
-		//TODO iz datoteke 
-		
-		subjects.add(new Subject(123, "MATEMATICKA ANALIZA 1",Semester.ZIMSKI, 1, 1000));
-		subjects.add(new Subject(123, "MATEMATICKA ANALIZA 1",Semester.ZIMSKI, 1, 1000));
-		subjects.add(new Subject(123, "MATEMATICKA ANALIZA 1",Semester.ZIMSKI, 1, 1000));
-		subjects.add(new Subject(123, "MATEMATICKA ANALIZA 1",Semester.ZIMSKI, 1, 1000));
-		subjects.add(new Subject(123, "MATEMATICKA ANALIZA 1",Semester.ZIMSKI, 1, 1000));
-
 	}
 	
 	
@@ -59,7 +52,7 @@ public class DbSubjects {
 		Subject subjects = this.subjects.get(row);
 		switch(column) {
 		case 0:
-			return Integer.toString(subjects.getId());
+			return subjects.getId();
 		case 1:
 			return subjects.getName();
 		case 2:
@@ -68,10 +61,10 @@ public class DbSubjects {
 			return Integer.toString(subjects.getYearOfStudy());
 		case 4:
 			if(subjects.getSemester() == Semester.ZIMSKI) {
-				return "ZIMSKI";
+				return MainFrame.getInstance().getResourceBundle().getString("winter");
 			} 
 			else {
-				return "LETNJI";
+				return MainFrame.getInstance().getResourceBundle().getString("summer");
 			}
 			default:
 					return null;
@@ -79,13 +72,13 @@ public class DbSubjects {
 	}
 	
 	
-	public void addSubject(int id, String name, Semester semester, 
+	public void addSubject(String id, String name, Semester semester, 
 			int yearOfStudy, Professor professor, int ESPB) {
 		
 		this.subjects.add(new Subject(id, name, semester, yearOfStudy, professor, ESPB, null, null));
 	}
 	
-	public void editSubject(int id, String name, Semester semester, 
+	public void editSubject(String id, String name, Semester semester, 
 			int yearOfStudy, Professor professor, int ESPB) {
 		for(Subject i : subjects) {
 			if(i.getId()==id) {
@@ -98,14 +91,39 @@ public class DbSubjects {
 		}
 	}
 	
-	public void deleteSubject(int id) {
+	public void deleteSubject(String id) {
 		for (Subject i : subjects) {
 			if(i.getId()==id) {
-				subjects.remove(id);
+				subjects.remove(i);
 				break;
 			}
 		}
 	}
 	
+	public Subject getRow(int rowIndex) {
+		if(rowIndex <= -1)
+			return null;
+		return this.subjects.get(rowIndex);
+	}
+	
+	public Subject findSubjectById(String id) {
+		for(Subject s: subjects) {
+			if(s.getId().equals(id))
+				return s;
+		}
+		return null;
+	}
 
+	public void setSubjects(List<Subject> subjects) {
+		this.subjects = subjects;
+	}
+	
+	public void reloadUI() {
+		this.columns=new ArrayList<String>();
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("subjectId"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("subjectName"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("espb"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("yearOfStudy"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("semester"));
+	}
 }

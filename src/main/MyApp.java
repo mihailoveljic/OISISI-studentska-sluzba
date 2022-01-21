@@ -2,6 +2,7 @@ package main;
 
 import java.awt.BorderLayout;
 
+import methods.WriterReader;
 import views.MainFrame;
 import views.MainTabbedPane;
 import views.MyMenuBar;
@@ -11,7 +12,17 @@ import views.MyToolBar;
 
 public class MyApp {
 
+	
+	
 	public static void main(String[] args) {
+		
+		try {
+			WriterReader.getInstance().LoadData();
+		}catch(Exception e) {
+			
+		}
+
+		
 		MainFrame mainFrame = MainFrame.getInstance();
 		
 		// Meni bar

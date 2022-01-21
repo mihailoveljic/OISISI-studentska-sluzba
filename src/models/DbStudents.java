@@ -3,7 +3,8 @@ package models;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
+
+import views.MainFrame;
 
 public class DbStudents {
 
@@ -23,44 +24,21 @@ public class DbStudents {
 		initStudents();
 
 		this.columns = new ArrayList<String>();
-		this.columns.add("INDEX");
-		this.columns.add("IME");
-		this.columns.add("PREZIME");
-		this.columns.add("GODINA STUDIJA");
-		this.columns.add("STATUS");
-		this.columns.add("PROSEK");
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("indexNumber"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("name"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("surname"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("currentYearOfStudy"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("finanseWay"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("avgGrades"));
 	}
 
-	@SuppressWarnings("deprecation")
 	private void initStudents() {
 		this.students = new ArrayList<Student>();
-		
-		//TODO Citanje iz datoteke
-		
-		students.add(new Student("Prezimenovic", "Imenko", new Date(2000, 5, 16),
-				new Adress("Tolstojeva", "15", "Novi Sad", "Srbija"), "+381694732572",
-				"imenkoprezimenovic@gmail.com", "II12/2020", 2020, 2, StudentStatus.B));
-		students.add(new Student("Prezimenovic", "Imenko", new Date(2000, 5, 16),
-				new Adress("Tolstojeva", "15", "Novi Sad", "Srbija"), "+381694732572",
-				"imenkoprezimenovic@gmail.com", "II12/2020", 2020, 2, StudentStatus.B));
-		students.add(new Student("Prezimenovic", "Imenko", new Date(2000, 5, 16),
-				new Adress("Tolstojeva", "15", "Novi Sad", "Srbija"), "+381694732572",
-				"imenkoprezimenovic@gmail.com", "II12/2020", 2020, 2, StudentStatus.B));
-		students.add(new Student("Prezimenovic", "Imenko", new Date(2000, 5, 16),
-				new Adress("Tolstojeva", "15", "Novi Sad", "Srbija"), "+381694732572",
-				"imenkoprezimenovic@gmail.com", "II12/2020", 2020, 2, StudentStatus.B));
-		students.add(new Student("Prezimenovic", "Imenko", new Date(2000, 5, 16),
-				new Adress("Tolstojeva", "15", "Novi Sad", "Srbija"), "+381694732572",
-				"imenkoprezimenovic@gmail.com", "II12/2020", 2020, 2, StudentStatus.B));
 	}
 
 	public List<Student> getStudents() {
 		return students;
 	}
-
-//	public void setstudents(List<Student> students) {
-//		this.students = students;
-//	}
 
 	public int getColumnCount() {
 		return 6;
@@ -74,6 +52,10 @@ public class DbStudents {
 		if(rowIndex <= -1)
 			return null;
 		return this.students.get(rowIndex);
+	}
+
+	public void setStudents(List<Student> students) {
+		this.students = students;
 	}
 
 	public String getValueAt(int row, int column) {
@@ -112,13 +94,13 @@ public class DbStudents {
 	public void deleteStudent(String index) {
 		for (Student i : students) {
 			if (i.getIndex() == index) {
-				Set<Subject> subjects = i.getSubjects();
+				List<Subject> subjects = i.getSubjects();
 				if(subjects != null) {
 					for(Subject s : subjects) {
 						s.removeStudentFromListOfFailed(i);
 					}
 				}
-				Set<Grade> grades = i.getGrades();
+				List<Grade> grades = i.getGrades();
 				if(grades != null) {
 					for(Grade g : grades) {
 						g.getSubject().removeStudentFromListOfPassed(i);
@@ -150,4 +132,21 @@ public class DbStudents {
 		}
 	}
 
+	public Student findStudentByIndex(String index) {
+		for(Student s : students) {
+			if(s.getIndex().equals(index))
+				return s;
+		}
+		return null;
+	}
+
+	public void reloadUI() {
+		this.columns = new ArrayList<String>();
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("indexNumber"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("name"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("surname"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("currentYearOfStudy"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("finanseWay"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("avgGrades"));
+	}
 }

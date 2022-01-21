@@ -41,47 +41,49 @@ public class ProfessorAddFrame extends JDialog {
 		int height=d.height;
 		setSize(width*1/4, height*3/4);
 		setLocationRelativeTo(MainFrame.getInstance());
-		setTitle("Dodavanje profesora");
+		setTitle(MainFrame.getInstance().getResourceBundle().getString("addProfessor"));
 		Image icon = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB_PRE);
 		setIconImage(icon);
 		
 		JPanel contentPanel = new JPanel(new GridLayout(17, 2, 5, 5));
 		contentPanel.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
 		
-		JLabel surnameLabel = new JLabel("Prezime*");
+		JLabel surnameLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("surname") + "*");
 		JTextField surnameField = new JTextField();
-		JLabel nameLabel = new JLabel("Ime*");
+		JLabel nameLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("name") + "*");
 		JTextField nameField = new JTextField();
-		JLabel birthDateLabel = new JLabel("Datum roðenja* (DD.MM.YYYY.)");
+
+		JLabel birthDateLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("birthDate") + "* (dd.mm.yyyy.)");
+
 		JTextField birthDateField = new JTextField();
-		JLabel streetAdressLabel = new JLabel("Ulica stanovanja*");
+		JLabel streetAdressLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("streetLiving") + "*");
 		JTextField streetAdressField = new JTextField();
-		JLabel numberAdressLabel = new JLabel("Broj stanovanja*");
+		JLabel numberAdressLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("numberLiving") + "*");
 		JTextField numberAdressField = new JTextField();
-		JLabel cityAdressLabel = new JLabel("Grad stanovanja*");
+		JLabel cityAdressLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("cityLiving") + "*");
 		JTextField cityAdressField = new JTextField();
-		JLabel countryAdressLabel = new JLabel("Država stanovanja*");
+		JLabel countryAdressLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("countryLiving") + "*");
 		JTextField countryAdressField = new JTextField();
-		JLabel phoneLabel = new JLabel("Broj telefona*");
+		JLabel phoneLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("phone") + "*");
 		JTextField phoneField = new JTextField();
-		JLabel emailLabel = new JLabel("E-mail adresa*");
+		JLabel emailLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("email") + "*");
 		JTextField emailField = new JTextField();
-		JLabel streetOfficeAdressLabel = new JLabel("Ulica kancelarije*");
+		JLabel streetOfficeAdressLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("streetOffice") + "*");
 		JTextField streetOfficeAdressField = new JTextField();
-		JLabel numberOfficeAdressLabel = new JLabel("Broj kancelarije*");
+		JLabel numberOfficeAdressLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("numberOffice") + "*");
 		JTextField numberOfficeAdressField = new JTextField();
-		JLabel cityOfficeAdressLabel = new JLabel("Grad kancelarije*");
+		JLabel cityOfficeAdressLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("cityOffice") + "*");
 		JTextField cityOfficeAdressField = new JTextField();
-		JLabel countryOfficeAdressLabel = new JLabel("Država kancelarije*");
+		JLabel countryOfficeAdressLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("countryOffice") + "*");
 		JTextField countryOfficeAdressField = new JTextField();
-		JLabel idNumberLabel = new JLabel("Broj liène karte*");
+		JLabel idNumberLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("idNumber") + "*");
 		JTextField idNumberField = new JTextField();
-		JLabel titleLabel = new JLabel("Zvanje*");
+		JLabel titleLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("title") + "*");
 		JTextField titleField = new JTextField();
-		JLabel serviceYearsLabel = new JLabel("Godine radnog staža*");
+		JLabel serviceYearsLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("yearsOfExperience") + "*");
 		JTextField serviceYearsField = new JTextField();
 		
-		JButton confirmButton = new JButton("Potvrdi");
+		JButton confirmButton = new JButton(MainFrame.getInstance().getResourceBundle().getString("confirm"));
 		ButtonModel confirmButtonModel = confirmButton.getModel();
 		ButtonEnabler buttonEnabler = new ButtonEnabler(confirmButtonModel);
 		buttonEnabler.addDocument(surnameField.getDocument());
@@ -139,7 +141,7 @@ public class ProfessorAddFrame extends JDialog {
 				}
 			}
 		});
-		JButton cancelButton = new JButton("Odustani");
+		JButton cancelButton = new JButton(MainFrame.getInstance().getResourceBundle().getString("cancel"));
 		cancelButton.addActionListener(new ActionListener() {
 			
 			@Override
@@ -217,6 +219,10 @@ public class ProfessorAddFrame extends JDialog {
 		return instance;
 	}
 	
-	
+	public static void recreate() {
+		if(instance != null)
+			instance.dispose();
+		instance = null;
+	}
 
 }

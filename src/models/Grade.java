@@ -1,8 +1,13 @@
 package models;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Grade {
+public class Grade implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6191935341274419017L;
 	private Student student;
 	private Subject subject;
 	private int grade;
@@ -40,7 +45,6 @@ public class Grade {
 		if(grade >= 6 && grade <= 10) {
 			this.grade = grade;
 		}else {
-			//TODO Odraditi obradu greške
 			System.out.println("Ocena mora biti u intervalu 6-10!");
 		}
 		
