@@ -39,7 +39,7 @@ public class EditEntityListener implements ActionListener{
 				professorEditFrame.setVisible(true);
 			}
 			else {
-				JOptionPane.showMessageDialog(null, MainFrame.getInstance().getResourceBundle().getString("professorNotChosen"), MainFrame.getInstance().getResourceBundle().getString("warning"), JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(mainTabbedPane, MainFrame.getInstance().getResourceBundle().getString("professorNotChosen"), MainFrame.getInstance().getResourceBundle().getString("warning"), JOptionPane.WARNING_MESSAGE);
 			}
 			break;
 		case 2:
@@ -49,7 +49,7 @@ public class EditEntityListener implements ActionListener{
 				subjectEditFrame.updateSubjectSelection();
 				subjectEditFrame.setVisible(true);
 			}else {
-				JOptionPane.showMessageDialog(null, MainFrame.getInstance().getResourceBundle().getString("subjectNotChosen"), MainFrame.getInstance().getResourceBundle().getString("warning"), JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(mainTabbedPane, MainFrame.getInstance().getResourceBundle().getString("subjectNotChosen"), MainFrame.getInstance().getResourceBundle().getString("warning"), JOptionPane.WARNING_MESSAGE);
 			}
 			break;
 		default:
