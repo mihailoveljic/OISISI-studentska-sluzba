@@ -49,6 +49,7 @@ public class StudentSubjectsPanel extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				StudentAddSubjectDialog studentAddSubjectDialog = new StudentAddSubjectDialog();
+				studentAddSubjectDialog.setLocationRelativeTo(StudentEditFrame.getInstance());
 				studentAddSubjectDialog.setVisible(true);
 				
 			}
@@ -78,7 +79,7 @@ public class StudentSubjectsPanel extends JPanel{
 			}
 			}
 			else {
-				JOptionPane.showMessageDialog(studentSubjectTable, "Niste selektovali predmet");
+				JOptionPane.showMessageDialog(StudentSubjectsPanel.getInstance(), "Niste selektovali predmet!", "UPOZORENJE", JOptionPane.WARNING_MESSAGE);
 			}
 		}
 	});
@@ -110,8 +111,7 @@ public class StudentSubjectsPanel extends JPanel{
 			studentAddSubject.setVisible(true);
 			}
 			else {
-				JOptionPane.showMessageDialog(StudentSubjectsPanel.getInstance(), "Predmet nije selektovan.", "Upozorenje!",
-						JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(StudentSubjectsPanel.getInstance(), "Niste selektovali predmet!", "UPOZORENJE", JOptionPane.WARNING_MESSAGE);
 			}
 			
 		}

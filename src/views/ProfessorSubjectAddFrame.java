@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -55,12 +56,24 @@ public class ProfessorSubjectAddFrame extends JDialog implements ActionListener{
 		DefaultListModel listModel;
 		listModel = new DefaultListModel();
 		for(Subject s : DbSubjects.getInstance().getSubjects()) {
+			if(DbProfessors.getInstance().findProfessor(
+					(String)ProfessorTable.getInstance().getValueAt(ProfessorTable.getInstance().getSelectedRow(), 0),
+					(String)ProfessorTable.getInstance().getValueAt(ProfessorTable.getInstance().getSelectedRow(), 1),
+					(String)ProfessorTable.getInstance().getValueAt(ProfessorTable.getInstance().getSelectedRow(), 3)			
+					).getSubjects()==null) {
+				DbProfessors.getInstance().findProfessor(
+						(String)ProfessorTable.getInstance().getValueAt(ProfessorTable.getInstance().getSelectedRow(), 0),
+						(String)ProfessorTable.getInstance().getValueAt(ProfessorTable.getInstance().getSelectedRow(), 1),
+						(String)ProfessorTable.getInstance().getValueAt(ProfessorTable.getInstance().getSelectedRow(), 3)			
+						).setSubjects(new ArrayList<Subject>());
+			} else {
 			if(!DbProfessors.getInstance().findProfessor(
 					(String)ProfessorTable.getInstance().getValueAt(ProfessorTable.getInstance().getSelectedRow(), 0),
 					(String)ProfessorTable.getInstance().getValueAt(ProfessorTable.getInstance().getSelectedRow(), 1),
 					(String)ProfessorTable.getInstance().getValueAt(ProfessorTable.getInstance().getSelectedRow(), 3)			
 					).getSubjects().contains(s)) {
 				listModel.addElement(s.getId() + " - " + s.getName());
+		}
 		}
 		}
 		subjects = new JList(listModel);
