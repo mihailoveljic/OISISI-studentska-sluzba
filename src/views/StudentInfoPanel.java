@@ -119,6 +119,7 @@ public class StudentInfoPanel extends JPanel{
 		surnameLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("surname") + "*");
 		surnameField = new JTextField(surname);
 		birthDateLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("birthDate") + "* (dd.mm.yyyy.)");
+
 		birthDateField = new JTextField(birthDate);
 		streetLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("streetLiving") + "*");
 		streetField = new JTextField(street);
@@ -202,6 +203,7 @@ public class StudentInfoPanel extends JPanel{
 				
 				if( dataValid != "OK") {
 					JOptionPane.showMessageDialog(StudentInfoPanel.getInstance(), dataValid);
+
 				}else {
 					StudentEditFrame.getInstance().dispose();
 					

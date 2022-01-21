@@ -137,7 +137,7 @@ public class StudentController {
 		
 				try {
 				String parts[] = birthDate.split("[.]");
-				if(parts.length >= 3) {
+				if(parts.length == 3) {
 					formattedDate = new Date(Integer.parseInt(parts[2]), Integer.parseInt(parts[1]) - 1, Integer.parseInt(parts[0]));
 				}else {
 					return MainFrame.getInstance().getResourceBundle().getString("dateFormat");
@@ -199,6 +199,7 @@ public class StudentController {
 				}catch(Exception e) {
 					return MainFrame.getInstance().getResourceBundle().getString("enterEmail");
 				}
+
 				
 				
 				try {

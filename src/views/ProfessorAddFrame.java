@@ -52,7 +52,9 @@ public class ProfessorAddFrame extends JDialog {
 		JTextField surnameField = new JTextField();
 		JLabel nameLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("name") + "*");
 		JTextField nameField = new JTextField();
+
 		JLabel birthDateLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("birthDate") + "* (dd.mm.yyyy.)");
+
 		JTextField birthDateField = new JTextField();
 		JLabel streetAdressLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("streetLiving") + "*");
 		JTextField streetAdressField = new JTextField();

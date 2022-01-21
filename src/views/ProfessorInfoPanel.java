@@ -136,7 +136,9 @@ public class ProfessorInfoPanel extends JPanel {
 		 surnameField = new JTextField(surname);
 		 nameLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("name") + "*");
 		 nameField = new JTextField(name);
+
 		 birthDateLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("birthDate") + "* (dd.mm.yyyy.)");
+
 		 birthDateField = new JTextField(birthDate);
 		 streetAdressLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("streetLiving") + "*");
 		 streetAdressField = new JTextField(streetAdress);
@@ -168,6 +170,7 @@ public class ProfessorInfoPanel extends JPanel {
 	
 		 JButton confirmButton = new JButton(MainFrame.getInstance().getResourceBundle().getString("confirm"));
 		confirmButton.setEnabled(false);
+
 		ButtonModel confirmButtonModel = confirmButton.getModel();
 		ButtonEnabler buttonEnabler = new ButtonEnabler(confirmButtonModel);
 		buttonEnabler.addDocument(surnameField.getDocument());
@@ -203,6 +206,7 @@ public class ProfessorInfoPanel extends JPanel {
 			
 			if(dataValid != "OK") {
 				JOptionPane.showMessageDialog(ProfessorInfoPanel.getInstance(), dataValid);
+
 				}else {
 					ProfessorEditFrame.getInstance().dispose();
 					

@@ -57,6 +57,7 @@ public class StudentAddFrame extends JDialog{
 		JLabel surnameLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("surname") + "*");
 		JTextField surnameField = new JTextField();
 		JLabel birthDateLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("birthDate") + "* (dd.mm.yyyy.)");
+
 		JTextField birthDateField = new JTextField();
 		JLabel streetLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("streetLiving") + "*");
 		JTextField streetField = new JTextField();
