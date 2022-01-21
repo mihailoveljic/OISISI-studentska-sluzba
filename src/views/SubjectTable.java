@@ -31,6 +31,33 @@ public class SubjectTable extends JTable {
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		this.setModel(new AbstractTableModelSubjects());
 		sorter = new TableRowSorter<TableModel>((AbstractTableModelSubjects)this.getModel());
+		sorter.setComparator(0, new Comparator<String>() {
+			 
+		    @Override
+		    public int compare(String id1, String id2) {
+		    	
+		    	String numberOnly1 = id1.replaceAll("[^0-9]", "");
+		    	String numberOnly2 = id2.replaceAll("[^0-9]", "");
+		    	String stringOnly1 = id1.replaceAll("[0-9]", "");
+		    	String stringOnly2 = id2.replaceAll("[0-9]", "");
+		    	
+		    	int number1 = Integer.parseInt(numberOnly1);
+		    	int number2 = Integer.parseInt(numberOnly2);
+		    	
+		    	if(stringOnly1.compareTo(stringOnly2) == 1) {
+		    		return 1;
+		    	}else if(stringOnly1.compareTo(stringOnly2) == -1) {
+		    		return -1;
+		    	}
+		    	
+		    	if(number1 > number2) {
+		    		return 1;
+		    	}else if(number1 < number2) {
+		    		return -1;
+		    	}
+		    	return 0;
+		    }
+		});
 		sorter.setComparator(2, new Comparator<String>() {
 			 
 		    @Override

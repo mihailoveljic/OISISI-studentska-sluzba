@@ -17,6 +17,7 @@ import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
 
@@ -119,6 +120,24 @@ public class MyMenuBar extends JMenuBar{
 		JMenuItem closeItem = new JMenuItem(MainFrame.getInstance().getResourceBundle().getString("close"), closeIcon);
 		closeItem.setMnemonic(KeyEvent.VK_C);
 		closeItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, ActionEvent.CTRL_MASK));
+		
+		closeItem.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				int userInput = JOptionPane.showConfirmDialog(MainFrame.getInstance(), MainFrame.getInstance().getResourceBundle().getString("saveChangesOnExit"),
+						 MainFrame.getInstance().getResourceBundle().getString("saveChangesOnExitTitle"), JOptionPane.YES_NO_OPTION);
+				if (userInput == JOptionPane.YES_OPTION) {
+					WriterReader.getInstance().SaveData();
+					MainFrame.getInstance().dispose();
+					}
+				else if(userInput==JOptionPane.NO_OPTION) {
+					MainFrame.getInstance().dispose();
+					System.exit(0);
+				}
+			}
+		});
 		
 		newItem.addActionListener(new AddEntityListener());
 		

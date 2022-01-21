@@ -82,9 +82,11 @@ public class MainFrame extends JFrame{
 				if (userInput == JOptionPane.YES_OPTION) {
 					WriterReader.getInstance().SaveData();
 					MainFrame.getInstance().dispose();
+					System.exit(0);
 					}
 				else if(userInput==JOptionPane.NO_OPTION) {
 					MainFrame.getInstance().dispose();
+					System.exit(0);
 				}
 			}
 			

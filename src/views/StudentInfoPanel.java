@@ -132,7 +132,7 @@ public class StudentInfoPanel extends JPanel{
 		phoneField = new JTextField(phone);
 		emailLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("email") + "*");
 		emailField = new JTextField(email);
-		indexLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("indexId") + "*");
+		indexLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("indexNumber") + "*");
 		indexField = new JTextField(index);
 		enrollmentYearLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("enrollmentYear") + "*");
 		enrollmentYearField = new JTextField(enrollmentYear);
