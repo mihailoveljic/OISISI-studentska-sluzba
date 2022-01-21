@@ -29,7 +29,7 @@ public class DeleteEntityListener implements ActionListener{
 					studentController.deleteStudent(StudentTable.getInstance().getSelectedRow());
 				}
 			}else {
-				JOptionPane.showMessageDialog(null, "Odaberi studenta prvo!");
+				JOptionPane.showMessageDialog(mainFrame, "Odaberi studenta prvo!");
 			}
 			break;
 		case 1:
@@ -40,7 +40,7 @@ public class DeleteEntityListener implements ActionListener{
 					professorController.deleteProfessor(ProfessorTable.getInstance().getSelectedRow());
 				}
 			}else {
-				JOptionPane.showMessageDialog(null, "Odaberi profesora prvo!");
+				JOptionPane.showMessageDialog(mainFrame, "Odaberi profesora prvo!");
 			}
 			break;
 		case 2:
@@ -52,7 +52,7 @@ public class DeleteEntityListener implements ActionListener{
 					subjectController.deleteSubject(SubjectTable.getInstance().getSelectedRow());
 				}
 			}else {
-				JOptionPane.showMessageDialog(null, "Odaberi predmet prvo!");
+				JOptionPane.showMessageDialog(mainFrame, "Odaberi predmet prvo!");
 			}
 			break;
 		default:

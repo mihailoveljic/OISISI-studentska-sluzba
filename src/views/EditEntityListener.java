@@ -27,7 +27,7 @@ public class EditEntityListener implements ActionListener{
 				StudentGradesPanel.getInstance().refresh();
 				studentEditFrame.setVisible(true);
 			}else {
-				JOptionPane.showMessageDialog(null, "Odaberi studenta prvo!");
+				JOptionPane.showMessageDialog(mainFrame, "Odaberi studenta prvo!");
 			}
 			break;
 		case 1:
@@ -39,7 +39,7 @@ public class EditEntityListener implements ActionListener{
 				professorEditFrame.setVisible(true);
 			}
 			else {
-				JOptionPane.showMessageDialog(null, "Odaberi profesora prvo!");
+				JOptionPane.showMessageDialog(mainFrame, "Odaberi profesora prvo!");
 			}
 			break;
 		case 2:
@@ -49,7 +49,7 @@ public class EditEntityListener implements ActionListener{
 				subjectEditFrame.updateSubjectSelection();
 				subjectEditFrame.setVisible(true);
 			}else {
-				JOptionPane.showMessageDialog(null, "Odaberi predmet prvo!");
+				JOptionPane.showMessageDialog(mainFrame, "Odaberi predmet prvo!");
 			}
 			break;
 		default:
