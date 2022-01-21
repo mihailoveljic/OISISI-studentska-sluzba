@@ -138,4 +138,7 @@ public class StudentGradesPanel extends JPanel{
 			instance = new StudentGradesPanel();
 		return instance;
 	}
+	public static void recreate() {
+		instance = null;
+	}
 }

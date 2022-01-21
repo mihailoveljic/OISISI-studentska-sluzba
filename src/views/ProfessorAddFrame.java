@@ -41,7 +41,7 @@ public class ProfessorAddFrame extends JDialog {
 		int height=d.height;
 		setSize(width*1/4, height*3/4);
 		setLocationRelativeTo(MainFrame.getInstance());
-		setTitle("Dodavanje profesora");
+		setTitle(MainFrame.getInstance().getResourceBundle().getString("addProfessor"));
 		Image icon = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB_PRE);
 		setIconImage(icon);
 		
@@ -217,6 +217,10 @@ public class ProfessorAddFrame extends JDialog {
 		return instance;
 	}
 	
-	
+	public static void recreate() {
+		if(instance != null)
+			instance.dispose();
+		instance = null;
+	}
 
 }

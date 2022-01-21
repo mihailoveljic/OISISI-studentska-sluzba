@@ -36,7 +36,7 @@ public class ProfessorEditFrame extends JDialog {
 		
 		setSize(width*2/5, height*3/5);
 		setLocationRelativeTo(MainFrame.getInstance());
-		setTitle("Izmena profesora");
+		setTitle(MainFrame.getInstance().getResourceBundle().getString("editProfessor"));
 		Image icon = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB_PRE);
 		setIconImage(icon);
 		
@@ -111,6 +111,10 @@ public class ProfessorEditFrame extends JDialog {
 		} else
 			return instance = new ProfessorEditFrame();
 	}
-	
+	public static void recreate() {
+		if(instance != null)
+			instance.dispose();
+		instance = null;
+	}
 
 }

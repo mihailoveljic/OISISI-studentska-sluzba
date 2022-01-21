@@ -20,10 +20,11 @@ public class MyStatusBar extends JPanel implements Runnable {
 	 * 
 	 */
 	private static final long serialVersionUID = 4762649533520077076L;
-
+	JLabel windowNameLabel;
+	
 	public MyStatusBar() {
 		super();
-		JLabel windowNameLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("studentServicesStudents"));
+		windowNameLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("studentServicesStudents"));
 		windowNameLabel.setBorder(new EmptyBorder(4, 4, 4, 4));
 		windowNameLabel.setFont(new Font("Serif", Font.BOLD, 16));
 		
@@ -121,5 +122,23 @@ public class MyStatusBar extends JPanel implements Runnable {
 		} 
 		timer = null;  
 	} 
+	
+	public void reloadUI(){
+		MainTabbedPane mainTabbedPane = (MainTabbedPane) MainFrame.getInstance().getContentPane().getComponent(2);
+		switch(mainTabbedPane.getSelectedIndex()) {
+		case 0:
+			windowNameLabel.setText(MainFrame.getInstance().getResourceBundle().getString("studentServicesStudents"));
+			break;
+		case 1:
+			windowNameLabel.setText(MainFrame.getInstance().getResourceBundle().getString("studentServicesProfessors"));
+			break;
+		case 2:
+			windowNameLabel.setText(MainFrame.getInstance().getResourceBundle().getString("studentServicesSubjects"));
+			break;
+		default:
+			break;
+		}
+		
+	}
 }
 	

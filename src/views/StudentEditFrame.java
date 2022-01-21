@@ -109,5 +109,9 @@ public class StudentEditFrame extends JDialog{
 		instance.setLocationRelativeTo(MainFrame.getInstance());
 		return instance;
 	}
-
+	public static void recreate() {
+		if(instance != null)
+			instance.dispose();
+		instance = null;
+	}
 }

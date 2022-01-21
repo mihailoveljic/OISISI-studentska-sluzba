@@ -72,4 +72,10 @@ public class ProfessorTable extends JTable {
 		
 	}
 
+	public void reloadUI() {
+		setModel(new AbstractTableModelProfessors());		
+		sorter = new TableRowSorter<TableModel>((AbstractTableModelProfessors)this.getModel());
+		this.setRowSorter(sorter);
+	}
+
 }

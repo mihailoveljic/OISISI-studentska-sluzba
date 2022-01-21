@@ -221,7 +221,17 @@ public class MyMenuBar extends JMenuBar{
 		JCheckBoxMenuItem languageSerbianItem = new JCheckBoxMenuItem(MainFrame.getInstance().getResourceBundle().getString("serbian"), rsFlagIcon);
 		JCheckBoxMenuItem languageEnglishItem = new JCheckBoxMenuItem(MainFrame.getInstance().getResourceBundle().getString("english"), usFlagIcon);
 		
-		languageSerbianItem.setSelected(true);
+		if(MainFrame.getInstance().getResourceBundle().getLocale().getCountry() == "RS") {
+			languageSerbianItem.setSelected(true);
+			languageEnglishItem.setSelected(false);
+			languageEnglishItem.setEnabled(true);
+			languageSerbianItem.setEnabled(false);
+		}else {
+			languageSerbianItem.setSelected(false);
+			languageEnglishItem.setSelected(true);
+			languageEnglishItem.setEnabled(false);
+			languageSerbianItem.setEnabled(true);
+		}
 		
 		languageEnglishItem.addActionListener(new ActionListener() {
 			
@@ -230,6 +240,9 @@ public class MyMenuBar extends JMenuBar{
 				Locale.setDefault(new Locale("en", "US"));
 				MainFrame.getInstance().changeLanguage();
 				languageSerbianItem.setSelected(false);
+				languageEnglishItem.setSelected(true);
+				languageEnglishItem.setEnabled(false);
+				languageSerbianItem.setEnabled(true);
 			}
 		});
 		
@@ -239,7 +252,10 @@ public class MyMenuBar extends JMenuBar{
 			public void actionPerformed(ActionEvent e) {
 				Locale.setDefault(new Locale("sr", "RS"));
 				MainFrame.getInstance().changeLanguage();
+				languageSerbianItem.setSelected(true);
 				languageEnglishItem.setSelected(false);
+				languageEnglishItem.setEnabled(true);
+				languageSerbianItem.setEnabled(false);
 			}
 		});
 
@@ -253,4 +269,5 @@ public class MyMenuBar extends JMenuBar{
 		this.add(languageMenu);
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
 	}
+	
 }

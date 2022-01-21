@@ -110,7 +110,7 @@ public class SubjectAddChooseProfessor extends JDialog implements ActionListener
 				
 			}
 			
-			JOptionPane.showMessageDialog(this, MainFrame.getInstance().getResourceBundle().getString("ProfessorChosen"));
+			JOptionPane.showMessageDialog(this, MainFrame.getInstance().getResourceBundle().getString("professorChosen"));
 			SubjectAddFrame.getInstance().professor = getProfessor();
 			SubjectAddFrame.getInstance().updateProfessorSelection();
 			dispose();

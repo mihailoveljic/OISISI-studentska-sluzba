@@ -40,4 +40,8 @@ public class StudentPanel extends JPanel{
 		model.fireTableDataChanged();
 		validate();
 	}
+
+	public void reloadUI() {
+		instance.updateView();
+	}
 }

@@ -31,6 +31,11 @@ public class MyToolBar extends JToolBar {
 	
 	JTextField searchBar;
 	
+	JButton addButton;
+	JButton editButton;
+	JButton deleteButton;
+	JButton searchButton;
+	
 	public MyToolBar()
 	{
 		super();
@@ -41,10 +46,10 @@ public class MyToolBar extends JToolBar {
 		Icon deleteIcon = ResizeIcon.resizeIcon(new ImageIcon("images" + File.separator + "deleteButton.png"),iconSize,iconSize);
 		Icon searchIcon = ResizeIcon.resizeIcon(new ImageIcon("images" + File.separator + "searchButton.png"),iconSize,iconSize);
 		
-		JButton addButton = new JButton(addIcon);
-		JButton editButton = new JButton(editIcon);
-		JButton deleteButton = new JButton(deleteIcon);
-		JButton searchButton = new JButton(searchIcon);
+		addButton = new JButton(addIcon);
+		editButton = new JButton(editIcon);
+		deleteButton = new JButton(deleteIcon);
+		searchButton = new JButton(searchIcon);
 
 		addButton.setToolTipText(MainFrame.getInstance().getResourceBundle().getString("add"));
 		editButton.setToolTipText(MainFrame.getInstance().getResourceBundle().getString("edit"));
@@ -150,7 +155,12 @@ public class MyToolBar extends JToolBar {
 		this.setBorder(BorderFactory.createLineBorder(Color.black));	
 	}
 	
-
+	public void reloadUI() {
+		addButton.setToolTipText(MainFrame.getInstance().getResourceBundle().getString("add"));
+		editButton.setToolTipText(MainFrame.getInstance().getResourceBundle().getString("edit"));
+		deleteButton.setToolTipText(MainFrame.getInstance().getResourceBundle().getString("delete"));
+		searchButton.setToolTipText(MainFrame.getInstance().getResourceBundle().getString("search"));
+	}
 
 
 }

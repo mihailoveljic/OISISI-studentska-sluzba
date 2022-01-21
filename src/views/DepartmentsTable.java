@@ -32,4 +32,8 @@ public class DepartmentsTable extends JTable{
 		}
 		return c;
 	}
+	
+	public void reloadUI() {
+		this.setModel(abstractTableModelDepartments);
+	}
 }

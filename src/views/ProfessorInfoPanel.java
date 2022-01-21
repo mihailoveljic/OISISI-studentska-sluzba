@@ -378,7 +378,8 @@ public class ProfessorInfoPanel extends JPanel {
 		public void setOldIdNumber(int oldIdNumber) {
 			this.oldIdNumber = oldIdNumber;
 		}
-
-
+		public static void recreate() {
+			instance = null;
+		}
 }	
 

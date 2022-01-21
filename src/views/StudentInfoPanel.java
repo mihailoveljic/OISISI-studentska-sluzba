@@ -377,5 +377,7 @@ public class StudentInfoPanel extends JPanel{
 		this.oldIndex = oldIndex;
 	}
 	
-	
+	public static void recreate() {
+		instance = null;
+	}
 }

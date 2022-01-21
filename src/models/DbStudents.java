@@ -139,4 +139,14 @@ public class DbStudents {
 		}
 		return null;
 	}
+
+	public void reloadUI() {
+		this.columns = new ArrayList<String>();
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("indexNumber"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("name"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("surname"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("currentYearOfStudy"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("finanseWay"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("avgGrades"));
+	}
 }

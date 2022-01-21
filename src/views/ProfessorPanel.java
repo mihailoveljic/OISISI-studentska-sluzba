@@ -39,5 +39,9 @@ public class ProfessorPanel extends JPanel{
 		model.fireTableDataChanged();
 		validate();
 	}
+
+	public void reloadUI() {
+		instance.updateView();
+	}
 }
 

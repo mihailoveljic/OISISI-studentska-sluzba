@@ -29,7 +29,7 @@ public class DepartmentsMainDialog extends JDialog{
 		// Pravljenje prozora
 		setSize(width*2/5, height*2/4);
 		setLocationRelativeTo(MainFrame.getInstance());
-		setTitle(MainFrame.getInstance().getResourceBundle().getString("studentEdit"));
+		setTitle(MainFrame.getInstance().getResourceBundle().getString("departmentHead"));
 		Image icon = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB_PRE);
 		setIconImage(icon);
 		

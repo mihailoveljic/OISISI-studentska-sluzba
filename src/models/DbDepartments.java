@@ -73,7 +73,12 @@ public class DbDepartments{
 		this.departments = departments;
 	}
 	
-	
+	public void reloadUI() {
+		this.columns = new ArrayList<String>();
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("departmentId"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("departmentName"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("departmentHead"));
+	}
 	
 	
 }
