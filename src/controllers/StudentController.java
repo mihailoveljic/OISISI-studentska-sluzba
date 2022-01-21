@@ -8,6 +8,7 @@ import models.Adress;
 import models.DbStudents;
 import models.Student;
 import models.StudentStatus;
+import views.MainFrame;
 import views.StudentInfoPanel;
 import views.StudentPanel;
 import views.StudentTable;
@@ -54,9 +55,9 @@ public class StudentController {
 		
 		else {
 
-			JOptionPane.showMessageDialog(null,
-					"Unete vrednosti nisu dobre! Moguæe opcije su: <prezime>, <prezime,ime>, <prezime,ime,indeks>.",
-					"Upozorenje!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(MainFrame.getInstance(),
+					MainFrame.getInstance().getResourceBundle().getString("searchStudent"),
+					MainFrame.getInstance().getResourceBundle().getString("warning"), JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 	}
@@ -68,7 +69,7 @@ public class StudentController {
 		String validationString = validateStudent(surname, name, birthDate, street, number, city, country, phone, email, index, enrollmentYear, currentYearOfStudy, studentStatus);
 		for(Student s : DbStudents.getInstance().getStudents()) {
 			if(s.getIndex().equals(index))
-				return "Indeks studenta mora biti jedinstven!";
+				return MainFrame.getInstance().getResourceBundle().getString("indexUnique");
 		}
 		
 		if(validationString != "OK")
@@ -97,7 +98,7 @@ public class StudentController {
 	public String editStudent(int rowSelectedIndex, String surname, String name, String birthDate, String street, String number, String city, String country, String phone, String email, String index,
 			String enrollmentYear, int currentYearOfStudy, int studentStatus) {
 		if (rowSelectedIndex < 0) {
-			return "No row selected!";
+			return "NO ROW SELECTED!";
 		}
 		// izmena modela
 		Student student = DbStudents.getInstance().findStudentByIndex((String) StudentTable.getInstance().getValueAt(StudentTable.getInstance().getSelectedRow(), 0));
@@ -106,7 +107,7 @@ public class StudentController {
 		for(Student s : DbStudents.getInstance().getStudents()) {
 			if(s.getIndex().equals(index))
 				if(!s.getIndex().equals(StudentInfoPanel.getInstance().getOldIndex()))
-					return "Indeks studenta mora biti jedinstven!";
+					return MainFrame.getInstance().getResourceBundle().getString("indexUnique");
 		}
 		
 		if(validationString != "OK")
@@ -139,35 +140,35 @@ public class StudentController {
 				if(parts.length >= 3) {
 					formattedDate = new Date(Integer.parseInt(parts[2]), Integer.parseInt(parts[1]) - 1, Integer.parseInt(parts[0]));
 				}else {
-					return "Unesite datum u formatu: DD.MM.YYYY.";
+					return MainFrame.getInstance().getResourceBundle().getString("dateFormat");
 				}
 				}catch(Exception e){
-					return "Unesite datum u formatu: DD.MM.YYYY.";
+					return MainFrame.getInstance().getResourceBundle().getString("dateFormat");
 				}
 				try {
 					String parts[] = index.split(" ");
 					if(parts.length != 2) {
-						return "Indeks mora biti u formatu: SMER BROJ_UPISA/GODINA_UPISA";
+						return MainFrame.getInstance().getResourceBundle().getString("indexFormat");
 					}
 				}catch(Exception e) {
-					return "Indeks mora biti u formatu: SMER BROJ_UPISA/GODINA_UPISA";
+					return MainFrame.getInstance().getResourceBundle().getString("indexFormat");
 				}
 				try {
 					String parts[] = index.split("/");
 					if(parts.length != 2) {
-						return "Indeks mora biti u formatu: SMER BROJ_UPISA/GODINA_UPISA";
+						MainFrame.getInstance().getResourceBundle().getString("indexFormat");
 					}
 				}catch(Exception e) {
-					return "Indeks mora biti u formatu: SMER BROJ_UPISA/GODINA_UPISA";
+					MainFrame.getInstance().getResourceBundle().getString("indexFormat");
 				}
 				if(street.equals(""))
-					return "Unesite ulicu!";
+					return MainFrame.getInstance().getResourceBundle().getString("enterStreet");
 				if(number.equals(""))
-					return "Unesite broj!";
+					return MainFrame.getInstance().getResourceBundle().getString("enterNumber");
 				if(city.equals(""))
-					return "Unesite grad!";
+					return MainFrame.getInstance().getResourceBundle().getString("enterCity");
 				if(country.equals(""))
-					return "Unesite drzavu!";
+					return MainFrame.getInstance().getResourceBundle().getString("enterCountry");
 				formattedAdress= new Adress(street, number, city, country);
 				
 				
@@ -187,23 +188,23 @@ public class StudentController {
 //				}
 				
 				if(phone.equals(""))
-					return "Unesite broj telefona!";
+					return MainFrame.getInstance().getResourceBundle().getString("enterPhone");
 				formattedPhone=phone;
 				
 				try {
 					boolean isValid = email.matches("(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])");
 					if(!isValid) {
-						return "Unesite ispravan email!";
+						return MainFrame.getInstance().getResourceBundle().getString("enterEmail");
 					}
 				}catch(Exception e) {
-					return "Unesite ispravan email!";
+					return MainFrame.getInstance().getResourceBundle().getString("enterEmail");
 				}
 				
 				
 				try {
 					formattedEnrollmentYear = Integer.parseInt(enrollmentYear);
 				}catch(Exception e) {
-					return "Godina upisa mora biti broj!";
+					return MainFrame.getInstance().getResourceBundle().getString("enrollmentYearMustBeNumber");
 				}
 				
 				formattedCurrentYearOfStudy = currentYearOfStudy + 1;
@@ -218,7 +219,7 @@ public class StudentController {
 					formattedStudentStatus = StudentStatus.S;
 					break;
 				default:
-					return "Nepostojeci odabir statusa studenta!";
+					return MainFrame.getInstance().getResourceBundle().getString("statusChooseIncorrect");
 				}
 				
 				return "OK";

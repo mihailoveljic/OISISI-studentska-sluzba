@@ -35,7 +35,7 @@ public class StudentAddSubjectDialog extends JDialog implements ActionListener{
 	public StudentAddSubjectDialog() {
 		super();
 		
-		setTitle("Dodaj predmet");
+		setTitle(MainFrame.getInstance().getResourceBundle().getString("addSubject"));
 		setSize(400, 400);
 		setLocationRelativeTo(this.getParent());
 		setModal(true);
@@ -43,9 +43,9 @@ public class StudentAddSubjectDialog extends JDialog implements ActionListener{
 		setAlwaysOnTop (true);
 		
 		JPanel commandsPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-		okButton = new JButton("Potvrdi");
+		okButton = new JButton(MainFrame.getInstance().getResourceBundle().getString("confirm"));
 		okButton.addActionListener(this);
-		cancelButton = new JButton("Odustani");
+		cancelButton = new JButton(MainFrame.getInstance().getResourceBundle().getString("cancel"));
 		cancelButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -98,11 +98,11 @@ public class StudentAddSubjectDialog extends JDialog implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		selectedSubject = (String) subjects.getSelectedValue();
 		if (selectedSubject == null) {
-			JOptionPane.showMessageDialog(this, "Predmet nije selektovan.", "Upozorenje!",
+			JOptionPane.showMessageDialog(this, MainFrame.getInstance().getResourceBundle().getString("subjectNotChosen"), MainFrame.getInstance().getResourceBundle().getString("warning"),
 					JOptionPane.ERROR_MESSAGE);
 		}
 		else {
-			JOptionPane.showMessageDialog(this, "Predmet uspešno dodat!");
+			JOptionPane.showMessageDialog(this, MainFrame.getInstance().getResourceBundle().getString("subjectAdded"));
 			Student student = DbStudents.getInstance().findStudentByIndex((String) StudentTable.getInstance().getValueAt(StudentTable.getInstance().getSelectedRow(), 0));
 			String parts[] = selectedSubject.split(" ");
 			student.getSubjects().add(DbSubjects.getInstance().findSubjectById(parts[0]));

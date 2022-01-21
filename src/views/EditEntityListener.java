@@ -27,7 +27,7 @@ public class EditEntityListener implements ActionListener{
 				StudentGradesPanel.getInstance().refresh();
 				studentEditFrame.setVisible(true);
 			}else {
-				JOptionPane.showMessageDialog(mainTabbedPane, "Niste odabrali studenta!", "UPOZORENJE", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(mainTabbedPane, MainFrame.getInstance().getResourceBundle().getString("studentNotChosen"), MainFrame.getInstance().getResourceBundle().getString("warning"), JOptionPane.WARNING_MESSAGE);
 			}
 			break;
 		case 1:
@@ -39,7 +39,7 @@ public class EditEntityListener implements ActionListener{
 				professorEditFrame.setVisible(true);
 			}
 			else {
-				JOptionPane.showMessageDialog(mainTabbedPane, "Niste odabrali profesora!", "UPOZORENJE", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(null, MainFrame.getInstance().getResourceBundle().getString("professorNotChosen"), MainFrame.getInstance().getResourceBundle().getString("warning"), JOptionPane.WARNING_MESSAGE);
 			}
 			break;
 		case 2:
@@ -49,11 +49,11 @@ public class EditEntityListener implements ActionListener{
 				subjectEditFrame.updateSubjectSelection();
 				subjectEditFrame.setVisible(true);
 			}else {
-				JOptionPane.showMessageDialog(mainTabbedPane, "Niste odabrali predmet!", "UPOZORENJE", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(null, MainFrame.getInstance().getResourceBundle().getString("subjectNotChosen"), MainFrame.getInstance().getResourceBundle().getString("warning"), JOptionPane.WARNING_MESSAGE);
 			}
 			break;
 		default:
-			System.out.println("ERROR");
+			System.out.println(MainFrame.getInstance().getResourceBundle().getString("error"));
 			break;
 		}	
 	}

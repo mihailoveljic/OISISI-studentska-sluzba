@@ -37,7 +37,7 @@ public class StudentEditFrame extends JDialog{
 		// Pravljenje prozora
 		setSize(width*2/5, height*2/4);
 		setLocationRelativeTo(MainFrame.getInstance());
-		setTitle("Izmena studenta");
+		setTitle(MainFrame.getInstance().getResourceBundle().getString("editStudent"));
 		Image icon = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB_PRE);
 		setIconImage(icon);
 		
@@ -48,9 +48,9 @@ public class StudentEditFrame extends JDialog{
 		StudentSubjectsPanel studentSubjectsPanel = StudentSubjectsPanel.getInstance();
 		
 
-		tabbedPane.add(studentInfoPanel, "Informacije");
-		tabbedPane.add(studentGradesPanel, "Položeni");
-		tabbedPane.add(studentSubjectsPanel, "Nepoloženi");
+		tabbedPane.add(studentInfoPanel, MainFrame.getInstance().getResourceBundle().getString("info"));
+		tabbedPane.add(studentGradesPanel, MainFrame.getInstance().getResourceBundle().getString("passed"));
+		tabbedPane.add(studentSubjectsPanel, MainFrame.getInstance().getResourceBundle().getString("notPassed"));
 		
 		this.add(tabbedPane);
 		setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);

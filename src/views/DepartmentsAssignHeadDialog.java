@@ -56,7 +56,7 @@ public class DepartmentsAssignHeadDialog extends JDialog implements ActionListen
 		// Pravljenje prozora
 		setSize(width*1/5, height*1/5);
 		setLocationRelativeTo(SubjectEditFrame.getInstance());
-		setTitle("Odaberi profesora");
+		setTitle(MainFrame.getInstance().getResourceBundle().getString("professorChoose"));
 		Image icon = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB_PRE);
 		setIconImage(icon);
 		this.setResizable(false);
@@ -65,9 +65,9 @@ public class DepartmentsAssignHeadDialog extends JDialog implements ActionListen
 		
 		
 		JPanel commandPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-		okButton = new JButton("Potvrdi");
+		okButton = new JButton(MainFrame.getInstance().getResourceBundle().getString("confirm"));
 		okButton.addActionListener(this);
-		cancelButton = new JButton("Odustani");
+		cancelButton = new JButton(MainFrame.getInstance().getResourceBundle().getString("cancel"));
 		cancelButton.addActionListener(new ActionListener() {
 			
 			@Override
@@ -101,7 +101,7 @@ public class DepartmentsAssignHeadDialog extends JDialog implements ActionListen
 	public void actionPerformed(ActionEvent arg0) {
 		selectedProfesor = (String) professorList.getSelectedValue();
 		if (selectedProfesor == null) {
-			JOptionPane.showMessageDialog(this, "Profesor nije selektovan.", "Upozorenje!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(this, MainFrame.getInstance().getResourceBundle().getString("professorNotChosen"), MainFrame.getInstance().getResourceBundle().getString("warning"), JOptionPane.ERROR_MESSAGE);
 		}
 		else {
 			String[] parts = selectedProfesor.split(" ");
@@ -115,7 +115,7 @@ public class DepartmentsAssignHeadDialog extends JDialog implements ActionListen
 				}
 			}
 			
-			JOptionPane.showMessageDialog(this, "Profesor uspešno izabran!");
+			JOptionPane.showMessageDialog(this, MainFrame.getInstance().getResourceBundle().getString("professorChosen"));
 			dispose();
 		}
 		

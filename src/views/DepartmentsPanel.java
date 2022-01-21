@@ -30,7 +30,7 @@ public class DepartmentsPanel extends JPanel{
 			add(scrollPane, BorderLayout.CENTER);
 			JPanel commandPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 			
-			assignHeadOfDepartment = new JButton ("Postavi rukovodioca");
+			assignHeadOfDepartment = new JButton (MainFrame.getInstance().getResourceBundle().getString("placeHead"));
 			
 			assignHeadOfDepartment.addActionListener(new ActionListener() {
 				
@@ -43,7 +43,7 @@ public class DepartmentsPanel extends JPanel{
 						DepartmentsAssignHeadDialog departmentsAssignHeadDialog = new DepartmentsAssignHeadDialog(departmentsPanel);
 						departmentsAssignHeadDialog.setVisible(true);
 					}else {
-						JOptionPane.showMessageDialog((DepartmentsMainDialog) getParent().getParent().getParent().getParent(), "Profesor nije selektovan.", "Upozorenje!", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog((DepartmentsMainDialog) getParent().getParent().getParent().getParent(), MainFrame.getInstance().getResourceBundle().getString("professorNotChosen"), MainFrame.getInstance().getResourceBundle().getString("warning"), JOptionPane.ERROR_MESSAGE);
 					}
 				}
 			});

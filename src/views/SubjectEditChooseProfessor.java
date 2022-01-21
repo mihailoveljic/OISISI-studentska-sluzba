@@ -51,7 +51,7 @@ public class SubjectEditChooseProfessor extends JDialog implements ActionListene
 		// Pravljenje prozora
 		setSize(width*1/5, height*1/5);
 		setLocationRelativeTo(SubjectEditFrame.getInstance());
-		setTitle("Odaberi profesora");
+		setTitle(MainFrame.getInstance().getResourceBundle().getString("professorChoose"));
 		Image icon = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB_PRE);
 		setIconImage(icon);
 		this.setResizable(false);
@@ -60,10 +60,10 @@ public class SubjectEditChooseProfessor extends JDialog implements ActionListene
 		
 		
 		JPanel commandPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-		okButton = new JButton("Potvrdi");
+		okButton = new JButton(MainFrame.getInstance().getResourceBundle().getString("confirm"));
 		okButton.addActionListener(this);
 		okButton.setBackground(new Color(255, 205, 193));
-		cancelButton = new JButton("Odustani");
+		cancelButton = new JButton(MainFrame.getInstance().getResourceBundle().getString("cancel"));
 		cancelButton.setBackground(new Color(255, 205 ,193));
 		cancelButton.addActionListener(new ActionListener() {
 			
@@ -95,7 +95,7 @@ public class SubjectEditChooseProfessor extends JDialog implements ActionListene
 	public void actionPerformed(ActionEvent arg0) {
 		selectedProfesor = (String) professorList.getSelectedValue();
 		if (selectedProfesor == null) {
-			JOptionPane.showMessageDialog(this, "Profesor nije selektovan.", "Upozorenje!",
+			JOptionPane.showMessageDialog(this, MainFrame.getInstance().getResourceBundle().getString("professorNotChosen"), MainFrame.getInstance().getResourceBundle().getString("warning"),
 					JOptionPane.ERROR_MESSAGE);
 		}
 		else {
@@ -111,7 +111,7 @@ public class SubjectEditChooseProfessor extends JDialog implements ActionListene
 				}
 			}
 			
-			JOptionPane.showMessageDialog(this, "Profesor uspešno izabran!");
+			JOptionPane.showMessageDialog(this, MainFrame.getInstance().getResourceBundle().getString("professorChosen"));
 			SubjectEditFrame.getInstance().professor = getProfessor();
 			SubjectEditFrame.getInstance().updateProfessorSelection();
 			dispose();

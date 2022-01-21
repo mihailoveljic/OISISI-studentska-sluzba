@@ -40,9 +40,9 @@ public class ProfessorSubjectAddFrame extends JDialog implements ActionListener{
 		setAlwaysOnTop (true);
 		
 		JPanel commandsPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-		okButton = new JButton("Potvrdi");
+		okButton = new JButton(MainFrame.getInstance().getResourceBundle().getString("confirm"));
 		okButton.addActionListener(this);
-		cancelButton = new JButton("Odustani");
+		cancelButton = new JButton(MainFrame.getInstance().getResourceBundle().getString("cancel"));
 		cancelButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -90,7 +90,7 @@ public class ProfessorSubjectAddFrame extends JDialog implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		selectedSubject = (String) subjects.getSelectedValue();
 		if (selectedSubject == null) {
-			JOptionPane.showMessageDialog(this, "Predmet nije selektovan.", "Upozorenje!",
+			JOptionPane.showMessageDialog(this, MainFrame.getInstance().getResourceBundle().getString("subjectNotChosen"), MainFrame.getInstance().getResourceBundle().getString("warning"),
 					JOptionPane.ERROR_MESSAGE);
 		}
 		else {
@@ -100,8 +100,8 @@ public class ProfessorSubjectAddFrame extends JDialog implements ActionListener{
 				if(id.equals(s.getId())) {
 					if(s.getProfessor() != null) {
 						int userInput = JOptionPane.showConfirmDialog(this,
-								"Izabrani predmet veæ ima dodeljenog profesora, izvršiti zamenu?",
-								"Zamena profesora", JOptionPane.YES_NO_OPTION);
+								MainFrame.getInstance().getResourceBundle().getString("subjectHasProfessorAlready"),
+								MainFrame.getInstance().getResourceBundle().getString("professorSubstitute"), JOptionPane.YES_NO_OPTION);
 						if (userInput == JOptionPane.YES_OPTION) {
 							if(s.getProfessor().getSubjects().contains(s)) {
 								s.getProfessor().getSubjects().remove(s);
@@ -133,7 +133,7 @@ public class ProfessorSubjectAddFrame extends JDialog implements ActionListener{
 					}
 				}
 			}
-			JOptionPane.showMessageDialog(this, "Predmet uspešno dodat!");
+			JOptionPane.showMessageDialog(this, MainFrame.getInstance().getResourceBundle().getString("subjectAdded"));
 			ProfessorEditFrame.getInstance().getProfessorSubjectPanel().refresh();
 			setVisible(false);
 		}

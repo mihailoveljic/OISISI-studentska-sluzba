@@ -44,7 +44,7 @@ public class AbstractTableModelGrades  extends AbstractTableModel{
 		
 		if(grades.get(rowIndex)==null)
 		{
-			JOptionPane.showMessageDialog(null, "Niste izabrali predmet!");
+			JOptionPane.showMessageDialog(null, MainFrame.getInstance().getResourceBundle().getString("subjectNotChosen"));
 			return -1;
 		} 
 		
@@ -86,23 +86,23 @@ public class AbstractTableModelGrades  extends AbstractTableModel{
 		{
 			case 0:
 			{
-				return "Šifra predmeta";
+				return MainFrame.getInstance().getResourceBundle().getString("subjectId");
 			}
 			case 1:
 			{
-				return "Naziv predmeta";
+				return MainFrame.getInstance().getResourceBundle().getString("subjectName");
 			}
 			case 2:
 			{
-				return "ESPB";
+				return MainFrame.getInstance().getResourceBundle().getString("espb");
 			}
 			case 3:
 			{
-				return "Ocena";
+				return MainFrame.getInstance().getResourceBundle().getString("mark");
 			}
 			case 4:
 			{
-				return "Datum";
+				return MainFrame.getInstance().getResourceBundle().getString("date");
 			}
 			default:
 				return null;

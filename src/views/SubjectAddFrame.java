@@ -53,7 +53,7 @@ public class SubjectAddFrame extends JDialog{
 		// Pravljenje prozora
 		setSize(width*1/4, height*2/4);
 		setLocationRelativeTo(MainFrame.getInstance());
-		setTitle("Dodavanje predmeta");
+		setTitle(MainFrame.getInstance().getResourceBundle().getString("subjectAdding"));
 		Image icon = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB_PRE);
 		setIconImage(icon);
 
@@ -63,21 +63,22 @@ public class SubjectAddFrame extends JDialog{
 		
 		
 		
-		JLabel idLabel = new JLabel("Šifra*");
+		JLabel idLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("subjectId") + "*");
 		JTextField idField = new JTextField();
-		JLabel nameLabel = new JLabel("Naziv*");
+		JLabel nameLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("subjectName") + "*");
 		JTextField nameField = new JTextField();
-		JLabel semesterLabel = new JLabel("Semestar*");
+		JLabel semesterLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("semester") + "*");
 		JComboBox<String> semesterComboBox = new JComboBox<String>();
-		semesterComboBox.addItem("Zimski");
-		semesterComboBox.addItem("Letnji");
-		JLabel currentYearOfStudyLabel = new JLabel("Godina studija*");
+		semesterComboBox.addItem(MainFrame.getInstance().getResourceBundle().getString("winter"));
+		semesterComboBox.addItem(MainFrame.getInstance().getResourceBundle().getString("summer"));
+		JLabel currentYearOfStudyLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("yearOfStudy") + "*");
 		JComboBox<String> currentYearOfStudyComboBox = new JComboBox<String>();
-		currentYearOfStudyComboBox.addItem("I (Prva)");
-		currentYearOfStudyComboBox.addItem("II (Druga)");
-		currentYearOfStudyComboBox.addItem("III (Treæa)");
-		currentYearOfStudyComboBox.addItem("IV (Èetvrta)");		
-		JLabel professorLabel = new JLabel("Profesor*");
+		currentYearOfStudyComboBox.addItem(MainFrame.getInstance().getResourceBundle().getString("firstYear"));
+		currentYearOfStudyComboBox.addItem(MainFrame.getInstance().getResourceBundle().getString("secondYear"));
+		currentYearOfStudyComboBox.addItem(MainFrame.getInstance().getResourceBundle().getString("thirdYear"));
+		currentYearOfStudyComboBox.addItem(MainFrame.getInstance().getResourceBundle().getString("fourthYear"));		
+		JLabel professorLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("professor"));
+
 		professorField = new JTextField();
 		professorField.setEditable(false);
 
@@ -96,8 +97,8 @@ public class SubjectAddFrame extends JDialog{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int userInput = JOptionPane.showOptionDialog(SubjectAddFrame.getInstance(), "Da li ste sigurni da želite da uklonite trenutnog profesora?",
-						"Uklanjanje profesora", JOptionPane.YES_NO_OPTION, 0, null, null, e);
+				int userInput = JOptionPane.showOptionDialog(SubjectAddFrame.getInstance(), MainFrame.getInstance().getResourceBundle().getString("sureToDeleteCurrentProfessor"),
+						MainFrame.getInstance().getResourceBundle().getString("professorDelete"), JOptionPane.YES_NO_OPTION, 0, null, null, e);
 				if(userInput == JOptionPane.YES_OPTION) {
 					professor = null;
 					SubjectAddFrame.getInstance().updateProfessorSelection();
@@ -118,11 +119,11 @@ public class SubjectAddFrame extends JDialog{
 			addProfessorButton.setEnabled(false);
 			removeProfessorButton.setEnabled(true);
 		}
-		JLabel espbLabel = new JLabel("ESPB*");
+		JLabel espbLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("espb") + "*");
 		JTextField espbField = new JTextField();
 		
 		
-		JButton confirmButton = new JButton("Potvrdi");
+		JButton confirmButton = new JButton(MainFrame.getInstance().getResourceBundle().getString("confirm"));
 		ButtonModel confirmButtonModel = confirmButton.getModel();
 		ButtonEnabler buttonEnabler = new ButtonEnabler(confirmButtonModel);	
 		buttonEnabler.addDocument(idField.getDocument());
@@ -153,7 +154,7 @@ public class SubjectAddFrame extends JDialog{
 			
 		});
 		
-		JButton cancelButton = new JButton("Odustani");
+		JButton cancelButton = new JButton(MainFrame.getInstance().getResourceBundle().getString("cancel"));
 		cancelButton.addActionListener(new ActionListener() {
 			
 			@Override

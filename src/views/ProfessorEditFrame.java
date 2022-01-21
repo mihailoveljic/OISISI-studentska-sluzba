@@ -42,9 +42,9 @@ public class ProfessorEditFrame extends JDialog {
 		
 		
 		tabbedPane = new JTabbedPane();
-		tabbedPane.add(ProfessorInfoPanel.getInstance(), "Informacije");
+		tabbedPane.add(ProfessorInfoPanel.getInstance(), MainFrame.getInstance().getResourceBundle().getString("info"));
 		professorSubjectPanel = new ProfessorSubjectPanel();
-		tabbedPane.add(professorSubjectPanel, "Predmeti");
+		tabbedPane.add(professorSubjectPanel, MainFrame.getInstance().getResourceBundle().getString("subjects"));
 		this.add(tabbedPane);
 		setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		addWindowListener(new WindowListener() {

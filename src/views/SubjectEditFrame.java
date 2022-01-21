@@ -96,16 +96,16 @@ public class SubjectEditFrame extends JDialog{
 		    professor = null;
 		}
 		
-		JLabel idLabel = new JLabel("Šifra*");
+		JLabel idLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("subjectId") + "*");
 		idField = new JTextField(id);
-		JLabel nameLabel = new JLabel("Naziv*");
+		JLabel nameLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("subjectName") + "*");
 		nameField = new JTextField(name);
-		JLabel currentYearOfStudyLabel = new JLabel("Godina studija*");
+		JLabel currentYearOfStudyLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("yearOfStudy") + "*");
 		currentYearOfStudyComboBox = new JComboBox<String>();
-		currentYearOfStudyComboBox.addItem("I (Prva)");
-		currentYearOfStudyComboBox.addItem("II (Druga)");
-		currentYearOfStudyComboBox.addItem("III (Tre�a)");
-		currentYearOfStudyComboBox.addItem("IV (�etvrta)");
+		currentYearOfStudyComboBox.addItem(MainFrame.getInstance().getResourceBundle().getString("firstYear"));
+		currentYearOfStudyComboBox.addItem(MainFrame.getInstance().getResourceBundle().getString("secondYear"));
+		currentYearOfStudyComboBox.addItem(MainFrame.getInstance().getResourceBundle().getString("thirdYear"));
+		currentYearOfStudyComboBox.addItem(MainFrame.getInstance().getResourceBundle().getString("fourthYear"));
 		switch(yearOfStudy) {
 		case 1:
 			currentYearOfStudyComboBox.setSelectedIndex(0);
@@ -122,10 +122,10 @@ public class SubjectEditFrame extends JDialog{
 		default:
 			break;
 		}
-		JLabel semesterLabel = new JLabel("Semestar*");
+		JLabel semesterLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("semester") + "*");
 		semesterComboBox = new JComboBox<String>();
-		semesterComboBox.addItem("Zimski");
-		semesterComboBox.addItem("Letnji");
+		semesterComboBox.addItem(MainFrame.getInstance().getResourceBundle().getString("winter"));
+		semesterComboBox.addItem(MainFrame.getInstance().getResourceBundle().getString("summer"));
 		switch(semester) {
 		case ZIMSKI:
 			currentYearOfStudyComboBox.setSelectedIndex(0);
@@ -136,9 +136,9 @@ public class SubjectEditFrame extends JDialog{
 		default:
 			break;
 		}
-		JLabel espbLabel = new JLabel("ESPB*");
+		JLabel espbLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("espb") + "*");
 		espbField = new JTextField(ESPB);
-		JLabel professorLabel = new JLabel("Profesor*");
+		JLabel professorLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("professor"));
 		if(professor == null) {
 			professorTextField = new JTextField("");
 		}else {
@@ -177,7 +177,7 @@ public class SubjectEditFrame extends JDialog{
 			addProfessorButton.setEnabled(false);
 			removeProfessorButton.setEnabled(true);
 		}
-		JButton confirmButton = new JButton("Potvrdi");
+		JButton confirmButton = new JButton(MainFrame.getInstance().getResourceBundle().getString("confirm"));
 		ButtonModel confirmButtonModel = confirmButton.getModel();
 		ButtonEnabler buttonEnabler = new ButtonEnabler(confirmButtonModel);
 		buttonEnabler.addDocument(idField.getDocument());
@@ -211,7 +211,7 @@ public class SubjectEditFrame extends JDialog{
 			
 		});
 		
-		JButton cancelButton = new JButton("Odustani");
+		JButton cancelButton = new JButton(MainFrame.getInstance().getResourceBundle().getString("cancel"));
 		cancelButton.addActionListener(new ActionListener() {
 			
 			@Override

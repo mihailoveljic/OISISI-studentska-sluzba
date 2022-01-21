@@ -32,7 +32,7 @@ public class AddEntityListener implements ActionListener{
 			subjectAddFrame.setVisible(true);
 			break;
 		default:
-			System.out.println("ERROR");
+			System.out.println(MainFrame.getInstance().getResourceBundle().getString("error"));
 			break;
 		}
 		
