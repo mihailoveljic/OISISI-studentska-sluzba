@@ -162,8 +162,8 @@ public class SubjectEditFrame extends JDialog{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int userInput = JOptionPane.showOptionDialog(SubjectEditFrame.getInstance(), "Da li ste sigurni da želite da uklonite trenutnog profesora?",
-						"Uklanjanje profesora", JOptionPane.YES_NO_OPTION, 0, null, null, e);
+				int userInput = JOptionPane.showOptionDialog(SubjectEditFrame.getInstance(), MainFrame.getInstance().getResourceBundle().getString("sureToRemoveProfessor"),
+						MainFrame.getInstance().getResourceBundle().getString("removeProfessor"), JOptionPane.YES_NO_OPTION, 0, null, null, e);
 				if(userInput == JOptionPane.YES_OPTION) {
 					professor = null;
 					SubjectEditFrame.getInstance().updateProfessorSelection();

@@ -102,7 +102,6 @@ public class SubjectAddFrame extends JDialog{
 				if(userInput == JOptionPane.YES_OPTION) {
 					professor = null;
 					SubjectAddFrame.getInstance().updateProfessorSelection();
-					dispose();
 				}
 			}
 		});
