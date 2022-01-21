@@ -27,6 +27,8 @@ public class AddEntityListener implements ActionListener{
 			break;
 		case 2:
 			SubjectAddFrame subjectAddFrame = SubjectAddFrame.getInstance();
+			subjectAddFrame.setProfessor(null);
+			subjectAddFrame.updateProfessorSelection();
 			subjectAddFrame.setVisible(true);
 			break;
 		default:
