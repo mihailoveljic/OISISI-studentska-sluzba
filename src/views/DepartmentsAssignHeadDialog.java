@@ -55,7 +55,7 @@ public class DepartmentsAssignHeadDialog extends JDialog implements ActionListen
 
 		// Pravljenje prozora
 		setSize(width*1/5, height*1/5);
-		setLocationRelativeTo(SubjectEditFrame.getInstance());
+		setLocationRelativeTo(getParent());
 		setTitle(MainFrame.getInstance().getResourceBundle().getString("professorChoose"));
 		Image icon = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB_PRE);
 		setIconImage(icon);

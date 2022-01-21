@@ -51,7 +51,6 @@ public class StudentGradesPanel extends JPanel{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Brisanje ocene
 				
 				int column = 0;
 				int row = gradesTable.getSelectedRow();

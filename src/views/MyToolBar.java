@@ -67,7 +67,6 @@ public class MyToolBar extends JToolBar {
 
 			@Override
 			public void keyTyped(KeyEvent e) {
-				// TODO Auto-generated method stub
 
 			}
 
@@ -77,7 +76,6 @@ public class MyToolBar extends JToolBar {
 			}
 			@Override
 			public void keyPressed(KeyEvent e) {
-				// TODO Auto-generated method stub
 				if (e.getKeyCode()==KeyEvent.VK_ENTER){
 					MainFrame mainFrame = MainFrame.getInstance();
 					

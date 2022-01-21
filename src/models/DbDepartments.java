@@ -31,6 +31,58 @@ public class DbDepartments{
 	
 	private void initDepartments() {
 		this.departments= new ArrayList<Department>();
+
+
+//		Professor p1 = DbProfessors.getInstance().findProfessor("Nikola", "Mirkovic", "nikola.mirkovic@mailinator.com");
+//		Professor p2 = DbProfessors.getInstance().findProfessor("Ilija", "Petkovic", "ilija.petkovic@mailinator.com");
+//		Professor p3 = DbProfessors.getInstance().findProfessor("Mitar", "Petrovic", "mitar.petrovic@mailinator.com");
+//		Professor p4 = DbProfessors.getInstance().findProfessor("Branislav", "Mihajlovic", "branislav.mihajlovic@mailinator.com");
+//		Professor p5 = DbProfessors.getInstance().findProfessor("Bogdan", "Rekaviæ", "bogdan.rekavic@mailinator.com");
+//		Professor p6 = DbProfessors.getInstance().findProfessor("Branislav", "Lukovic", "branislav.lukovic@mailinator.com");
+//		
+//		List<Professor> ps1 = new ArrayList<>();
+//		List<Professor> ps2 = new ArrayList<>();
+//		List<Professor> ps3 = new ArrayList<>();
+//		List<Professor> ps4 = new ArrayList<>();
+//		List<Professor> ps5 = new ArrayList<>();
+//		List<Professor> ps6 = new ArrayList<>();
+//		
+//		ps1.add(DbProfessors.getInstance().getProfessors().get(0));
+//		ps1.add(DbProfessors.getInstance().getProfessors().get(1));
+//		ps1.add(DbProfessors.getInstance().getProfessors().get(18));
+//		
+//
+//		ps2.add(DbProfessors.getInstance().getProfessors().get(2));
+//		ps2.add(DbProfessors.getInstance().getProfessors().get(7));
+//		ps2.add(DbProfessors.getInstance().getProfessors().get(13));
+//		
+//
+//		ps3.add(DbProfessors.getInstance().getProfessors().get(3));
+//		ps3.add(DbProfessors.getInstance().getProfessors().get(8));
+//		ps3.add(DbProfessors.getInstance().getProfessors().get(14));
+//		
+//
+//		ps4.add(DbProfessors.getInstance().getProfessors().get(6));
+//		ps4.add(DbProfessors.getInstance().getProfessors().get(9));
+//		ps4.add(DbProfessors.getInstance().getProfessors().get(15));
+//		
+//
+//		ps5.add(DbProfessors.getInstance().getProfessors().get(4));
+//		ps5.add(DbProfessors.getInstance().getProfessors().get(10));
+//		ps5.add(DbProfessors.getInstance().getProfessors().get(12));
+//		ps5.add(DbProfessors.getInstance().getProfessors().get(16));
+//		
+//
+//		ps6.add(DbProfessors.getInstance().getProfessors().get(5));
+//		ps5.add(DbProfessors.getInstance().getProfessors().get(11));
+//		ps5.add(DbProfessors.getInstance().getProfessors().get(17));
+//		
+//		departments.add(new Department("e42", "Katedra za matematiku", p1, ps1));
+//		departments.add(new Department("e43", "Katedra za fiziku", p2, ps2));
+//		departments.add(new Department("e44", "Katedra za elektrotehniku", p3, ps3));
+//		departments.add(new Department("e45", "Katedra za primenjene raèunarske nauke", p4, ps4));
+//		departments.add(new Department("e46", "Katedra za informatiku", p5, ps5));
+//		departments.add(new Department("e47", "Katedra za automatiku", p6, ps6));
 	}
 	
 	public List<Department> getDeparments() {
