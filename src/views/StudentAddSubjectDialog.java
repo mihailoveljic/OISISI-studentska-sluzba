@@ -106,6 +106,10 @@ public class StudentAddSubjectDialog extends JDialog implements ActionListener{
 			Student student = DbStudents.getInstance().findStudentByIndex((String) StudentTable.getInstance().getValueAt(StudentTable.getInstance().getSelectedRow(), 0));
 			String parts[] = selectedSubject.split(" ");
 			student.getSubjects().add(DbSubjects.getInstance().findSubjectById(parts[0]));
+			if(DbSubjects.getInstance().findSubjectById(parts[0]).getListOfStudentsWhoFailed()==null) {
+				DbSubjects.getInstance().findSubjectById(parts[0]).setListOfStudentsWhoFailed(new ArrayList<Student>());
+				
+			}
 			DbSubjects.getInstance().findSubjectById(parts[0]).getListOfStudentsWhoFailed().add(student);
 			StudentSubjectsPanel.getInstance().refresh();
 			setVisible(false);

@@ -195,7 +195,7 @@ public class StudentEntrySubject extends JDialog implements ActionListener {
 		try {
 			String parts[] = dateField.getText().toString().split("[.]");
 			if(parts.length >= 3) {
-				formattedDate = new Date(Integer.parseInt(parts[2]), Integer.parseInt(parts[1]) - 1, Integer.parseInt(parts[0]));
+				formattedDate = new Date(Integer.parseInt(parts[2])-1900, Integer.parseInt(parts[1]) - 1, Integer.parseInt(parts[0]));
 				dateField.setBorder(null);
 			}else {
 				dateField.setBorder(new LineBorder(Color.red,1));

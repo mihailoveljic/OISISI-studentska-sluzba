@@ -1,6 +1,7 @@
 package controllers;
 
 import javax.swing.JOptionPane;
+import java.util.ArrayList;
 
 import models.DbSubjects;
 import models.Professor;
@@ -63,10 +64,15 @@ public class SubjectController {
 		subject.setSemester(formattedSemester);
 		subject.setESPB(formattedEspb);
 		if(subject.getProfessor() != null) {
+			if(subject.getProfessor().getSubjects()!=null)
 			subject.getProfessor().getSubjects().remove(subject);
 		}
 		if(p != null) {
 			subject.setProfessor(p);
+			if(p.getSubjects()==null)
+			{
+				p.setSubjects(new ArrayList<Subject>());
+			}
 			p.getSubjects().add(subject);
 		}
 		
@@ -99,10 +105,10 @@ public class SubjectController {
 		
 		switch(semester) {
 		case 0:
-			formattedSemester = Semester.LETNJI;
+			formattedSemester = Semester.ZIMSKI;
 			break;
 		case 1:
-			formattedSemester = Semester.ZIMSKI;
+			formattedSemester = Semester.LETNJI;
 			break;
 		default:
 			return MainFrame.getInstance().getResourceBundle().getString("semesterChooseIncorrect");

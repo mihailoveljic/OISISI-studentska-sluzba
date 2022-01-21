@@ -31,6 +31,8 @@ public class ProfessorSubjectPanel extends JPanel{
 	
 	public ProfessorSubjectPanel() {
 		super();
+		
+		
 		setLayout(new BorderLayout());
 		setOpaque(false);
 		subjectsTable = new ProfessorSubjectsTable();
@@ -83,7 +85,7 @@ public class ProfessorSubjectPanel extends JPanel{
 					}
 				} else {
 					JOptionPane.showMessageDialog(ProfessorEditFrame.getInstance().getProfessorSubjectPanel(), MainFrame.getInstance().getResourceBundle().getString("subjectNotChosen"), MainFrame.getInstance().getResourceBundle().getString("warning"),
-							JOptionPane.ERROR_MESSAGE);
+							JOptionPane.WARNING_MESSAGE);
 				}
 				removeButton.setSelected(false);
 			}

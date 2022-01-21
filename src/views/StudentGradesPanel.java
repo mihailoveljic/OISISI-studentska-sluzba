@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -62,7 +63,10 @@ public class StudentGradesPanel extends JPanel{
 				for(Grade g: grades) {
 					if(g.getSubject().getId()==value) {
 						int userInput = JOptionPane.showOptionDialog(StudentGradesPanel.getInstance(), MainFrame.getInstance().getResourceBundle().getString("sureToCancelGrade"), MainFrame.getInstance().getResourceBundle().getString("gradeCancelation"), JOptionPane.YES_NO_OPTION, 0, null, null, e);
-						if(userInput == JOptionPane.YES_OPTION) { 
+						if(userInput == JOptionPane.YES_OPTION) {
+							if(g.getSubject().getListOfStudentsWhoPassed()==null) {
+									g.getSubject().setListOfStudentsWhoPassed(new ArrayList<Student>());
+								}
 						g.getSubject().getListOfStudentsWhoPassed().remove(student);
 						student.getGrades().remove(g);
 						student.getSubjects().add(g.getSubject());
@@ -74,7 +78,7 @@ public class StudentGradesPanel extends JPanel{
 				}
 				}
 				else {
-					JOptionPane.showMessageDialog(StudentGradesPanel.getInstance(), MainFrame.getInstance().getResourceBundle().getString("gradeNotChosen"));
+					JOptionPane.showMessageDialog(StudentSubjectsPanel.getInstance(),MainFrame.getInstance().getResourceBundle().getString("gradeNotChosen"), MainFrame.getInstance().getResourceBundle().getString("warning"), JOptionPane.WARNING_MESSAGE);
 				}
 			}
 		});

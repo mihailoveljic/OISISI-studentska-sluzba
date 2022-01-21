@@ -51,6 +51,7 @@ public class SubjectAddChooseProfessor extends JDialog implements ActionListener
 		setSize(width*1/5, height*1/5);
 		setLocationRelativeTo(SubjectEditFrame.getInstance());
 		setTitle(MainFrame.getInstance().getResourceBundle().getString("professorChoose"));
+
 		Image icon = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB_PRE);
 		setIconImage(icon);
 		this.setResizable(false);
@@ -106,6 +107,7 @@ public class SubjectAddChooseProfessor extends JDialog implements ActionListener
 					this.p = p;
 					
 				}
+				
 			}
 			
 			JOptionPane.showMessageDialog(this, MainFrame.getInstance().getResourceBundle().getString("ProfessorChosen"));

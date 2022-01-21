@@ -81,8 +81,11 @@ public class MainFrame extends JFrame{
 						resourceBundle.getString("saveChangesOnExitTitle"), JOptionPane.YES_NO_OPTION);
 				if (userInput == JOptionPane.YES_OPTION) {
 					WriterReader.getInstance().SaveData();
+					MainFrame.getInstance().dispose();
 					}
-				MainFrame.getInstance().dispose();
+				else if(userInput==JOptionPane.NO_OPTION) {
+					MainFrame.getInstance().dispose();
+				}
 			}
 			
 			@Override
