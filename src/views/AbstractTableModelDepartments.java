@@ -15,13 +15,11 @@ public class AbstractTableModelDepartments extends AbstractTableModel{
 	
 	@Override
 	public int getColumnCount() {
-		// TODO Auto-generated method stub
 		return 3;
 	}
 
 	@Override
 	public int getRowCount() {
-		// TODO Auto-generated method stub
 		if(DbDepartments.getInstance().getDeparments() != null) {
 			return DbDepartments.getInstance().getDeparments().size();
 		}else {
@@ -31,7 +29,6 @@ public class AbstractTableModelDepartments extends AbstractTableModel{
 
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
-		// TODO Auto-generated method stub
 	
 		List<Department> departments = DbDepartments.getInstance().getDeparments();
 		Department d = departments.get(rowIndex);

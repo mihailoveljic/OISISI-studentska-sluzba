@@ -20,13 +20,11 @@ public class AbstractTableModelGrades  extends AbstractTableModel{
 	
 	@Override
 	public int getColumnCount() {
-		// TODO Auto-generated method stub
 		return 5;
 	}
 
 	@Override
 	public int getRowCount() {
-		// TODO Auto-generated method stub
 		if(s.getGrades() != null) {
 			return s.getGrades().size();
 		}else {
@@ -37,7 +35,6 @@ public class AbstractTableModelGrades  extends AbstractTableModel{
 	@SuppressWarnings("deprecation")
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
-		// TODO Auto-generated method stub
 	
 		List<Grade> grades = s.getGrades();
 		Grade o = grades.get(rowIndex);

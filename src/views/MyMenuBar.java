@@ -136,7 +136,6 @@ public class MyMenuBar extends JMenuBar{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				int userInput = JOptionPane.showConfirmDialog(MainFrame.getInstance(), MainFrame.getInstance().getResourceBundle().getString("saveChangesOnExit"),
 						 MainFrame.getInstance().getResourceBundle().getString("saveChangesOnExitTitle"), JOptionPane.YES_NO_OPTION);
 				if (userInput == JOptionPane.YES_OPTION) {
@@ -193,102 +192,7 @@ public class MyMenuBar extends JMenuBar{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				helpTextArea = new JTextArea("				UPUTSTVO ZA KOIRŠĆENJE APLIKACIJE\r\n"
-						+ "\r\n"
-						+ "\r\n"
-						+ "*TABELA STUDENATA\r\n"
-						+ "I)\r\n"
-						+ "Dodavanje studenta se vrši pomoću dugmeta u toolbar-u, takođe je moguće i preko: File -> New pod uslovom da je tab studenti otvoren.\r\n"
-						+ "Provera ispravnosti unetih podataka:\r\n"
-						+ "	-Ispravan format datuma: dan.mesec.godina.\r\n"
-						+ "	-broj telefona nema ograničenje\r\n"
-						+ "	-Ispravan format indeksa: (X)X (YY)Y/XXXX - npr. RA 31/2019.\r\n"
-						+ "	-Indeks mora biti jedinstven\r\n"
-						+ "	-Email mora sadržati \"@\".\r\n"
-						+ "	-Sva polja moraju biti popunjena da bi dodavanje bilo moguće.\r\n"
-						+ "II)\r\n"
-						+ "Izmena studenta se vrši pomoću dugmeta  u toolbar-u, takođe je moguće i preko: File -> Edit -> Edit pod uslovom da je tab studenti otvoren.\r\n"
-						+ "Student prethodno mora biti selektovan u tabeli kako bi izmena bila moguća.\r\n"
-						+ "Provera ispravnosti unetih podataka je ista kao za unos novog studenta, polje za broj indeksa se ne može menjati.\r\n"
-						+ "U okviru dijaloga za izmenu studenata, nalaze se tri taba, jedan sa informacija, drugi sa ispitima koje je student položio, i treći sa ispitima koje student nije položio.\r\n"
-						+ "Prilikom otvaranja dijaloga za izmenu studenta otvara se prvi tab u okviru kog se vrši izmena.\r\n"
-						+ "Prelaskom na drugi tab, imamo informacije o predmetima koje je student položio(Broj ESPB bodova koliko predmet nosi, ocena, datum polaganja...).\r\n"
-						+ "U okviru ovog taba postoji mogućnost poništavanja ocene. Ako se ocena poništi, predmet se prebacuje u listu nepoloženih predmeta za zadatog studenta.\r\n"
-						+ "Prelaskom na treći tab, imamo informacije o predmetima koje student nije položio(Broj ESPB bodova koliko predmet nosi, godina studija na kojoj se predmet izvodi, semestar u kom se predmet izvodi...).\r\n"
-						+ "U okviru ovog taba postoji mogućnost dodavanja nove ocene, brisanje ocene, i postoji opcija \"polaganje\" koja nam omogućava da prebacimo ocenu iz liste nepoloženih u listu položenih ukoliko je student položio predmet.\r\n"
-						+ "III)\r\n"
-						+ "Brisanje studenta se vrši pomoću dugmeta u toolbar-u, takođe je moguće i preko: File -> Edit -> Delete pod uslovom da je tab studenti otvoren.\r\n"
-						+ "Student kog želite da uklonite iz tabele takođe mora biti prethodno selektovan.\r\n"
-						+ "\r\n"
-						+ "*TABELA PROFESORA\r\n"
-						+ "I)\r\n"
-						+ "Dodavanje profesora se vrši pomoću dugmeta u toolbar-u, takođe je moguće i preko: File -> New pod uslovom da je tab profesori otvoren.\r\n"
-						+ "Provera ispravnosti unetih podataka:\r\n"
-						+ "	-Ispravan format datuma: dan.mesec.godina.\r\n"
-						+ "	-broj telefona nema ograničenje\r\n"
-						+ "	-Email mora sadržati \"@\".\r\n"
-						+ "	-Broj lične karte mora biti jedinstven\r\n"
-						+ "	-Ostala polja nemaju specijalnih ograničenja\r\n"
-						+ "	-Sva polja moraju biti popunjena da bi dodavanje bilo moguće.\r\n"
-						+ "II)\r\n"
-						+ "Izmena profesora se vrši pomoću dugmeta  u toolbar-u, takođe je moguće i preko: File -> Edit -> Edit pod uslovom da je tab profesori otvoren.\r\n"
-						+ "Profesor prethodno mora biti selektovan u tabeli kako bi izmena bila moguća.\r\n"
-						+ "Provera ispravnosti unetih podataka je ista kao za unos novog profesora, polje za broj lične karte se ne može menjati.\r\n"
-						+ "U okviru dijaloga za izmenu profesora, nalaze se dva taba, jedan sa informacija, drugi sa predmetima koje profesor predaje.\r\n"
-						+ "Prilikom otvaranja dijaloga za izmenu profesora otvara se prvi tab u okviru kog se vrši izmena.\r\n"
-						+ "Prelaskom na drugi tab, imamo informacije o predmetima koje profesor predaje(Broj ESPB bodova koliko predmet nosi, godina studija na kojoj se predmet izvodi, semestar u kom se predmet izvodi...).\r\n"
-						+ "U okviru ovog taba možemo profesoru da dodamo novi predmet ili da uklonimo postojeći.\r\n"
-						+ "III)\r\n"
-						+ "Brisanje profesora se vrši pomoću dugmeta u toolbar-u, takođe je moguće i preko: File -> Edit -> Delete pod uslovom da je tab profesori otvoren.\r\n"
-						+ "Profesor kog želite da uklonite iz tabele takođe mora biti prethodno selektovan.\r\n"
-						+ "\r\n"
-						+ "*TABELA PREDMET\r\n"
-						+ "I)\r\n"
-						+ "Dodavanje predmeta se vrši pomoću dugmeta u toolbar-u, takođe je moguće i preko: File -> New pod uslovom da je tab predmeti otvoren.\r\n"
-						+ "Provera ispravnosti unetih podataka:\r\n"
-						+ "	-Šifra predmeta mora biti u formatu: string+int - npr. p1.\r\n"
-						+ "	-Ostala polja nemaju specijalnih ograničenja\r\n"
-						+ "Prilikom dodavanja predmeta, imamo opciju da predmetu \"dodamo\" profesora(svakom predmetu dodaćemo koji profesor ga predaje), a profesor može ostati i nepopunjen(u slučaju da niko trenutno ne predaje predmet).\r\n"
-						+ "II)\r\n"
-						+ "Izmena predmeta se vrši pomoću dugmeta  u toolbar-u, takođe je moguće i preko: File -> Edit -> Edit pod uslovom da je tab predmeti otvoren.\r\n"
-						+ "Predmet prethodno mora biti selektovan u tabeli kako bi izmena bila moguća.\r\n"
-						+ "Dijalog za izmenu predmeta je potpuno isti kao dijalog za dodavanje predmeta samo je popunjen sa akutelnim podacima iz tabele za označeni predmet.\r\n"
-						+ "III)\r\n"
-						+ "Brisanje predmeta se vrši pomoću dugmeta u toolbar-u, takođe je moguće i preko: File -> Edit -> Delete pod uslovom da je tab predmeti otvoren.\r\n"
-						+ "Predmet kog želite da uklonite iz tabele takođe mora biti prethodno selektovan.\r\n"
-						+ "\r\n"
-						+ "*TABELA KATEDRE\r\n"
-						+ "Tabeli katedre pristupamo pomoći FILE -> OPEN -> KATEDRE ili preko mnemonika CTRL + K.\r\n"
-						+ "U ovoj tabeli imamo informacije o rukovodiocima katedri. Moguće je postaviti nove rukovodioce. Lista katedri se ne može menjati.\r\n"
-						+ "\r\n"
-						+ "*SORTIRANJE\r\n"
-						+ "Sortiranje je moguće izvršiti na osnovu bilo koje kolone. Klikom na naziv odgovarajuće kolone, tabela se sortira po toj koloni.\r\n"
-						+ "\r\n"
-						+ "*PRETRAGA\r\n"
-						+ "Prilikom pretrage, pretražuje se tabela odgovarajućeg otvorenog taba.\r\n"
-						+ "U koliko je otvoren tab:\r\n"
-						+ "1)Studenti\r\n"
-						+ "Pretraga se vrši u formatu: \"prezime[,ime,broj_indeksa]\"!\r\n"
-						+ "2)Profesori\r\n"
-						+ "Pretraga se vrši u formatu: \"prezime[\" \"ime]\"!\r\n"
-						+ "3)Predmeti\r\n"
-						+ "Pretraga se vrši u formatu: \"naziv[,sifra]\"!\r\n"
-						+ "gde [] označavaju opciono navođenje.\r\n"
-						+ "\r\n"
-						+ "*LOKALIZACIJA(JEZIK)\r\n"
-						+ "U okviru Meni bara odabirom opcije \"JEZIK\" možemo odabrati ponuđene jezike.\r\n"
-						+ "Podržava se srpski i engleski jezik.\r\n"
-						+ "\r\n"
-						+ "*PREČICE\r\n"
-						+ "CTRL + N - otvara novi prozor za dodavanje novog(studenta, predmeta, profesora) u zavisnosti koji je tab otvoren.\r\n"
-						+ "CTRL + S - sačuvava izmene\r\n"
-						+ "CTRL + C - zatvaranje programa\r\n"
-						+ "CTRL + E - otvara novi prozor za izmenu (studenta, predmeta, profesora) u zavisnosti koji je tab otvoren.\r\n"
-						+ "CTRL + D - brisanje (studenta, predmeta, profesora) u zavisnoti koji je tab otvoren.\r\n"
-						+ "CTRL + H - otvaranje ovog prozora(HELP).\r\n"
-						+ "CTRL + A - otvaranje \"about\" prozora.\r\n"
-						+ "CTRL + K - otvaranje tabela katedri.", 20, 70);
+				helpTextArea = new JTextArea(MainFrame.getInstance().getResourceBundle().getString("helpPage"), 20, 70);
 				
 				helpTextArea.setEditable(false);
 				helpTextArea.setBorder(BorderFactory.createEmptyBorder(10,20,10,10));
@@ -318,14 +222,7 @@ public class MyMenuBar extends JMenuBar{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				aboutTextArea = new JTextArea("\t O APLIKACIJI\n"
-						+ "Aplikacija koja simulira rad studentske službe.\n"
-						+ "Za više informacija pogledati prozor 'HELP'.\n\n\n"
-						+ "Verzija: 1.0\n\n\n"
-						+ "Autori:\n"
-						+ "   Miloš Zeljko RA 24/2019\n"
-						+ "   Mihailo Veljić RA 31/2019");
+				aboutTextArea = new JTextArea(MainFrame.getInstance().getResourceBundle().getString("aboutPage"));
 				scrollPane = new JScrollPane(aboutTextArea);
 				JOptionPane.showMessageDialog(null, scrollPane);
 				

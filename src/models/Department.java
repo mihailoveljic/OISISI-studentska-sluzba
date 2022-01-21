@@ -9,19 +9,19 @@ public class Department implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -865983026437689719L;
-	private int ID;
+	private String ID;
 	private String name;
 	private Professor headOfDepartment;
 	private List<Professor> professors;
 	
-	public Department(int iD, String name, Professor headOfDepartment, List<Professor> professors) {
+	public Department(String iD, String name, Professor headOfDepartment, List<Professor> professors) {
 		super();
 		ID = iD;
 		this.name = name;
 		this.headOfDepartment = headOfDepartment;
 		this.professors = professors;
 	}
-	public Department(int iD, String name, Professor headOfDepartment) {
+	public Department(String iD, String name, Professor headOfDepartment) {
 		super();
 		ID = iD;
 		this.name = name;
@@ -29,11 +29,11 @@ public class Department implements Serializable{
 		this.professors = new ArrayList<Professor>();
 	}
 
-	public int getID() {
+	public String getID() {
 		return ID;
 	}
 
-	public void setID(int iD) {
+	public void setID(String iD) {
 		ID = iD;
 	}
 

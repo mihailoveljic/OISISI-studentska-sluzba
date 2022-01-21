@@ -45,7 +45,6 @@ public class Grade implements Serializable{
 		if(grade >= 6 && grade <= 10) {
 			this.grade = grade;
 		}else {
-			//TODO Odraditi obradu greške
 			System.out.println("Ocena mora biti u intervalu 6-10!");
 		}
 		
