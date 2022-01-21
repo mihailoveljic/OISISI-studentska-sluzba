@@ -18,6 +18,8 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.KeyStroke;
 
 
@@ -27,6 +29,10 @@ public class MyMenuBar extends JMenuBar{
 	 * 
 	 */
 	private static final long serialVersionUID = -1635843134686347858L;
+	
+	JScrollPane scrollPane;
+	JTextArea helpTextArea;
+	JTextArea aboutTextArea;
 
 	public MyMenuBar() {
 		super();
@@ -39,6 +45,7 @@ public class MyMenuBar extends JMenuBar{
 		JMenu helpMenu = new JMenu(MainFrame.getInstance().getResourceBundle().getString("help"));
 		helpMenu.setMnemonic(KeyEvent.VK_H);
 		JMenu languageMenu = new JMenu(MainFrame.getInstance().getResourceBundle().getString("language"));
+		
 		
 		// Ikonice
 		Icon addIcon = ResizeIcon.resizeIcon(new ImageIcon("images" + File.separator + "addButton.png"), 14, 14);
@@ -177,8 +184,37 @@ public class MyMenuBar extends JMenuBar{
 		JMenuItem aboutItem = new JMenuItem(MainFrame.getInstance().getResourceBundle().getString("about"), aboutIcon);
 		aboutItem.setMnemonic(KeyEvent.VK_A);
 		aboutItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, ActionEvent.CTRL_MASK));
+		
+		helpItem.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				helpTextArea = new JTextArea("", 20, 70);
+				
+				
+				scrollPane = new JScrollPane(helpTextArea);
+				JOptionPane.showMessageDialog(null, scrollPane);
+				
+			}
+		});
+		
 		helpMenu.add(helpItem);
 		helpMenu.addSeparator();
+		
+		
+		aboutItem.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				aboutTextArea = new JTextArea("");
+				scrollPane = new JScrollPane(aboutTextArea);
+				JOptionPane.showMessageDialog(null, scrollPane);
+				
+			}
+		});
+		
 		helpMenu.add(aboutItem);
 
 		// Language meni
