@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import views.MainFrame;
+
 public class DbStudents {
 
 	private static DbStudents instance = null;
@@ -22,12 +24,12 @@ public class DbStudents {
 		initStudents();
 
 		this.columns = new ArrayList<String>();
-		this.columns.add("INDEX");
-		this.columns.add("IME");
-		this.columns.add("PREZIME");
-		this.columns.add("GODINA STUDIJA");
-		this.columns.add("STATUS");
-		this.columns.add("PROSEK");
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("indexNumber"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("name"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("surname"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("currentYearOfStudy"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("finanseWay"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("avgGrades"));
 	}
 
 	private void initStudents() {

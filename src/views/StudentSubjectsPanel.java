@@ -57,7 +57,7 @@ public class StudentSubjectsPanel extends JPanel{
 		add(commandPanel, BorderLayout.NORTH);
 		
 	
-		deleteGrade = new JButton ("Obriši");
+		deleteGrade = new JButton (MainFrame.getInstance().getResourceBundle().getString("delete"));
 	
 		deleteGrade.addActionListener(new ActionListener() {
 		
@@ -68,7 +68,7 @@ public class StudentSubjectsPanel extends JPanel{
 			Student s = DbStudents.getInstance().findStudentByIndex((String) StudentTable.getInstance().getValueAt(StudentTable.getInstance().getSelectedRow(), 0));
 			if(s!=null)
 			{
-				int userInput = JOptionPane.showOptionDialog(StudentSubjectsPanel.getInstance(), "Da li ste sigurni da želite da obrišete predmet?", "Brisanje predmeta", JOptionPane.YES_NO_OPTION, 0, null, null, e);
+				int userInput = JOptionPane.showOptionDialog(StudentSubjectsPanel.getInstance(), MainFrame.getInstance().getResourceBundle().getString("sureToDeleteSubject"), MainFrame.getInstance().getResourceBundle().getString("subjectDelete"), JOptionPane.YES_NO_OPTION, 0, null, null, e);
 				if(userInput == JOptionPane.YES_OPTION) {
 					s.getSubjects().remove(studentSubjectTable.getSelectedRow());
 					StudentSubjectsPanel.getInstance().refresh();
@@ -81,7 +81,7 @@ public class StudentSubjectsPanel extends JPanel{
 	commandPanel.add(deleteGrade);
 	add(commandPanel, BorderLayout.NORTH);
 	
-	entryGrade = new JButton ("Polaganje");
+	entryGrade = new JButton (MainFrame.getInstance().getResourceBundle().getString("passing"));
 	
 	entryGrade.addActionListener(new ActionListener() {
 		
@@ -102,11 +102,11 @@ public class StudentSubjectsPanel extends JPanel{
 					subject=s;
 				}
 			}
-			studentAddSubject = new StudentEntrySubject(MainFrame.getInstance(), "Unos ocene", true, subject);
+			studentAddSubject = new StudentEntrySubject(MainFrame.getInstance(), MainFrame.getInstance().getResourceBundle().getString("gradeEntry"), true, subject);
 			studentAddSubject.setVisible(true);
 			}
 			else {
-				JOptionPane.showMessageDialog(StudentSubjectsPanel.getInstance(), "Predmet nije selektovan.", "Upozorenje!",
+				JOptionPane.showMessageDialog(StudentSubjectsPanel.getInstance(), MainFrame.getInstance().getResourceBundle().getString("subjectNotChosen"), MainFrame.getInstance().getResourceBundle().getString("warning"),
 						JOptionPane.ERROR_MESSAGE);
 			}
 			

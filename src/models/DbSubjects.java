@@ -3,6 +3,8 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 
+import views.MainFrame;
+
 public class DbSubjects {
 	
 	private static DbSubjects instance = null;
@@ -21,11 +23,11 @@ public class DbSubjects {
 		initSubject();
 		
 		this.columns=new ArrayList<String>();
-		this.columns.add("SIFRA PREDMETA");
-		this.columns.add("NAZIV PREDMETA");
-		this.columns.add("BROJ ESPB BODOVA");
-		this.columns.add("GODINA NA KOJOJ SE PREDMET IZVODI");
-		this.columns.add("SEMESTAR U KOME SE PREDMET IZVODI");
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("subjectId"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("subjectName"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("espb"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("yearOfStudy"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("semester"));
 	}
 	
 	private void initSubject() {
@@ -59,10 +61,10 @@ public class DbSubjects {
 			return Integer.toString(subjects.getYearOfStudy());
 		case 4:
 			if(subjects.getSemester() == Semester.ZIMSKI) {
-				return "ZIMSKI";
+				return MainFrame.getInstance().getResourceBundle().getString("winter");
 			} 
 			else {
-				return "LETNJI";
+				return MainFrame.getInstance().getResourceBundle().getString("summer");
 			}
 			default:
 					return null;

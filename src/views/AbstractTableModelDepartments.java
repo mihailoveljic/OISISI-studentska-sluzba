@@ -65,15 +65,15 @@ public class AbstractTableModelDepartments extends AbstractTableModel{
 		{
 			case 0:
 			{
-				return "Šifra katedre";
+				return MainFrame.getInstance().getResourceBundle().getString("departmentId");
 			}
 			case 1:
 			{
-				return "Naziv katedre";
+				return MainFrame.getInstance().getResourceBundle().getString("departmentName");
 			}
 			case 2:
 			{
-				return "Rukovodilac katedre";
+				return MainFrame.getInstance().getResourceBundle().getString("departmentHead");
 			}
 			default:
 				return null;

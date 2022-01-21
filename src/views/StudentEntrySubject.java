@@ -46,7 +46,7 @@ public class StudentEntrySubject extends JDialog implements ActionListener {
 		
 		s = subject;
 		
-		setTitle("Unos ocene");
+		setTitle(MainFrame.getInstance().getResourceBundle().getString("gradeEntry"));
 		setSize(350, 250);
 		setLocationRelativeTo(StudentSubjectsPanel.getInstance());
 		setResizable(false);
@@ -54,11 +54,11 @@ public class StudentEntrySubject extends JDialog implements ActionListener {
 		this.setAlwaysOnTop(b);
 		
 		JPanel panCommands = new JPanel();
-		okButton = new JButton("Potvrdi");
+		okButton = new JButton(MainFrame.getInstance().getResourceBundle().getString("confirm"));
 		okButton.setEnabled(false);
 		okButton.addActionListener(this); 
 		
-		cancelButton = new JButton("Odustani");
+		cancelButton = new JButton(MainFrame.getInstance().getResourceBundle().getString("cancel"));
         cancelButton.addActionListener(new ActionListener() {
 			
 			@Override
@@ -73,23 +73,23 @@ public class StudentEntrySubject extends JDialog implements ActionListener {
 		Dimension dim = new Dimension(150, 30);
 		JPanel panAddMark = new JPanel();
 
-		JLabel labelSifra = new JLabel("�ifra*");
+		JLabel labelSifra = new JLabel(MainFrame.getInstance().getResourceBundle().getString("subjectId") + "*");
 		labelSifra.setPreferredSize(dim);
 		idField = new JTextField();
 		idField.setPreferredSize(dim);
 		
-		JLabel labelNaziv = new JLabel("Naziv*");
+		JLabel labelNaziv = new JLabel(MainFrame.getInstance().getResourceBundle().getString("subjectName") + "*");
 		labelNaziv.setPreferredSize(dim);
 		nameField = new JTextField();
 		nameField.setPreferredSize(dim);
 		
-		JLabel labelOcena = new JLabel("Ocena*");
+		JLabel labelOcena = new JLabel(MainFrame.getInstance().getResourceBundle().getString("mark") + "*");
 		labelOcena.setPreferredSize(dim);
 	    Integer marks[] = { 6, 7, 8, 9, 10 };
 		gradeComboBox = new JComboBox<Integer>(marks);
 		gradeComboBox.setPreferredSize(dim);
 		
-		JLabel labelDatum = new JLabel("Datum*");
+		JLabel labelDatum = new JLabel(MainFrame.getInstance().getResourceBundle().getString("date") + "* (dd.mm.yyyy.)");
 		labelDatum.setPreferredSize(dim);
 		dateField = new JTextField();
 		dateField.setPreferredSize(dim);
@@ -228,7 +228,7 @@ public class StudentEntrySubject extends JDialog implements ActionListener {
 		DbStudents.getInstance().findStudentByIndex((String) StudentTable.getInstance().getValueAt(StudentTable.getInstance().getSelectedRow(), 0)).getGrades().add(g);
 		DbStudents.getInstance().findStudentByIndex((String) StudentTable.getInstance().getValueAt(StudentTable.getInstance().getSelectedRow(), 0)).getSubjects().remove(g.getSubject());
 
-		JOptionPane.showMessageDialog(StudentSubjectsPanel.getInstance().getStudentAddSubject(), "Upisana ocena");
+		JOptionPane.showMessageDialog(StudentSubjectsPanel.getInstance().getStudentAddSubject(), MainFrame.getInstance().getResourceBundle().getString("gradeEntered"));
 		StudentGradesPanel.getInstance().refresh();
 		StudentSubjectsPanel.getInstance().refresh();
 		setVisible(false);

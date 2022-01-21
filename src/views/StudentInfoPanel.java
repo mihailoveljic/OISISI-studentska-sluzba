@@ -114,34 +114,34 @@ public class StudentInfoPanel extends JPanel{
 			studentStatus = StudentStatus.B;
 		}
 		
-		nameLabel = new JLabel("Ime*");
+		nameLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("name") + "*");
 		nameField = new JTextField(name);
-		surnameLabel = new JLabel("Prezime*");
+		surnameLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("surname") + "*");
 		surnameField = new JTextField(surname);
-		birthDateLabel = new JLabel("Datum roðenja*");
+		birthDateLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("birthDate") + "* (dd.mm.yyyy.)");
 		birthDateField = new JTextField(birthDate);
-		streetLabel = new JLabel("Ulica stanovanja*");
+		streetLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("streetLiving") + "*");
 		streetField = new JTextField(street);
-		numberLabel = new JLabel("Broj stanovanja");
+		numberLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("numberLiving") + "*");
 		numberField = new JTextField(number);
-		cityLabel = new JLabel("Grad stanovanja*");
+		cityLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("cityLiving") + "*");
 		cityField = new JTextField();
-		countryLabel = new JLabel("Država stanovanja*");
+		countryLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("countryLiving") + "*");
 		countryField = new JTextField();
-		phoneLabel = new JLabel("Broj telefona*");
+		phoneLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("phone") + "*");
 		phoneField = new JTextField(phone);
-		emailLabel = new JLabel("E-mail adresa*");
+		emailLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("email") + "*");
 		emailField = new JTextField(email);
-		indexLabel = new JLabel("Broj indeksa*");
+		indexLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("indexId") + "*");
 		indexField = new JTextField(index);
-		enrollmentYearLabel = new JLabel("Godina upisa*");
+		enrollmentYearLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("enrollmentYear") + "*");
 		enrollmentYearField = new JTextField(enrollmentYear);
-		currentYearOfStudyLabel = new JLabel("Trenutna godina studija*");
+		currentYearOfStudyLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("currentYearOfStudy") + "*");
 		currentYearOfStudyComboBox = new JComboBox<String>();
-		currentYearOfStudyComboBox.addItem("I (Prva)");
-		currentYearOfStudyComboBox.addItem("II (Druga)");
-		currentYearOfStudyComboBox.addItem("III (Treæa)");
-		currentYearOfStudyComboBox.addItem("IV (Èetvrta)");
+		currentYearOfStudyComboBox.addItem(MainFrame.getInstance().getResourceBundle().getString("firstYear") + "*");
+		currentYearOfStudyComboBox.addItem(MainFrame.getInstance().getResourceBundle().getString("secondYear") + "*");
+		currentYearOfStudyComboBox.addItem(MainFrame.getInstance().getResourceBundle().getString("thirdYear") + "*");
+		currentYearOfStudyComboBox.addItem(MainFrame.getInstance().getResourceBundle().getString("fourthYear") + "*");
 		
 		switch(currentYearOfStudy) {
 		case 1:
@@ -159,10 +159,10 @@ public class StudentInfoPanel extends JPanel{
 		default:
 			break;
 		}
-		JLabel studentStatusLabel = new JLabel("Naèin finansiranja*");
+		JLabel studentStatusLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("finanseWay") + "*");
 		studentStatusComboBox = new JComboBox<String>();
-		studentStatusComboBox.addItem("Budžet");
-		studentStatusComboBox.addItem("Samofinansiranje");
+		studentStatusComboBox.addItem(MainFrame.getInstance().getResourceBundle().getString("budget"));
+		studentStatusComboBox.addItem(MainFrame.getInstance().getResourceBundle().getString("selfFinansing"));
 		switch(studentStatus) {
 		case B:
 			studentStatusComboBox.setSelectedIndex(0);
@@ -174,7 +174,7 @@ public class StudentInfoPanel extends JPanel{
 			break;
 		}
 		
-		JButton confirmButton = new JButton("Potvrdi");
+		JButton confirmButton = new JButton(MainFrame.getInstance().getResourceBundle().getString("confirm"));
 		ButtonModel confirmButtonModel = confirmButton.getModel();
 		ButtonEnabler buttonEnabler = new ButtonEnabler(confirmButtonModel);
 		buttonEnabler.addDocument(surnameField.getDocument());
@@ -222,7 +222,7 @@ public class StudentInfoPanel extends JPanel{
 			}
 			
 		});
-		JButton cancelButton = new JButton("Odustani");
+		JButton cancelButton = new JButton(MainFrame.getInstance().getResourceBundle().getString("cancel"));
 		
 		cancelButton.addActionListener(new ActionListener() {
 			

@@ -23,40 +23,40 @@ public class DeleteEntityListener implements ActionListener{
 		switch(mainTabbedPane.getSelectedIndex()) {
 		case 0:
 			if(StudentTable.getInstance().getSelectedRow() != -1) {
-				int userInput = JOptionPane.showOptionDialog(mainTabbedPane, "Da li ste sigurni da želite da obrišete studenta?", "Brisanje studenta", JOptionPane.YES_NO_OPTION, 0, null, null, e);
+				int userInput = JOptionPane.showOptionDialog(mainTabbedPane, MainFrame.getInstance().getResourceBundle().getString("sureToDeleteStudent"), MainFrame.getInstance().getResourceBundle().getString("deleteStudent"), JOptionPane.YES_NO_OPTION, 0, null, null, e);
 				if(userInput == JOptionPane.YES_OPTION) {
 					StudentController studentController = new StudentController();
 					studentController.deleteStudent(StudentTable.getInstance().getSelectedRow());
 				}
 			}else {
-				JOptionPane.showMessageDialog(null, "Odaberi studenta prvo!");
+				JOptionPane.showMessageDialog(null, MainFrame.getInstance().getResourceBundle().getString("studentNotChosen"));
 			}
 			break;
 		case 1:
 			if(ProfessorTable.getInstance().getSelectedRow() != -1) {
-				int userInput = JOptionPane.showOptionDialog(mainTabbedPane, "Da li ste sigurni da želite da obrišete profesora?", "Brisanje profesora", JOptionPane.YES_NO_OPTION, 0, null, null, e);
+				int userInput = JOptionPane.showOptionDialog(mainTabbedPane, MainFrame.getInstance().getResourceBundle().getString("sureToDeleteProfessor"), MainFrame.getInstance().getResourceBundle().getString("professorDelete"), JOptionPane.YES_NO_OPTION, 0, null, null, e);
 				if(userInput == JOptionPane.YES_OPTION) {
 					ProfessorController professorController = new ProfessorController();
 					professorController.deleteProfessor(ProfessorTable.getInstance().getSelectedRow());
 				}
 			}else {
-				JOptionPane.showMessageDialog(null, "Odaberi profesora prvo!");
+				JOptionPane.showMessageDialog(null, MainFrame.getInstance().getResourceBundle().getString("professorNotChosen"));
 			}
 			break;
 		case 2:
 			//TODO Edit Subject
 			if(SubjectTable.getInstance().getSelectedRow() != -1) {
-				int userInput = JOptionPane.showOptionDialog(mainTabbedPane, "Da li ste sigurni da želite da obrišete predmet?", "Brisanje predmeta", JOptionPane.YES_NO_OPTION, 0, null, null, e);
+				int userInput = JOptionPane.showOptionDialog(mainTabbedPane, MainFrame.getInstance().getResourceBundle().getString("sureToDeleteSubject"), MainFrame.getInstance().getResourceBundle().getString("subjectDelete"), JOptionPane.YES_NO_OPTION, 0, null, null, e);
 				if(userInput == JOptionPane.YES_OPTION) {
 					SubjectController subjectController = new SubjectController();
 					subjectController.deleteSubject(SubjectTable.getInstance().getSelectedRow());
 				}
 			}else {
-				JOptionPane.showMessageDialog(null, "Odaberi predmet prvo!");
+				JOptionPane.showMessageDialog(null, MainFrame.getInstance().getResourceBundle().getString("subjectNotChosen"));
 			}
 			break;
 		default:
-			System.out.println("ERROR");
+			System.out.println(MainFrame.getInstance().getResourceBundle().getString("error"));
 			break;
 		}	
 	}

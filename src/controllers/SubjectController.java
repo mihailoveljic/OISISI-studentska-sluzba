@@ -1,9 +1,12 @@
 package controllers;
 
+import javax.swing.JOptionPane;
+
 import models.DbSubjects;
 import models.Professor;
 import models.Semester;
 import models.Subject;
+import views.MainFrame;
 import views.SubjectEditFrame;
 import views.SubjectPanel;
 import views.SubjectTable;
@@ -21,7 +24,7 @@ public class SubjectController {
 				semester, espb, p);
 		for(Subject s : DbSubjects.getInstance().getSubjects()) {
 			if(s.getId().equals(id))
-				return "ID predmeta mora biti jedinstven!";
+				return MainFrame.getInstance().getResourceBundle().getString("idSubjectUnique");
 		}
 		
 		if(validationString != "OK")
@@ -37,7 +40,7 @@ public class SubjectController {
 	public String editSubject(int rowSelectedIndex, String id, String name,
 			int currentYearOfStudy, int semester, String espb, Professor p) {
 		if (rowSelectedIndex < 0) {
-			return "No row selected!";
+			return "NO ROW SELECTED!";
 		}
 		// izmena modela
 		Subject subject = DbSubjects.getInstance().findSubjectById((String)SubjectTable.getInstance().getValueAt(SubjectTable.getInstance().getSelectedRow(), 0));
@@ -48,7 +51,7 @@ public class SubjectController {
 		for(Subject s : DbSubjects.getInstance().getSubjects()) {
 			if(s.getId().equals(id))
 				if(s.getId() != SubjectEditFrame.getInstance().getOldId())
-					return "ID predmeta mora biti jedinstven!";
+					return MainFrame.getInstance().getResourceBundle().getString("idSubjectUnique");
 		}
 		
 		if(validationString != "OK")
@@ -91,7 +94,7 @@ public class SubjectController {
 		try {
 			formattedEspb = Integer.parseInt(espb);
 		} catch(Exception e) {
-			return "ESPB mora biti broj!";
+			return MainFrame.getInstance().getResourceBundle().getString("espbFormat");
 		}
 		
 		switch(semester) {
@@ -102,7 +105,7 @@ public class SubjectController {
 			formattedSemester = Semester.ZIMSKI;
 			break;
 		default:
-			return "Nepostojeci odabir semestra!";
+			return MainFrame.getInstance().getResourceBundle().getString("semesterChooseIncorrect");
 		}
 		return "OK";
 	}
@@ -114,12 +117,18 @@ public class SubjectController {
 		}
 		else {
 			String parts[] = text.split(",");
-			if(parts.length==1) {
+			if(parts.length == 1) {
 			SubjectTable.getInstance().setFilter(text.trim(), 1);
 			SubjectPanel.getInstance().updateView();
-			} else {
+			} else if(parts.length == 2){
 				SubjectTable.getInstance().set2Filter(parts[0], 1, parts[1], 0);
 				SubjectPanel.getInstance().updateView();
+			}else {
+
+				JOptionPane.showMessageDialog(MainFrame.getInstance(),
+						MainFrame.getInstance().getResourceBundle().getString("searchSubjects"),
+						MainFrame.getInstance().getResourceBundle().getString("warning"), JOptionPane.ERROR_MESSAGE);
+				return;
 			}
 	}
 }

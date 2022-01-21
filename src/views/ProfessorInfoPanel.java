@@ -132,41 +132,41 @@ public class ProfessorInfoPanel extends JPanel {
 			serviceYears = "";
 		}
 		
-		 surnameLabel = new JLabel("Prezime*");
+		 surnameLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("surname") + "*");
 		 surnameField = new JTextField(surname);
-		 nameLabel = new JLabel("Ime*");
+		 nameLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("name") + "*");
 		 nameField = new JTextField(name);
-		 birthDateLabel = new JLabel("Datum roðenja");
+		 birthDateLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("birthDate") + "* (dd.mm.yyyy.)");
 		 birthDateField = new JTextField(birthDate);
-		 streetAdressLabel = new JLabel("Ulica stanovanja*");
+		 streetAdressLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("streetLiving") + "*");
 		 streetAdressField = new JTextField(streetAdress);
-		 numberAdressLabel = new JLabel("Broj stanovanja*");
+		 numberAdressLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("numberLiving") + "*");
 		 numberAdressField = new JTextField(numberAdress);
-		 cityAdressLabel = new JLabel("Grad stanovanja*");
+		 cityAdressLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("cityLiving") + "*");
 		 cityAdressField = new JTextField(cityAdress);
-		 countryAdressLabel = new JLabel("Država stanovanja*");
+		 countryAdressLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("countryLiving") + "*");
 		 countryAdressField = new JTextField(countryAdress);
-		 phoneLabel = new JLabel("Kontakt Telefon*");
+		 phoneLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("phone") + "*");
 		 phoneField = new JTextField(phone);
-		 emailLabel = new JLabel("Email*");
+		 emailLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("email") + "*");
 		 emailField = new JTextField(email);
-		 streetOfficeAdressLabel = new JLabel("Ulica kancelarije*");
+		 streetOfficeAdressLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("streetOffice") + "*");
 		 streetOfficeAdressField = new JTextField(streetOfficeAdress);
-		 numberOfficeAdressLabel = new JLabel("Broj kancelarije*");
+		 numberOfficeAdressLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("numberOffice") + "*");
 		 numberOfficeAdressField = new JTextField(numberOfficeAdress);
-		 cityOfficeAdressLabel = new JLabel("Grad kancelarije*");
+		 cityOfficeAdressLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("cityOffice") + "*");
 		 cityOfficeAdressField = new JTextField(cityOfficeAdress);
-		 countryOfficeAdressLabel = new JLabel("Država kancelarije*");
+		 countryOfficeAdressLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("countryOffice") + "*");
 		 countryOfficeAdressField = new JTextField(countryOfficeAdress);
-		 idNumberLabel = new JLabel("Broj liène karte*");
+		 idNumberLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("idNumber") + "*");
 		 idNumberField = new JTextField(idNumber);
-		 titleLabel = new JLabel("Zvanje*");
+		 titleLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("title") + "*");
 		 titleField = new JTextField(title);
-		 serviceYearsLabel = new JLabel("Godine radnog staža*");
+		 serviceYearsLabel = new JLabel(MainFrame.getInstance().getResourceBundle().getString("yearsOfExperience") + "*");
 		 serviceYearsField = new JTextField(serviceYears);
 		
 	
-		 JButton confirmButton = new JButton("Potvrdi");
+		 JButton confirmButton = new JButton(MainFrame.getInstance().getResourceBundle().getString("confirm"));
 		confirmButton.setEnabled(false);
 		ButtonModel confirmButtonModel = confirmButton.getModel();
 		ButtonEnabler buttonEnabler = new ButtonEnabler(confirmButtonModel);
@@ -228,7 +228,7 @@ public class ProfessorInfoPanel extends JPanel {
 		
 	});
 	
-	JButton cancelButton = new JButton("Odustani");
+	JButton cancelButton = new JButton(MainFrame.getInstance().getResourceBundle().getString("cancel"));
 	cancelButton.addActionListener(new ActionListener() {
 		
 		@Override

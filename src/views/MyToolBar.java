@@ -46,10 +46,10 @@ public class MyToolBar extends JToolBar {
 		JButton deleteButton = new JButton(deleteIcon);
 		JButton searchButton = new JButton(searchIcon);
 
-		addButton.setToolTipText("Add entity");
-		editButton.setToolTipText("Edit entity");
-		deleteButton.setToolTipText("Delete entity");
-		searchButton.setToolTipText("Search entity");
+		addButton.setToolTipText(MainFrame.getInstance().getResourceBundle().getString("add"));
+		editButton.setToolTipText(MainFrame.getInstance().getResourceBundle().getString("edit"));
+		deleteButton.setToolTipText(MainFrame.getInstance().getResourceBundle().getString("delete"));
+		searchButton.setToolTipText(MainFrame.getInstance().getResourceBundle().getString("search"));
 		
 		searchBar = new JTextField(30);
 		Dimension d = new Dimension(40, 30);

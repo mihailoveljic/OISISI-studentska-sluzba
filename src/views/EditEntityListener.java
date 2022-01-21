@@ -27,7 +27,7 @@ public class EditEntityListener implements ActionListener{
 				StudentGradesPanel.getInstance().refresh();
 				studentEditFrame.setVisible(true);
 			}else {
-				JOptionPane.showMessageDialog(null, "Odaberi studenta prvo!");
+				JOptionPane.showMessageDialog(null, MainFrame.getInstance().getResourceBundle().getString("studentNotChosen"));
 			}
 			break;
 		case 1:
@@ -39,7 +39,7 @@ public class EditEntityListener implements ActionListener{
 				professorEditFrame.setVisible(true);
 			}
 			else {
-				JOptionPane.showMessageDialog(null, "Odaberi profesora prvo!");
+				JOptionPane.showMessageDialog(null, MainFrame.getInstance().getResourceBundle().getString("professorNotChosen"));
 			}
 			break;
 		case 2:
@@ -49,11 +49,11 @@ public class EditEntityListener implements ActionListener{
 				subjectEditFrame.updateSubjectSelection();
 				subjectEditFrame.setVisible(true);
 			}else {
-				JOptionPane.showMessageDialog(null, "Odaberi predmet prvo!");
+				JOptionPane.showMessageDialog(null, MainFrame.getInstance().getResourceBundle().getString("subjectNotChosen"));
 			}
 			break;
 		default:
-			System.out.println("ERROR");
+			System.out.println(MainFrame.getInstance().getResourceBundle().getString("error"));
 			break;
 		}	
 	}

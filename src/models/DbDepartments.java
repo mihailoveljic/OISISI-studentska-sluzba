@@ -3,6 +3,8 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 
+import views.MainFrame;
+
 
 
 public class DbDepartments{
@@ -22,9 +24,9 @@ public class DbDepartments{
 		initDepartments();
 		
 		this.columns = new ArrayList<String>();
-		this.columns.add("ID");
-		this.columns.add("Naziv katedre");
-		this.columns.add("Rukovodilac");
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("departmentId"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("departmentName"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("departmentHead"));
 	}
 	
 	private void initDepartments() {

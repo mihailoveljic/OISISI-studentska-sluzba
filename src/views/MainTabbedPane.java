@@ -31,9 +31,9 @@ public class MainTabbedPane extends JTabbedPane{
 
 		SubjectPanel subjectPanel = SubjectPanel.getInstance();
 
-		this.add("Studenti", studentPanel);
-		this.add("Profesori", professorPanel);
-		this.add("Predmeti", subjectPanel);
+		this.add(MainFrame.getInstance().getResourceBundle().getString("students"), studentPanel);
+		this.add(MainFrame.getInstance().getResourceBundle().getString("professors"), professorPanel);
+		this.add(MainFrame.getInstance().getResourceBundle().getString("subjects"), subjectPanel);
 		
 		this.addChangeListener(new TabChangeListener(this));
 	}
@@ -64,16 +64,16 @@ class TabChangeListener implements ChangeListener{
 		
 		switch(selectedIndex) {
 			case 0:
-				label.setText("Studentska služba - Studenti");
+				label.setText(MainFrame.getInstance().getResourceBundle().getString("studentServicesStudents"));
 				break;
 			case 1:
-				label.setText("Studentska služba - Profesori");
+				label.setText(MainFrame.getInstance().getResourceBundle().getString("studentServicesProfessors"));
 				break;
 			case 2:
-				label.setText("Studentska služba - Predmeti");
+				label.setText(MainFrame.getInstance().getResourceBundle().getString("studentServicesSubjects"));
 				break;
 			default:
-				label.setText("Studentska služba");
+				label.setText(MainFrame.getInstance().getResourceBundle().getString("studentServices"));
 				break;
 				
 				

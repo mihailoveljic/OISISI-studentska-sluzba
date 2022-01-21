@@ -37,23 +37,23 @@ public class AbstractTableModelProfessorSubjects extends AbstractTableModel{
 		{
 			case 0:
 			{
-				return "Šifra predmeta";
+				return MainFrame.getInstance().getResourceBundle().getString("subjectId");
 			}
 			case 1:
 			{
-				return "Naziv predmeta";
+				return MainFrame.getInstance().getResourceBundle().getString("subjectName");
 			}
 			case 2:
 			{
-				return "ESPB";
+				return MainFrame.getInstance().getResourceBundle().getString("espb");
 			}
 			case 3:
 			{
-				return "Godina studija";
+				return MainFrame.getInstance().getResourceBundle().getString("yearOfStudy");
 			}
 			case 4:
 			{
-				return "Semestar";
+				return MainFrame.getInstance().getResourceBundle().getString("semester");
 			}
 			default:
 				return null;
@@ -91,8 +91,8 @@ public class AbstractTableModelProfessorSubjects extends AbstractTableModel{
 			}
 			case 4:
 			{
-				if(subject.getSemester() == Semester.LETNJI ) return "Letnji";
-				else return "Zimski";
+				if(subject.getSemester() == Semester.LETNJI ) return MainFrame.getInstance().getResourceBundle().getString("summer");
+				else return MainFrame.getInstance().getResourceBundle().getString("winter");
 			}
 			default:
 				return null;

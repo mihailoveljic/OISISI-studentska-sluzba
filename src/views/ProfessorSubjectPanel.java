@@ -37,8 +37,8 @@ public class ProfessorSubjectPanel extends JPanel{
 		scrollPane = new JScrollPane(subjectsTable);
 		add(scrollPane, BorderLayout.CENTER);
 		JPanel commandPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		addButton = new JButton("Dodaj predmet");
-		removeButton = new JButton("Ukloni predmet");
+		addButton = new JButton(MainFrame.getInstance().getResourceBundle().getString("addSubject"));
+		removeButton = new JButton(MainFrame.getInstance().getResourceBundle().getString("removeSubject"));
 		commandPanel.add(addButton);
 		addButton.addActionListener(new ActionListener() {
 			
@@ -64,8 +64,8 @@ public class ProfessorSubjectPanel extends JPanel{
 						);
 				
 				if (row >= 0 && row <= subjectsTable.getRowCount()) {
-					int userInput = JOptionPane.showConfirmDialog(ProfessorEditFrame.getInstance().getProfessorSubjectPanel(), "Da li ste sigurni da želite da obrišete predmet sa profesora?",
-							"Brisanje predmeta", JOptionPane.YES_NO_OPTION);
+					int userInput = JOptionPane.showConfirmDialog(ProfessorEditFrame.getInstance().getProfessorSubjectPanel(), MainFrame.getInstance().getResourceBundle().getString("sureToDeleteSubjectFromProfessor"),
+							MainFrame.getInstance().getResourceBundle().getString("deleteSubject"), JOptionPane.YES_NO_OPTION);
 					if (userInput == JOptionPane.YES_OPTION) {
 						
 						for(Subject s : DbSubjects.getInstance().getSubjects()) {
@@ -77,12 +77,12 @@ public class ProfessorSubjectPanel extends JPanel{
 						
 						p.getSubjects().remove(row);
 						refresh();			
-						JOptionPane.showMessageDialog(ProfessorEditFrame.getInstance().getProfessorSubjectPanel(), "Predmet je obrisan!");
+						JOptionPane.showMessageDialog(ProfessorEditFrame.getInstance().getProfessorSubjectPanel(), MainFrame.getInstance().getResourceBundle().getString("subjectDeleted"));
 					} else {
-						JOptionPane.showMessageDialog(ProfessorEditFrame.getInstance().getProfessorSubjectPanel(), "Predmet nije obrisan.");
+						JOptionPane.showMessageDialog(ProfessorEditFrame.getInstance().getProfessorSubjectPanel(), MainFrame.getInstance().getResourceBundle().getString("subjectNotDeleted"));
 					}
 				} else {
-					JOptionPane.showMessageDialog(ProfessorEditFrame.getInstance().getProfessorSubjectPanel(), "Predmet nije selektovan.", "Upozorenje!",
+					JOptionPane.showMessageDialog(ProfessorEditFrame.getInstance().getProfessorSubjectPanel(), MainFrame.getInstance().getResourceBundle().getString("subjectNotChosen"), MainFrame.getInstance().getResourceBundle().getString("warning"),
 							JOptionPane.ERROR_MESSAGE);
 				}
 				removeButton.setSelected(false);

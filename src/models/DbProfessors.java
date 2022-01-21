@@ -4,6 +4,8 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+import views.MainFrame;
+
 public class DbProfessors {
 	
 	private static DbProfessors instance = null;
@@ -22,10 +24,10 @@ public class DbProfessors {
 		initProfessors();
 		
 		this.columns=new ArrayList<String>();
-		this.columns.add("IME");
-		this.columns.add("PREZIME");
-		this.columns.add("ZVANJE");
-		this.columns.add("E-MAIL ADRESA");
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("name"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("surname"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("title"));
+		this.columns.add(MainFrame.getInstance().getResourceBundle().getString("email"));
 	}
 	
 	private void initProfessors() {
